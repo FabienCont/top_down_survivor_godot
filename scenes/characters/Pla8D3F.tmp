@@ -1,0 +1,73 @@
+[gd_scene load_steps=16 format=3 uid="uid://ccxqh4klu5i7k"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_hfnnk"]
+[ext_resource type="PackedScene" uid="uid://v7vtestyxfk5" path="res://components/controllers/TopDownControllerComponent.tscn" id="2_c30to"]
+[ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://components/HealthComponent.tscn" id="2_e7v8r"]
+[ext_resource type="Script" path="res://scripts/resources/effects/hurt/DisplayDamagedHurtEffect.gd" id="2_um7jl"]
+[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="3_71gvc"]
+[ext_resource type="PackedScene" uid="uid://bjbu22y0n4s4r" path="res://components/ui/LifebarComponent.tscn" id="5_641ph"]
+[ext_resource type="PackedScene" uid="uid://tj3s2aqp4cp5" path="res://assets/characters/heroes/character.ase" id="6_p62x1"]
+[ext_resource type="PackedScene" uid="uid://b5iiqlwia7sr7" path="res://components/physics/HitboxComponent.tscn" id="7_pdk5s"]
+[ext_resource type="PackedScene" uid="uid://sklpdnfwp8oj" path="res://scenes/characters/skins/hope.tscn" id="8_28qv7"]
+[ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://components/physics/HurtboxComponent.tscn" id="8_re3wd"]
+[ext_resource type="PackedScene" uid="uid://c43c8vrwakpf7" path="res://components/WeaponSlotComponent.tscn" id="10_lpkvc"]
+[ext_resource type="PackedScene" uid="uid://b2jjacb4yslq6" path="res://scenes/weapons/bow.tscn" id="11_bjexh"]
+[ext_resource type="PackedScene" uid="uid://55jfcor21akc" path="res://components/physics/InteractionComponent.tscn" id="12_jjv56"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yog7p"]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h3p46"]
+radius = 90.0
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+position = Vector2(61, 69)
+collision_layer = 4
+script = ExtResource("1_hfnnk")
+hurt_effects = Array[Resource]([ExtResource("2_um7jl")])
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_e7v8r")]
+
+[node name="TopDownControllerComponent" parent="." node_paths=PackedStringArray("velocityComponent") instance=ExtResource("2_c30to")]
+velocityComponent = NodePath("../VelocityComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("3_71gvc")]
+
+[node name="LifebarComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("5_641ph")]
+position = Vector2(0, 14)
+healthComponent = NodePath("../HealthComponent")
+
+[node name="character" parent="." instance=ExtResource("6_p62x1")]
+scale = Vector2(0.5, 0.5)
+autoplay = "default"
+frame_progress = 0.334671
+
+[node name="hope" parent="." instance=ExtResource("8_28qv7")]
+visible = false
+scale = Vector2(0.3, 0.3)
+
+[node name="HitboxComponent" parent="." instance=ExtResource("7_pdk5s")]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_yog7p")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_re3wd")]
+shape = SubResource("CapsuleShape2D_yog7p")
+health_component = NodePath("../HealthComponent")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("12_jjv56")]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent"]
+shape = SubResource("CircleShape2D_h3p46")
+
+[node name="WeaponSlotComponent" parent="." node_paths=PackedStringArray("weaponEquiped") instance=ExtResource("10_lpkvc")]
+weaponEquiped = NodePath("bow")
+
+[node name="bow" parent="WeaponSlotComponent" instance=ExtResource("11_bjexh")]
+position = Vector2(7, 0)

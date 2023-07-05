@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://sklpdnfwp8oj"]
+
+[ext_resource type="PackedScene" uid="uid://b8q2vpdkrtw7a" path="res://assets/characters/heroes/hope.ase" id="1_xr7ow"]
+
+[node name="hope" type="Node2D"]
+
+[node name="hope" parent="." instance=ExtResource("1_xr7ow")]
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+light_mask = 1
+visibility_layer = 1
+z_as_relative = true
+texture_filter = 0
+texture_repeat = 0
+scale = Vector2(1, 1)
+animation = &"Idle"
+frame_progress = 0.298471
