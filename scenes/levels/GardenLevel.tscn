@@ -1,20 +1,20 @@
 [gd_scene load_steps=19 format=3 uid="uid://clgdf5xwbg4ou"]
 
-[ext_resource type="Texture2D" uid="uid://bvyyig7etabsi" path="res://assets/tilesets/forestPack/Forest Cliff.png" id="1_chwaq"]
-[ext_resource type="PackedScene" uid="uid://tdxsk34xdqnp" path="res://components/ui/XpBar.tscn" id="1_r2dcv"]
-[ext_resource type="Script" path="res://scripts/Level.gd" id="1_wqyuh"]
-[ext_resource type="Texture2D" uid="uid://q4svkoixm3vg" path="res://assets/tilesets/forestPack/Forest Props.png" id="2_ivwst"]
-[ext_resource type="Texture2D" uid="uid://doshpnavrgacx" path="res://assets/tilesets/forestPack/Forest Tilesett.png" id="3_wgf40"]
-[ext_resource type="Texture2D" uid="uid://d1jhi4ub2v33k" path="res://assets/tilesets/forestPack/Trees.png" id="4_oqyqx"]
-[ext_resource type="Texture2D" uid="uid://qhtiy7higs8x" path="res://assets/tilesets/forestPack/Water Tileset.png" id="5_7hba4"]
-[ext_resource type="Script" path="res://scripts/camera/Camera2DFollow.gd" id="7_2u4st"]
-[ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="7_oou5g"]
-[ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/characters/Ennemy.tscn" id="9_p80rd"]
-[ext_resource type="PackedScene" uid="uid://dmms2cbu3dral" path="res://components/SpawnerComponent.tscn" id="10_7t77t"]
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_8s0pg"]
+[ext_resource type="Texture2D" uid="uid://bvyyig7etabsi" path="res://assets/tilesets/forestPack/Forest Cliff.png" id="2_wkwf2"]
+[ext_resource type="Texture2D" uid="uid://q4svkoixm3vg" path="res://assets/tilesets/forestPack/Forest Props.png" id="3_1wjio"]
+[ext_resource type="Texture2D" uid="uid://doshpnavrgacx" path="res://assets/tilesets/forestPack/Forest Tilesett.png" id="4_7yo15"]
+[ext_resource type="Texture2D" uid="uid://d1jhi4ub2v33k" path="res://assets/tilesets/forestPack/Trees.png" id="5_mla1k"]
+[ext_resource type="Texture2D" uid="uid://qhtiy7higs8x" path="res://assets/tilesets/forestPack/Water Tileset.png" id="6_kicv3"]
+[ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="7_m4ky8"]
+[ext_resource type="Script" path="res://scripts/camera/Camera2DFollow.gd" id="8_7icw4"]
+[ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/characters/Ennemy.tscn" id="9_dmaqr"]
+[ext_resource type="PackedScene" uid="uid://dmms2cbu3dral" path="res://components/SpawnerComponent.tscn" id="10_uxgw0"]
+[ext_resource type="PackedScene" uid="uid://tdxsk34xdqnp" path="res://components/ui/XpBar.tscn" id="11_0cyd6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xshun"]
 resource_name = "ForestCliff"
-texture = ExtResource("1_chwaq")
+texture = ExtResource("2_wkwf2")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -223,7 +223,7 @@ texture = ExtResource("1_chwaq")
 10:3/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvc3a"]
-texture = ExtResource("2_ivwst")
+texture = ExtResource("3_1wjio")
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
@@ -1774,7 +1774,7 @@ texture = ExtResource("2_ivwst")
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ujl74"]
-texture = ExtResource("3_wgf40")
+texture = ExtResource("4_7yo15")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -2260,7 +2260,7 @@ texture = ExtResource("3_wgf40")
 8:19/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpgo6"]
-texture = ExtResource("4_oqyqx")
+texture = ExtResource("5_mla1k")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -3767,7 +3767,7 @@ texture = ExtResource("4_oqyqx")
 0:13/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r4gvl"]
-texture = ExtResource("5_7hba4")
+texture = ExtResource("6_kicv3")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -4094,7 +4094,7 @@ render_target_update_mode = 4
 y_sort_enabled = true
 texture_filter = 1
 texture_repeat = 2
-script = ExtResource("1_wqyuh")
+script = ExtResource("1_8s0pg")
 
 [node name="TileMap" type="TileMap" parent="SubViewportContainer/SubViewport/GardenLevel"]
 y_sort_enabled = true
@@ -4232,11 +4232,11 @@ position = Vector2(-12, -13)
 navigation_polygon = SubResource("NavigationPolygon_jgli1")
 constrain_avoidance = true
 
-[node name="Player" parent="SubViewportContainer/SubViewport/GardenLevel" instance=ExtResource("7_oou5g")]
+[node name="Player" parent="SubViewportContainer/SubViewport/GardenLevel" instance=ExtResource("7_m4ky8")]
 position = Vector2(424, 48)
 
 [node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/GardenLevel" node_paths=PackedStringArray("nodeToFollow")]
-script = ExtResource("7_2u4st")
+script = ExtResource("8_7icw4")
 nodeToFollow = NodePath("../Player")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="SubViewportContainer/SubViewport/GardenLevel"]
@@ -4248,20 +4248,20 @@ shadow_enabled = true
 [node name="ennemies" type="Node2D" parent="SubViewportContainer/SubViewport/GardenLevel"]
 y_sort_enabled = true
 
-[node name="Ennemy" parent="SubViewportContainer/SubViewport/GardenLevel/ennemies" node_paths=PackedStringArray("target") instance=ExtResource("9_p80rd")]
+[node name="Ennemy" parent="SubViewportContainer/SubViewport/GardenLevel/ennemies" node_paths=PackedStringArray("target") instance=ExtResource("9_dmaqr")]
 position = Vector2(117, 70)
 target = NodePath("../../Player")
 
-[node name="Ennemy2" parent="SubViewportContainer/SubViewport/GardenLevel/ennemies" node_paths=PackedStringArray("target") instance=ExtResource("9_p80rd")]
+[node name="Ennemy2" parent="SubViewportContainer/SubViewport/GardenLevel/ennemies" node_paths=PackedStringArray("target") instance=ExtResource("9_dmaqr")]
 position = Vector2(117, 95)
 target = NodePath("../../Player")
 
-[node name="SpawnerComponent" parent="SubViewportContainer/SubViewport/GardenLevel" node_paths=PackedStringArray("node_to_spawn") instance=ExtResource("10_7t77t")]
+[node name="SpawnerComponent" parent="SubViewportContainer/SubViewport/GardenLevel" node_paths=PackedStringArray("node_to_spawn") instance=ExtResource("10_uxgw0")]
 ready_to_spawn = true
 interval_time_to_spawn = 1.0
 nb_to_spawn = 30
 node_to_spawn = NodePath("../ennemies")
-scene_to_spawn = ExtResource("9_p80rd")
+scene_to_spawn = ExtResource("9_dmaqr")
 group = "ennemies"
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
@@ -4281,5 +4281,5 @@ size_2d_override = Vector2i(576, 288)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="XpBar" parent="SubViewportContainer2/SubViewport2" instance=ExtResource("1_r2dcv")]
+[node name="XpBar" parent="SubViewportContainer2/SubViewport2" instance=ExtResource("11_0cyd6")]
 position = Vector2(136, 10)

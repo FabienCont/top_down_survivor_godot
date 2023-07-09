@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0qs36ltswte4"]
 
-[ext_resource type="Script" path="res://scripts/ui/ButtonStart.gd" id="1_55mjo"]
-[ext_resource type="Script" path="res://scripts/ready.gd" id="1_n2we2"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonQuit.gd" id="1_rewaf"]
+[ext_resource type="Script" path="res://scripts/ready.gd" id="1_6tccc"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonStart.gd" id="2_pwilo"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonQuit.gd" id="3_5gie1"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,7 +15,7 @@ offset_right = -30.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_n2we2")
+script = ExtResource("1_6tccc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -29,12 +29,12 @@ grow_vertical = 0
 [node name="ButtonStart" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Start"
-script = ExtResource("1_55mjo")
+script = ExtResource("2_pwilo")
 
 [node name="ButtonQuit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
-script = ExtResource("1_rewaf")
+script = ExtResource("3_5gie1")
 
 [connection signal="pressed" from="VBoxContainer/ButtonStart" to="VBoxContainer/ButtonStart" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonQuit" to="VBoxContainer/ButtonQuit" method="_on_pressed"]
