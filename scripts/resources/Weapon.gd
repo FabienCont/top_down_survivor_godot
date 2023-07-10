@@ -5,6 +5,7 @@ class_name Weapon
 @onready var touched_ennemies= {}
 @onready var attack_can_hurt : bool = false
 
+signal attack_has_end
 signal hit(attack:Attack)
 
 func start_attack():
@@ -17,6 +18,7 @@ func start_recovery_attack():
 	pass
 	
 func end_attack():
+	attack_has_end.emit()
 	pass
 	
 func damage(_hurtboxComponent :HurtboxComponent):
