@@ -1,0 +1,9 @@
+class_name UpgradeEnum
+
+enum UPGRADE_TYPE{
+	XP_MULTIPLIER,
+	DAMAGE,
+	MAX_LIFE,
+	MOVEMENT_SPEED,
+	SPEED_ATTACK
+}

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var target :Node2D  
 @onready var pathFindComponent: PathFindComponent = $PathFindComponent
 @onready var velocityComponent: VelocityComponent = $VelocityComponent
+@onready var animationTree:AnimationTree  = $AnimationTree
 
 @export var hurt_effects: Array[Resource]
 @export var die_effects: Array[Resource]
@@ -20,5 +21,6 @@ func hurt(attack :Attack):
 func die():
 	for effect in die_effects:
 		effect.trigger_effect(self)
+	animationTree.active = false
 	call_deferred("queue_free")
 	

@@ -12,8 +12,9 @@ func set_target_position_node(node: Node2D):
 
 func follow_path(node: Node2D,delta: float):
 	if is_navigation_finished():
-		velocityComponent.decelerate(delta)
-		return;
+		#velocityComponent.decelerate(delta)
+		#return;
+		pass
 	
 	var direction = (get_next_path_position() - node.global_position).normalized()
 	

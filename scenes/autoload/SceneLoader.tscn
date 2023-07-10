@@ -59,10 +59,10 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
-modulate = Color(0, 1, 1, 1)
+modulate = Color(0.0745098, 0.0980392, 0.243137, 1)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.164706, 0.498039, 0.819608, 1)
+color = Color(0.0745098, 0.0980392, 0.243137, 1)
 
 [node name="Label" type="Label" parent="LoadingScreen"]
 layout_mode = 2

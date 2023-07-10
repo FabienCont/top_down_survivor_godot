@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://clgdf5xwbg4ou"]
+
+[ext_resource type="PackedScene" uid="uid://dplxlt53j8hdv" path="res://scenes/levels/garden_level_world.tscn" id="1_hxhco"]
+[ext_resource type="Script" path="res://scenes/levels/MainLevelScript.gd" id="1_xwvf1"]
+[ext_resource type="FontFile" uid="uid://b2loyxgplpufc" path="res://assets/fonts/Kenney Pixel.ttf" id="3_lq60j"]
+[ext_resource type="PackedScene" uid="uid://dm6lldv3stkxc" path="res://scenes/ui/Clock_UI.tscn" id="3_rovd1"]
+[ext_resource type="Script" path="res://scripts/ui/PlayerLevelLabel.gd" id="4_gafl3"]
+[ext_resource type="PackedScene" uid="uid://tdxsk34xdqnp" path="res://components/ui/XpBar.tscn" id="11_0cyd6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fy7kw"]
+font = ExtResource("3_lq60j")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xwvf1")
+
+[node name="SubViewportContainerGame" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainerGame"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+size = Vector2i(1152, 648)
+size_2d_override = Vector2i(640, 360)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="GardenLevel" parent="SubViewportContainerGame/SubViewport" instance=ExtResource("1_hxhco")]
+
+[node name="SubViewportContainerUI" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport2" type="SubViewport" parent="SubViewportContainerUI"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+size_2d_override = Vector2i(512, 288)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="VBoxContainerUI" type="VBoxContainer" parent="SubViewportContainerUI/SubViewport2"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 4.0
+offset_right = 75.0
+offset_bottom = 42.0
+grow_horizontal = 2
+
+[node name="XpBar" parent="SubViewportContainerUI/SubViewport2/VBoxContainerUI" instance=ExtResource("11_0cyd6")]
+custom_minimum_size = Vector2(250, 7)
+layout_mode = 2
+
+[node name="Level_Label" type="Label" parent="SubViewportContainerUI/SubViewport2/VBoxContainerUI/XpBar"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -4.5
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+text = "Lvl 1"
+label_settings = SubResource("LabelSettings_fy7kw")
+script = ExtResource("4_gafl3")
+
+[node name="Timer" parent="SubViewportContainerUI/SubViewport2/VBoxContainerUI" instance=ExtResource("3_rovd1")]
+texture_filter = 1
+layout_mode = 2
+
+[node name="VBoxContainerPauseMenu" type="VBoxContainer" parent="SubViewportContainerUI/SubViewport2"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainerLevelUpMenu" type="VBoxContainer" parent="SubViewportContainerUI/SubViewport2"]
+offset_right = 40.0
+offset_bottom = 40.0

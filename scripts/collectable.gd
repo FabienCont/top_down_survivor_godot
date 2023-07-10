@@ -1,8 +1,12 @@
 extends Area2D
 
 var target: Node2D
+@export var loot: Loot = Loot.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	loot.type = LootEnum.LOOT_TYPE.XP
+	loot.value = 1
 	top_level=true
 	pass # Replace with function body.
 
@@ -11,7 +15,7 @@ func _process(delta: float) -> void:
 	if target != null:
 		if global_position.distance_to(target.global_position) < 5 :
 			if target.has_method("collect"):
-				target.collect()
+				target.collect(loot)
 			queue_free()
 		else :
 			global_position = global_position.move_toward(target.global_position, delta * 100)  

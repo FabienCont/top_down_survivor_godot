@@ -68,6 +68,7 @@ _data = {
 }
 
 [node name="Ennemy" type="CharacterBody2D"]
+z_index = 1
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
@@ -96,7 +97,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_xkocc")
 hframes = 4
 vframes = 4
-frame = 3
+frame = 1
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ld3i1")]
 MAX_HEALTH = 8.0
@@ -108,6 +109,7 @@ position = Vector2(0, -12)
 healthComponent = NodePath("../HealthComponent")
 
 [node name="PathFindComponent" parent="." node_paths=PackedStringArray("velocityComponent") instance=ExtResource("5_0vw4u")]
+path_desired_distance = 5.0
 avoidance_enabled = true
 radius = 8.0
 avoidance_layers = 2

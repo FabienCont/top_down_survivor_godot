@@ -12,7 +12,6 @@ class_name VelocityComponent
 func update_velocity(velocity: Vector2):
 	current_velocity = velocity
 	
-	
 func move_node(node:Node2D):
 	current_velocity = current_velocity.clamp(Vector2(-MAX_SPEED,-MAX_SPEED),Vector2(MAX_SPEED,MAX_SPEED))
 	node.position = node.position + current_velocity

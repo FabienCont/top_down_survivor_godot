@@ -12,9 +12,8 @@ size = Vector2(10, 3)
 script = ExtResource("1_ks166")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_ju6d7")]
-MAX_SPEED = 5.0
-SPEED_FACTOR = 5.0
-ACCELERATION_FACTOR = 5.0
+SPEED_FACTOR = 20.0
+ACCELERATION_FACTOR = 30.0
 
 [node name="HitboxComponent" parent="." instance=ExtResource("3_0w8hb")]
 collision_layer = 0
