@@ -15,7 +15,6 @@ func _ready() -> void:
 	Signals.end_level_up.connect(end_level_up)
 	Signals.start_pause_menu.connect(show_pause_menu)
 	Signals.end_pause_menu.connect(hide_pause_menu)
-	pass # Replace with function body.
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
@@ -34,16 +33,17 @@ func play_game() -> void:
 	game_world.process_mode = PROCESS_MODE_INHERIT
 	clock.process_mode = PROCESS_MODE_INHERIT
 	
-func start_level_up() -> void:
-	if level_up_in_queue == 0:
+func start_level_up(player: Player) -> void:
+	level_up_in_queue=level_up_in_queue+1
+	if level_up_in_queue == 1:
+		level_up_menu.player = player
 		level_up_menu.show()
 		pause_game()
-	level_up_in_queue=level_up_in_queue+1
 
 func end_level_up() -> void:
 	level_up_menu.hide()
 	level_up_in_queue=level_up_in_queue-1
-	if level_up_in_queue == 0:
+	if level_up_in_queue > 0:
 		level_up_menu.show()
 	else: 
 		play_game()

@@ -43,12 +43,12 @@ value = 10.0
 [sub_resource type="Resource" id="Resource_dj103"]
 script = ExtResource("5_bvm55")
 type = 4
-value = 1.0
+value = 0.1
 
 [sub_resource type="Resource" id="Resource_ilti2"]
 script = ExtResource("5_bvm55")
 type = 0
-value = 2.0
+value = 0.1
 
 [sub_resource type="Animation" id="Animation_mhkem"]
 length = 0.001
@@ -176,7 +176,7 @@ _data = {
 "show_menu": SubResource("Animation_xa3k2")
 }
 
-[node name="level_up_menu" type="Control" node_paths=PackedStringArray("buttons")]
+[node name="level_up_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,7 +184,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3ehq6")
-buttons = [NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer2"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer3"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer4")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_q31fs")

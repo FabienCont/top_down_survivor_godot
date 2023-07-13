@@ -56,6 +56,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [Rect2i(0, 0, 13, 12), Rect2i(18, 12, 5, 12)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_attack"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_yqjoo"]
 length = 0.6
@@ -98,7 +112,7 @@ script = ExtResource("1_donet")
 texture = ExtResource("2_6k1mr")
 offset = Vector2(2, 0)
 region_enabled = true
-region_rect = Rect2(10, 12, 8, 12)
+region_rect = Rect2(0, 0, 13, 12)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
 libraries = {

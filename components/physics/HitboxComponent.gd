@@ -5,12 +5,20 @@ signal hit(attack:Attack)
 
 @onready var touched_ennemies= {}
 @onready var attack_can_hurt : bool = true
-	
+@onready var player : Player
+
+func _ready():
+	if get_parent().get("player") != null:
+		player = get_parent().get("player")
+		
 func damage(hurtboxComponent :HurtboxComponent):
 	var attack = Attack.new()
 	attack.attack_damage = 4
 	attack.knockback_force = 2
 	attack.attack_position = global_position
+	if player!=null:
+		attack.attack_damage = player.stats.DAMAGE + attack.attack_damage  
+	
 	hurtboxComponent.damage(attack)
 	hit.emit(attack)
 	

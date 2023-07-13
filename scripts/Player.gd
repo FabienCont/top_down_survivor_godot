@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var auto_attack :bool  = true
 @export var hurt_effects: Array[Resource]
 @export var look_at_target: Node2D
-@export var player_info: Player = Player.new()
+@export var player: Player = Player.new()
 @onready var is_attacking := false
 
 func _physics_process(delta: float) -> void:
@@ -37,8 +37,7 @@ func hurt(attack :Attack):
 func start_timer_auto_attack():
 	if is_attacking == false:
 		is_attacking = true
-		var timer=get_tree().create_timer(1.0)
-		timer.connect("timeout", start_attack)
+		start_attack()
 
 func start_attack():
 	weaponSlotComponent.start_attack()
@@ -52,8 +51,15 @@ func die():
 
 func collect(item : Loot):
 	var attributes= LootEnum.LOOT_TYPE.keys()[item.type]
-	player_info.stats[attributes] = player_info.stats[attributes] + item.value
-	Signals.stats_update.emit(player_info.stats)
+	var multiplier_attributes = attributes+"_MULTIPLIER"
+	var value_added = item.value
+	
+	if player.stats.get(multiplier_attributes) != null:	
+		value_added =value_added * player.stats.get(multiplier_attributes)
+	
+	player.stats[attributes] = player.stats[attributes] + value_added
+	print("value_added"+str(value_added))
+	Signals.stats_update.emit(player)
 
 func _on_interaction_component_collectables_new_element_interact(body_shape_node) -> void:
 	body_shape_node.target = self

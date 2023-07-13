@@ -30,7 +30,6 @@ y_sort_enabled = true
 position = Vector2(61, 69)
 collision_layer = 4
 script = ExtResource("1_w40en")
-auto_attack = null
 hurt_effects = Array[Resource]([ExtResource("2_482ux")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_gpfp0")]
@@ -46,6 +45,7 @@ healthComponent = NodePath("../HealthComponent")
 
 [node name="character" parent="." instance=ExtResource("7_5ua4u")]
 scale = Vector2(0.5, 0.5)
+animation = &"Idle"
 autoplay = "default"
 frame_progress = 0.334671
 

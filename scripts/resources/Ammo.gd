@@ -5,6 +5,8 @@ class_name Ammo
 @onready var sprite :AnimatedSprite2D = $sprite 
 @onready var hitboxComponent :HitboxComponent = $HitboxComponent 
 @export var SPEED :float = 10
+@onready var player: Player
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	top_level=true

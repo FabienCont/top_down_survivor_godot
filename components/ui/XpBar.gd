@@ -1,6 +1,6 @@
 extends TextureProgressBar
 
-@onready var label: Label = $TextureProgressBar/Label
+@onready var label: Label = $Label
 @onready var xp_value:float
 @onready var _display_xp_value :float = 0.0 :
 		get: return _display_xp_value
@@ -21,9 +21,9 @@ func _update_display_xp(display_xp):
 		value = (display_xp/max_xp_value)*100
 	return display_xp
 
-func update_stats(stats: Stats)->void:
-	set_xp(stats.XP)
-	set_max_xp(stats.MAX_XP)
+func update_stats(player: Player)->void:
+	set_xp(player.stats.XP)
+	set_max_xp(player.stats.MAX_XP)
 	
 func set_xp(xp):
 	var current_xp_value = xp_value

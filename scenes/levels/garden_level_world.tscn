@@ -4207,13 +4207,13 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(0, 1, 571, 1, 574, 384,
 
 [sub_resource type="Gradient" id="Gradient_g1l0h"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.656805)
+offsets = PackedFloat32Array(0, 0.406452)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_705ng"]
 gradient = SubResource("Gradient_g1l0h")
-width = 512
-height = 512
+width = 1024
+height = 1024
 use_hdr = true
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -4361,7 +4361,6 @@ constrain_avoidance = true
 
 [node name="Player" parent="." instance=ExtResource("7_6kc33")]
 position = Vector2(319, 65)
-auto_attack = true
 
 [node name="PointLight2DSprite" type="PointLight2D" parent="Player"]
 light_mask = 2
@@ -4377,7 +4376,6 @@ visibility_layer = 2
 position = Vector2(-1, 0)
 color = Color(1, 1, 1, 0)
 blend_mode = 1
-range_z_max = 0
 shadow_enabled = true
 shadow_color = Color(0.105882, 0.105882, 0.105882, 0.133333)
 shadow_item_cull_mask = 2
@@ -4389,7 +4387,6 @@ nodeToFollow = NodePath("../Player")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.831373, 0.831373, 0.596078, 1)
-energy = 1.2
 blend_mode = 1
 shadow_item_cull_mask = 0
 

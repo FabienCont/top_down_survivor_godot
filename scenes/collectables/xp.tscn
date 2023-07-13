@@ -13,6 +13,7 @@ script = ExtResource("1_0bowr")
 
 [node name="xp" parent="." instance=ExtResource("2_05fmn")]
 z_index = -1
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_02h0e")

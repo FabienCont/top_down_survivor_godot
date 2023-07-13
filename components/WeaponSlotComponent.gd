@@ -8,8 +8,12 @@ signal attack_has_end
 
 func _ready() -> void:
 	if has_weapon_equiped() :
+		set_player(weaponEquiped)
 		_listen_weapon_hit()
 
+func set_player(element)-> void:
+	element.player = parent.player
+		
 func _listen_weapon_hit():
 	if weaponEquiped.has_signal("hit"):
 		weaponEquiped.connect("hit",_hit_someone)
@@ -20,6 +24,7 @@ func has_weapon_equiped():
 	
 func equip(weapon: Weapon):
 	weaponEquiped = weapon
+	set_player(weaponEquiped)
 	add_child(weapon)
 	_listen_weapon_hit()
 
