@@ -28,7 +28,4 @@ func update_level(player :Player):
 		stats.XP = stats.XP - stats.MAX_XP
 		stats.MAX_XP = stats.MAX_XP * 2
 		Signals.start_level_up.emit(player)
-		print("level_up")
-	print("XP"+str(stats.XP))
-	print("MAX_XP"+str(stats.MAX_XP))
 	Signals.stats_update_ui.emit(player)

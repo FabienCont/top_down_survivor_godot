@@ -1,11 +1,14 @@
 extends Label
 
-var start_time = 0.0
+var gameClock :GameClock
 
-func _process(delta: float) -> void:
-	start_time = start_time + delta
-	var second = str(floor(fmod(start_time,60)))
-	var minutes = str(floor(start_time/60))
+func _process(_delta: float) -> void:
+	_update_display_time()
+
+func _update_display_time() -> void :
+	var time = gameClock.time
+	var second = str(floor(fmod(time,60)))
+	var minutes = str(floor(time/60))
 	
 	if second.length() == 1:
 		second = "0" + second

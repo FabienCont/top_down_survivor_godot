@@ -21,5 +21,4 @@ func randomize_upgrade():
 	pass
 
 func finish_level_up(upgrade: Upgrade):
-	print("test")
 	Signals.upgrade_selected.emit(player,upgrade)

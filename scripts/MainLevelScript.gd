@@ -6,17 +6,29 @@ extends Control
 @onready var ui_container = $SubViewportContainerUI/SubViewport2/VBoxContainerUI
 @onready var pause_menu = $pause
 @onready var level_up_menu = $level_up
+@onready var timer_display =$SubViewportContainerUI/SubViewport2/VBoxContainerUI/Timer
 
 @onready var is_paused: bool = false
 @onready var level_up_in_queue: int = 0
+@onready var gameClock = GameClock.new()
 
 func _ready() -> void:
+	gameClock.wave = 1
+	timer_display.gameClock = gameClock
 	Signals.start_level_up.connect(start_level_up)
 	Signals.end_level_up.connect(end_level_up)
 	Signals.start_pause_menu.connect(show_pause_menu)
 	Signals.end_pause_menu.connect(hide_pause_menu)
+	game_world.gameClock = gameClock
+	game_world.start_spawn()
 
 func _process(delta: float) -> void:
+	if is_paused == false:
+		gameClock.time = gameClock.time+ delta
+		if gameClock.time > gameClock.wave * 60 :
+			gameClock.wave = gameClock.wave + 1
+			print(gameClock.wave)
+		
 	if Input.is_action_just_pressed("escape"):
 		if is_paused==true:
 			hide_pause_menu()

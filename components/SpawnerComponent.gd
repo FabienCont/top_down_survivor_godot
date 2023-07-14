@@ -13,25 +13,23 @@ class_name SpawnerComponent
 @export var group:String
 @export var randomPositionSpawn : bool = true
 
+@export var gameClock: GameClock 
 @onready var nb_spawned = 0
 @onready var rnd: RandomNumberGenerator = RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	if ready_to_spawn == false :
-		await_spawn_time()
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func start_spawn() -> void:
+	_await_spawn_time()
+		
 func _process(_delta: float) -> void:
 	if ready_to_spawn && ( infinite_spawn==true || nb_spawned<nb_to_spawn):
-		spawnScene()
+		_spawn_scene()
 
-func await_spawn_time():
-	await get_tree().create_timer(interval_time_to_spawn).timeout
+func _await_spawn_time():
+	var factor = 1 / gameClock.wave
+	await get_tree().create_timer(interval_time_to_spawn * factor).timeout
 	ready_to_spawn=true
 
-func calcPositionSpawn() -> Vector2 :
+func _calc_position_spawn() -> Vector2 :
 	if randomPositionSpawn == true:
 		var camera_vision = 340
 		var pos = (Vector2.ONE * camera_vision).rotated(rnd.randf_range(0, PI))
@@ -40,16 +38,16 @@ func calcPositionSpawn() -> Vector2 :
 		return pos
 	return Vector2(0,0)
 	
-func spawnScene() -> void:
+func _spawn_scene() -> void:
 	ready_to_spawn=false
 	nb_spawned+=1
 	var scene = scene_to_spawn.instantiate()
 	if(scene_preparation_function is Callable && scene_preparation_function.is_null() != true):
 		scene_preparation_function.call(scene)
 	scene.target = player 
-	scene.global_position = calcPositionSpawn() 
+	scene.global_position = _calc_position_spawn() 
 	node_to_spawn.add_child(scene)
 	if group:
 		scene.add_to_group(group)
-	await_spawn_time()
+	_await_spawn_time()
 	

@@ -58,7 +58,6 @@ func collect(item : Loot):
 		value_added =value_added * player.stats.get(multiplier_attributes)
 	
 	player.stats[attributes] = player.stats[attributes] + value_added
-	print("value_added"+str(value_added))
 	Signals.stats_update.emit(player)
 
 func _on_interaction_component_collectables_new_element_interact(body_shape_node) -> void:
