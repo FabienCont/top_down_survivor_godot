@@ -1,77 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0qs36ltswte4"]
+[gd_scene load_steps=3 format=3 uid="uid://2m56gqftd485"]
 
-[ext_resource type="Script" path="res://scripts/ready.gd" id="1_6tccc"]
-[ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_b7lk8"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonStart.gd" id="2_pwilo"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonQuit.gd" id="3_5gie1"]
+[ext_resource type="PackedScene" uid="uid://c0qs36ltswte4" path="res://menu/parts/acceuil_layout.tscn" id="1_f37v8"]
+[ext_resource type="PackedScene" uid="uid://ddr8rsnjp5sls" path="res://menu/parts/acceuil_content.tscn" id="2_np7ok"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_3hqa6"]
-line_spacing = 5.0
-font = ExtResource("2_b7lk8")
-font_size = 64
-
-[node name="Control" type="Control"]
+[node name="acceuil" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6tccc")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" parent="." instance=ExtResource("1_f37v8")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.168627, 0.160784, 0.25098, 1)
 
-[node name="BoxContainer" type="BoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 60
-vertical = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="BoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "
-SURVIVE
- "
-label_settings = SubResource("LabelSettings_3hqa6")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="BoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="ButtonStart" type="Button" parent="BoxContainer/HBoxContainer2/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_b7lk8")
-theme_override_font_sizes/font_size = 32
-text = "START"
-script = ExtResource("2_pwilo")
-
-[node name="ButtonQuit" type="Button" parent="BoxContainer/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_b7lk8")
-theme_override_font_sizes/font_size = 32
-text = "Quit"
-script = ExtResource("3_5gie1")
-
-[connection signal="pressed" from="BoxContainer/HBoxContainer2/VBoxContainer/ButtonStart" to="BoxContainer/HBoxContainer2/VBoxContainer/ButtonStart" method="_on_pressed"]
-[connection signal="pressed" from="BoxContainer/HBoxContainer2/VBoxContainer/ButtonQuit" to="BoxContainer/HBoxContainer2/VBoxContainer/ButtonQuit" method="_on_pressed"]
+[node name="Node" parent="Control" instance=ExtResource("2_np7ok")]

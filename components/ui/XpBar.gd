@@ -7,7 +7,7 @@ extends TextureProgressBar
 		set(value): _update_display_xp(value)
 @onready var max_xp_value:float
 @onready var tween: Tween = create_tween()
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	await RenderingServer.frame_post_draw
 	_display_xp_value=xp_value

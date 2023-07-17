@@ -1,4 +1,4 @@
 extends Button
 
 func _on_pressed() -> void:
-	GlobalInfo.goToNextLevel()
+	GlobalInfo.goToSelectCharacterMenu()

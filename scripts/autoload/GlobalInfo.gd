@@ -1,7 +1,8 @@
 extends Node
 
-@onready var level1: PackedScene  = preload("res://scenes/levels/GardenLevel.tscn")
+@onready var level1: PackedScene  = preload("res://scenes/levels/garden_level.tscn")
 @onready var menu: PackedScene  = preload("res://menu/acceuil.tscn")
+@onready var character_selection: PackedScene  = preload("res://menu/character_selection.tscn")
 
 var stats: Dictionary = {
 	"level":0,
@@ -21,13 +22,17 @@ func endLevel():
 	stats.level+=1
 
 func goToMenu():
-	SceneLoader.change_scene_to_packed(menu)
+	SceneLoader.change_scene_to_packed(menu,SceneLoader.TransitionTypeEnum.INSTANT)
+
+func goToSelectCharacterMenu():
+	SceneLoader.change_scene_to_packed(character_selection,SceneLoader.TransitionTypeEnum.INSTANT)
+	pass # Replace with function body.
 
 func goToNextLevel():
-	SceneLoader.change_scene_to_packed(level1)
+	SceneLoader.change_scene_to_packed(level1,SceneLoader.TransitionTypeEnum.LOADING_SCREEN)
 	pass # Replace with function body.
 
 func restartLevel():
 	stats = savedStats.duplicate(true)
-	SceneLoader.change_scene_to_packed(level1)
+	SceneLoader.change_scene_to_packed(level1,SceneLoader.TransitionTypeEnum.LOADING_SCREEN)
 	pass # Replace with function body.

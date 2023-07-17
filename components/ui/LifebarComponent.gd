@@ -32,9 +32,10 @@ func _update_display_life(display_life):
 	return display_life
 
 func set_life(life):
+	var current_life_value = life_value
 	life_value = life
 	var tween = get_tree().create_tween()
-	tween.tween_property(self,"_display_life_value",life_value,0.1).from_current()
+	tween.tween_property(self,"_display_life_value",life_value,0.1).from(current_life_value)
 
 func set_max_life(max_life):
 	max_life_value= max_life

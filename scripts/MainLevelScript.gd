@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 			gameClock.wave = gameClock.wave + 1
 			print("wave:"+str(gameClock.wave))
 		
-	if Input.is_action_just_pressed("escape") && level_up_in_queue > 0:
+	if Input.is_action_just_pressed("escape") && level_up_in_queue == 0:
 		if is_paused==true:
 			hide_pause_menu()
 		else:

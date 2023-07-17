@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_3ehq6"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_vojex"]
 [ext_resource type="FontFile" uid="uid://km688hu4km4d" path="res://assets/fonts/Kenney Future.ttf" id="3_pe2jf"]
-[ext_resource type="PackedScene" uid="uid://b3wcq7v2h35b2" path="res://menu/parts/UpgradeCard.tscn" id="4_si1v4"]
+[ext_resource type="PackedScene" uid="uid://wdxa2j7nh7xa" path="res://menu/parts/upgrade_card.tscn" id="4_si1v4"]
 [ext_resource type="Script" path="res://scripts/resources/Upgrade.gd" id="5_bvm55"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q31fs"]
@@ -206,7 +206,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="ColorRect/CenterContainer"]
-custom_minimum_size = Vector2(500, 400)
+custom_minimum_size = Vector2(500, 420)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ds7ds")
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bka680xspa5x6"]
+
+[ext_resource type="PackedScene" uid="uid://c0qs36ltswte4" path="res://menu/parts/acceuil_layout.tscn" id="1_jb4lw"]
+[ext_resource type="PackedScene" uid="uid://qsaem5xvuhi2" path="res://menu/parts/character_selection_content.tscn" id="2_0lnh7"]
+
+[node name="character_selection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" parent="." instance=ExtResource("1_jb4lw")]
+layout_mode = 1
+
+[node name="character_selection_content" parent="Control" instance=ExtResource("2_0lnh7")]
+layout_mode = 1
