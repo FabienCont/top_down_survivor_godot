@@ -33,6 +33,7 @@ texture_progress = SubResource("GradientTexture1D_8vblw")
 script = ExtResource("1_rybtp")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

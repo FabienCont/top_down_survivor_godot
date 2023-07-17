@@ -4217,6 +4217,7 @@ height = 1024
 use_hdr = true
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="GardenLevel" type="Node2D"]
 y_sort_enabled = true
@@ -4355,6 +4356,7 @@ position = Vector2(189, 174)
 radius = 4.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-12, -13)
 navigation_polygon = SubResource("NavigationPolygon_jgli1")
 constrain_avoidance = true
@@ -4366,7 +4368,7 @@ position = Vector2(319, 65)
 light_mask = 2
 visibility_layer = 2
 position = Vector2(-1, 0)
-energy = 0.7
+energy = 0.6
 shadow_item_cull_mask = 0
 texture = SubResource("GradientTexture2D_705ng")
 

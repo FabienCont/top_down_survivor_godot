@@ -17,7 +17,7 @@ func move_node(node:Node2D):
 	node.position = node.position + current_velocity
 	
 func move(characterBody2D : CharacterBody2D):
-	current_velocity = current_velocity.clamp(Vector2(-MAX_SPEED,-MAX_SPEED),Vector2(MAX_SPEED,MAX_SPEED))
+	#current_velocity = current_velocity.clamp(Vector2(-MAX_SPEED,-MAX_SPEED),Vector2(MAX_SPEED,MAX_SPEED))
 	characterBody2D.velocity = current_velocity
 	characterBody2D.move_and_slide()
 

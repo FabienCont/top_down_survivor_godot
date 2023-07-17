@@ -11,10 +11,10 @@ func set_target_position_node(node: Node2D):
 	set_target_position(node.global_position)
 
 func follow_path(node: Node2D,delta: float):
-	if is_navigation_finished():
+	#if is_navigation_finished():
 		#velocityComponent.decelerate(delta)
 		#return;
-		pass
+	#	pass
 	
 	var direction = (get_next_path_position() - node.global_position).normalized()
 	
@@ -22,8 +22,6 @@ func follow_path(node: Node2D,delta: float):
 	set_velocity(velocityComponent.current_velocity)
 	
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
-	#var direction = velocity.normalized()
-	#velocityComponent.accelerateInDirection(direction,1)
 	velocityComponent.current_velocity = safe_velocity
 	velocityComponent.move(get_parent())
-	#velocity = safe_velocity
+	pass
