@@ -9,8 +9,14 @@ extends CharacterBody2D
 @export var hurt_effects: Array[Resource]
 @export var look_at_target: Node2D
 @export var player: Player = Player.new()
+@export var character: Character 
+
 @onready var is_attacking := false
 
+func init(characterInit :Character) -> void:
+	character = characterInit
+	sprite.replace_by(character.sprite.instantiate())
+	
 func _physics_process(delta: float) -> void:
 	velocityComponent.update_velocity(velocity)
 	controllerComponent.updateControl(delta)

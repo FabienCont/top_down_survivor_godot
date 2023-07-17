@@ -19,8 +19,7 @@ func _ready() -> void:
 	Signals.end_level_up.connect(end_level_up)
 	Signals.start_pause_menu.connect(show_pause_menu)
 	Signals.end_pause_menu.connect(hide_pause_menu)
-	game_world.gameClock = gameClock
-	game_world.start_spawn()
+	game_world.init(gameClock,GlobalInfo.character)
 
 func _process(delta: float) -> void:
 	if is_paused == false:

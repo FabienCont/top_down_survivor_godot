@@ -11,4 +11,5 @@ func _ready():
 	
 func _select_character(character_selected:Character) -> void:
 	character = character_selected
+	GlobalInfo.character = character
 	buttonValidate.disabled = false
