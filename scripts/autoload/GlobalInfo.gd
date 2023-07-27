@@ -5,6 +5,8 @@ extends Node
 @onready var character_selection: PackedScene  = preload("res://menu/character_selection.tscn")
 
 var character: Character
+var weapon: WeaponInfo
+
 var stats: Dictionary = {
 	"level":0,
 } 

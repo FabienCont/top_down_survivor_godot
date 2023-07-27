@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://clfpk1k2qm6jc"]
+[gd_scene load_steps=6 format=3 uid="uid://b3f4t3t1miysy"]
 
-[ext_resource type="Script" path="res://scripts/ui/character_card.gd" id="1_fs75v"]
-[ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_redr1"]
+[ext_resource type="Script" path="res://scripts/ui/weapon_card.gd" id="1_vvuob"]
+[ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_4u3he"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2ukg"]
 bg_color = Color(0.2835, 0.308475, 0.45, 1)
@@ -37,16 +37,16 @@ shadow_color = Color(0.211765, 0.105882, 0.109804, 1)
 shadow_size = 2
 shadow_offset = Vector2(5, 5)
 
-[node name="character_card" type="BoxContainer"]
+[node name="weapon_card" type="BoxContainer"]
 custom_minimum_size = Vector2(120, 160)
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_fs75v")
+script = ExtResource("1_vvuob")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_redr1")
+theme_override_fonts/font = ExtResource("2_4u3he")
 theme_override_styles/normal = SubResource("StyleBoxFlat_o2ukg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_60jo4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ot32y")

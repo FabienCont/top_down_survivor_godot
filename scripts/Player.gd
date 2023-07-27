@@ -15,7 +15,10 @@ extends CharacterBody2D
 
 func init(characterInit :Character) -> void:
 	character = characterInit
-	sprite.replace_by(character.sprite.instantiate())
+	var newSprite= character.sprite.instantiate()
+	newSprite.scale = Vector2(0.5,0.5)
+	sprite.replace_by(newSprite)
+	sprite= newSprite
 	
 func _physics_process(delta: float) -> void:
 	velocityComponent.update_velocity(velocity)

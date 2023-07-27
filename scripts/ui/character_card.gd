@@ -1,6 +1,6 @@
 extends BoxContainer
 
-@onready var sprite_container= $Button/VBoxContainer/HBoxContainer
+@onready var sprite_container= $Button/VBoxContainer/HBoxContainer/HBoxContainer
 @onready var label: Label = $Button/VBoxContainer/Label
 
 @export var character = Character
@@ -12,7 +12,7 @@ func _ready() -> void:
 	var character_sprite: AnimatedSprite2D = character.sprite.instantiate()
 	sprite_container.add_child(character_sprite)	
 	character_sprite.play("Walk")
-	character_sprite.scale = Vector2(3,3)
+	character_sprite.scale = Vector2(1,1)
 	
 func _on_button_pressed() -> void:
 	select_character.emit(character)

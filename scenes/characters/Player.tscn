@@ -47,7 +47,6 @@ healthComponent = NodePath("../HealthComponent")
 
 [node name="character" parent="." instance=ExtResource("7_5ua4u")]
 scale = Vector2(0.5, 0.5)
-animation = &"Idle"
 autoplay = "default"
 frame_progress = 0.334671
 
@@ -85,5 +84,6 @@ weaponEquiped = NodePath("bow")
 
 [node name="bow" parent="WeaponSlotComponent" instance=ExtResource("14_ytdgf")]
 position = Vector2(6, 0)
+label = null
 
 [connection signal="body_shape_entered" from="InteractionComponent" to="InteractionComponent" method="_on_body_shape_entered"]

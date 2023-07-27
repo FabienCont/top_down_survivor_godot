@@ -1,6 +1,6 @@
 [remap]
 
-importer="Aseprite Sprite2D Import"
+importer="Aseprite AnimatedSprite2D Import"
 type="PackedScene"
 uid="uid://cgxhvomq3ma5"
 path="res://.godot/imported/bow.ase-24cc119edb7a03dbf7b2c4ce786036f6.scn"
@@ -27,9 +27,6 @@ layers/include_reg_ex="*"
 layers/exclude_reg_ex=""
 tags/include_reg_ex="*"
 tags/exclude_reg_ex=""
-sprite2d/centered=true
-animation/strategy_(packed_spritesheet)="Animate sprite's region and offset"
-animation/strategy_(grid-based_spritesheet)="Animate sprite's region"
 compress/mode="Lossless"
 compress/high_quality=false
 compress/lossy_quality=0.7

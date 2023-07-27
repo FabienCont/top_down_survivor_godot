@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeaponInfo" load_steps=3 format=3 uid="uid://cgc73gojts2hq"]
+
+[ext_resource type="Script" path="res://scripts/resources/WeaponInfo.gd" id="1_aj6vx"]
+[ext_resource type="PackedScene" uid="uid://dq3ki285xaunp" path="res://assets/weapons/bow.tscn" id="2_ri5ev"]
+
+[resource]
+script = ExtResource("1_aj6vx")
+sprite = ExtResource("2_ri5ev")
+name = "bow"

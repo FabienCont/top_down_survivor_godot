@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 		gameClock.time = gameClock.time+ delta
 		if gameClock.time > gameClock.wave * 60 :
 			gameClock.wave = gameClock.wave + 1
-			print("wave:"+str(gameClock.wave))
 		
 	if Input.is_action_just_pressed("escape") && level_up_in_queue == 0:
 		if is_paused==true:

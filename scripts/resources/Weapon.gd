@@ -1,7 +1,10 @@
 extends Node2D
 class_name Weapon
 
+
+@export var weaponInfo :WeaponInfo
 @export var collider: CollisionShape2D 
+
 @onready var touched_ennemies= {}
 @onready var attack_can_hurt : bool = false
 var player: Player

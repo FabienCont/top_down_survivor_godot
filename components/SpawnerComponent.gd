@@ -26,7 +26,6 @@ func _process(_delta: float) -> void:
 
 func _await_spawn_time():
 	var factor = 1.0 / (gameClock.wave * 1.2)
-	print(interval_time_to_spawn * factor)
 	await get_tree().create_timer(interval_time_to_spawn * factor).timeout
 	ready_to_spawn=true
 
