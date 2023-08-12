@@ -7,8 +7,8 @@
 [ext_resource type="Resource" uid="uid://dmq21k3n4e7dv" path="res://scripts/resources/characters/hope.tres" id="5_cqwhw"]
 [ext_resource type="Script" path="res://scripts/ui/ButtonGoToMenu.gd" id="6_66qoe"]
 [ext_resource type="PackedScene" uid="uid://b3f4t3t1miysy" path="res://menu/parts/weapon_card.tscn" id="6_mrhru"]
+[ext_resource type="Resource" uid="uid://b03trjmryqoqd" path="res://scripts/resources/weapon/bow.tres" id="7_aulek"]
 [ext_resource type="Script" path="res://scripts/ui/ButtonSelectCharacterValidate.gd" id="7_it51f"]
-[ext_resource type="Resource" uid="uid://cgc73gojts2hq" path="res://scripts/weapons/Bow.tres" id="7_tkv5o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwd0k"]
 
@@ -60,27 +60,27 @@ label_settings = SubResource("LabelSettings_vorem")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CharacterContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="character_card" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("2_d5ims")]
+[node name="character_card" parent="VBoxContainer/CharacterContainer" instance=ExtResource("2_d5ims")]
 layout_mode = 2
 character = ExtResource("4_sria4")
 
-[node name="character_card2" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("2_d5ims")]
+[node name="character_card2" parent="VBoxContainer/CharacterContainer" instance=ExtResource("2_d5ims")]
 layout_mode = 2
 character = ExtResource("5_cqwhw")
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+[node name="WeaponContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="weapon_card" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("6_mrhru")]
+[node name="weapon_card" parent="VBoxContainer/WeaponContainer" instance=ExtResource("6_mrhru")]
 layout_mode = 2
-weapon = ExtResource("7_tkv5o")
+weapon = ExtResource("7_aulek")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

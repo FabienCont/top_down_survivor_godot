@@ -8,10 +8,13 @@ extends CharacterBody2D
 @export var hurt_effects: Array[Resource]
 @export var die_effects: Array[Resource]
 
+@export var stats: Stats
+
 func _ready() -> void:
 	if target != null:
 		followTargetComponent.set_node_to_follow(target)
-
+	velocityComponent.SPEED_FACTOR = stats.common.MOVEMENT_SPEED
+	
 func _process(delta: float) -> void :
 	followTargetComponent.follow_target(self, delta)
 	velocityComponent.move(self)

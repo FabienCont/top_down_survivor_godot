@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2jjacb4yslq6"]
+[gd_scene load_steps=7 format=3 uid="uid://c0n0a4jg561vq"]
 
 [ext_resource type="Texture2D" uid="uid://c2fn7w2qtfbij" path="res://assets/weapons/bow.png" id="2_6k1mr"]
 
@@ -9,7 +9,7 @@ script/source = "extends Weapon
 @onready var ammo:PackedScene= preload(\"res://scenes/ammos/arrow.tscn\")
 
 func start_attack():
-	animation_player.speed_scale = player.stats.ATTACK_SPEED
+	animation_player.speed_scale = player.stats.attack.ATTACK_SPEED
 	animation_player.connect(\"animation_finished\",shoot,CONNECT_ONE_SHOT)
 	animation_player.play(\"prepareShot\")
 
@@ -21,10 +21,10 @@ func shoot(_caller):
 	new_ammo.global_position = global_position
 	new_ammo.global_rotation = global_rotation
 	add_child(new_ammo)
-	
+
 func idle(_caller):
 	animation_player.play(\"Idle\")
-	var time_factor = 1 / player.stats.ATTACK_SPEED
+	var time_factor = 1 / player.stats.attack.ATTACK_SPEED
 	await get_tree().create_timer(0.3 * time_factor).timeout
 	start_attack()
 "
@@ -133,7 +133,6 @@ _data = {
 
 [node name="bow" type="Node2D"]
 script = SubResource("GDScript_eu4cb")
-label = null
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_6k1mr")

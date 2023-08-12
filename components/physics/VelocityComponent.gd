@@ -6,9 +6,8 @@ class_name VelocityComponent
 @export var SPEED_FACTOR = 55.0
 @export var ACCELERATION_FACTOR = 200.0
 @export var FRICTION = 3.0
-
 @onready var current_velocity:= Vector2()
-
+	
 func update_velocity(velocity: Vector2):
 	current_velocity = velocity
 	

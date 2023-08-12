@@ -5,6 +5,7 @@ extends Node
 
 @onready var has_move_this_frame = false
 @onready var move_this_frame:= Vector2()
+@onready var disable = false
 
 func has_move() -> bool:
 	return has_move_this_frame
@@ -33,7 +34,7 @@ func get_input_direction():
 	return Input.get_vector("left", "right", "up", "down")
 	
 func _update_velocity(delta):
-	if velocityComponent == null:
+	if velocityComponent == null || disable == true:
 		return
 	var input_dir = get_input_direction()
 	

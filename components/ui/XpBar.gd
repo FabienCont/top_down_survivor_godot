@@ -17,13 +17,13 @@ func _ready():
 func _update_display_xp(display_xp):
 	if label != null:
 		label.text = str(round(display_xp)) +" / "+ str(round(max_xp_value))
-	if max_xp_value > 0:	
+	if max_xp_value > 0:
 		value = (display_xp/max_xp_value)*100
 	return display_xp
 
 func update_stats(player: Player)->void:
-	set_xp(player.stats.XP)
-	set_max_xp(player.stats.MAX_XP)
+	set_xp(player.stats.xp.VALUE)
+	set_max_xp(player.stats.xp.MAX_VALUE)
 	
 func set_xp(xp):
 	var current_xp_value = xp_value

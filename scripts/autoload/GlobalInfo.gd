@@ -4,7 +4,8 @@ extends Node
 @onready var menu: PackedScene  = preload("res://menu/acceuil.tscn")
 @onready var character_selection: PackedScene  = preload("res://menu/character_selection.tscn")
 
-var character: Character
+@onready var player: Player= Player.new()
+
 var weapon: WeaponInfo
 
 var stats: Dictionary = {

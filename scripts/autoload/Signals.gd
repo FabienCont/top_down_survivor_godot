@@ -5,6 +5,7 @@ signal player_died(player: Player)
 signal stats_update(player: Player)
 
 signal stats_update_ui(player: Player)
+signal stats_update_node(player: Player)
 
 signal start_level_up(player:Player)
 signal end_level_up()

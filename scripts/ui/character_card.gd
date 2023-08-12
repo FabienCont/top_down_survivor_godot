@@ -2,6 +2,7 @@ extends BoxContainer
 
 @onready var sprite_container= $Button/VBoxContainer/HBoxContainer/HBoxContainer
 @onready var label: Label = $Button/VBoxContainer/Label
+@onready var button: Button = $Button
 
 @export var character = Character
 

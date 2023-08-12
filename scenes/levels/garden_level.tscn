@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://clgdf5xwbg4ou"]
+[gd_scene load_steps=11 format=3 uid="uid://clgdf5xwbg4ou"]
 
 [ext_resource type="Script" path="res://scripts/MainLevelScript.gd" id="1_ejer5"]
 [ext_resource type="PackedScene" uid="uid://dplxlt53j8hdv" path="res://scenes/levels/garden_level_world.tscn" id="1_hxhco"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dl4wydgodskm4" path="res://menu/pause.tscn" id="3_wup1e"]
 [ext_resource type="Script" path="res://scripts/ui/PlayerLevelLabel.gd" id="4_gafl3"]
 [ext_resource type="PackedScene" uid="uid://bro3t3by1jnrm" path="res://menu/level_up.tscn" id="7_a6oid"]
+[ext_resource type="PackedScene" uid="uid://bp551tqyeagn4" path="res://menu/loose.tscn" id="9_lpxh0"]
 [ext_resource type="PackedScene" uid="uid://tdxsk34xdqnp" path="res://components/ui/XpBar.tscn" id="11_0cyd6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fy7kw"]
@@ -100,5 +101,9 @@ visible = false
 layout_mode = 1
 
 [node name="pause" parent="." instance=ExtResource("3_wup1e")]
+visible = false
+layout_mode = 1
+
+[node name="loose_menu" parent="." instance=ExtResource("9_lpxh0")]
 visible = false
 layout_mode = 1

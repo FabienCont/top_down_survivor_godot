@@ -2,11 +2,11 @@ extends Control
 
 @onready var game_world = $SubViewportContainerGame/SubViewport/GardenLevel
 @onready var clock = $SubViewportContainerUI/SubViewport2/VBoxContainerUI/Timer
-
 @onready var ui_container = $SubViewportContainerUI/SubViewport2/VBoxContainerUI
-@onready var pause_menu = $pause
-@onready var level_up_menu = $level_up
 @onready var timer_display =$SubViewportContainerUI/SubViewport2/VBoxContainerUI/Timer
+@onready var pause_menu = $pause
+@onready var loose_menu = $loose_menu
+@onready var level_up_menu = $level_up
 
 @onready var is_paused: bool = false
 @onready var level_up_in_queue: int = 0
@@ -19,7 +19,8 @@ func _ready() -> void:
 	Signals.end_level_up.connect(end_level_up)
 	Signals.start_pause_menu.connect(show_pause_menu)
 	Signals.end_pause_menu.connect(hide_pause_menu)
-	game_world.init(gameClock,GlobalInfo.character)
+	Signals.player_died.connect(_level_failed)
+	game_world.init(gameClock,GlobalInfo.player)
 
 func _process(delta: float) -> void:
 	if is_paused == false:
@@ -50,6 +51,9 @@ func start_level_up(player: Player) -> void:
 		level_up_menu.show()
 		pause_game()
 
+func _level_failed() -> void:
+	loose_menu.show()
+	
 func end_level_up() -> void:
 	level_up_menu.hide()
 	level_up_in_queue=level_up_in_queue-1

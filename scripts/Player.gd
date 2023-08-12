@@ -9,18 +9,25 @@ extends CharacterBody2D
 @export var hurt_effects: Array[Resource]
 @export var look_at_target: Node2D
 @export var player: Player = Player.new()
-@export var character: Character 
-
 @onready var is_attacking := false
 
-func init(characterInit :Character) -> void:
-	character = characterInit
-	var newSprite= character.sprite.instantiate()
+func _ready() -> void:
+	Signals.stats_update_node.connect(_update_stats)
+
+func init(playerInit :Player) -> void:
+	player = playerInit
+	var character = player.character
+	var newSprite = character.sprite.instantiate()
 	newSprite.scale = Vector2(0.5,0.5)
 	sprite.replace_by(newSprite)
 	sprite= newSprite
+	weaponSlotComponent.init(player)
+	velocityComponent.SPEED_FACTOR = player.stats.common.MOVEMENT_SPEED
 	
 func _physics_process(delta: float) -> void:
+	if _is_dead() == true:
+		sprite.play("Idle")
+		return
 	velocityComponent.update_velocity(velocity)
 	controllerComponent.updateControl(delta)
 	velocityComponent.move(self)
@@ -49,25 +56,42 @@ func start_timer_auto_attack():
 		start_attack()
 
 func start_attack():
-	weaponSlotComponent.start_attack()
+	if _is_dead() != true:
+		weaponSlotComponent.start_attack()
 	
 func end_attack():
 	is_attacking = false
 		
+func _is_dead() -> bool: 
+	return player.stats.life.VALUE <= 0.0
+
 func die():
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self,"scale",Vector2(1.0,0.5),0.2).from_current()
+	controllerComponent.disable = true
 	Signals.player_died.emit()
-	queue_free()
 
 func collect(item : Loot):
 	var attributes= LootEnum.LOOT_TYPE.keys()[item.type]
-	var multiplier_attributes = attributes+"_MULTIPLIER"
+	var _multiplier_attributes = attributes+"_MULTIPLIER"
 	var value_added = item.value
 	
-	if player.stats.get(multiplier_attributes) != null:	
-		value_added =value_added * player.stats.get(multiplier_attributes)
+	#if player.stats.get(_multiplier_attributes) != null:	
+	#	value_added =value_added * player.stats.get(_multiplier_attributes)
 	
-	player.stats[attributes] = player.stats[attributes] + value_added
+	if item.type == LootEnum.LOOT_TYPE.XP :
+		player.stats.xp.VALUE = player.stats.xp.VALUE + (value_added * player.stats.xp.XP_MULTIPLIER)
+	if item.type == LootEnum.LOOT_TYPE.LIFE :
+		player.stats.life.VALUE = player.stats.life.VALUE + value_added
+	if item.type == LootEnum.LOOT_TYPE.MAX_LIFE :
+		player.stats.life.MAX_VALUE = player.stats.life.MAX_VALUE + value_added
+	
+	#player.stats[attributes] = player.stats[attributes] + value_added
 	Signals.stats_update.emit(player)
 
 func _on_interaction_component_collectables_new_element_interact(body_shape_node) -> void:
 	body_shape_node.target = self
+
+func _update_stats(player_update :Player):
+	if player == player_update:
+		velocityComponent.SPEED_FACTOR = player.stats.common.MOVEMENT_SPEED

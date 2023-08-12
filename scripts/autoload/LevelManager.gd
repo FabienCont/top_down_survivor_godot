@@ -12,20 +12,22 @@ func apply_upgrade(player:Player, upgrade: Upgrade)->void:
 	var stats = player.stats
 	match (upgrade.type):
 		UpgradeEnum.UPGRADE_TYPE.DAMAGE:
-			stats.DAMAGE = stats.DAMAGE + upgrade.value
+			stats.attack.DAMAGE = stats.attack.DAMAGE + upgrade.value
 		UpgradeEnum.UPGRADE_TYPE.ATTACK_SPEED:
-			stats.ATTACK_SPEED = stats.ATTACK_SPEED + upgrade.value
+			stats.attack.ATTACK_SPEED = stats.attack.ATTACK_SPEED + upgrade.value
 		UpgradeEnum.UPGRADE_TYPE.MOVEMENT_SPEED:
-			stats.MOVEMENT_SPEED = stats.MOVEMENT_SPEED + upgrade.value
+			stats.common.MOVEMENT_SPEED = stats.common.MOVEMENT_SPEED + upgrade.value
 		UpgradeEnum.UPGRADE_TYPE.XP_MULTIPLIER:
-			stats.XP_MULTIPLIER = stats.XP_MULTIPLIER + upgrade.value
+			stats.xp.XP_MULTIPLIER = stats.xp.XP_MULTIPLIER + upgrade.value
 	Signals.end_level_up.emit()
 
 func update_level(player :Player):
 	var stats = player.stats
-	while stats.XP >= stats.MAX_XP :
-		stats.LEVEL = stats.LEVEL +1
-		stats.XP = stats.XP - stats.MAX_XP
-		stats.MAX_XP = stats.MAX_XP * 2
+	while stats.xp.VALUE >= stats.xp.MAX_VALUE :
+		stats.xp.LEVEL = stats.xp.LEVEL + 1
+		stats.xp.VALUE = stats.xp.VALUE - stats.xp.MAX_VALUE
+		stats.xp.MAX_VALUE = stats.xp.MAX_VALUE * 2
 		Signals.start_level_up.emit(player)
 	Signals.stats_update_ui.emit(player)
+	Signals.stats_update_node.emit(player)
+	

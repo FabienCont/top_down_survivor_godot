@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmx1ur1ldwu0r"]
+[gd_scene load_steps=20 format=3 uid="uid://cmx1ur1ldwu0r"]
 
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="1_tqken"]
 [ext_resource type="Script" path="res://scripts/Ennemy.gd" id="1_x4624"]
@@ -8,7 +8,11 @@
 [ext_resource type="Script" path="res://scripts/resources/effects/DropXpResource.gd" id="3_n85cl"]
 [ext_resource type="Texture2D" uid="uid://cnbimhgsukuj5" path="res://assets/characters/ennemies/32x32-bat-sprite.png" id="3_xkocc"]
 [ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://components/physics/HurtboxComponent.tscn" id="4_0tr1k"]
+[ext_resource type="Script" path="res://scripts/resources/Stats.gd" id="4_yjjkf"]
 [ext_resource type="PackedScene" uid="uid://b1navm80qbjks" path="res://components/FollowTargetComponent.tscn" id="9_h7ic3"]
+
+[sub_resource type="Resource" id="Resource_gxkvd"]
+script = ExtResource("4_yjjkf")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jaqne"]
 radius = 8.0
@@ -74,6 +78,7 @@ collision_mask = 2
 script = ExtResource("1_x4624")
 hurt_effects = Array[Resource]([ExtResource("2_3q62j")])
 die_effects = Array[Resource]([ExtResource("3_n85cl")])
+stats = SubResource("Resource_gxkvd")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("1_tqken")]
 MAX_SPEED = 80.0
