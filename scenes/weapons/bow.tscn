@@ -16,6 +16,7 @@ func start_attack():
 func shoot(_caller):
 	animation_player.connect(\"animation_finished\",idle,CONNECT_ONE_SHOT)
 	animation_player.play(\"Shoot\")
+	SoundManager.playFireArrowSound()
 	var new_ammo = ammo.instantiate()
 	new_ammo.player = player
 	new_ammo.global_position = global_position

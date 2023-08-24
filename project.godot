@@ -26,6 +26,7 @@ SceneLoader="*res://scenes/autoload/SceneLoader.tscn"
 GlobalInfo="*res://scripts/autoload/GlobalInfo.gd"
 CameraUtils="*res://scripts/autoload/CameraUtils.gd"
 LevelManager="*res://scripts/autoload/LevelManager.gd"
+SoundManager="*res://scenes/autoload/SoundManager.tscn"
 
 [display]
 

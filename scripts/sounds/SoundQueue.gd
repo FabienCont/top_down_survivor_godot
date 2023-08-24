@@ -15,8 +15,11 @@ func _ready():
 			add_child(duplicateAudioStreamPlayer)
 			_audioStreamPlayers.push_back(duplicateAudioStreamPlayer)
 
+func playing():
+	return _audioStreamPlayers[_next].playing
+	
 func play_sound():
-	if not _audioStreamPlayers[_next].playing :
+	if not playing() :
 		_audioStreamPlayers[_next].play()
 		_next = _next+1
 		_next %= _audioStreamPlayers.size()

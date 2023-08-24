@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccxqh4klu5i7k"]
+[gd_scene load_steps=18 format=3 uid="uid://ccxqh4klu5i7k"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_w40en"]
 [ext_resource type="Script" path="res://scripts/resources/effects/hurt/DisplayDamagedHurtEffect.gd" id="2_482ux"]
+[ext_resource type="Script" path="res://scripts/resources/effects/hurt/ShakeHurtEffect.gd" id="3_fbq1n"]
 [ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://components/HealthComponent.tscn" id="3_gpfp0"]
 [ext_resource type="PackedScene" uid="uid://v7vtestyxfk5" path="res://components/controllers/TopDownControllerComponent.tscn" id="4_0sh1l"]
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="5_8s84f"]
@@ -29,7 +30,7 @@ y_sort_enabled = true
 position = Vector2(61, 69)
 collision_layer = 4
 script = ExtResource("1_w40en")
-hurt_effects = Array[Resource]([ExtResource("2_482ux")])
+hurt_effects = Array[Resource]([ExtResource("2_482ux"), ExtResource("3_fbq1n")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_gpfp0")]
 MAX_HEALTH = 100.0

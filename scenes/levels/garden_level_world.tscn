@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d1jhi4ub2v33k" path="res://assets/tilesets/forestPack/Trees.png" id="5_aqxsy"]
 [ext_resource type="Texture2D" uid="uid://qhtiy7higs8x" path="res://assets/tilesets/forestPack/Water Tileset.png" id="6_ighmq"]
 [ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="7_6kc33"]
-[ext_resource type="Script" path="res://scripts/camera/Camera2DFollow.gd" id="8_15gl2"]
+[ext_resource type="PackedScene" uid="uid://d3vdr5j6nw03q" path="res://scenes/cameras/shakeable_camera.tscn" id="8_bwqk4"]
 [ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/characters/Ennemy.tscn" id="9_o8hkd"]
 [ext_resource type="PackedScene" uid="uid://dmms2cbu3dral" path="res://components/SpawnerComponent.tscn" id="10_ahxam"]
 
@@ -4383,9 +4383,8 @@ shadow_color = Color(0.105882, 0.105882, 0.105882, 0.133333)
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_705ng")
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("nodeToFollow")]
-script = ExtResource("8_15gl2")
-nodeToFollow = NodePath("../Player")
+[node name="ShakeableCamera" parent="." node_paths=PackedStringArray("node_to_follow") instance=ExtResource("8_bwqk4")]
+node_to_follow = NodePath("../Player")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.831373, 0.831373, 0.596078, 1)

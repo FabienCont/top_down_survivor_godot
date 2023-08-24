@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	controllerComponent.updateControl(delta)
 	velocityComponent.move(self)
 	if controllerComponent.has_move() : 
+		SoundManager.playFootstepSound()
 		sprite.play("Walk")
 		if velocityComponent.current_velocity.x < 0 :
 			sprite.flip_h = true
@@ -47,6 +48,7 @@ func _physics_process(delta: float) -> void:
 			start_timer_auto_attack()
 	
 func hurt(attack :Attack):
+	SoundManager.playImpactSound()
 	for hurt_effect in hurt_effects:
 		hurt_effect.trigger_effect(self,attack)
 
@@ -72,9 +74,13 @@ func die():
 	Signals.player_died.emit()
 
 func collect(item : Loot):
+	if _is_dead():
+		return
 	var attributes= LootEnum.LOOT_TYPE.keys()[item.type]
 	var _multiplier_attributes = attributes+"_MULTIPLIER"
 	var value_added = item.value
+	
+	SoundManager.playLootSound()
 	
 	#if player.stats.get(_multiplier_attributes) != null:	
 	#	value_added =value_added * player.stats.get(_multiplier_attributes)

@@ -6,7 +6,7 @@ enum STATS_KEY{
 	XP_MULTIPLIER
 }
 
-var VALUE: float = 0.0
-var MAX_VALUE: float = 10.0
-var XP_MULTIPLIER: float= 1.0
-var LEVEL: int = 1
+@export var VALUE: float = 0.0
+@export var MAX_VALUE: float = 10.0
+@export var XP_MULTIPLIER: float= 1.0
+@export var LEVEL: int = 1

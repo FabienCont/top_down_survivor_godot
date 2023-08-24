@@ -11,7 +11,7 @@ enum STATS_KEY{
 	ATTACK_SPEED
 }
 
-var attack = AttackStats.new()
-var common = CommonStats.new()
-var life = LifeStats.new()
-var xp = XpStats.new()
+@export var attack = AttackStats.new()
+@export var common = CommonStats.new()
+@export var life = LifeStats.new()
+@export var xp = XpStats.new()

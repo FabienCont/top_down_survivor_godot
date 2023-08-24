@@ -1,0 +1,139 @@
+[gd_scene load_steps=17 format=3 uid="uid://gc8fm16yg4rp"]
+
+[ext_resource type="Script" path="res://scripts/sounds/SoundPool.gd" id="1_63dqo"]
+[ext_resource type="Script" path="res://scripts/sounds/SoundQueue.gd" id="1_j1odo"]
+[ext_resource type="Script" path="res://scripts/autoload/SoundManager.gd" id="1_w2x7l"]
+[ext_resource type="AudioStream" uid="uid://dt43twwwe4md5" path="res://assets/music/background/aerial_calm.wav" id="3_rjj7m"]
+[ext_resource type="AudioStream" uid="uid://cx0i4isgvv706" path="res://assets/music/effects/interactibles/handleCoins2.ogg" id="4_n7kjn"]
+[ext_resource type="AudioStream" uid="uid://blbkrapjlsykf" path="res://assets/music/effects/weapon/drawKnife2.ogg" id="5_8flml"]
+[ext_resource type="AudioStream" uid="uid://cwd4hlq2xwubq" path="res://assets/music/effects/impacts/impactPlate_light_004.ogg" id="6_yxlll"]
+[ext_resource type="AudioStream" uid="uid://dn247180o8cni" path="res://assets/music/effects/footstep/footstep_grass_000.ogg" id="8_kgwoa"]
+[ext_resource type="AudioStream" uid="uid://c0najg23onqaf" path="res://assets/music/effects/footstep/footstep_grass_001.ogg" id="9_tmhhy"]
+[ext_resource type="AudioStream" uid="uid://dialx0hstt5jt" path="res://assets/music/effects/footstep/footstep_grass_002.ogg" id="10_gjhj3"]
+[ext_resource type="AudioStream" uid="uid://cjv417cf5cwej" path="res://assets/music/effects/footstep/footstep_grass_003.ogg" id="11_5jb17"]
+[ext_resource type="AudioStream" uid="uid://bw7ils7sd4mp2" path="res://assets/music/effects/footstep/footstep_grass_004.ogg" id="12_iw6rp"]
+[ext_resource type="AudioStream" uid="uid://duerac6l0od7g" path="res://assets/music/effects/impacts/impactPlate_light_000.ogg" id="13_opxbp"]
+[ext_resource type="AudioStream" uid="uid://lk8suqbogjko" path="res://assets/music/effects/impacts/impactPlate_light_001.ogg" id="14_25ur7"]
+[ext_resource type="AudioStream" uid="uid://f5ofjav4gqc0" path="res://assets/music/effects/impacts/impactPlate_light_002.ogg" id="15_sc54i"]
+[ext_resource type="AudioStream" uid="uid://cjamxnvbihygg" path="res://assets/music/effects/impacts/impactPlate_light_003.ogg" id="16_dtwv3"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_w2x7l")
+
+[node name="BackgroundSoundQueue" type="Node" parent="."]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BackgroundSoundQueue"]
+stream = ExtResource("3_rjj7m")
+autoplay = true
+bus = &"background"
+
+[node name="SoundLootQueue" type="Node" parent="."]
+script = ExtResource("1_j1odo")
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundLootQueue"]
+stream = ExtResource("4_n7kjn")
+bus = &"bonus_effects"
+
+[node name="SoundFireBowQueue" type="Node" parent="."]
+script = ExtResource("1_j1odo")
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundFireBowQueue"]
+stream = ExtResource("5_8flml")
+volume_db = -15.0
+max_polyphony = 3
+bus = &"effects"
+
+[node name="SoundImpactQueue" type="Node" parent="."]
+script = ExtResource("1_j1odo")
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundImpactQueue"]
+stream = ExtResource("6_yxlll")
+volume_db = 4.611
+max_polyphony = 5
+bus = &"hurt_effects"
+
+[node name="FootstepSoundPool" type="Node" parent="."]
+script = ExtResource("1_63dqo")
+one_sound = true
+
+[node name="SoundQueue" type="Node" parent="FootstepSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FootstepSoundPool/SoundQueue"]
+stream = ExtResource("8_kgwoa")
+pitch_scale = 1.24
+bus = &"character"
+
+[node name="SoundQueue2" type="Node" parent="FootstepSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="FootstepSoundPool/SoundQueue2"]
+stream = ExtResource("9_tmhhy")
+pitch_scale = 1.5
+bus = &"character"
+
+[node name="SoundQueue3" type="Node" parent="FootstepSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="FootstepSoundPool/SoundQueue3"]
+stream = ExtResource("10_gjhj3")
+bus = &"character"
+
+[node name="SoundQueue4" type="Node" parent="FootstepSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="FootstepSoundPool/SoundQueue4"]
+stream = ExtResource("11_5jb17")
+bus = &"character"
+
+[node name="SoundQueue5" type="Node" parent="FootstepSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="FootstepSoundPool/SoundQueue5"]
+stream = ExtResource("12_iw6rp")
+bus = &"character"
+
+[node name="EnnemiesImpactSoundPool" type="Node" parent="."]
+script = ExtResource("1_63dqo")
+one_sound = true
+
+[node name="SoundQueue" type="Node" parent="EnnemiesImpactSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue"]
+stream = ExtResource("13_opxbp")
+pitch_scale = 1.24
+bus = &"ennemies"
+
+[node name="SoundQueue2" type="Node" parent="EnnemiesImpactSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue2"]
+stream = ExtResource("14_25ur7")
+pitch_scale = 1.5
+bus = &"ennemies"
+
+[node name="SoundQueue3" type="Node" parent="EnnemiesImpactSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue3"]
+stream = ExtResource("15_sc54i")
+bus = &"ennemies"
+
+[node name="SoundQueue4" type="Node" parent="EnnemiesImpactSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue4"]
+stream = ExtResource("16_dtwv3")
+bus = &"ennemies"
+
+[node name="SoundQueue5" type="Node" parent="EnnemiesImpactSoundPool"]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue5"]
+stream = ExtResource("6_yxlll")
+bus = &"ennemies"

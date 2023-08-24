@@ -6,12 +6,17 @@ var _sounds: Array[SoundQueue] = []
 var _random: RandomNumberGenerator = RandomNumberGenerator.new()
 var _last_index :int = -1
 
+@export var one_sound: bool = false
+
 func _ready():
 	for child in get_children():
 		if child is SoundQueue:
 			_sounds.push_back(child)
 			
 func play_random_sound():
+	if one_sound == true && _sounds[_last_index].playing() :
+		return
+		
 	var index = _random.randi_range(0, _sounds.size() -1 )
 	if index == _last_index:
 		index = _random.randi_range(0, _sounds.size() -1 )

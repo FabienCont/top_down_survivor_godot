@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3vdr5j6nw03q"]
+
+[ext_resource type="Script" path="res://scripts/camera/ShakeableCameraArea.gd" id="1_u6nus"]
+[ext_resource type="Script" path="res://scripts/camera/Camera2DFollow.gd" id="2_672ak"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1pwfs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aewac"]
+
+[node name="ShakeableCamera" type="Area2D"]
+script = ExtResource("1_u6nus")
+noise = SubResource("FastNoiseLite_1pwfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aewac")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("shaekableArea")]
+script = ExtResource("2_672ak")
+shaekableArea = NodePath("..")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmx1ur1ldwu0r"]
+[gd_scene load_steps=22 format=3 uid="uid://cmx1ur1ldwu0r"]
 
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="1_tqken"]
 [ext_resource type="Script" path="res://scripts/Ennemy.gd" id="1_x4624"]
@@ -8,11 +8,8 @@
 [ext_resource type="Script" path="res://scripts/resources/effects/DropXpResource.gd" id="3_n85cl"]
 [ext_resource type="Texture2D" uid="uid://cnbimhgsukuj5" path="res://assets/characters/ennemies/32x32-bat-sprite.png" id="3_xkocc"]
 [ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://components/physics/HurtboxComponent.tscn" id="4_0tr1k"]
-[ext_resource type="Script" path="res://scripts/resources/Stats.gd" id="4_yjjkf"]
+[ext_resource type="Resource" uid="uid://cl2bwrifwia3r" path="res://scripts/resources/stats/custom/ennemies/bat/ennemy_bat.tres" id="4_brnt0"]
 [ext_resource type="PackedScene" uid="uid://b1navm80qbjks" path="res://components/FollowTargetComponent.tscn" id="9_h7ic3"]
-
-[sub_resource type="Resource" id="Resource_gxkvd"]
-script = ExtResource("4_yjjkf")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jaqne"]
 radius = 8.0
@@ -20,17 +17,24 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_sth8j"]
 radius = 6.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4t0m8"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d7lu8"]
+animation = &"die_animation"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bqtw0"]
 animation = &"sprite_animation"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v3exm"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8t48u"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3tq0f"]
-states/Start/position = Vector2(187, 100)
-states/sprite_animation/node = SubResource("AnimationNodeAnimation_4t0m8")
-states/sprite_animation/position = Vector2(436, 103)
-transitions = ["Start", "sprite_animation", SubResource("AnimationNodeStateMachineTransition_v3exm")]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pvnuf"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wqcgr"]
+states/Start/position = Vector2(237, 70)
+states/die_animation/node = SubResource("AnimationNodeAnimation_d7lu8")
+states/die_animation/position = Vector2(617, 116)
+states/sprite_animation/node = SubResource("AnimationNodeAnimation_bqtw0")
+states/sprite_animation/position = Vector2(339, 181)
+transitions = ["Start", "sprite_animation", SubResource("AnimationNodeStateMachineTransition_8t48u"), "Start", "die_animation", SubResource("AnimationNodeStateMachineTransition_pvnuf")]
 
 [sub_resource type="Animation" id="Animation_bf0n8"]
 length = 0.001
@@ -64,9 +68,26 @@ tracks/0/keys = {
 "values": [1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_hpe8a"]
+resource_name = "die_animation"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yml7o"]
 _data = {
 "RESET": SubResource("Animation_bf0n8"),
+"die_animation": SubResource("Animation_hpe8a"),
 "sprite_animation": SubResource("Animation_hg7qj")
 }
 
@@ -78,7 +99,7 @@ collision_mask = 2
 script = ExtResource("1_x4624")
 hurt_effects = Array[Resource]([ExtResource("2_3q62j")])
 die_effects = Array[Resource]([ExtResource("3_n85cl")])
-stats = SubResource("Resource_gxkvd")
+stats = ExtResource("4_brnt0")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("1_tqken")]
 MAX_SPEED = 80.0
@@ -103,14 +124,14 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_xkocc")
 hframes = 4
 vframes = 4
-frame = 1
+frame = 3
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ld3i1")]
 MAX_HEALTH = 8.0
 health = 8.0
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_3tq0f")
+tree_root = SubResource("AnimationNodeStateMachine_wqcgr")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 

@@ -7,5 +7,5 @@ enum STATS_KEY{
 	VALUE,
 }
 
-var VALUE: float = 10
-var MAX_VALUE: float = 10
+@export var VALUE: float = 10
+@export var MAX_VALUE: float = 10

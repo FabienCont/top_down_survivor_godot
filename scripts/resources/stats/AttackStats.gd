@@ -7,5 +7,5 @@ enum STATS_KEY{
 	ATTACK_SPEED
 }
 
-var ATTACK_SPEED: float = 1
-var DAMAGE: int = 1
+@export var ATTACK_SPEED: float = 1
+@export var DAMAGE: int = 1
