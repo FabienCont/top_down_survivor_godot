@@ -51,6 +51,22 @@ tracks/0/keys = {
 "values": [3]
 }
 
+[sub_resource type="Animation" id="Animation_hpe8a"]
+resource_name = "die_animation"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
 [sub_resource type="Animation" id="Animation_hg7qj"]
 resource_name = "sprite_animation"
 length = 0.3
@@ -66,22 +82,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_hpe8a"]
-resource_name = "die_animation"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yml7o"]
@@ -124,7 +124,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_xkocc")
 hframes = 4
 vframes = 4
-frame = 3
+frame = 1
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ld3i1")]
 MAX_HEALTH = 8.0

@@ -7,16 +7,26 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_soundQueuesByName["BackgroundSoundQueue"] = get_node("BackgroundSoundQueue")
+	_soundQueuesByName["BackgroundGameSoundQueue"] = get_node("BackgroundGameSoundQueue")
 	_soundQueuesByName["SoundLootQueue"] = get_node("SoundLootQueue")
 	_soundQueuesByName["SoundFireBowQueue"] = get_node("SoundFireBowQueue")
 	_soundQueuesByName["SoundImpactQueue"] = get_node("SoundImpactQueue")
 	
 	_soundPoolsByName["FootstepSoundPool"] = get_node("FootstepSoundPool")
 	_soundPoolsByName["EnnemiesImpactSoundPool"] = get_node("EnnemiesImpactSoundPool")
+	SoundManager.playBackgroundMenuSound()
 
 func playBackgroundMenuSound():
-	get_sound_queue_by_name("BackgroundSoundQueue").play_sound()
+	get_sound_queue_by_name("BackgroundSoundQueue").play_sound_with_fade_in(2)
+
+func stopBackgroundMenuSound():
+	get_sound_queue_by_name("BackgroundSoundQueue").stop_sound_with_fade_out(4)
 	
+func playBackgroundGameSound():
+	get_sound_queue_by_name("BackgroundGameSoundQueue").play_sound_with_fade_in(2)
+	
+func stopBackgroundGameSound():
+	get_sound_queue_by_name("BackgroundGameSoundQueue").stop_sound_with_fade_out(4)
 
 func playLootSound():
 	get_sound_queue_by_name("SoundLootQueue").play_sound()

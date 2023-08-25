@@ -27,6 +27,8 @@ func endLevel():
 
 func goToMenu():
 	SceneLoader.change_scene_to_packed(menu,SceneLoader.TransitionTypeEnum.INSTANT)
+	SoundManager.stopBackgroundGameSound()
+	SoundManager.playBackgroundMenuSound()
 
 func goToSelectCharacterMenu():
 	SceneLoader.change_scene_to_packed(character_selection,SceneLoader.TransitionTypeEnum.INSTANT)
@@ -34,6 +36,8 @@ func goToSelectCharacterMenu():
 
 func goToNextLevel():
 	SceneLoader.change_scene_to_packed(level1,SceneLoader.TransitionTypeEnum.LOADING_SCREEN)
+	SoundManager.playBackgroundGameSound()
+	SoundManager.stopBackgroundMenuSound()
 	pass # Replace with function body.
 
 func restartLevel():

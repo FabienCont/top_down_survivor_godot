@@ -17,9 +17,28 @@ func _ready():
 
 func playing():
 	return _audioStreamPlayers[_next].playing
+
+func stop_sound():
+	if playing() :
+		_audioStreamPlayers[_next].stop()
+
+func stop_sound_with_fade_out(time: float):
+	if playing() :
+		var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(_audioStreamPlayers[_next],"volume_db",-40,time).from_current()
+		tween.connect("finished", stop_sound)
 	
 func play_sound():
 	if not playing() :
+		_audioStreamPlayers[_next].play()
+		_next = _next+1
+		_next %= _audioStreamPlayers.size()
+
+func play_sound_with_fade_in(time: float):
+	if not playing() :
+		_audioStreamPlayers[_next].volume_db = -16
+		var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(_audioStreamPlayers[_next],"volume_db",0,time).from_current()
 		_audioStreamPlayers[_next].play()
 		_next = _next+1
 		_next %= _audioStreamPlayers.size()

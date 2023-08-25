@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://gc8fm16yg4rp"]
+[gd_scene load_steps=18 format=3 uid="uid://gc8fm16yg4rp"]
 
 [ext_resource type="Script" path="res://scripts/sounds/SoundPool.gd" id="1_63dqo"]
 [ext_resource type="Script" path="res://scripts/sounds/SoundQueue.gd" id="1_j1odo"]
 [ext_resource type="Script" path="res://scripts/autoload/SoundManager.gd" id="1_w2x7l"]
 [ext_resource type="AudioStream" uid="uid://dt43twwwe4md5" path="res://assets/music/background/aerial_calm.wav" id="3_rjj7m"]
+[ext_resource type="AudioStream" uid="uid://bq7od4vra0e6n" path="res://assets/music/background/main_music.ogg" id="4_1p7cp"]
 [ext_resource type="AudioStream" uid="uid://cx0i4isgvv706" path="res://assets/music/effects/interactibles/handleCoins2.ogg" id="4_n7kjn"]
 [ext_resource type="AudioStream" uid="uid://blbkrapjlsykf" path="res://assets/music/effects/weapon/drawKnife2.ogg" id="5_8flml"]
 [ext_resource type="AudioStream" uid="uid://cwd4hlq2xwubq" path="res://assets/music/effects/impacts/impactPlate_light_004.ogg" id="6_yxlll"]
@@ -25,7 +26,13 @@ script = ExtResource("1_j1odo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BackgroundSoundQueue"]
 stream = ExtResource("3_rjj7m")
-autoplay = true
+bus = &"background"
+
+[node name="BackgroundGameSoundQueue" type="Node" parent="."]
+script = ExtResource("1_j1odo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BackgroundGameSoundQueue"]
+stream = ExtResource("4_1p7cp")
 bus = &"background"
 
 [node name="SoundLootQueue" type="Node" parent="."]
