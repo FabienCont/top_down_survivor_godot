@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 @onready var _soundQueuesByName :Dictionary  = {}

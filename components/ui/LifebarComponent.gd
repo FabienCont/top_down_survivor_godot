@@ -20,9 +20,9 @@ func _ready():
 		pass
 	
 func _force_update_health_info():
-	if(healthComponent is HealthComponent) :
-		set_life(healthComponent.health)
-		set_max_life(healthComponent.MAX_HEALTH)
+	if(healthComponent is HealthComponent && healthComponent.lifeStats != null) :
+		set_life(healthComponent.lifeStats.VALUE)
+		set_max_life(healthComponent.lifeStats.MAX_VALUE)
 	
 func _update_display_life(display_life):
 	if label != null:

@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var velocityComponent: VelocityComponent = $VelocityComponent
 @onready var interactionComponent: InteractionComponent = $InteractionComponent
 @onready var weaponSlotComponent: WeaponSlotComponent = $WeaponSlotComponent
+@onready var healthComponent: HealthComponent = $HealthComponent
+@onready var collectorComponent: CollectorComponent = $CollectorComponent
 @onready var sprite :AnimatedSprite2D  = $character
 @export var auto_attack :bool  = true
 @export var hurt_effects: Array[Resource]
@@ -15,7 +17,11 @@ func _ready() -> void:
 	Signals.stats_update_node.connect(_update_stats)
 
 func init(playerInit :Player) -> void:
+	var stats = player.stats.duplicate(true)
 	player = playerInit
+	player.stats = stats
+	collectorComponent.init(player.stats.common)
+	healthComponent.init(player.stats.life)
 	var character = player.character
 	var newSprite = character.sprite.instantiate()
 	newSprite.scale = Vector2(0.5,0.5)
@@ -36,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		sprite.play("Walk")
 		if velocityComponent.current_velocity.x < 0 :
 			sprite.flip_h = true
-		else:
+		else: 
 			sprite.flip_h = false 
 	else:
 		sprite.play("Idle")
@@ -49,6 +55,8 @@ func _physics_process(delta: float) -> void:
 	
 func hurt(attack :Attack):
 	SoundManager.playImpactSound()
+	var force = attack.attack_position - global_position
+	velocityComponent.accelerate_in_direction(force * attack.knockback_force,0.1)
 	for hurt_effect in hurt_effects:
 		hurt_effect.trigger_effect(self,attack)
 

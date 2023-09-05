@@ -1,10 +1,36 @@
 [gd_scene load_steps=18 format=3 uid="uid://bro3t3by1jnrm"]
 
-[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_3ehq6"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_vojex"]
 [ext_resource type="FontFile" uid="uid://km688hu4km4d" path="res://assets/fonts/Kenney Future.ttf" id="3_pe2jf"]
 [ext_resource type="PackedScene" uid="uid://wdxa2j7nh7xa" path="res://menu/parts/upgrade_card.tscn" id="4_si1v4"]
 [ext_resource type="Script" path="res://scripts/resources/Upgrade.gd" id="5_bvm55"]
+
+[sub_resource type="GDScript" id="GDScript_8krql"]
+script/source = "extends Control
+
+@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+var player: Player
+
+@export var buttons: Array[Node]
+
+func _ready() -> void :
+	for button in buttons:
+		button.connect(\"select_upgrade\",finish_level_up)
+	
+func _on_visibility_changed() -> void:
+	if animationPlayer != null:
+		if visible == true :
+			randomize_upgrade()
+			animationPlayer.play(\"show_menu\")
+		else : 
+			animationPlayer.play(\"hide_menu\")
+
+func randomize_upgrade():
+	pass
+
+func finish_level_up(upgrade: Upgrade):
+	Signals.upgrade_selected.emit(player,upgrade)
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q31fs"]
 shader = ExtResource("2_vojex")
@@ -183,7 +209,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3ehq6")
+script = SubResource("GDScript_8krql")
 buttons = [NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer2"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer3"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer4")]
 
 [node name="ColorRect" type="ColorRect" parent="."]

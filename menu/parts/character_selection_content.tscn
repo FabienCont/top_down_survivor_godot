@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://clfpk1k2qm6jc" path="res://menu/parts/character_card.tscn" id="2_d5ims"]
 [ext_resource type="Resource" uid="uid://ddas3s5kko2hj" path="res://scripts/resources/characters/ninja.tres" id="4_sria4"]
 [ext_resource type="Resource" uid="uid://dmq21k3n4e7dv" path="res://scripts/resources/characters/hope.tres" id="5_cqwhw"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonGoToMenu.gd" id="6_66qoe"]
 [ext_resource type="PackedScene" uid="uid://b3f4t3t1miysy" path="res://menu/parts/weapon_card.tscn" id="6_mrhru"]
 [ext_resource type="Resource" uid="uid://b03trjmryqoqd" path="res://scripts/resources/weapon/bow.tres" id="7_aulek"]
 [ext_resource type="Script" path="res://scripts/ui/ButtonSelectCharacterValidate.gd" id="7_it51f"]
@@ -16,6 +15,13 @@
 line_spacing = 5.0
 font = ExtResource("1_i622f")
 font_size = 32
+
+[sub_resource type="GDScript" id="GDScript_a2w8o"]
+script/source = "extends Button
+
+func _on_pressed() -> void:
+	GlobalInfo.goToMenu()
+"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pb5mj"]
 
@@ -96,7 +102,7 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_i622f")
 theme_override_font_sizes/font_size = 32
 text = "Cancel"
-script = ExtResource("6_66qoe")
+script = SubResource("GDScript_a2w8o")
 
 [node name="ButtonValidate" type="Button" parent="VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(200, 60)

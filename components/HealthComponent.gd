@@ -4,31 +4,29 @@ class_name HealthComponent
 signal update_health(value: float)
 signal update_max_health(value: float)
 
-@export var MAX_HEALTH :float= 10.0 : 
-	set= _set_max_life
-		
-@export var health :float= 10.0 :
-	set= _set_life
-		
-func _ready():
-	if health == null:
-		health = MAX_HEALTH
+var lifeStats : LifeStats
 	
-	update_health.emit(health)
-	update_max_health.emit(MAX_HEALTH)
-
-func _set_max_life(max_life_value:float) : 
+func init(lifeStatsInit: LifeStats) -> void :
+	lifeStats = lifeStatsInit
+	_emit_update_max_life(lifeStats.MAX_VALUE)
+	_emit_update_life(lifeStats.VALUE)
+	_set_life_stats(lifeStats)
+	
+func _emit_update_max_life(max_life_value:float) : 
 	update_max_health.emit(max_life_value)
-	MAX_HEALTH = max_life_value
 	
-func _set_life(life_value:float) :
+func _emit_update_life(life_value:float) :
 	update_health.emit(life_value)
-	health = life_value
+
+func _set_life_stats(lifeStatsUpdate: LifeStats):
+	_emit_update_max_life(lifeStatsUpdate.MAX_VALUE)
+	_emit_update_life(lifeStatsUpdate.VALUE)
 	
 func damage(attack: Attack):
-	health -= attack.attack_damage
+	lifeStats.VALUE -= attack.attack_damage
+	_emit_update_life(lifeStats.VALUE)
 	
-	if health <= 0:
+	if lifeStats.VALUE <= 0:
 		var parent = get_parent();
 		if parent.has_method("die"):
 			parent.die();

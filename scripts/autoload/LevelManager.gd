@@ -24,9 +24,13 @@ func apply_upgrade(player:Player, upgrade: Upgrade)->void:
 func update_level(player :Player):
 	var stats = player.stats
 	while stats.xp.VALUE >= stats.xp.MAX_VALUE :
+		if stats.life.VALUE + 20 > stats.life.MAX_VALUE : 
+			stats.life.VALUE = stats.life.MAX_VALUE
+		else:
+			stats.life.VALUE = stats.life.VALUE + 20
 		stats.xp.LEVEL = stats.xp.LEVEL + 1
 		stats.xp.VALUE = stats.xp.VALUE - stats.xp.MAX_VALUE
-		stats.xp.MAX_VALUE = stats.xp.MAX_VALUE * 2
+		stats.xp.MAX_VALUE = stats.xp.MAX_VALUE * 1.6
 		Signals.start_level_up.emit(player)
 	Signals.stats_update_ui.emit(player)
 	Signals.stats_update_node.emit(player)

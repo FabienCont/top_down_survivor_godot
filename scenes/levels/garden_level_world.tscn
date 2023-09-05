@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dplxlt53j8hdv"]
+[gd_scene load_steps=56 format=3 uid="uid://dplxlt53j8hdv"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_n2noc"]
 [ext_resource type="Texture2D" uid="uid://bvyyig7etabsi" path="res://assets/tilesets/forestPack/Forest Cliff.png" id="2_u6ouw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d1jhi4ub2v33k" path="res://assets/tilesets/forestPack/Trees.png" id="5_aqxsy"]
 [ext_resource type="Texture2D" uid="uid://qhtiy7higs8x" path="res://assets/tilesets/forestPack/Water Tileset.png" id="6_ighmq"]
 [ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="7_6kc33"]
+[ext_resource type="Resource" uid="uid://cfij4qrx1jjjs" path="res://scripts/resources/stats/custom/players/player_init.tres" id="8_150uq"]
 [ext_resource type="PackedScene" uid="uid://d3vdr5j6nw03q" path="res://scenes/cameras/shakeable_camera.tscn" id="8_bwqk4"]
 [ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/characters/Ennemy.tscn" id="9_o8hkd"]
 [ext_resource type="PackedScene" uid="uid://dmms2cbu3dral" path="res://components/SpawnerComponent.tscn" id="10_ahxam"]
@@ -4363,6 +4364,7 @@ constrain_avoidance = true
 
 [node name="Player" parent="." instance=ExtResource("7_6kc33")]
 position = Vector2(319, 65)
+player = ExtResource("8_150uq")
 
 [node name="PointLight2DSprite" type="PointLight2D" parent="Player"]
 light_mask = 2
