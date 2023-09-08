@@ -19,8 +19,8 @@ collect_distance = 6
 
 [sub_resource type="Resource" id="Resource_k7hby"]
 script = ExtResource("3_hyot7")
-VALUE = 10.0
-MAX_VALUE = 10.0
+VALUE = null
+MAX_VALUE = null
 
 [sub_resource type="Resource" id="Resource_sl882"]
 script = ExtResource("5_sg805")

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var interactionComponent: InteractionComponent = $InteractionComponent
 @onready var weaponSlotComponent: WeaponSlotComponent = $WeaponSlotComponent
 @onready var healthComponent: HealthComponent = $HealthComponent
+@onready var lifebarComponent: LifebarComponent = $LifebarComponent
 @onready var collectorComponent: CollectorComponent = $CollectorComponent
 @onready var sprite :AnimatedSprite2D  = $character
 @export var auto_attack :bool  = true
@@ -13,22 +14,19 @@ extends CharacterBody2D
 @export var player: Player = Player.new()
 @onready var is_attacking := false
 
-func _ready() -> void:
-	Signals.stats_update_node.connect(_update_stats)
-
 func init(playerInit :Player) -> void:
 	var stats = player.stats.duplicate(true)
 	player = playerInit
 	player.stats = stats
 	collectorComponent.init(player.stats.common)
 	healthComponent.init(player.stats.life)
-	var character = player.character
-	var newSprite = character.sprite.instantiate()
+	lifebarComponent.init(player.stats.life)
+	var newSprite = player.character.sprite.instantiate()
 	newSprite.scale = Vector2(0.5,0.5)
 	sprite.replace_by(newSprite)
-	sprite= newSprite
+	sprite = newSprite
 	weaponSlotComponent.init(player)
-	velocityComponent.SPEED_FACTOR = player.stats.common.MOVEMENT_SPEED
+	velocityComponent.init(player.stats.common)
 	
 func _physics_process(delta: float) -> void:
 	if _is_dead() == true:
@@ -105,7 +103,3 @@ func collect(item : Loot):
 
 func _on_interaction_component_collectables_new_element_interact(body_shape_node) -> void:
 	body_shape_node.target = self
-
-func _update_stats(player_update :Player):
-	if player == player_update:
-		velocityComponent.SPEED_FACTOR = player.stats.common.MOVEMENT_SPEED

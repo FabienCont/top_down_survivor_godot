@@ -15,12 +15,12 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	stats = stats.duplicate(true)
+	velocityComponent.init(stats.common)
 	if healthComponent != null:
 		healthComponent.init(stats.life)
 		
 	if target != null:
 		followTargetComponent.set_node_to_follow(target)
-	velocityComponent.SPEED_FACTOR = stats.common.MOVEMENT_SPEED
 	
 func _process(delta: float) -> void :
 	if (is_dead() == false):

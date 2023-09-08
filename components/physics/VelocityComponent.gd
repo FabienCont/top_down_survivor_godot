@@ -7,6 +7,15 @@ class_name VelocityComponent
 @export var ACCELERATION_FACTOR = 200.0
 @export var FRICTION = 3.0
 @onready var current_velocity:= Vector2()
+
+var common_stats: CommonStats
+
+func init(common_stats_init: CommonStats):
+	common_stats = common_stats_init
+	common_stats.connect("update_movement_speed",_set_speed_factor)
+	
+func _set_speed_factor(value: float):
+	SPEED_FACTOR = value
 	
 func update_velocity(velocity: Vector2):
 	current_velocity = velocity

@@ -9,15 +9,13 @@ class_name LifebarComponent
 		set(value): _update_display_life(value)
 @onready var max_life_value:float
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	await RenderingServer.frame_post_draw
-	_display_life_value=life_value
-	if(healthComponent is HealthComponent) :
-		healthComponent.connect("update_health",set_life)
-		healthComponent.connect("update_max_health",set_max_life)
-		_force_update_health_info()
-		pass
+var lifeStats : LifeStats
+
+func init(lifeStatsInit: LifeStats) -> void :
+	lifeStats = lifeStatsInit
+	lifeStats.connect("update_life_value",set_life)
+	lifeStats.connect("update_max_life_value",set_max_life)
+	_force_update_health_info()
 	
 func _force_update_health_info():
 	if(healthComponent is HealthComponent && healthComponent.lifeStats != null) :
