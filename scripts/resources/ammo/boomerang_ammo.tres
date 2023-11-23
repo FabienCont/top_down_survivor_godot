@@ -1,0 +1,116 @@
+[gd_resource type="Resource" script_class="AmmoInfo" load_steps=9 format=3 uid="uid://cme0axirpt860"]
+
+[ext_resource type="PackedScene" uid="uid://ncj18a40clfe" path="res://scenes/ammos/projectile.tscn" id="1_712js"]
+[ext_resource type="Script" path="res://scripts/resources/ammo/AmmoInfo.gd" id="2_rhr62"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iljj6"]
+load_path = "res://.godot/imported/boomerang.ase.png-033cac4ddfbf5153dc75f220b6351f69.ctex"
+
+[sub_resource type="Animation" id="Animation_ytoha"]
+length = 0.201
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(2.5, 2.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(0, 0, 13, 13)]
+}
+
+[sub_resource type="Animation" id="Animation_hxhul"]
+length = 0.201
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(2.5, 2.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(0, 0, 13, 13)]
+}
+
+[sub_resource type="Animation" id="Animation_iudfm"]
+length = 0.601
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(2.5, 2.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(0, 0, 13, 13)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23p88"]
+_data = {
+"Idle": SubResource("Animation_ytoha"),
+"Shoot": SubResource("Animation_hxhul"),
+"prepareShot": SubResource("Animation_iudfm")
+}
+
+[sub_resource type="PackedScene" id="PackedScene_47xjo"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("boomerang", "texture", "region_enabled", "Sprite2D", "AnimationPlayer", "libraries"),
+"node_count": 2,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 1, 5, 2, 0),
+"variants": [SubResource("CompressedTexture2D_iljj6"), true, {
+"": SubResource("AnimationLibrary_23p88")
+}],
+"version": 3
+}
+
+[resource]
+script = ExtResource("2_rhr62")
+sprite = SubResource("PackedScene_47xjo")
+name = "boomerang"
+scene = ExtResource("1_712js")

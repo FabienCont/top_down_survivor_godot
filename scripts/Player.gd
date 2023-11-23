@@ -8,25 +8,27 @@ extends CharacterBody2D
 @onready var lifebarComponent: LifebarComponent = $LifebarComponent
 @onready var collectorComponent: CollectorComponent = $CollectorComponent
 @onready var sprite :AnimatedSprite2D  = $character
-@export var auto_attack :bool  = true
+@export var auto_attack :bool  = false
 @export var hurt_effects: Array[Resource]
 @export var look_at_target: Node2D
 @export var player: Player = Player.new()
 @onready var is_attacking := false
 
-func init(playerInit :Player) -> void:
-	var stats = player.stats.duplicate(true)
-	player = playerInit
+
+func init(player_init :Player) -> void:
+	var stats: StatsController = player.stats.duplicate(true)
+	stats.init()
+	player = player_init
 	player.stats = stats
-	collectorComponent.init(player.stats.common)
-	healthComponent.init(player.stats.life)
-	lifebarComponent.init(player.stats.life)
+	collectorComponent.init(player.stats)
+	healthComponent.init(player.stats)
+	lifebarComponent.init(player.stats)
 	var newSprite = player.character.sprite.instantiate()
 	newSprite.scale = Vector2(0.5,0.5)
 	sprite.replace_by(newSprite)
 	sprite = newSprite
-	weaponSlotComponent.init(player)
-	velocityComponent.init(player.stats.common)
+	weaponSlotComponent.init(player.stats,player.weapon_info,player.effects)
+	velocityComponent.init(player.stats)
 	
 func _physics_process(delta: float) -> void:
 	if _is_dead() == true:
@@ -45,12 +47,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		sprite.play("Idle")
 	
-	look_at_target = interactionComponent.find_closest_body()
-	if look_at_target != null :
-		weaponSlotComponent.look_at(look_at_target.global_position) 
-		if auto_attack == true:
-			start_timer_auto_attack()
-	
+	weaponSlotComponent.look_at(controllerComponent.get_look_direction()) 
+	if controllerComponent.has_dash() == true :
+		dash(delta)
+		
+	if controllerComponent.has_attack() == true:
+		start_attack()
+		
 func hurt(attack :Attack):
 	SoundManager.playImpactSound()
 	var force = attack.attack_position - global_position
@@ -58,47 +61,40 @@ func hurt(attack :Attack):
 	for hurt_effect in hurt_effects:
 		hurt_effect.trigger_effect(self,attack)
 
-func start_timer_auto_attack():
-	if is_attacking == false:
-		is_attacking = true
-		start_attack()
-
+func dash(delta):
+	var direction = controllerComponent.get_current_direction()
+	var dash_velocity = Vector2(direction.x * 10000,direction.y * 10000)
+	print("velocity",velocity)
+	velocity = velocity.move_toward(dash_velocity,delta)
+	print("velocity",velocity)
+	move_and_slide()
+	#velocityComponent.accelerate_in_direction(direction, delta * 500)
+	#velocityComponent.move(self)
+	
 func start_attack():
-	if _is_dead() != true:
+	if _is_dead() != true && is_attacking == false:
+		is_attacking = true
 		weaponSlotComponent.start_attack()
 	
 func end_attack():
 	is_attacking = false
 		
 func _is_dead() -> bool: 
-	return player.stats.life.VALUE <= 0.0
+	return player.stats.get_current_stat(stats_const.names.life).value <= 0.0
 
 func die():
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(self,"scale",Vector2(1.0,0.5),0.2).from_current()
 	controllerComponent.disable = true
 	Signals.player_died.emit()
+	weaponSlotComponent.unequip()
 
 func collect(item : Loot):
 	if _is_dead():
 		return
-	var attributes= LootEnum.LOOT_TYPE.keys()[item.type]
-	var _multiplier_attributes = attributes+"_MULTIPLIER"
-	var value_added = item.value
-	
 	SoundManager.playLootSound()
-	
-	#if player.stats.get(_multiplier_attributes) != null:	
-	#	value_added =value_added * player.stats.get(_multiplier_attributes)
-	
-	if item.type == LootEnum.LOOT_TYPE.XP :
-		player.stats.xp.VALUE = player.stats.xp.VALUE + (value_added * player.stats.xp.XP_MULTIPLIER)
-	if item.type == LootEnum.LOOT_TYPE.LIFE :
-		player.stats.life.VALUE = player.stats.life.VALUE + value_added
-	if item.type == LootEnum.LOOT_TYPE.MAX_LIFE :
-		player.stats.life.MAX_VALUE = player.stats.life.MAX_VALUE + value_added
-	
-	#player.stats[attributes] = player.stats[attributes] + value_added
+	var stats = player.stats
+	player.stats.add_modifiers(item.modifiers)
 	Signals.stats_update.emit(player)
 
 func _on_interaction_component_collectables_new_element_interact(body_shape_node) -> void:

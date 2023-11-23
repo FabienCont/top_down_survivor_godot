@@ -4,7 +4,7 @@ extends TextureProgressBar
 @onready var xp_value:float
 @onready var _display_xp_value :float = 0.0 :
 		get: return _display_xp_value
-		set(value): _update_display_xp(value)
+		set(param): _update_display_xp(param)
 @onready var max_xp_value:float
 @onready var tween: Tween = create_tween()
 
@@ -22,8 +22,11 @@ func _update_display_xp(display_xp):
 	return display_xp
 
 func update_stats(player: Player)->void:
-	set_xp(player.stats.xp.VALUE)
-	set_max_xp(player.stats.xp.MAX_VALUE)
+	var stats=player.stats
+	var xp = stats.get_current_stat(stats_const.names.xp) 
+	var xp_before_next_level = stats.get_current_stat(stats_const.names.xp_before_next_level)
+	set_xp(xp.value)
+	set_max_xp(xp_before_next_level.value)
 	
 func set_xp(xp):
 	var current_xp_value = xp_value

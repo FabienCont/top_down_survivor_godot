@@ -5,4 +5,6 @@ func _ready():
 	pass
 	
 func update_stats(player: Player) -> void:
-	text = "Lvl "+str(player.stats.xp.LEVEL)
+	var level =  player.stats.get_current_stat(stats_const.names.level)
+	text = "Lvl "+str(level.value)
+

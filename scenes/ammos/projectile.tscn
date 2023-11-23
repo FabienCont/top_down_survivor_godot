@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ncj18a40clfe"]
+
+[ext_resource type="Script" path="res://scripts/resources/Ammo.gd" id="1_6hckv"]
+[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="3_7jota"]
+[ext_resource type="Script" path="res://components/physics/HitboxComponent.gd" id="3_k44iy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4file"]
+size = Vector2(10, 3)
+
+[node name="projectile" type="Node2D"]
+script = ExtResource("1_6hckv")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("3_k44iy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_4file")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("3_7jota")]
+
+[connection signal="body_shape_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_shape_entered"]
+[connection signal="hit" from="HitboxComponent" to="." method="_on_hitbox_component_hit"]

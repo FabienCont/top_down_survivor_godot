@@ -1,42 +1,8 @@
-[gd_resource type="Resource" script_class="Player" load_steps=12 format=3 uid="uid://cfij4qrx1jjjs"]
+[gd_resource type="Resource" script_class="Player" load_steps=3 format=3 uid="uid://cfij4qrx1jjjs"]
 
 [ext_resource type="Script" path="res://scripts/resources/Player.gd" id="1_o72cm"]
-[ext_resource type="Script" path="res://scripts/resources/stats/AttackStats.gd" id="2_3ssx3"]
-[ext_resource type="Script" path="res://scripts/resources/stats/CommonStats.gd" id="3_0b1n7"]
-[ext_resource type="Script" path="res://scripts/resources/stats/LifeStats.gd" id="4_5bk2o"]
-[ext_resource type="Script" path="res://scripts/resources/Stats.gd" id="5_hu4a3"]
-[ext_resource type="Script" path="res://scripts/resources/stats/XpStats.gd" id="6_w42fm"]
-
-[sub_resource type="Resource" id="Resource_4jtve"]
-script = ExtResource("2_3ssx3")
-ATTACK_SPEED = 1.0
-DAMAGE = 4
-
-[sub_resource type="Resource" id="Resource_swejf"]
-script = ExtResource("3_0b1n7")
-MOVEMENT_SPEED = 55.0
-visibility = 6
-collect_distance = 6
-
-[sub_resource type="Resource" id="Resource_xxqva"]
-script = ExtResource("4_5bk2o")
-VALUE = 50.0
-MAX_VALUE = 50.0
-
-[sub_resource type="Resource" id="Resource_0ftrr"]
-script = ExtResource("6_w42fm")
-VALUE = 0.0
-MAX_VALUE = 10.0
-XP_MULTIPLIER = 1.0
-LEVEL = 1
-
-[sub_resource type="Resource" id="Resource_eyjko"]
-script = ExtResource("5_hu4a3")
-attack = SubResource("Resource_4jtve")
-common = SubResource("Resource_swejf")
-life = SubResource("Resource_xxqva")
-xp = SubResource("Resource_0ftrr")
+[ext_resource type="Resource" uid="uid://ddbkxnjeifkpj" path="res://scripts/resources/stats/custom/players/player_stats.tres" id="2_qtw0j"]
 
 [resource]
 script = ExtResource("1_o72cm")
-stats = SubResource("Resource_eyjko")
+stats = ExtResource("2_qtw0j")

@@ -1,32 +1,20 @@
 [remap]
 
-importer="Aseprite AnimatedSprite2D Import"
-type="PackedScene"
+importer="texture"
+type="CompressedTexture2D"
 uid="uid://c7exe1nytkerm"
-path="res://.godot/imported/xp.ase-dffd0a4147d902321edd621607122789.scn"
+path="res://.godot/imported/xp.ase-dffd0a4147d902321edd621607122789.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/collectables/xp.ase"
-dest_files=["res://.godot/imported/xp.ase-dffd0a4147d902321edd621607122789.scn"]
+dest_files=["res://.godot/imported/xp.ase-dffd0a4147d902321edd621607122789.ctex"]
 
 [params]
 
-spritesheet/layout="Packed"
-spritesheet/fixed_rows_count=1
-spritesheet/fixed_columns_count=1
-spritesheet/border_type="None"
-spritesheet/trim=false
-spritesheet/ignore_empty=false
-spritesheet/merge_duplicates=false
-animation/default/name="default"
-animation/default/direction="Forward"
-animation/default/repeat_count=0
-animation/autoplay=""
-layers/include_reg_ex="*"
-layers/exclude_reg_ex=""
-tags/include_reg_ex="*"
-tags/exclude_reg_ex=""
 compress/mode="Lossless"
 compress/high_quality=false
 compress/lossy_quality=0.7

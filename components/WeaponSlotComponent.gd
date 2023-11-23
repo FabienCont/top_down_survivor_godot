@@ -3,19 +3,28 @@ class_name WeaponSlotComponent
 
 @export var weaponEquiped: Weapon;
 @onready var parent:Node = get_parent()
-var player:Player
+var stats:StatsController
+var effects:EffectsController
+var weapon_info:WeaponInfo
 
 signal attack_has_end
 
-func init(playerInit: Player) -> void:
-	if has_weapon_equiped() :
-		set_player(playerInit)
-		_listen_weapon_hit()
-		
-func set_player(playerInit: Player)-> void:
-	player = playerInit
-	weaponEquiped.player = playerInit
-		
+func init(stats_init: StatsController,weapon_info_init: WeaponInfo,effects_init:EffectsController) -> void:
+	set_stats(stats_init)
+	set_effects(effects_init)
+	set_weapon_info(weapon_info_init)
+	var new_weapon = weapon_info.scene.instantiate()
+	equip(new_weapon)
+
+func set_effects(effects_init: EffectsController)-> void:
+	effects = effects_init
+	
+func set_stats(stats_init: StatsController)-> void:
+	stats = stats_init
+	
+func set_weapon_info(weapon_info_init: WeaponInfo)-> void:
+	weapon_info = weapon_info_init
+	
 func _listen_weapon_hit():
 	if weaponEquiped.has_signal("hit"):
 		weaponEquiped.connect("hit",_hit_someone)
@@ -27,6 +36,7 @@ func has_weapon_equiped():
 	
 func equip(weapon: Weapon):
 	weaponEquiped = weapon
+	weaponEquiped.init(stats,weapon_info,effects)
 	add_child(weapon)
 	_listen_weapon_hit()
 
@@ -39,8 +49,7 @@ func start_attack():
 
 func end_attack():
 	if has_weapon_equiped() :
-		weaponEquiped.end_attack()
-
+		weaponEquiped.end_attack(null)
 
 func attack_start_to_hurt():
 	if has_weapon_equiped() :

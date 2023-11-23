@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cakah4i35acti"]
+
+[ext_resource type="Script" path="res://scripts/weapons/distantWeapon.gd" id="1_uj3km"]
+
+[node name="distantWeapon" type="Node2D"]
+script = ExtResource("1_uj3km")

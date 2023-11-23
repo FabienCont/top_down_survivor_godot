@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=3 format=3 uid="uid://c2gwwcygg2ak4"]
+
+[ext_resource type="Resource" uid="uid://b60ixl06uh4qe" path="res://scripts/resources/effects/weapons/add_ammo_effect.tres" id="1_pt2d1"]
+[ext_resource type="Script" path="res://scripts/resources/Upgrade.gd" id="2_sl2ub"]
+
+[resource]
+script = ExtResource("2_sl2ub")
+label = "undefined"
+modifiers = Array[Resource("res://scripts/resources/stats/StatModifier.gd")]([])
+effect = Array[Resource("res://scripts/resources/effects/EffectResource.gd")]([ExtResource("1_pt2d1")])

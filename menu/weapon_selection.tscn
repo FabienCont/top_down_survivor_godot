@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bps8ngcmqvbxy"]
+
+[ext_resource type="PackedScene" uid="uid://c0qs36ltswte4" path="res://menu/parts/acceuil_layout.tscn" id="1_qqc8q"]
+[ext_resource type="PackedScene" uid="uid://b4jkrodi8wu6" path="res://menu/parts/weapon_selection_content.tscn" id="2_vsk60"]
+
+[node name="weapon_selection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" parent="." instance=ExtResource("1_qqc8q")]
+layout_mode = 1
+
+[node name="weapon_selection_content" parent="Control" instance=ExtResource("2_vsk60")]
+layout_mode = 1

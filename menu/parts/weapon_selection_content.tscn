@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4jkrodi8wu6"]
+
+[ext_resource type="Script" path="res://scripts/ui/weapon_selection_content.gd" id="1_5qnqh"]
+[ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_dnlsr"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonCancelWeaponMenu.gd" id="5_a1e2d"]
+[ext_resource type="Resource" uid="uid://byrl7njs1hn77" path="res://scripts/resources/weapon/boomerang.tres" id="5_iu2bc"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonSelectWeaponValidate.gd" id="5_u6oa7"]
+[ext_resource type="PackedScene" uid="uid://b3f4t3t1miysy" path="res://menu/parts/weapon_card.tscn" id="6_4t1k3"]
+[ext_resource type="Resource" uid="uid://b03trjmryqoqd" path="res://scripts/resources/weapon/bow.tres" id="7_kq74f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwd0k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vorem"]
+line_spacing = 5.0
+font = ExtResource("2_dnlsr")
+font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pb5mj"]
+
+[node name="weapon_selection_content" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5qnqh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_right = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_uwd0k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select your 
+character"
+label_settings = SubResource("LabelSettings_vorem")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_uwd0k")
+
+[node name="WeaponContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="weapon_card" parent="VBoxContainer/WeaponContainer" instance=ExtResource("6_4t1k3")]
+layout_mode = 2
+weapon = ExtResource("7_kq74f")
+
+[node name="weapon_card2" parent="VBoxContainer/WeaponContainer" instance=ExtResource("6_4t1k3")]
+layout_mode = 2
+weapon = ExtResource("5_iu2bc")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="ButtonCancel" type="Button" parent="VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_dnlsr")
+theme_override_font_sizes/font_size = 32
+text = "Cancel"
+script = ExtResource("5_a1e2d")
+
+[node name="ButtonValidate" type="Button" parent="VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_dnlsr")
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "START"
+script = ExtResource("5_u6oa7")
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pb5mj")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/ButtonCancel" to="VBoxContainer/HBoxContainer3/ButtonCancel" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/ButtonValidate" to="VBoxContainer/HBoxContainer3/ButtonValidate" method="_on_pressed"]

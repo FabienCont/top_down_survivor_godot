@@ -1,14 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://cmx1ur1ldwu0r"]
+[gd_scene load_steps=23 format=3 uid="uid://cmx1ur1ldwu0r"]
 
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="1_tqken"]
 [ext_resource type="Script" path="res://scripts/Ennemy.gd" id="1_x4624"]
 [ext_resource type="Script" path="res://scripts/resources/effects/hurt/DisplayDamagedHurtEffect.gd" id="2_3q62j"]
 [ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://components/HealthComponent.tscn" id="2_ld3i1"]
 [ext_resource type="PackedScene" uid="uid://b5iiqlwia7sr7" path="res://components/physics/HitboxComponent.tscn" id="3_fwp5m"]
-[ext_resource type="Script" path="res://scripts/resources/effects/DropXpResource.gd" id="3_n85cl"]
+[ext_resource type="Script" path="res://scripts/resources/effects/custom/FallDownEffect.gd" id="3_tsrxm"]
 [ext_resource type="Texture2D" uid="uid://cnbimhgsukuj5" path="res://assets/characters/ennemies/32x32-bat-sprite.png" id="3_xkocc"]
 [ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://components/physics/HurtboxComponent.tscn" id="4_0tr1k"]
-[ext_resource type="Resource" uid="uid://cl2bwrifwia3r" path="res://scripts/resources/stats/custom/ennemies/bat/ennemy_bat.tres" id="4_brnt0"]
+[ext_resource type="Script" path="res://scripts/resources/effects/custom/DropXpResource.gd" id="4_r6j5t"]
+[ext_resource type="Resource" uid="uid://djfucruvk2un8" path="res://scripts/resources/stats/custom/ennemies/bat/ennemy_stat.tres" id="5_gi6p4"]
 [ext_resource type="PackedScene" uid="uid://b1navm80qbjks" path="res://components/FollowTargetComponent.tscn" id="9_h7ic3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jaqne"]
@@ -66,6 +67,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [4]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 6.72717),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 8)]
+}
 
 [sub_resource type="Animation" id="Animation_hg7qj"]
 resource_name = "sprite_animation"
@@ -101,8 +114,8 @@ slide_on_ceiling = false
 floor_constant_speed = true
 script = ExtResource("1_x4624")
 hurt_effects = Array[Resource]([ExtResource("2_3q62j")])
-die_effects = Array[Resource]([ExtResource("3_n85cl")])
-stats = ExtResource("4_brnt0")
+die_effects = Array[Resource]([ExtResource("3_tsrxm"), ExtResource("4_r6j5t")])
+stats = ExtResource("5_gi6p4")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("1_tqken")]
 MAX_SPEED = 80.0
@@ -127,7 +140,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_xkocc")
 hframes = 4
 vframes = 4
-frame = 3
+frame = 1
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ld3i1")]
 

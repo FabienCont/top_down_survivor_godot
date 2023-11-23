@@ -1,20 +1,40 @@
-class_name TopDownControllerComponent
+@tool
 extends Node
+class_name TopDownControllerComponent
 
-@export var velocityComponent: VelocityComponent
+@export var velocityComponent: VelocityComponent:
+	set(value):
+		velocityComponent = value
+		update_configuration_warnings()
 
-@onready var has_move_this_frame = false
+
+@onready var has_move_this_frame := false
 @onready var move_this_frame:= Vector2()
-@onready var disable = false
+@onready var disable := false
+@onready var mouse_position := Vector2()
+@onready var direction := Vector2()
 
+func _get_configuration_warnings():
+	if velocityComponent == null:
+		return ["VelocityComponent is missing"]
+	return []
+	
 func has_move() -> bool:
 	return has_move_this_frame
-	
+
 func get_move_direction() -> Vector2 :
 	return move_this_frame
-
+	
+func get_look_direction() -> Vector2:
+	return mouse_position
+	
+func has_dash() -> bool:
+	if Input.is_action_just_pressed("dash"):
+		return true 
+	return false
+		
 func has_attack() -> bool:
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("attack"):
 		return true 
 	return false
 	
@@ -28,8 +48,14 @@ func _save_move(move: Vector2):
 	
 func updateControl(delta):
 	_reset_move()
+	var pos = get_parent().get_global_mouse_position()
+	if pos != null:
+		mouse_position = pos 
 	_update_velocity(delta)
 
+func get_current_direction():
+	return direction 
+	
 func get_input_direction():
 	return Input.get_vector("left", "right", "up", "down")
 	
@@ -42,5 +68,5 @@ func _update_velocity(delta):
 		velocityComponent.decelerate(delta)	
 	else:
 		_save_move(input_dir)
-		var direction = Vector2(input_dir.x, input_dir.y).normalized()
+		direction = Vector2(input_dir.x, input_dir.y).normalized()
 		velocityComponent.accelerate_in_direction(direction,delta)

@@ -1,5 +1,14 @@
 extends Resource
 class_name EffectResource
 
-static func trigger_effect(_node :Node2D)->void:
-	return
+
+enum EffectTarget {
+	ENTITY,
+	WEAPON,
+	DISTANT_WEAPON,
+	AMMO
+}
+
+@export var name: String="undefined"
+@export var state: String="undefined"
+@export var handler: EffectHandler

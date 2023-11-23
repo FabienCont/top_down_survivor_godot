@@ -17,7 +17,7 @@ func damage(hurtboxComponent :HurtboxComponent):
 	attack.knockback_force = 2
 	attack.attack_position = global_position
 	if player!=null:
-		attack.attack_damage = player.stats.attack.DAMAGE + attack.attack_damage  
+		attack.attack_damage =  attack.attack_damage #+ player.stats.attack.DAMAGE +
 	
 	hurtboxComponent.damage(attack)
 	hit.emit(attack)

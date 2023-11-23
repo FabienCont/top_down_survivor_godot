@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://tw8nw2oop6gc"]
-
-[ext_resource type="PackedScene" uid="uid://cgxhvomq3ma5" path="res://assets/weapons/bow.ase" id="1_yp4tl"]
-
-[node name="bow" instance=ExtResource("1_yp4tl")]
-animation = &"Idle"

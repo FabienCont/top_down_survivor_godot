@@ -1,17 +1,15 @@
 extends Node
 class_name HealthComponent
 
-var lifeStats : LifeStats
+var life : Stat
 	
-func init(lifeStatsInit: LifeStats) -> void :
-	lifeStats = lifeStatsInit
+func init(stats_init: StatsController) -> void :
+	life = stats_init.get_current_stat(stats_const.names.life)
 	
 func damage(attack: Attack):
-	lifeStats.VALUE -= attack.attack_damage
-	
-	if lifeStats.VALUE <= 0:
+	life.value -= attack.attack_damage
+	if life.value <= 0:
 		var parent = get_parent();
 		if parent.has_method("die"):
 			parent.die();
 
-	

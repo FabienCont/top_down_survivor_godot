@@ -3,7 +3,7 @@ class_name FollowTargetComponent
 
 @export var velocityComponent: VelocityComponent
 @export var target: Node2D
-	
+
 func set_node_to_follow(node:Node2D):
 	target = node
 

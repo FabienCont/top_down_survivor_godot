@@ -41,7 +41,7 @@ func _calc_position_spawn() -> Vector2 :
 func _spawn_scene() -> void:
 	ready_to_spawn=false
 	nb_spawned+=1
-	var scene = scene_to_spawn.instantiate()
+	var scene = scene_to_spawn.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	if(scene_preparation_function is Callable && scene_preparation_function.is_null() != true):
 		scene_preparation_function.call(scene)
 	scene.target = player 

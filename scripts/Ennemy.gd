@@ -11,15 +11,18 @@ extends CharacterBody2D
 @export var hurt_effects: Array[Resource]
 @export var die_effects: Array[Resource]
 
-@export var stats: Stats = Stats.new()
+@export var stats: StatsController
+var life: Stat
 
 func _ready() -> void:
 	stats = stats.duplicate(true)
-	velocityComponent.init(stats.common)
+	stats.init()
+	life = stats.get_current_stat(stats_const.names.life)
+	velocityComponent.init(stats)
 	if healthComponent != null:
-		healthComponent.init(stats.life)
+		healthComponent.init(stats)
 		
-	if target != null:
+	if target != null :
 		followTargetComponent.set_node_to_follow(target)
 	
 func _process(delta: float) -> void :
@@ -28,6 +31,7 @@ func _process(delta: float) -> void :
 		velocityComponent.move(self)
 	else:
 		velocityComponent.decelerate(delta)
+	queue_redraw()
 	
 func hurt(attack :Attack):
 	if (is_dead() == false):
@@ -36,7 +40,7 @@ func hurt(attack :Attack):
 			hurt_effect.trigger_effect(self,attack)
 
 func is_dead() -> bool:
-	if stats.life.VALUE <= 0.0 :
+	if life.value <= 0.0 :
 		return true
 	else:
 		return false
@@ -46,8 +50,17 @@ func die():
 	state_machine.travel("die_animation")
 	hurtbox_component.queue_free()
 	hitbox_component.queue_free()
+	state_machine.travel("die_animation")
 	for effect in die_effects:
 		effect.trigger_effect(self)
 	await get_tree().create_timer(2.0).timeout 
 	call_deferred("queue_free")
+
+func _draw() -> void:
+	#_draw_debug()
+	pass
 	
+func _draw_debug()->void:
+	#var pos = global_position
+	draw_line(Vector2.ZERO,velocityComponent.last_velocity,Color.RED,2.0)
+	draw_line(Vector2.ZERO,(velocityComponent.current_velocity),Color.BLUE,2.0)

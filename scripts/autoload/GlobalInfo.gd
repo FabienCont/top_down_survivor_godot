@@ -3,6 +3,7 @@ extends Node
 @onready var level1: PackedScene  = preload("res://scenes/levels/garden_level.tscn")
 @onready var menu: PackedScene  = preload("res://menu/acceuil.tscn")
 @onready var character_selection: PackedScene  = preload("res://menu/character_selection.tscn")
+@onready var weapon_selection: PackedScene  = preload("res://menu/weapon_selection.tscn")
 
 @onready var player: Player= Player.new()
 
@@ -32,15 +33,15 @@ func goToMenu():
 
 func goToSelectCharacterMenu():
 	SceneLoader.change_scene_to_packed(character_selection,SceneLoader.TransitionTypeEnum.INSTANT)
-	pass # Replace with function body.
+
+func goToSelectWeaponMenu():
+	SceneLoader.change_scene_to_packed(weapon_selection,SceneLoader.TransitionTypeEnum.INSTANT)
 
 func goToNextLevel():
 	SceneLoader.change_scene_to_packed(level1,SceneLoader.TransitionTypeEnum.LOADING_SCREEN)
 	SoundManager.playBackgroundGameSound()
 	SoundManager.stopBackgroundMenuSound()
-	pass # Replace with function body.
 
 func restartLevel():
 	stats = savedStats.duplicate(true)
 	SceneLoader.change_scene_to_packed(level1,SceneLoader.TransitionTypeEnum.LOADING_SCREEN)
-	pass # Replace with function body.

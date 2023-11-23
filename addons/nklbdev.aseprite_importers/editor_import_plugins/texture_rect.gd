@@ -3,12 +3,9 @@ extends "_animation_importer_base.gd"
 
 const OPTION_PACKED_SPRITESHEET_ANIMATION_STRATEGY: String = "animation/strategy_(packed_spritesheet)"
 
-const PACKED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_REGION_AND_MARGIN: String = "Animate single atlas texture's region and margin"
-const PACKED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_INSTANCES: String = "Animate multiple atlas texture instances"
-
 const PACKED_SPRITESHEET_ANIMATION_STRATEGIES: PackedStringArray = [
-	PACKED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_REGION_AND_MARGIN,
-	PACKED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_INSTANCES,
+	"Animate single atlas texture's region and margin",
+	"Animate multiple atlas texture instances",
 ]
 
 enum PackedSpritesheetAnimationStrategy
@@ -20,12 +17,9 @@ enum PackedSpritesheetAnimationStrategy
 
 const OPTION_GRID_BASED_SPRITESHEET_ANIMATION_STRATEGY: String = "animation/strategy_(grid-based_spritesheet)"
 
-const GRID_BASED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_REGION: String = "Animate single atlas texture's region"
-const GRID_BASED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_INSTANCES: String = "Animate multiple atlas texture instances"
-
 const GRID_BASED_SPRITESHEET_ANIMATION_STRATEGIES: PackedStringArray = [
-	GRID_BASED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_REGION,
-	GRID_BASED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_INSTANCES,
+	"Animate single atlas texture's region",
+	"Animate multiple atlas texture instances",
 ]
 
 enum GridBasedSpritesheetAnimationStrategy
@@ -61,18 +55,18 @@ func _init(parent_plugin: EditorPlugin) -> void:
 	set_preset("Animation", [
 		Common.create_option(
 			OPTION_PACKED_SPRITESHEET_ANIMATION_STRATEGY,
-			PACKED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_REGION_AND_MARGIN,
+			PackedSpritesheetAnimationStrategy.TextureRegionAndMargin,
 			PROPERTY_HINT_ENUM, ",".join(PACKED_SPRITESHEET_ANIMATION_STRATEGIES),
 			PROPERTY_USAGE_EDITOR,
 			func (options:Dictionary) -> bool:
-				return options[Common.OPTION_SPRITESHEET_LAYOUT] == Common.SPRITESHEET_LAYOUTS[Common.SpritesheetLayout.PACKED]),
+				return options[Common.OPTION_SPRITESHEET_LAYOUT] == Common.SpritesheetLayout.PACKED),
 		Common.create_option(
 			OPTION_GRID_BASED_SPRITESHEET_ANIMATION_STRATEGY,
-			GRID_BASED_SPRITESHEET_ANIMATION_STRATEGY_TEXTURE_REGION,
+			GridBasedSpritesheetAnimationStrategy.TextureRegion,
 			PROPERTY_HINT_ENUM, ",".join(GRID_BASED_SPRITESHEET_ANIMATION_STRATEGIES),
 			PROPERTY_USAGE_EDITOR,
 			func (options:Dictionary) -> bool:
-				return options[Common.OPTION_SPRITESHEET_LAYOUT] != Common.SPRITESHEET_LAYOUTS[Common.SpritesheetLayout.PACKED]),
+				return options[Common.OPTION_SPRITESHEET_LAYOUT] != Common.SpritesheetLayout.PACKED),
 	])
 
 
@@ -81,6 +75,10 @@ func _import(source_file: String, save_path: String, options: Dictionary,
 	var status: Error = OK
 	var parsed_options: TextureRectParsedAnimationOptions = TextureRectParsedAnimationOptions.new(options)
 	var export_result: ExportResult = _export_texture(source_file, parsed_options, options, gen_files)
+	if export_result.error:
+		push_error("There was an error during exporting texture: %s with message: %s" %
+			[error_string(export_result.error), export_result.error_message])
+		return export_result.error
 
 	var frame_size: Vector2i = export_result.spritesheet_metadata.source_size
 

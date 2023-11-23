@@ -1,4 +1,4 @@
-extends HurtEffectResource
+extends HurtEffectHandler
 
 const attackDamageParticule = preload("res://scenes/particles/AttackDamageParticule.tscn")
 

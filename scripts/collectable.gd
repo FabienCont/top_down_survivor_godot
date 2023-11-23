@@ -2,11 +2,12 @@ extends Area2D
 
 var target: Node2D
 @export var loot: Loot = Loot.new()
-
+@onready var modifier = preload( "res://scripts/resources/stats/modifiers/xp_loot.tres")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	loot.type = LootEnum.LOOT_TYPE.XP
-	loot.value = 1
+	var new_modifier = modifier.duplicate()
+	loot.modifiers = []
+	loot.modifiers.push_back(new_modifier)
 	top_level=true
 	pass # Replace with function body.
 

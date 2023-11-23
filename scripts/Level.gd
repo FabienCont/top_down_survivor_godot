@@ -8,10 +8,10 @@ func _ready():
 	Signals.level_loaded.emit()
 	Signals.player_died.connect(_level_failed)
 	
-func init(gameClockInit: GameClock,playerInit:Player):
-	spawner.gameClock = gameClockInit
+func init(game_clock_init: GameClock,player_init:Player):
+	spawner.gameClock = game_clock_init
 	spawner.start_spawn()
-	playerNode.init(playerInit)
+	playerNode.init(player_init)
 	
 func _level_failed():
 	Engine.time_scale = 0.5

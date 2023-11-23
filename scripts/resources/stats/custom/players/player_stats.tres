@@ -1,0 +1,117 @@
+[gd_resource type="Resource" script_class="StatsController" load_steps=16 format=3 uid="uid://ddbkxnjeifkpj"]
+
+[ext_resource type="Script" path="res://scripts/resources/stats/StatsController.gd" id="1_5cn84"]
+[ext_resource type="Script" path="res://scripts/resources/stats/Stat.gd" id="2_t8ork"]
+
+[sub_resource type="Resource" id="Resource_ddslc"]
+script = ExtResource("2_t8ork")
+auto_compute = false
+key = 12
+base_value = 10.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_3sbl0"]
+script = ExtResource("2_t8ork")
+auto_compute = false
+key = 0
+base_value = 100.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_rpc0n"]
+script = ExtResource("2_t8ork")
+auto_compute = true
+key = 1
+base_value = 100.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_fyje4"]
+script = ExtResource("2_t8ork")
+auto_compute = true
+key = 2
+base_value = 10.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_ftflp"]
+script = ExtResource("2_t8ork")
+auto_compute = true
+key = 3
+base_value = 10.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_7aqex"]
+script = ExtResource("2_t8ork")
+auto_compute = false
+key = 4
+base_value = 0.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_hhx8h"]
+script = ExtResource("2_t8ork")
+auto_compute = false
+key = 6
+base_value = 1.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_236au"]
+script = ExtResource("2_t8ork")
+auto_compute = true
+key = 7
+base_value = 55.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_j7q2e"]
+script = ExtResource("2_t8ork")
+auto_compute = true
+key = 8
+base_value = 55.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_83euh"]
+script = ExtResource("2_t8ork")
+auto_compute = true
+key = 9
+base_value = 4.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_ikt67"]
+script = ExtResource("2_t8ork")
+auto_compute = true
+key = 10
+base_value = 1.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_qfupm"]
+script = ExtResource("2_t8ork")
+auto_compute = true
+key = 11
+base_value = 1.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_ysy56"]
+script = ExtResource("2_t8ork")
+auto_compute = false
+key = 12
+base_value = 5.0
+value = 0.0
+
+[resource]
+script = ExtResource("1_5cn84")
+stat_to_add_from_editor = SubResource("Resource_ddslc")
+_add_stat = false
+stat_to_remove_from_editor = 0
+_remove_stat = false
+stats_dico = {
+0: SubResource("Resource_3sbl0"),
+1: SubResource("Resource_rpc0n"),
+2: SubResource("Resource_fyje4"),
+3: SubResource("Resource_ftflp"),
+4: SubResource("Resource_7aqex"),
+6: SubResource("Resource_hhx8h"),
+7: SubResource("Resource_236au"),
+8: SubResource("Resource_j7q2e"),
+9: SubResource("Resource_83euh"),
+10: SubResource("Resource_ikt67"),
+11: SubResource("Resource_qfupm"),
+12: SubResource("Resource_ysy56")
+}
+modifiers = Array[Resource("res://scripts/resources/stats/StatModifier.gd")]([])

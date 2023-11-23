@@ -10,9 +10,10 @@ signal select_weapon(weapon :WeaponInfo)
 
 func _ready() -> void:
 	label.text = weapon.name
-	var weapon_sprite: AnimatedSprite2D = weapon.sprite.instantiate()
+	var weapon_sprite: Sprite2D = weapon.sprite.instantiate()
+	var animation_player = weapon_sprite.get_child(0) 
 	sprite_container.add_child(weapon_sprite)	
-	weapon_sprite.play("Shoot")
+	animation_player.play("Shoot")
 	weapon_sprite.scale = Vector2(1,1)
 	
 func _on_button_pressed() -> void:

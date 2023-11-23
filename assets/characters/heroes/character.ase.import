@@ -1,6 +1,6 @@
 [remap]
 
-importer="Aseprite AnimatedSprite2D Import"
+importer="Aseprite AnimatedSprite2D"
 type="PackedScene"
 uid="uid://tj3s2aqp4cp5"
 path="res://.godot/imported/character.ase-330c97155d349032e5043f6eff21683d.scn"
@@ -12,35 +12,18 @@ dest_files=["res://.godot/imported/character.ase-330c97155d349032e5043f6eff21683
 
 [params]
 
-spritesheet/layout="Packed"
-spritesheet/fixed_rows_count=1
-spritesheet/fixed_columns_count=1
-spritesheet/border_type="None"
-spritesheet/trim=false
-spritesheet/ignore_empty=false
-spritesheet/merge_duplicates=false
 animation/default/name="default"
-animation/default/direction="Forward"
+animation/default/direction=0
 animation/default/repeat_count=0
-animation/autoplay=""
-layers/include_reg_ex="*"
-layers/exclude_reg_ex=""
-tags/include_reg_ex="*"
-tags/exclude_reg_ex=""
-compress/mode="Lossless"
-compress/high_quality=false
-compress/lossy_quality=0.7
-compress/hdr_compression="Disabled"
-compress/normal_map="Detect"
-compress/channel_pack=0
-mipmaps/generate=false
-mipmaps/limit=-1
-roughness/mode="Detect"
-roughness/src_normal=""
-process/fix_alpha_border=true
-process/premult_alpha=false
-process/normal_map_invert_y=false
-process/hdr_as_srgb=false
-process/hdr_clamp_exposure=false
-process/size_limit=0
-detect_3d/compress_to="VRAM Compressed"
+animation/autoplay_name=""
+atlas_textures/region_filter_clip_enabled=false
+root_node_name=""
+middle_import_script=""
+post_import_script=""
+sprite_sheet/edges_artifacts_avoidance_method=0
+sprite_sheet/sprites_surrounding_color=Color(1, 1, 1, 0)
+sprite_sheet/layout=0
+sprite_sheet/max_cells_in_strip=0
+sprite_sheet/trim_sprites_to_overall_min_size=true
+sprite_sheet/collapse_transparent_sprites=true
+sprite_sheet/merge_duplicated_sprites=true

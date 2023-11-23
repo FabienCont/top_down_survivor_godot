@@ -6,7 +6,6 @@ func set_preset(name: StringName, options: Array[Dictionary]) -> void:
 	var preset: Array[Dictionary] = []
 	preset.append_array(_parent_plugin.common_options)
 	preset.append_array(options)
-	preset.append_array(_parent_plugin.texture_2d_options)
 	__option_visibility_checkers.clear()
 	for option in preset:
 		var option_visibility_checker: Callable = option.get("get_is_visible", Common.EMPTY_CALLABLE)
@@ -18,6 +17,8 @@ func _init(parent_plugin: EditorPlugin) -> void:
 	super(parent_plugin)
 
 class ExportResult:
+	var error: Error
+	var error_message: String
 	var raw_output: String
 	var parsed_json: JSON
 	var texture: Texture2D
@@ -53,15 +54,15 @@ const __sheet_types_by_spritesheet_layout: Dictionary = {
 }
 
 func _export_texture(source_file: String, options: Common.ParsedAnimationOptions, image_options: Dictionary, gen_files: Array[String]) -> ExportResult:
+	var export_result = ExportResult.new()
 	var spritesheet_metadata = SpritesheetMetadata.new()
 	var png_path: String = source_file.get_basename() + ".png"
+	var data_path: String = source_file.get_basename() + ".json"
 	var global_png_path: String = ProjectSettings.globalize_path(png_path)
+	var global_data_path: String = ProjectSettings.globalize_path(data_path)
 	var is_png_file_present = FileAccess.file_exists(png_path)
 
 	var aseprite_executable_path: String = ProjectSettings.get_setting(Common.ASEPRITE_EXECUTABLE_PATH_SETTING_NAME)
-	if not FileAccess.file_exists(aseprite_executable_path):
-		push_error("Cannot fild Aseprite executable. Check Aseprite executable path in project settings.")
-		return null
 
 	var variable_options: Array
 	if options.spritesheet_layout == Common.SpritesheetLayout.BY_ROWS:
@@ -86,15 +87,21 @@ func _export_texture(source_file: String, options: Common.ParsedAnimationOptions
 		"--sheet-type", __sheet_types_by_spritesheet_layout[options.spritesheet_layout],
 		] + variable_options + [
 		"--sheet", global_png_path,
+		"--data", global_data_path,
 		ProjectSettings.globalize_path(source_file)
 	])
 
-	var output: Array = []
 	var err: Error = OS.execute(
 		ProjectSettings.get_setting(Common.ASEPRITE_EXECUTABLE_PATH_SETTING_NAME),
-		command_line_params, output, true)
+		command_line_params)
+	if err:
+		export_result.error = err
+		export_result.error_message = "There was an error while executing aseprite command: %s" % error_string(err)
+		return export_result
 	var json = JSON.new()
-	json.parse(output[0])
+	var data: String = FileAccess.get_file_as_string(global_data_path)
+	json.parse(data)
+	DirAccess.remove_absolute(global_data_path)
 
 	var sourceSizeData = json.data.frames[0].sourceSize
 	spritesheet_metadata.source_size = Vector2i(sourceSizeData.w, sourceSizeData.h)
@@ -148,11 +155,12 @@ func _export_texture(source_file: String, options: Common.ParsedAnimationOptions
 
 			var repeat_count: int = int(tag_data.get("repeat", "0"))
 			if repeat_count > 0:
+				animation_tag.looped = false
 				for cycle_index in repeat_count:
 					animation_tag.frames.append_array(animation_frames)
 			else:
 				animation_tag.frames.append_array(animation_frames)
-				animation_tag.looped = true
+				animation_tag.looped = false
 			spritesheet_metadata.animation_tags.append(animation_tag)
 
 	var image = Image.load_from_file(global_png_path)
@@ -171,9 +179,9 @@ func _export_texture(source_file: String, options: Common.ParsedAnimationOptions
 	# This is a working way to reuse a previously imported resource. Don't change it!
 	var texture: Texture2D = ResourceLoader.load(png_path, "Texture2D", ResourceLoader.CACHE_MODE_REPLACE) as Texture2D
 
-	var export_result = ExportResult.new()
+
 	export_result.texture = texture
-	export_result.raw_output = output[0]
+	export_result.raw_output = data
 	export_result.parsed_json = json
 	export_result.spritesheet_metadata = spritesheet_metadata
 	return export_result
