@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/resources/stats/StatWeapon.gd" id="3_t1cer"]
 [ext_resource type="Script" path="res://scripts/resources/upgrades/UpgradesController.gd" id="4_if3l6"]
 
-[sub_resource type="Resource" id="Resource_3f6gl"]
+[sub_resource type="Resource" id="Resource_fr5vc"]
 script = ExtResource("3_t1cer")
 key_selector = 0
 auto_compute = true
@@ -36,7 +36,7 @@ upgrades = Array[Resource("res://scripts/resources/Upgrade.gd")]([])
 script = ExtResource("1_4h1h2")
 stat_to_remove_from_editor = 0
 _remove_stat = false
-stat_to_add_from_editor = SubResource("Resource_3f6gl")
+stat_to_add_from_editor = SubResource("Resource_fr5vc")
 _add_stat = false
 stats_dico = {
 30: SubResource("Resource_v8xd0"),

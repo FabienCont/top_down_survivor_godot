@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ya7wxfpyeown" path="res://scripts/resources/stats/custom/ammos/range.tres" id="4_b2qyi"]
 [ext_resource type="Script" path="res://scripts/resources/upgrades/UpgradesController.gd" id="5_ev7jv"]
 
-[sub_resource type="Resource" id="Resource_efh0j"]
+[sub_resource type="Resource" id="Resource_dgp4s"]
 script = ExtResource("2_dmbdo")
 key_selector = 0
 auto_compute = true
@@ -22,7 +22,7 @@ upgrades = Array[Resource("res://scripts/resources/Upgrade.gd")]([])
 script = ExtResource("1_a6s73")
 stat_to_remove_from_editor = 0
 _remove_stat = false
-stat_to_add_from_editor = SubResource("Resource_efh0j")
+stat_to_add_from_editor = SubResource("Resource_dgp4s")
 _add_stat = false
 stats_dico = {
 0: ExtResource("3_3ituc"),

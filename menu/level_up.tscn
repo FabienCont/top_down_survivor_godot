@@ -29,7 +29,7 @@ func _on_visibility_changed() -> void:
 	if animationPlayer != null:
 		if visible == true :
 			randomize_all_upgrade()
-			upgrade_boxes[0].grab_focus()
+			upgrade_boxes[0].get_child(0).grab_focus()
 			animationPlayer.play(\"show_menu\")
 		else : 
 			animationPlayer.play(\"hide_menu\")
@@ -85,7 +85,7 @@ value = 2.0
 duration = -1.0
 apply_to_base = false
 
-[sub_resource type="Resource" id="Resource_0bqt5"]
+[sub_resource type="Resource" id="Resource_jsdv5"]
 resource_local_to_scene = true
 script = ExtResource("5_gtx27")
 label = "attack speed upgrade"
@@ -294,7 +294,7 @@ layout_mode = 2
 
 [node name="BoxContainer" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_si1v4")]
 layout_mode = 2
-upgrade = SubResource("Resource_0bqt5")
+upgrade = SubResource("Resource_jsdv5")
 
 [node name="BoxContainer2" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_si1v4")]
 layout_mode = 2

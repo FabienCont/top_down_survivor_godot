@@ -9,7 +9,7 @@ extends Control
 func _ready():
 	player_info = PlayerInfo.new()
 	var characters_cards = characters_container.get_children()
-	characters_cards[0].grab_focus()
+	characters_cards[0].get_child(0).grab_focus()
 	for container in characters_cards as Array[Button]:
 		container.button.button_group = characters_button_group
 		container.connect("select_character",_select_character)

@@ -9,7 +9,7 @@ extends Control
 func _ready():
 	player_info = GlobalInfo.player_info
 	var weapons_cards = weapons_container.get_children()
-	weapons_cards[0].grab_focus()
+	weapons_cards[0].get_child(0).grab_focus()
 	for container in weapons_container.get_children() as Array[Button]:
 		container.button.button_group = weapons_button_group
 		container.connect("select_weapon",_select_weapon)
