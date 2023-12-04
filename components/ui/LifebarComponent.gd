@@ -14,17 +14,17 @@ class_name LifebarComponent
 		set(value): _update_display_life(value)
 @onready var max_life_value:float
 
-var life : Stat
-var max_life : Stat
+var life : StatModel
+var max_life : StatModel
 
 func _get_configuration_warnings():
 	if healthComponent == null:
 		return ["HealthComponent is missing"]
 	return []
 	
-func init(stats_init: StatsController) -> void :
-	life = stats_init.get_current_stat(stats_const.names.life)
-	max_life = stats_init.get_current_stat(stats_const.names.max_life)
+func init(life_init: StatModel,max_life_init: StatModel) -> void :
+	life = life_init
+	max_life = max_life_init
 	life.update_value.connect(set_life)
 	max_life.update_value.connect(set_max_life)
 	_force_update_health_info()

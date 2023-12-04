@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/ui/weapon_selection_content.gd" id="1_5qnqh"]
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_dnlsr"]
+[ext_resource type="Resource" uid="uid://b03trjmryqoqd" path="res://scripts/resources/weapon/BowWeaponInfo.tres" id="4_20mko"]
+[ext_resource type="Resource" uid="uid://byrl7njs1hn77" path="res://scripts/resources/weapon/BoomerangWeaponInfo.tres" id="5_1y718"]
 [ext_resource type="Script" path="res://scripts/ui/ButtonCancelWeaponMenu.gd" id="5_a1e2d"]
-[ext_resource type="Resource" uid="uid://byrl7njs1hn77" path="res://scripts/resources/weapon/boomerang.tres" id="5_iu2bc"]
 [ext_resource type="Script" path="res://scripts/ui/ButtonSelectWeaponValidate.gd" id="5_u6oa7"]
 [ext_resource type="PackedScene" uid="uid://b3f4t3t1miysy" path="res://menu/parts/weapon_card.tscn" id="6_4t1k3"]
-[ext_resource type="Resource" uid="uid://b03trjmryqoqd" path="res://scripts/resources/weapon/bow.tres" id="7_kq74f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwd0k"]
 
@@ -70,11 +70,11 @@ alignment = 1
 
 [node name="weapon_card" parent="VBoxContainer/WeaponContainer" instance=ExtResource("6_4t1k3")]
 layout_mode = 2
-weapon = ExtResource("7_kq74f")
+weapon_info = ExtResource("4_20mko")
 
 [node name="weapon_card2" parent="VBoxContainer/WeaponContainer" instance=ExtResource("6_4t1k3")]
 layout_mode = 2
-weapon = ExtResource("5_iu2bc")
+weapon_info = ExtResource("5_1y718")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

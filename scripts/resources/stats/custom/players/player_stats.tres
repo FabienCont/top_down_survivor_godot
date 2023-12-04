@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="StatsController" load_steps=16 format=3 uid="uid://ddbkxnjeifkpj"]
+[gd_resource type="Resource" script_class="StatsControllerModel" load_steps=19 format=3 uid="uid://ddbkxnjeifkpj"]
 
-[ext_resource type="Script" path="res://scripts/resources/stats/StatsController.gd" id="1_5cn84"]
+[ext_resource type="Script" path="res://scripts/resources/stats/StatsControllerModel.gd" id="1_l1nkh"]
+[ext_resource type="Script" path="res://scripts/resources/stats/StatEntity.gd" id="2_64aph"]
 [ext_resource type="Script" path="res://scripts/resources/stats/Stat.gd" id="2_t8ork"]
+[ext_resource type="Script" path="res://scripts/resources/upgrades/UpgradesController.gd" id="4_x0wq5"]
 
-[sub_resource type="Resource" id="Resource_ddslc"]
-script = ExtResource("2_t8ork")
-auto_compute = false
-key = 12
-base_value = 10.0
+[sub_resource type="Resource" id="Resource_bv24s"]
+script = ExtResource("2_64aph")
+key_selector = 0
+auto_compute = true
+key = 0
+base_value = 0.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_3sbl0"]
@@ -94,12 +97,14 @@ key = 12
 base_value = 5.0
 value = 0.0
 
+[sub_resource type="Resource" id="Resource_jqd4k"]
+script = ExtResource("4_x0wq5")
+upgrades = Array[Resource("res://scripts/resources/Upgrade.gd")]([])
+
 [resource]
-script = ExtResource("1_5cn84")
-stat_to_add_from_editor = SubResource("Resource_ddslc")
+script = ExtResource("1_l1nkh")
+stat_to_add_from_editor = SubResource("Resource_bv24s")
 _add_stat = false
-stat_to_remove_from_editor = 0
-_remove_stat = false
 stats_dico = {
 0: SubResource("Resource_3sbl0"),
 1: SubResource("Resource_rpc0n"),
@@ -115,3 +120,5 @@ stats_dico = {
 12: SubResource("Resource_ysy56")
 }
 modifiers = Array[Resource("res://scripts/resources/stats/StatModifier.gd")]([])
+target = 0
+upgrades_controller = SubResource("Resource_jqd4k")

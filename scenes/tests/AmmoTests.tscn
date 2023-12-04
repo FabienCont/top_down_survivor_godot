@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmksauufmadgk"]
+
+[ext_resource type="Script" path="res://scenes/tests/AmmoTests.gd" id="1_potrf"]
+[ext_resource type="Resource" uid="uid://cew26ys2mad3o" path="res://scripts/resources/ammo/ArrowAmmoInfo.tres" id="2_e62xy"]
+
+[sub_resource type="Gradient" id="Gradient_asrdg"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.392157, 0.662745, 0.756863, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hfaig"]
+gradient = SubResource("Gradient_asrdg")
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+size_2d_override = Vector2i(640, 320)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport"]
+z_index = -10
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_hfaig")
+
+[node name="AmmoTests" type="Node2D" parent="SubViewport"]
+script = ExtResource("1_potrf")
+ammo_info = ExtResource("2_e62xy")
+
+[node name="Timer" type="Timer" parent="SubViewport/AmmoTests"]
+autostart = true

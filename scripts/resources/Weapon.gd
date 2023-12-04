@@ -7,24 +7,30 @@ class_name Weapon
 @onready var animation_player:AnimationPlayer
 @onready var touched_ennemies= {}
 @onready var attack_can_hurt : bool = false
-@onready var stats: StatsController
-@onready var effects:EffectsController 
+@onready var upgrades_controller:UpgradesController 
+@onready var stats_controller: StatsControllerWeapon
 
-var attack_speed:Stat
-
+signal attack_ready()
 signal attack_has_end()
 signal hit(attack:Attack)
 
-func init(stats_init: StatsController,weapon_info_init: WeaponInfo,effects_init:EffectsController):
-	stats = stats_init
+func init(weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController):
+	stats_controller = weapon_info_init.stats_controller
+	upgrades_controller = upgrades_controller_init
+	stats_controller.set_upgrades_controller(upgrades_controller_init)
+	stats_controller.init()
 	weapon_sprite = weapon_info_init.sprite.instantiate()
 	animation_player = weapon_sprite.get_child(0)
-	effects = effects_init
-	attack_speed = stats_init.get_current_stat(stats_const.names.attack_speed)
 	add_child(weapon_sprite)
 	idle(null)
+
+func prepare_attack(_attack_speed_value:float):
+	pass
 	
-func start_attack():
+func finish_attack_prepare(_attack_speed_value:float):
+	pass
+	
+func start_attack(_attack_speed_value:float):
 	pass
 
 func attack_start_to_hurt():
@@ -34,7 +40,10 @@ func start_recovery_attack():
 	pass
 	
 func end_attack(_arg):
-	animation_player.animation_finished.disconnect(end_attack)
+	if animation_player.animation_finished.is_connected(finish_attack_prepare):
+		animation_player.animation_finished.disconnect(finish_attack_prepare)
+	if animation_player.animation_finished.is_connected(end_attack):
+		animation_player.animation_finished.disconnect(end_attack)
 	attack_has_end.emit()
 	idle(null)
 	pass

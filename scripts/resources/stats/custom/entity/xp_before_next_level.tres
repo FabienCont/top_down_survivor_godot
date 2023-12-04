@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatEntity" load_steps=2 format=3 uid="uid://itlon2cf6dmq"]
+
+[ext_resource type="Script" path="res://scripts/resources/stats/StatEntity.gd" id="1_rdneh"]
+
+[resource]
+script = ExtResource("1_rdneh")
+key_selector = 11
+auto_compute = true
+key = 11
+base_value = 1.0
+value = 0.0

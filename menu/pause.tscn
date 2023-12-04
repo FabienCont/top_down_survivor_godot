@@ -157,7 +157,7 @@ _data = {
 "show_menu": SubResource("Animation_xa3k2")
 }
 
-[node name="pause_menu" type="Control"]
+[node name="pause_menu" type="Control" node_paths=PackedStringArray("buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -165,6 +165,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y8n50")
+buttons = [NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/ButtonResume")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_q31fs")

@@ -11,8 +11,11 @@ class_name TopDownControllerComponent
 @onready var has_move_this_frame := false
 @onready var move_this_frame:= Vector2()
 @onready var disable := false
-@onready var mouse_position := Vector2()
+@onready var look_direction := Vector2()
 @onready var direction := Vector2()
+@onready var old_mouse_pos := Vector2()
+@onready var is_joypad :bool = false
+@onready var joypad_index :int = 0
 
 func _get_configuration_warnings():
 	if velocityComponent == null:
@@ -26,14 +29,19 @@ func get_move_direction() -> Vector2 :
 	return move_this_frame
 	
 func get_look_direction() -> Vector2:
-	return mouse_position
+	return look_direction
 	
 func has_dash() -> bool:
 	if Input.is_action_just_pressed("dash"):
 		return true 
 	return false
-		
+
 func has_attack() -> bool:
+	#if Input.is_action_just_released("attack"):
+	#	return true 
+	return false
+		
+func has_prepare_attack() -> bool:
 	if Input.is_action_just_pressed("attack"):
 		return true 
 	return false
@@ -48,14 +56,19 @@ func _save_move(move: Vector2):
 	
 func updateControl(delta):
 	_reset_move()
-	var pos = get_parent().get_global_mouse_position()
-	if pos != null:
-		mouse_position = pos 
+	var mouse_pos = get_parent().get_global_mouse_position()
+	if Input.get_last_mouse_velocity() != Vector2.ZERO && mouse_pos != null :
+		look_direction = mouse_pos - get_parent().global_position
+		old_mouse_pos = mouse_pos
+	var joypad_direction = Input.get_vector("look_left","look_right","look_up","look_down")
+	if joypad_direction != Vector2.ZERO :
+		look_direction =joypad_direction
+	
 	_update_velocity(delta)
 
 func get_current_direction():
 	return direction 
-	
+
 func get_input_direction():
 	return Input.get_vector("left", "right", "up", "down")
 	

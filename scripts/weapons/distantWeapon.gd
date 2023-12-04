@@ -3,46 +3,62 @@ extends Weapon
 class_name DistantWeapon
 
 var ammo_info :AmmoInfo
-var nb_projectiles_stat: Stat
-var rotation_between_projectiles_stat: Stat
+var nb_projectiles_stat: StatModel
+var rotation_between_projectiles_stat: StatModel
 
-func init(stats_init: StatsController,weapon_info_init: WeaponInfo,effects_init: EffectsController) -> void:
-	super.init(stats_init,weapon_info_init,effects_init)
+var is_attack_ready = false
+var ammo_scene
+
+func init(weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController) -> void:
+	super.init(weapon_info_init,upgrades_controller_init)
 	ammo_info = weapon_info_init.ammo_info
-	nb_projectiles_stat = stats.get_current_stat(stats_const.names.nb_projectile)
-	rotation_between_projectiles_stat = stats.get_current_stat(stats_const.names.rotation_between_projectiles)
+	nb_projectiles_stat = weapon_info_init.stats_controller.get_current_stat(StatsConstWeapon.names.nb_projectile)
+	rotation_between_projectiles_stat = weapon_info_init.stats_controller.get_current_stat(StatsConstWeapon.names.rotation_between_projectiles)
+	ammo_scene = ammo_info.scene.instantiate()
+	ammo_scene.init(ammo_info,upgrades_controller)
+	ammo_scene.init(ammo_info,upgrades_controller)
 	
-func start_attack():
-	animation_player.speed_scale = attack_speed.value
-	animation_player.play("prepareShot")
-	animation_player.animation_finished.connect(shoot)
+func start_attack(attack_speed_value: float):
+	if is_attack_ready == false:
+		end_attack(null)
+		return
+	animation_player.speed_scale = attack_speed_value
+	shoot(null)
 
+func prepare_attack(attack_speed_value: float) -> float:
+	animation_player.speed_scale = attack_speed_value
+	animation_player.play("prepareShot")
+	if not animation_player.animation_finished.is_connected(finish_attack_prepare):
+		animation_player.animation_finished.connect(finish_attack_prepare)
+	return animation_player.current_animation_length / animation_player.speed_scale
+
+func finish_attack_prepare(_arg):
+	is_attack_ready = true
+	attack_ready.emit()
+	animation_player.animation_finished.disconnect(finish_attack_prepare)
+	
 func _get_rotation_between_projectiles():
 	if rotation_between_projectiles_stat == null:
 		return  8
 	return rotation_between_projectiles_stat.value
 	
 func _get_nb_projectiles():
-	if nb_projectiles_stat == null:
-		return  1
 	return nb_projectiles_stat.value
 	
 func shoot(_arg):
-	animation_player.animation_finished.disconnect(shoot)
+	if animation_player.animation_finished.is_connected(shoot):
+		animation_player.animation_finished.disconnect(shoot)
 	animation_player.animation_finished.connect(end_attack)
 	animation_player.play("Shoot")
 	SoundManager.playFireArrowSound()
-	var new_ammo = ammo_info.scene.instantiate()
+	var new_ammo = ammo_scene.duplicate()
 	new_ammo.global_position = get_parent().global_position
 	new_ammo.global_rotation = get_parent().global_rotation
-	new_ammo.init(stats,ammo_info)
 	var nb_projectile = _get_nb_projectiles()
 	if nb_projectile > 1:
 		new_ammo = ProjectileHelper.multiply_projectile2D(new_ammo,nb_projectile,_get_rotation_between_projectiles() )
 	add_child(new_ammo)
 
 func idle(_arg):
+	is_attack_ready = false
 	animation_player.play("Idle")
-	var time_factor = 1 / attack_speed.value
-	#await get_tree().create_timer(0.3 * time_factor).timeout
-	#start_attack()

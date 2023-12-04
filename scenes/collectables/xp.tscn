@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtjfo4a5iog6l"]
+[gd_scene load_steps=6 format=3 uid="uid://cbrlroppc5rag"]
 
 [ext_resource type="Script" path="res://scripts/Collectable.gd" id="1_0bowr"]
 [ext_resource type="Texture2D" uid="uid://c7exe1nytkerm" path="res://assets/collectables/xp.ase" id="2_5nakh"]
+[ext_resource type="Shader" uid="uid://drnvhicgg687" path="res://shaders/glow.tres" id="2_eatg2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_55pgr"]
 radius = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sarq0"]
+shader = ExtResource("2_eatg2")
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 32
@@ -15,4 +19,6 @@ script = ExtResource("1_0bowr")
 shape = SubResource("CircleShape2D_55pgr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_sarq0")
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_5nakh")

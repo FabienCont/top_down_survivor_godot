@@ -1,17 +1,17 @@
 extends Node2D
 
 @onready var spawner :SpawnerComponent = $SpawnerComponent
-@onready var playerNode: CharacterBody2D = $Player
+@onready var playerNode: Player = $Player
 var gameClock: GameClock 
 
 func _ready():
 	Signals.level_loaded.emit()
 	Signals.player_died.connect(_level_failed)
 	
-func init(game_clock_init: GameClock,player_init:Player):
+func init(game_clock_init: GameClock,player_init:PlayerInfo):
 	spawner.gameClock = game_clock_init
 	spawner.start_spawn()
-	playerNode.init(player_init)
+	playerNode.init_player(player_init)
 	
 func _level_failed():
 	Engine.time_scale = 0.5

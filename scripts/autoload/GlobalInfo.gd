@@ -5,7 +5,7 @@ extends Node
 @onready var character_selection: PackedScene  = preload("res://menu/character_selection.tscn")
 @onready var weapon_selection: PackedScene  = preload("res://menu/weapon_selection.tscn")
 
-@onready var player: Player= Player.new()
+@onready var player_info:= PlayerInfo.new()
 
 var weapon: WeaponInfo
 

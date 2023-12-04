@@ -21,12 +21,13 @@ func _update_display_xp(display_xp):
 		value = (display_xp/max_xp_value)*100
 	return display_xp
 
-func update_stats(player: Player)->void:
-	var stats=player.stats
-	var xp = stats.get_current_stat(stats_const.names.xp) 
-	var xp_before_next_level = stats.get_current_stat(stats_const.names.xp_before_next_level)
-	set_xp(xp.value)
-	set_max_xp(xp_before_next_level.value)
+func update_stats(player_info: PlayerInfo)->void:
+	var stats=player_info.stats_controller
+	var xp = stats.get_current_stat(StatsConstEntity.names.xp) 
+	var xp_before_next_level = stats.get_current_stat(StatsConstEntity.names.xp_before_next_level)
+	var xp_last_level = stats.get_current_stat(StatsConstEntity.names.xp_last_level)
+	set_xp(xp.value - xp_last_level.value)
+	set_max_xp(xp_before_next_level.value - xp_last_level.value)
 	
 func set_xp(xp):
 	var current_xp_value = xp_value

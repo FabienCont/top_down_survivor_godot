@@ -20,7 +20,7 @@ func _ready() -> void:
 	Signals.start_pause_menu.connect(show_pause_menu)
 	Signals.end_pause_menu.connect(hide_pause_menu)
 	Signals.player_died.connect(_level_failed)
-	game_world.init(gameClock,GlobalInfo.player)
+	game_world.init(gameClock,GlobalInfo.player_info)
 
 func _process(delta: float) -> void:
 	if is_paused == false:
@@ -44,10 +44,10 @@ func play_game() -> void:
 	game_world.process_mode = PROCESS_MODE_INHERIT
 	clock.process_mode = PROCESS_MODE_INHERIT
 	
-func start_level_up(player: Player) -> void:
+func start_level_up(player_info: PlayerInfo) -> void:
 	level_up_in_queue=level_up_in_queue+1
 	if level_up_in_queue == 1:
-		level_up_menu.player = player
+		level_up_menu.player_info = player_info
 		level_up_menu.show()
 		pause_game()
 

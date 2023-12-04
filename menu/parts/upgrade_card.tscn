@@ -1,15 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://wdxa2j7nh7xa"]
+[gd_scene load_steps=6 format=3 uid="uid://wdxa2j7nh7xa"]
 
 [ext_resource type="Script" path="res://scripts/ui/upgrade_card.gd" id="1_iywr0"]
+[ext_resource type="Script" path="res://scripts/resources/stats/StatModifier.gd" id="2_t0ol5"]
+[ext_resource type="Script" path="res://scripts/resources/Upgrade.gd" id="2_yihc5"]
+
+[sub_resource type="Resource" id="Resource_hlofw"]
+script = ExtResource("2_t0ol5")
+type = 1
+target = 0
+key = 10
+value = 2.0
+duration = -1.0
+apply_to_base = false
+
+[sub_resource type="Resource" id="Resource_xwr1e"]
+resource_local_to_scene = true
+script = ExtResource("2_yihc5")
+label = "attack speed upgrade"
+modifiers = Array[ExtResource("2_t0ol5")]([SubResource("Resource_hlofw")])
+effect = Array[Resource("res://scripts/resources/effects/EffectResource.gd")]([])
 
 [node name="BoxContainer" type="BoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_iywr0")
+upgrade = SubResource("Resource_xwr1e")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "test"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dfylc5aq0hio7"]
+
+[ext_resource type="Script" path="res://scripts/resources/items/Item.gd" id="1_dlypq"]
+[ext_resource type="Texture2D" uid="uid://dgejsaj4j11nj" path="res://assets/collectables/xp.png" id="2_ko2gu"]
+[ext_resource type="Resource" uid="uid://hhhl64c6b7lm" path="res://scripts/resources/upgrades/consomable/bonus_xp_consommable.tres" id="3_xn67y"]
+
+[resource]
+script = ExtResource("1_dlypq")
+name = "xp"
+upgrades = Array[Resource("res://scripts/resources/Upgrade.gd")]([ExtResource("3_xn67y")])
+texture = ExtResource("2_ko2gu")

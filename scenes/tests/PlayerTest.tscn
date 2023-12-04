@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpfcaan4t7cxv"]
+
+[ext_resource type="Script" path="res://scenes/tests/initPlayer.gd" id="1_fe56f"]
+[ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="1_kctfk"]
+[ext_resource type="Resource" uid="uid://v876g6v6jvxf" path="res://scripts/resources/stats/custom/players/player_test.tres" id="2_al83r"]
+
+[node name="PlayerTest" type="Node2D" node_paths=PackedStringArray("player_char")]
+script = ExtResource("1_fe56f")
+player_char = NodePath("Player")
+player_info = ExtResource("2_al83r")
+
+[node name="Player" parent="." instance=ExtResource("1_kctfk")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelAcc" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "acc"
+
+[node name="SpinBoxAcc" type="SpinBox" parent="HBoxContainer"]
+layout_mode = 2
+max_value = 10000.0
+
+[node name="LabelSpeed" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "speed"
+
+[node name="SpinBoxSpeed" type="SpinBox" parent="HBoxContainer"]
+layout_mode = 2
+max_value = 10000.0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2

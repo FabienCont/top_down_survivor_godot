@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://byp8uqm5r4pe8"]
+
+[ext_resource type="Texture2D" uid="uid://dcwt4ubmtj2fi" path="res://assets/kenney_particle_pack/smoke_05.png" id="1_sylje"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u3cqj"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 1000.0
+tangential_accel_max = 17.65
+angle_max = 720.0
+color = Color(0.886275, 0.886275, 0.886275, 0.301961)
+turbulence_enabled = true
+
+[node name="Smoke" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_u3cqj")
+texture = ExtResource("1_sylje")
+lifetime = 0.5

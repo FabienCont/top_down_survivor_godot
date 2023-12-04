@@ -1,15 +1,13 @@
 extends Area2D
 class_name CollectorComponent
 
-signal new_element_interact(element: Area2D)
-
 @onready var collectables= {}
 @onready var collision_shape_2D: CollisionShape2D= $CollisionShape2D
 @onready var circle: CircleShape2D = collision_shape_2D.shape
-var collector_distance :Stat
+var collector_distance :StatModel
 
-func init(stats_init: StatsController):
-	collector_distance= stats_init.get_current_stat(stats_const.names.collector_distance)
+func init(collector_distance_init: StatModel):
+	collector_distance= collector_distance_init
 	collector_distance.update_value.connect(_set_collector_size)
 	_set_collector_size(collector_distance.value)
 

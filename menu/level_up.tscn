@@ -1,38 +1,55 @@
-[gd_scene load_steps=17 format=3 uid="uid://bro3t3by1jnrm"]
+[gd_scene load_steps=19 format=3 uid="uid://bro3t3by1jnrm"]
 
+[ext_resource type="Resource" uid="uid://c2gwwcygg2ak4" path="res://scripts/resources/upgrades/permanent/damage_upgrade.tres" id="2_effar"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_vojex"]
+[ext_resource type="Resource" uid="uid://obe5l26ay5g" path="res://scripts/resources/upgrades/permanent/movement_speed_upgrade.tres" id="3_btfi4"]
 [ext_resource type="FontFile" uid="uid://km688hu4km4d" path="res://assets/fonts/Kenney Future.ttf" id="3_pe2jf"]
-[ext_resource type="Resource" uid="uid://cj744lcdgecvm" path="res://scripts/resources/upgrades/attack_speed_upgrade.tres" id="4_mfr3b"]
 [ext_resource type="PackedScene" uid="uid://wdxa2j7nh7xa" path="res://menu/parts/upgrade_card.tscn" id="4_si1v4"]
-[ext_resource type="Resource" uid="uid://c2gwwcygg2ak4" path="res://scripts/resources/upgrades/damage_upgrade.tres" id="5_xfcuf"]
-[ext_resource type="Resource" uid="uid://obe5l26ay5g" path="res://scripts/resources/upgrades/movement_speed_upgrade.tres" id="6_4x1qp"]
-[ext_resource type="Resource" uid="uid://dvae472wej2pp" path="res://scripts/resources/upgrades/xp_mutiplicator_upgrade.tres" id="7_rn60e"]
+[ext_resource type="Script" path="res://scripts/resources/stats/StatModifier.gd" id="4_v6u71"]
+[ext_resource type="Script" path="res://scripts/resources/Upgrade.gd" id="5_gtx27"]
 
 [sub_resource type="GDScript" id="GDScript_8krql"]
 script/source = "extends Control
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
-var player: Player
+var player_info: PlayerInfo
 
-@export var buttons: Array[Node]
+@export var upgrade_boxes: Array[Node]
+var possible_upgrades: Array[Upgrade]
 
+var dir_path = \"res://scripts/resources/upgrades/permanent/\"
 func _ready() -> void :
-	for button in buttons:
+	for file_path in DirAccess.get_files_at(\"res://scripts/resources/upgrades/permanent/\"): 
+		if file_path.get_extension() == \"tres\":  
+			possible_upgrades.append( load(dir_path+file_path) )
+	for button in upgrade_boxes:
 		button.connect(\"select_upgrade\",finish_level_up)
 	
 func _on_visibility_changed() -> void:
 	if animationPlayer != null:
 		if visible == true :
-			randomize_upgrade()
+			randomize_all_upgrade()
+			upgrade_boxes[0].grab_focus()
 			animationPlayer.play(\"show_menu\")
 		else : 
 			animationPlayer.play(\"hide_menu\")
 
-func randomize_upgrade():
+func get_one_random_upgrade():
+	var index = randi() % possible_upgrades.size()
+	return possible_upgrades[index]
+
+func randomize_all_upgrade():
+	var new_upgrade_array = []
+	for new_upgrade_index in range(0,upgrade_boxes.size()):
+		var new_upgrade = get_one_random_upgrade()
+		while new_upgrade_array.has(new_upgrade):
+			new_upgrade = get_one_random_upgrade()
+		new_upgrade_array.append(new_upgrade)
+		upgrade_boxes[new_upgrade_index].upgrade = new_upgrade
 	pass
 
 func finish_level_up(upgrade: Upgrade):
-	Signals.upgrade_selected.emit(player,upgrade)
+	Signals.upgrade_selected.emit(player_info,upgrade)
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q31fs"]
@@ -58,6 +75,22 @@ font = ExtResource("3_pe2jf")
 font_size = 32
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_41sed"]
+
+[sub_resource type="Resource" id="Resource_hlofw"]
+script = ExtResource("4_v6u71")
+type = 1
+target = 0
+key = 10
+value = 2.0
+duration = -1.0
+apply_to_base = false
+
+[sub_resource type="Resource" id="Resource_0bqt5"]
+resource_local_to_scene = true
+script = ExtResource("5_gtx27")
+label = "attack speed upgrade"
+modifiers = Array[ExtResource("4_v6u71")]([SubResource("Resource_hlofw")])
+effect = Array[Resource("res://scripts/resources/effects/EffectResource.gd")]([])
 
 [sub_resource type="Animation" id="Animation_mhkem"]
 length = 0.001
@@ -185,7 +218,7 @@ _data = {
 "show_menu": SubResource("Animation_xa3k2")
 }
 
-[node name="level_up_menu" type="Control" node_paths=PackedStringArray("buttons")]
+[node name="level_up_menu" type="Control" node_paths=PackedStringArray("upgrade_boxes")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -193,7 +226,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_8krql")
-buttons = [NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer2"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer3"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer/BoxContainer4")]
+upgrade_boxes = [NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/BoxContainer"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/BoxContainer2"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/BoxContainer3")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_q31fs")
@@ -256,26 +289,20 @@ layout_mode = 2
 theme_override_constants/separation = 8
 theme_override_styles/separator = SubResource("StyleBoxEmpty_41sed")
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-columns = 2
 
-[node name="BoxContainer" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("4_si1v4")]
+[node name="BoxContainer" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_si1v4")]
 layout_mode = 2
-upgrade = ExtResource("4_mfr3b")
+upgrade = SubResource("Resource_0bqt5")
 
-[node name="BoxContainer2" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("4_si1v4")]
+[node name="BoxContainer2" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_si1v4")]
 layout_mode = 2
-upgrade = ExtResource("5_xfcuf")
+upgrade = ExtResource("2_effar")
 
-[node name="BoxContainer3" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("4_si1v4")]
+[node name="BoxContainer3" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_si1v4")]
 layout_mode = 2
-upgrade = ExtResource("6_4x1qp")
-
-[node name="BoxContainer4" parent="ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("4_si1v4")]
-layout_mode = 2
-upgrade = ExtResource("7_rn60e")
+upgrade = ExtResource("3_btfi4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

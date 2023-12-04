@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dplxlt53j8hdv"]
+[gd_scene load_steps=60 format=3 uid="uid://dplxlt53j8hdv"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_n2noc"]
 [ext_resource type="Texture2D" uid="uid://bvyyig7etabsi" path="res://assets/tilesets/forestPack/Forest Cliff.png" id="2_u6ouw"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://d1jhi4ub2v33k" path="res://assets/tilesets/forestPack/Trees.png" id="5_aqxsy"]
 [ext_resource type="Texture2D" uid="uid://qhtiy7higs8x" path="res://assets/tilesets/forestPack/Water Tileset.png" id="6_ighmq"]
 [ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="7_6kc33"]
+[ext_resource type="PackedScene" uid="uid://cd2p3p4u7n0pc" path="res://scenes/particles/Smoke2.tscn" id="7_oc0w4"]
 [ext_resource type="PackedScene" uid="uid://d3vdr5j6nw03q" path="res://scenes/cameras/shakeable_camera.tscn" id="8_bwqk4"]
+[ext_resource type="Resource" uid="uid://cfij4qrx1jjjs" path="res://scripts/resources/stats/custom/players/player_init.tres" id="9_anerk"]
 [ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/characters/Ennemy.tscn" id="9_o8hkd"]
 [ext_resource type="PackedScene" uid="uid://dmms2cbu3dral" path="res://components/SpawnerComponent.tscn" id="10_ahxam"]
 
@@ -4232,7 +4234,7 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 
 [sub_resource type="Gradient" id="Gradient_ilal7"]
-colors = PackedColorArray(5.77569e-07, 0.474031, 0.771208, 1, 3.08037e-06, 0.806049, 0.969742, 1)
+colors = PackedColorArray(0.484646, 0.761899, 0.999999, 0.537255, 3.08037e-06, 0.806049, 0.969742, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kwjv6"]
 gradient = SubResource("Gradient_ilal7")
@@ -4376,13 +4378,17 @@ position = Vector2(189, 174)
 radius = 4.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(-12, -13)
 navigation_polygon = SubResource("NavigationPolygon_jgli1")
 constrain_avoidance = true
 
+[node name="Smoke" parent="." instance=ExtResource("7_oc0w4")]
+visible = false
+position = Vector2(316, 167)
+
 [node name="Player" parent="." instance=ExtResource("7_6kc33")]
 position = Vector2(319, 65)
+player_info = ExtResource("9_anerk")
 
 [node name="PointLight2DSprite" type="PointLight2D" parent="Player"]
 light_mask = 2
@@ -4421,8 +4427,8 @@ y_sort_enabled = true
 
 [node name="SpawnerComponent" parent="." node_paths=PackedStringArray("node_to_spawn", "player") instance=ExtResource("10_ahxam")]
 ready_to_spawn = true
-interval_time_to_spawn = 1.5
-nb_to_spawn = 30
+interval_time_to_spawn = 2.5
+nb_to_spawn = 5
 node_to_spawn = NodePath("../ennemies")
 scene_to_spawn = ExtResource("9_o8hkd")
 player = NodePath("../Player")

@@ -1,49 +1,53 @@
 extends Node2D
 class_name Ammo
 
-@onready var velocityComponent :VelocityComponent = $VelocityComponent 
+@onready var velocity_component :VelocityComponent = $VelocityComponent 
 @onready var sprite :Node2D
-@onready var hitboxComponent :HitboxComponent = $HitboxComponent 
-@onready var stats: StatsController
+@onready var hitbox_component :HitboxComponent = $HitboxComponent 
+@onready var stats_controller: StatsControllerAmmo
 @onready var ammo_info: AmmoInfo
+@onready var upgrades_controller: UpgradesController
 
-var init_position: Vector2
-var pierce: Stat
-var range: Stat
+@onready var init_position: Vector2
+var pierce_stat: StatModel
+var range_stat: StatModel
 var ennemy_pierced := 0 
+@onready var direction = Vector2(1,0)
 
-func init(stats_init:StatsController, ammo_info_init:AmmoInfo) -> void:
-	stats = stats_init
+func init(ammo_info_init: AmmoInfo,upgrades_controller_init: UpgradesController) -> void:
 	ammo_info = ammo_info_init
+	stats_controller = ammo_info.stats_controller
+	upgrades_controller = upgrades_controller_init
+	stats_controller.set_upgrades_controller(upgrades_controller_init)
+	stats_controller.init()
 	sprite = ammo_info.sprite.instantiate()
-	init_position = global_position
 	add_child(sprite)
-	pierce = stats.get_current_stat(stats_const.names.pierce)
-	range = stats.get_current_stat(stats_const.names.range)
+	pierce_stat = stats_controller.get_current_stat(StatsConstAmmo.names.pierce)
+	range_stat = stats_controller.get_current_stat(StatsConstAmmo.names.range)
 	#var child = sprite.get_child(0)
 	#if child !=null && child is AnimationPlayer:
 	#	child.play("Idle")
 	
 func _ready() -> void:
 	top_level=true
+	init_position = Vector2(global_position)
+	direction = direction.rotated(global_rotation)
+	velocity_component.update_velocity(direction * 7)
 
 func get_range_value() -> float:
-	if range != null:
-		return range.value
+	if range_stat != null:
+		return range_stat.value
 	return 500.0
 func get_pierce_value() -> float:
-	if pierce != null:
-		return pierce.value
+	if pierce_stat != null:
+		return pierce_stat.value
 	return 3
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if init_position.distance_to(global_position) > get_range_value():
 		destroy()
-	var direction = Vector2(1,0)
-	direction = direction.rotated(global_rotation)
-	velocityComponent.accelerate_in_direction(direction,delta)
-	velocityComponent.move_node(self)
-	
+	velocity_component.move_node(self)
+
 func destroy():
 	queue_free()
 	

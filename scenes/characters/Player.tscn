@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccxqh4klu5i7k"]
+[gd_scene load_steps=18 format=3 uid="uid://ccxqh4klu5i7k"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_w40en"]
 [ext_resource type="Script" path="res://scripts/resources/effects/hurt/DisplayDamagedHurtEffect.gd" id="2_482ux"]
 [ext_resource type="Script" path="res://scripts/resources/effects/hurt/ShakeHurtEffect.gd" id="3_fbq1n"]
 [ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://components/HealthComponent.tscn" id="3_gpfp0"]
 [ext_resource type="PackedScene" uid="uid://v7vtestyxfk5" path="res://components/controllers/TopDownControllerComponent.tscn" id="4_0sh1l"]
-[ext_resource type="Resource" uid="uid://cfij4qrx1jjjs" path="res://scripts/resources/stats/custom/players/player_init.tres" id="4_71rqo"]
+[ext_resource type="Script" path="res://scripts/resources/effects/hurt/BlinkHurtEffect.gd" id="4_060cq"]
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="5_8s84f"]
 [ext_resource type="PackedScene" uid="uid://bjbu22y0n4s4r" path="res://components/ui/LifebarComponent.tscn" id="6_eg5dl"]
 [ext_resource type="PackedScene" uid="uid://tj3s2aqp4cp5" path="res://assets/characters/heroes/character.ase" id="7_5ua4u"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cu0uhllltwptd" path="res://components/CollectorComponent.tscn" id="11_pbgdl"]
 [ext_resource type="PackedScene" uid="uid://55jfcor21akc" path="res://components/physics/InteractionComponent.tscn" id="12_4w2xi"]
 [ext_resource type="PackedScene" uid="uid://c43c8vrwakpf7" path="res://components/WeaponSlotComponent.tscn" id="13_iykla"]
+[ext_resource type="PackedScene" uid="uid://duv6rauvtfokg" path="res://scenes/ui/prepare_attack_ui_component.tscn" id="14_iyi61"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yog7p"]
 radius = 4.0
@@ -26,11 +27,9 @@ radius = 130.04
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
-position = Vector2(61, 69)
 collision_layer = 4
 script = ExtResource("1_w40en")
-hurt_effects = Array[Resource]([ExtResource("2_482ux"), ExtResource("3_fbq1n")])
-player = ExtResource("4_71rqo")
+hurt_effects = Array[Resource]([ExtResource("2_482ux"), ExtResource("3_fbq1n"), ExtResource("4_060cq")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_gpfp0")]
 
@@ -43,7 +42,7 @@ velocityComponent = NodePath("../VelocityComponent")
 position = Vector2(0, 14)
 healthComponent = NodePath("../HealthComponent")
 
-[node name="character" parent="." instance=ExtResource("7_5ua4u")]
+[node name="SpriteComponent" parent="." instance=ExtResource("7_5ua4u")]
 scale = Vector2(0.5, 0.5)
 autoplay = "default"
 frame_progress = 0.334671
@@ -65,6 +64,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent"]
 shape = SubResource("CircleShape2D_h3p46")
+
+[node name="PrepareAttackUIComponent" parent="." instance=ExtResource("14_iyi61")]
+tint_progress = Color(0.921569, 0.0627451, 0, 0.764706)
 
 [node name="WeaponSlotComponent" parent="." instance=ExtResource("13_iykla")]
 

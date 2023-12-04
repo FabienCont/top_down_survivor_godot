@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=3 format=3 uid="uid://dvae472wej2pp"]
+
+[ext_resource type="Resource" uid="uid://d4dn2s5ntd8t2" path="res://scripts/resources/stats/modifiers/xp_multiplicator.tres" id="1_vpl60"]
+[ext_resource type="Script" path="res://scripts/resources/Upgrade.gd" id="2_wvotk"]
+
+[resource]
+script = ExtResource("2_wvotk")
+label = "xp multiplier upgrade"
+modifiers = Array[Resource("res://scripts/resources/stats/StatModifier.gd")]([ExtResource("1_vpl60")])
+effect = Array[Resource("res://scripts/resources/effects/EffectResource.gd")]([])

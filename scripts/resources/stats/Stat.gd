@@ -1,16 +1,15 @@
 @tool
 extends Resource
 
-class_name Stat
+class_name StatModel
 
 signal update_value(new_value: float)
 signal update_base_value(new_value: float)
 
 @export var auto_compute: bool = true
-@export var key: stats_const.names:
+@export var key: int:
 	set(updated_value):
 		key = updated_value
-		_name = stats_const.get_string(key)
 		notify_property_list_changed()
 
 @export var base_value: float:

@@ -4,24 +4,20 @@ class_name VelocityComponent
 
 @export var rotation_speed := 2.0
 @export var MAX_SPEED := 100.0
-@export var SPEED_FACTOR := 30.0
-@export var ACCELERATION_FACTOR := 30.0
+@export var SPEED_FACTOR := 10.0
+@export var ACCELERATION_FACTOR := 10.0
 @export var FRICTION := 10.0
 @onready var current_velocity:= Vector2()
-@onready var last_velocity:= Vector2()
-@onready var movement_speed: Stat
-@onready var acceleration: Stat
+@onready var movement_speed: StatModel
+@onready var acceleration: StatModel
 
-var stats: StatsController
-
-func init(stats_init: StatsController):
-	stats = stats_init
-	movement_speed = stats.get_current_stat(stats_const.names.movement_speed)
-	acceleration = stats.get_current_stat(stats_const.names.acceleration)
+func init(movement_speed_init: StatModel,acceleration_init: StatModel):
+	movement_speed = movement_speed_init
+	acceleration = acceleration_init
 	movement_speed.update_value.connect(_set_speed_factor)
 	acceleration.update_value.connect(_set_acceleration_factor)
-	_set_acceleration_factor(movement_speed.value)
-	_set_speed_factor(acceleration.value)
+	_set_acceleration_factor(acceleration.value)
+	_set_speed_factor(movement_speed.value)
 	
 func _set_acceleration_factor(value: float):
 	ACCELERATION_FACTOR = value
@@ -40,13 +36,11 @@ func move(characterBody2D : CharacterBody2D):
 	characterBody2D.move_and_slide()
 
 func accelerate_in_direction(direction: Vector2, delta:float):
-	last_velocity= direction * SPEED_FACTOR
 	accelerate_to_velocity(direction * SPEED_FACTOR ,delta)
 
 func decelerate(delta:float):
-	#accelerate_to_velocity(Vector2.ZERO,delta * FRICTION)
 	current_velocity *= 1 - (delta * FRICTION)
+	
 func accelerate_to_velocity(velocity: Vector2,delta:float):
-	#velocity=current_velocity.slerp(velocity,delta*3.0)
 	current_velocity = current_velocity.move_toward(velocity,delta * ACCELERATION_FACTOR)
 

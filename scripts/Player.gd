@@ -1,101 +1,150 @@
-extends CharacterBody2D
+extends Entity
 
-@onready var controllerComponent: TopDownControllerComponent = $TopDownControllerComponent
-@onready var velocityComponent: VelocityComponent = $VelocityComponent
-@onready var interactionComponent: InteractionComponent = $InteractionComponent
-@onready var weaponSlotComponent: WeaponSlotComponent = $WeaponSlotComponent
-@onready var healthComponent: HealthComponent = $HealthComponent
-@onready var lifebarComponent: LifebarComponent = $LifebarComponent
-@onready var collectorComponent: CollectorComponent = $CollectorComponent
-@onready var sprite :AnimatedSprite2D  = $character
-@export var auto_attack :bool  = false
-@export var hurt_effects: Array[Resource]
-@export var look_at_target: Node2D
-@export var player: Player = Player.new()
+class_name Player
+
+@onready var controller_component: TopDownControllerComponent = $TopDownControllerComponent
+@onready var interaction_component: InteractionComponent = $InteractionComponent
+@onready var weapon_slot_component: WeaponSlotComponent = $WeaponSlotComponent
+@onready var lifebar_component: LifebarComponent = $LifebarComponent
+@onready var collector_component: CollectorComponent = $CollectorComponent
+@onready var prepare_attack_ui_component:TextureProgressBar = $PrepareAttackUIComponent
+
+@export var player_info: PlayerInfo = PlayerInfo.new()
+
+@onready var attack_speed_stat: StatModel
+
 @onready var is_attacking := false
+@onready var attack_ready := false
+
+@onready var is_dashing := false
+@onready var dash_shadow_count:=0
+@onready var dash_timer:=Timer.new()
+@onready var dash_ready:=true
+@onready var dash_cooldown:= 2.0
 
 
-func init(player_init :Player) -> void:
-	var stats: StatsController = player.stats.duplicate(true)
-	stats.init()
-	player = player_init
-	player.stats = stats
-	collectorComponent.init(player.stats)
-	healthComponent.init(player.stats)
-	lifebarComponent.init(player.stats)
-	var newSprite = player.character.sprite.instantiate()
-	newSprite.scale = Vector2(0.5,0.5)
-	sprite.replace_by(newSprite)
-	sprite = newSprite
-	weaponSlotComponent.init(player.stats,player.weapon_info,player.effects)
-	velocityComponent.init(player.stats)
+func init_player(player_info_init :PlayerInfo) -> void:
+	init(player_info.stats_controller,player_info.upgrades_controller)
+	player_info = player_info_init
+	player_info.stats_controller = stats_controller
+	player_info.upgrades_controller = upgrades_controller
+	var collector_distance= stats_controller.get_current_stat(StatsConstEntity.names.collector_distance)
+	collector_component.init(collector_distance)
+	var max_life_stat = player_info.stats_controller.get_current_stat(StatsConstEntity.names.max_life)
+	lifebar_component.init(life_stat,max_life_stat)
+	set_sprite(player_info.character.sprite.instantiate())
+	weapon_slot_component.init(player_info.weapon_info,player_info.upgrades_controller)
+	weapon_slot_component.attack_has_end.connect(end_attack)
+	weapon_slot_component.attack_ready.connect(start_attack)
+	attack_speed_stat = player_info.stats_controller.get_current_stat(StatsConstEntity.names.attack_speed)
+	dash_timer.timeout.connect(refresh_dash)
+	add_child(dash_timer)
+
+func set_sprite(new_sprite):
+	new_sprite.scale = Vector2(0.5,0.5)
+	sprite.replace_by(new_sprite)
+	sprite = new_sprite
 	
 func _physics_process(delta: float) -> void:
-	if _is_dead() == true:
+	if has_die() == true:
 		sprite.play("Idle")
 		return
-	velocityComponent.update_velocity(velocity)
-	controllerComponent.updateControl(delta)
-	velocityComponent.move(self)
-	if controllerComponent.has_move() : 
+	if is_dashing == true:
+		update_dash(delta)
+		return 
+	velocity_component.update_velocity(velocity)
+	controller_component.updateControl(delta)
+	velocity_component.move(self)
+	if controller_component.has_move() : 
 		SoundManager.playFootstepSound()
 		sprite.play("Walk")
-		if velocityComponent.current_velocity.x < 0 :
+		if velocity_component.current_velocity.x < 0 :
 			sprite.flip_h = true
 		else: 
 			sprite.flip_h = false 
 	else:
 		sprite.play("Idle")
 	
-	weaponSlotComponent.look_at(controllerComponent.get_look_direction()) 
-	if controllerComponent.has_dash() == true :
+	weapon_slot_component.look_at(global_position + controller_component.get_look_direction()) 
+	if controller_component.has_dash() == true && can_dash():
 		dash(delta)
-		
-	if controllerComponent.has_attack() == true:
+	
+	if controller_component.has_prepare_attack() == true : 
+		prepare_attack()
+	if controller_component.has_attack() == true:
 		start_attack()
-		
+
+func get_current_direction() -> Vector2:
+	return controller_component.get_current_direction()
+	
 func hurt(attack :Attack):
 	SoundManager.playImpactSound()
-	var force = attack.attack_position - global_position
-	velocityComponent.accelerate_in_direction(force * attack.knockback_force,0.1)
+	var direction = (global_position - attack.attack_position).normalized()
+	velocity_component.accelerate_in_direction(direction * attack.knockback_force,0.1)
 	for hurt_effect in hurt_effects:
 		hurt_effect.trigger_effect(self,attack)
 
-func dash(delta):
-	var direction = controllerComponent.get_current_direction()
-	var dash_velocity = Vector2(direction.x * 10000,direction.y * 10000)
-	print("velocity",velocity)
-	velocity = velocity.move_toward(dash_velocity,delta)
-	print("velocity",velocity)
-	move_and_slide()
-	#velocityComponent.accelerate_in_direction(direction, delta * 500)
-	#velocityComponent.move(self)
+func refresh_dash() -> void:
+	dash_ready=true
+	
+func end_dash()->void:
+	velocity_component.update_velocity(Vector2.ZERO )
+	is_dashing = false
+	dash_timer.start(dash_cooldown)
+	
+func create_ghost(_delta:float) -> void:
+	DashGhostHelper.create_ghost(self,sprite)
+
+func can_dash() -> bool:
+	return is_dashing == false && is_attacking == false && dash_ready == true
+
+func update_dash(delta: float) -> void:
+	if(dash_shadow_count%2==0):
+		create_ghost(delta)
+	dash_shadow_count+=1
+	velocity_component.move(self)
+	
+func dash(_delta:float)->void:
+	dash_shadow_count=0
+	is_dashing = true
+	dash_ready=false
+	var direction = controller_component.get_current_direction()
+	velocity_component.update_velocity(direction * 165 )
+	velocity_component.move(self)
+	var timer = Timer.new()
+	timer.one_shot=true
+	timer.timeout.connect(end_dash)
+	add_child(timer)
+	timer.start(0.165)
+
+
+func prepare_attack():
+	if has_die() != true && is_attacking == false:
+		var time = weapon_slot_component.prepare_attack(attack_speed_stat.value)
+		#prepareAttackUIComponent.show()
+		prepare_attack_ui_component.start(time)
 	
 func start_attack():
-	if _is_dead() != true && is_attacking == false:
+	if has_die() != true && is_attacking == false:
 		is_attacking = true
-		weaponSlotComponent.start_attack()
+		weapon_slot_component.start_attack(attack_speed_stat.value)
+		prepare_attack_ui_component.end()
 	
 func end_attack():
+	prepare_attack_ui_component.end()
 	is_attacking = false
-		
-func _is_dead() -> bool: 
-	return player.stats.get_current_stat(stats_const.names.life).value <= 0.0
 
 func die():
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(self,"scale",Vector2(1.0,0.5),0.2).from_current()
-	controllerComponent.disable = true
+	controller_component.disable = true
 	Signals.player_died.emit()
-	weaponSlotComponent.unequip()
+	weapon_slot_component.unequip()
 
-func collect(item : Loot):
-	if _is_dead():
+func collect(loot : Loot):
+	if has_die():
 		return
 	SoundManager.playLootSound()
-	var stats = player.stats
-	player.stats.add_modifiers(item.modifiers)
-	Signals.stats_update.emit(player)
-
-func _on_interaction_component_collectables_new_element_interact(body_shape_node) -> void:
-	body_shape_node.target = self
+	for upgrade in loot.item.upgrades:
+		upgrades_controller.add_upgrade(upgrade)
+	Signals.stats_update.emit(player_info)
