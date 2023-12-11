@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Player" load_steps=5 format=3 uid="uid://v876g6v6jvxf"]
+[gd_resource type="Resource" script_class="PlayerInfo" load_steps=5 format=3 uid="uid://v876g6v6jvxf"]
 
 [ext_resource type="Resource" uid="uid://ddas3s5kko2hj" path="res://scripts/resources/characters/ninja.tres" id="1_6f3pt"]
 [ext_resource type="Script" path="res://scripts/resources/PlayerInfo.gd" id="1_d0ltf"]
@@ -7,6 +7,6 @@
 
 [resource]
 script = ExtResource("1_d0ltf")
-stats = ExtResource("3_0ga32")
+stats_controller = ExtResource("3_0ga32")
 weapon_info = ExtResource("4_d0yh0")
 character = ExtResource("1_6f3pt")

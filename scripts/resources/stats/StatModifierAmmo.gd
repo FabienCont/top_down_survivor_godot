@@ -6,7 +6,7 @@ class_name StatModifierAmmo
 	set(value_key_selector):
 		key = int(value_key_selector)
 	get:
-		return key
+		return key as StatsConstAmmo.names
 
 func _init():
 	target = StatTarget.names.AMMO 

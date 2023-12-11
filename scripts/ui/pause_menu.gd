@@ -8,7 +8,13 @@ var player: Player
 func _on_visibility_changed() -> void:
 	if animationPlayer != null:
 		if visible == true :
-			buttons[0].grab_focus()
+			if buttons.size() > 0 :
+				buttons[0].grab_focus()
 			animationPlayer.play("show_menu")
-		else : 
+			if not Engine.is_editor_hint():
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else :
 			animationPlayer.play("hide_menu")
+			if not Engine.is_editor_hint(): 
+				Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+			

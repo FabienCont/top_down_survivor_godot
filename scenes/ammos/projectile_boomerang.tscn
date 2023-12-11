@@ -22,3 +22,4 @@ shape = SubResource("RectangleShape2D_4file")
 
 [connection signal="body_shape_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_shape_entered"]
 [connection signal="hit" from="HitboxComponent" to="." method="_on_hitbox_component_hit"]
+[connection signal="hit_terrain" from="HitboxComponent" to="." method="_on_hitbox_component_hit_terrain"]

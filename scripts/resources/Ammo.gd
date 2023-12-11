@@ -13,8 +13,10 @@ var pierce_stat: StatModel
 var range_stat: StatModel
 var ennemy_pierced := 0 
 @onready var direction = Vector2(1,0)
+@onready var collision_layer: int
+@onready var collision_mask: int
 
-func init(ammo_info_init: AmmoInfo,upgrades_controller_init: UpgradesController) -> void:
+func init(collision_layer_init: int,collision_mask_init: int,ammo_info_init: AmmoInfo,upgrades_controller_init: UpgradesController) -> void:
 	ammo_info = ammo_info_init
 	stats_controller = ammo_info.stats_controller
 	upgrades_controller = upgrades_controller_init
@@ -24,16 +26,21 @@ func init(ammo_info_init: AmmoInfo,upgrades_controller_init: UpgradesController)
 	add_child(sprite)
 	pierce_stat = stats_controller.get_current_stat(StatsConstAmmo.names.pierce)
 	range_stat = stats_controller.get_current_stat(StatsConstAmmo.names.range)
-	#var child = sprite.get_child(0)
-	#if child !=null && child is AnimationPlayer:
-	#	child.play("Idle")
+	collision_layer = collision_layer_init
+	collision_mask = collision_mask_init
+
+func clone() -> Node:
+	var node = self.duplicate()	
+	node.init(collision_layer,collision_mask,ammo_info,upgrades_controller)
+	return node
 	
 func _ready() -> void:
 	top_level=true
 	init_position = Vector2(global_position)
 	direction = direction.rotated(global_rotation)
-	velocity_component.update_velocity(direction * 7)
-
+	hitbox_component.collision_layer = collision_layer
+	hitbox_component.collision_mask = collision_mask
+	
 func get_range_value() -> float:
 	if range_stat != null:
 		return range_stat.value
@@ -55,3 +62,6 @@ func _on_hitbox_component_hit(_attack: Attack) -> void:
 	ennemy_pierced += 1 
 	if ennemy_pierced >= get_pierce_value():
 		destroy()
+		
+func _on_hitbox_component_hit_terrain() -> void:
+	destroy()

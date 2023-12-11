@@ -11,6 +11,7 @@ key = 10
 value = 2.0
 duration = -1.0
 apply_to_base = false
+applied = false
 
 [resource]
 resource_local_to_scene = true

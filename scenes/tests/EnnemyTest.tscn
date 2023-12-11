@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4uxfpyb68wl8"]
+
+[ext_resource type="Script" path="res://scenes/tests/EnnemyTest.gd" id="1_fcf8t"]
+[ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/characters/Ennemy.tscn" id="2_f2svw"]
+[ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="3_dc8bk"]
+[ext_resource type="Resource" uid="uid://v876g6v6jvxf" path="res://scripts/resources/stats/custom/players/player_test.tres" id="4_yk84b"]
+
+[node name="EnnemyTest" type="Node2D"]
+script = ExtResource("1_fcf8t")
+
+[node name="Ennemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_f2svw")]
+position = Vector2(39, 28)
+target = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("3_dc8bk")]
+position = Vector2(145, 79)
+player_info = ExtResource("4_yk84b")
+die_effects = Array[Resource]([])

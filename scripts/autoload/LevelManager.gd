@@ -3,13 +3,16 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.stats_update.connect(update_stats)
-	Signals.upgrade_selected.connect(apply_upgrade)
+	Signals.item_selected.connect(add_item)
 	
 func update_stats(player_info: PlayerInfo)->void:
 	update_level(player_info)
 	
-func apply_upgrade(player_info:PlayerInfo, upgrade: Upgrade)->void:
-	player_info.upgrades_controller.add_upgrade(upgrade)
+func add_item(player_info:PlayerInfo, item: Item)->void:
+	player_info.inventory_controller.add_item(item)
+	Signals.inventory_update.emit(player_info)
+	for upgrade in item.upgrades:
+		player_info.upgrades_controller.add_upgrade(upgrade)
 	Signals.end_level_up.emit()
 
 func apply_modifier() -> void:

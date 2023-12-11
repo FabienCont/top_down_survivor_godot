@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnbimhgsukuj5"
-path="res://.godot/imported/32x32-bat-sprite.png-ad766f5f3cc696a90e9ccfe4d70e71a6.ctex"
+uid="uid://c135fp0ow7p6e"
+path="res://.godot/imported/xp_multiplier.aseprite-e66dac4e7b19f3fec3c32cb3bcdba70c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/ennemies/32x32-bat-sprite.png"
-dest_files=["res://.godot/imported/32x32-bat-sprite.png-ad766f5f3cc696a90e9ccfe4d70e71a6.ctex"]
+source_file="res://assets/items/xp_multiplier.aseprite"
+dest_files=["res://.godot/imported/xp_multiplier.aseprite-e66dac4e7b19f3fec3c32cb3bcdba70c.ctex"]
 
 [params]
 

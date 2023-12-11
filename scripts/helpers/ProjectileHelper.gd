@@ -16,8 +16,8 @@ static func multiply_projectile2D(node: Node2D,copy_number: float,rotation_betwe
 		new_node.add_child(copy_and_rotate(node,offset + (rotation_between_node * i) ))
 	return new_node
 
-static func copy_node(node):
-	return node.duplicate()
+static func copy_node(node: Node):
+	return node.clone()
 	
 static func rotate_node2D(node: Node2D,rotation_deg):
 	var radian = deg_to_rad(rotation_deg) 

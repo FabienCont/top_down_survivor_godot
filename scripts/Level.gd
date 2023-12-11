@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var spawner :SpawnerComponent = $SpawnerComponent
+@onready var spawner :EnnemiesSpawner = $EnnemiesSpawner
 @onready var playerNode: Player = $Player
 var gameClock: GameClock 
 
@@ -9,8 +9,7 @@ func _ready():
 	Signals.player_died.connect(_level_failed)
 	
 func init(game_clock_init: GameClock,player_init:PlayerInfo):
-	spawner.gameClock = game_clock_init
-	spawner.start_spawn()
+	spawner.init(game_clock_init)
 	playerNode.init_player(player_init)
 	
 func _level_failed():

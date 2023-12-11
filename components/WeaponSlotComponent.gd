@@ -1,13 +1,17 @@
 extends Node2D
 class_name WeaponSlotComponent
 
+@export_flags_2d_physics var collision_layer: int
+@export_flags_2d_physics var collision_mask: int
 @export var weapon_equiped: Weapon;
 var stats_controller:StatsControllerWeapon
 var upgrades_controller:UpgradesController
 var weapon_info:WeaponInfo
 
 signal attack_has_end()
+signal attack_in_preparation(time :float)
 signal attack_ready()
+signal attack_started()
 signal hit(attack :Attack)
 
 func init(weapon_info_init: WeaponInfo,upgrades_controller_init:UpgradesController) -> void:
@@ -39,21 +43,29 @@ func has_weapon_equiped()-> bool:
 	
 func equip(weapon: Weapon)-> void:
 	weapon_equiped = weapon
-	weapon_equiped.init(weapon_info,upgrades_controller)
+	weapon_equiped.init(collision_layer,collision_mask,weapon_info,upgrades_controller)
 	add_child(weapon)
 	_listen_weapon_hit()
+
+func is_attack_ready() -> bool:
+	if has_weapon_equiped() :
+		return weapon_equiped.is_attack_ready
+	return false
 
 func unequip()-> void:
 	remove_child(weapon_equiped)
 
 func prepare_attack(attack_speed_value: float)->float:
 	if has_weapon_equiped() :
-		return weapon_equiped.prepare_attack(attack_speed_value)
+		var time = weapon_equiped.prepare_attack(attack_speed_value)
+		attack_in_preparation.emit(time)
+		return time
 	return 0.0
 	
 func start_attack(attack_speed_value: float)->void:
 	if has_weapon_equiped() :
 		weapon_equiped.start_attack(attack_speed_value)
+		attack_started.emit()
 
 func end_attack()-> void:
 	if has_weapon_equiped():

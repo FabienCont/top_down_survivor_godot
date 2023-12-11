@@ -6,6 +6,7 @@ signal update_character
 signal update_weapon_info
 signal update_stats
 
+@export var inventory_controller :InventoryController = InventoryController.new()
 @export var upgrades_controller :UpgradesController = UpgradesController.new()
 @export var stats_controller :StatsControllerEntity = StatsControllerEntity.new():
 	set(updated_value):

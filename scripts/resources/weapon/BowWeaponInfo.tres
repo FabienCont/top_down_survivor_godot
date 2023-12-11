@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://cakah4i35acti" path="res://scenes/weapons/distantWeapon.tscn" id="2_xy1sg"]
 [ext_resource type="Script" path="res://scripts/resources/weapon/WeaponInfo.gd" id="3_2btrx"]
 [ext_resource type="PackedScene" uid="uid://cgxhvomq3ma5" path="res://assets/weapons/bow/bow.ase" id="4_4jgdd"]
-[ext_resource type="Resource" uid="uid://cmtb62welopr0" path="res://scripts/resources/stats/custom/weapons/distant_weapon_stats_controller.tres" id="5_g168c"]
+[ext_resource type="Resource" uid="uid://c010ixwdutw5n" path="res://scripts/resources/stats/custom/weapons/distant_weapon_controller_stats.tres" id="5_6k73x"]
 
 [resource]
 script = ExtResource("3_2btrx")
 sprite = ExtResource("4_4jgdd")
 name = "bow"
 scene = ExtResource("2_xy1sg")
-stats_controller = ExtResource("5_g168c")
+stats_controller = ExtResource("5_6k73x")
 ammo_info = ExtResource("1_erh65")

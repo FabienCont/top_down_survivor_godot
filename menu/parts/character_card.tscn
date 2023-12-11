@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://clfpk1k2qm6jc"]
+[gd_scene load_steps=8 format=3 uid="uid://clfpk1k2qm6jc"]
 
 [ext_resource type="Script" path="res://scripts/ui/character_card.gd" id="1_fs75v"]
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_redr1"]
+[ext_resource type="FontFile" uid="uid://cfeacx607idqf" path="res://assets/fonts/Kenney Mini Square Mono.ttf" id="3_aoawo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2ukg"]
 bg_color = Color(0.2835, 0.308475, 0.45, 1)
@@ -74,6 +75,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Button/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_aoawo")
 text = "Unkown"
 horizontal_alignment = 1
 

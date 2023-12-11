@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://clgdf5xwbg4ou"]
+[gd_scene load_steps=12 format=3 uid="uid://clgdf5xwbg4ou"]
 
 [ext_resource type="Script" path="res://scripts/MainLevelScript.gd" id="1_ejer5"]
 [ext_resource type="PackedScene" uid="uid://dplxlt53j8hdv" path="res://scenes/levels/garden_level_world.tscn" id="1_hxhco"]
 [ext_resource type="FontFile" uid="uid://b2loyxgplpufc" path="res://assets/fonts/Kenney Pixel.ttf" id="3_lq60j"]
+[ext_resource type="PackedScene" uid="uid://dtiln4yicio08" path="res://scenes/ui/InventoryUI.tscn" id="3_oc8j7"]
 [ext_resource type="PackedScene" uid="uid://dm6lldv3stkxc" path="res://scenes/ui/Clock_UI.tscn" id="3_rovd1"]
 [ext_resource type="PackedScene" uid="uid://dl4wydgodskm4" path="res://menu/pause.tscn" id="3_wup1e"]
 [ext_resource type="Script" path="res://scripts/ui/PlayerLevelLabel.gd" id="4_gafl3"]
@@ -95,6 +96,23 @@ script = ExtResource("4_gafl3")
 [node name="Timer" parent="SubViewportContainerUI/SubViewport2/VBoxContainerUI" instance=ExtResource("3_rovd1")]
 texture_filter = 1
 layout_mode = 2
+
+[node name="SubViewportContainerUI2" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport2" type="SubViewport" parent="SubViewportContainerUI2"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="InventoryUI" parent="SubViewportContainerUI2/SubViewport2" instance=ExtResource("3_oc8j7")]
 
 [node name="level_up" parent="." instance=ExtResource("7_a6oid")]
 visible = false

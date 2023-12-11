@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/resources/stats/StatEntity.gd" id="2_3gsqa"]
 [ext_resource type="Script" path="res://scripts/resources/upgrades/UpgradesController.gd" id="3_vdtx1"]
 
-[sub_resource type="Resource" id="Resource_bqr8v"]
+[sub_resource type="Resource" id="Resource_hcxyl"]
 script = ExtResource("2_3gsqa")
 key_selector = 0
 auto_compute = true
@@ -89,7 +89,7 @@ script = ExtResource("2_3gsqa")
 key_selector = 12
 auto_compute = false
 key = 12
-base_value = 2.0
+base_value = 6.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_g2hmh"]
@@ -108,7 +108,7 @@ upgrades = Array[Resource("res://scripts/resources/Upgrade.gd")]([])
 script = ExtResource("1_m416k")
 stat_to_remove_from_editor = 0
 _remove_stat = false
-stat_to_add_from_editor = SubResource("Resource_bqr8v")
+stat_to_add_from_editor = SubResource("Resource_hcxyl")
 _add_stat = false
 stats_dico = {
 0: SubResource("Resource_0rwwo"),

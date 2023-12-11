@@ -8,6 +8,7 @@ signal entity_died(entity: Entity)
 
 signal stats_update_ui(player_info: PlayerInfo)
 signal stats_update_node(player_info: PlayerInfo)
+signal inventory_update(player_info: PlayerInfo)
 
 signal start_level_up(player_info:PlayerInfo)
 signal end_level_up()
@@ -15,4 +16,4 @@ signal end_level_up()
 signal start_pause_menu()
 signal end_pause_menu()
 
-signal upgrade_selected(player_info:PlayerInfo ,upgrade:Upgrade)
+signal item_selected(player_info:PlayerInfo ,upgrade:Upgrade)

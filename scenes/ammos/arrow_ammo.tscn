@@ -1,24 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://cff0uke6eevpb"]
 
-[ext_resource type="Script" path="res://scripts/ammos/arrow.gd" id="1_x5eks"]
-[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="3_jh1pg"]
-[ext_resource type="Script" path="res://components/physics/HitboxComponent.gd" id="4_gq8mv"]
+[ext_resource type="Script" path="res://scripts/ammos/arrow.gd" id="1_8lm57"]
+[ext_resource type="Script" path="res://components/physics/HitboxComponent.gd" id="2_1bj7j"]
+[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="3_w806k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4file"]
 size = Vector2(10, 3)
 
 [node name="arrow" type="Node2D"]
-script = ExtResource("1_x5eks")
+script = ExtResource("1_8lm57")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 2
-script = ExtResource("4_gq8mv")
+script = ExtResource("2_1bj7j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_4file")
 
-[node name="VelocityComponent" parent="." instance=ExtResource("3_jh1pg")]
+[node name="VelocityComponent" parent="." instance=ExtResource("3_w806k")]
 
 [connection signal="body_shape_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_shape_entered"]
 [connection signal="hit" from="HitboxComponent" to="." method="_on_hitbox_component_hit"]
+[connection signal="hit_terrain" from="HitboxComponent" to="." method="_on_hitbox_component_hit_terrain"]

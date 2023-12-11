@@ -4,7 +4,7 @@ extends Resource
 class_name StatsControllerModel
 
 @export_category("add_stat")
-@export var stat_to_add_from_editor: StatModel = _get_stat_class().new()
+@export var stat_to_add_from_editor: StatModel
 @export var _add_stat:=false : 
 	set(value):
 		if(value == true):
@@ -18,9 +18,12 @@ class_name StatsControllerModel
 @export var target: StatTarget.names:  
 	set(value):
 		target=value
-		stat_to_add_from_editor= _get_stat_class().new()
+		if Engine.is_editor_hint():
+			stat_to_add_from_editor= _get_stat_class().new()
 
-@export var upgrades_controller = UpgradesController.new()
+@export var upgrades_controller:UpgradesController
+
+signal stat_updated
 
 func _get_stat_class() :
 	if target == StatTarget.names.ENTITY:
@@ -61,6 +64,7 @@ func duplicate_dico(dict)-> Dictionary:
 	
 func init()-> void:
 	if Engine.is_editor_hint():
+		stat_to_add_from_editor= _get_stat_class().new()
 		return
 	var old_dico = duplicate_dico(stats_dico)
 	stats_dico = duplicate_dico(stats_dico)
@@ -108,6 +112,7 @@ func add_modifiers(modifiers_to_add: Array[StatModifier]) -> void :
 			_compute_base_modifier(modifier)
 		else :
 			_add_modifier(modifier)
+	
 	for key in keys_to_recompute:
 		compute_stat(key)
 
@@ -131,15 +136,19 @@ func _remove_modifier(modifier: StatModifier) -> void:
 
 func set_upgrades_controller(upgrades_controller_init: UpgradesController) -> void : 
 	upgrades_controller=upgrades_controller_init
-	upgrades_controller.upgrade_added.connect(_add_upgrade)
-	upgrades_controller.upgrade_removed.connect(_remove_upgrade)
+	if not upgrades_controller.upgrade_added.is_connected(_add_upgrade):
+		upgrades_controller.upgrade_added.connect(_add_upgrade)
+	if not upgrades_controller.upgrade_consummed.is_connected(_add_upgrade):
+		upgrades_controller.upgrade_consummed.connect(_add_upgrade)
+	if not upgrades_controller.upgrade_removed.is_connected(_remove_upgrade):
+		upgrades_controller.upgrade_removed.connect(_remove_upgrade)
 
 func _remove_upgrade(upgrade: Upgrade) -> void:
 	remove_modifiers(upgrade.modifiers)
 	
 func _add_upgrade(upgrade: Upgrade) -> void:
 	add_modifiers(upgrade.modifiers)
-	
+
 func _update_modifiers() -> void :
 	modifiers = []
 	for upgrade in upgrades_controller.upgrades:
@@ -150,11 +159,11 @@ func _compute_all_stats() -> void :
 		compute_stat(key)
 
 func compute_stat(key) -> void:
+	
 	if not stats_dico.has(key):
 		return
 	var stat = stats_dico[key]
 	var computed_value = stat.base_value
-	
 	for modifier in modifiers:
 		if modifier.key != key:
 			continue
@@ -163,3 +172,4 @@ func compute_stat(key) -> void:
 		else:
 			computed_value = computed_value * modifier.value
 	stat.value = computed_value
+	stat_updated.emit(stat)

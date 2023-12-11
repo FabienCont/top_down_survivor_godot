@@ -9,3 +9,4 @@ script = ExtResource("1_dlypq")
 name = "xp"
 upgrades = Array[Resource("res://scripts/resources/Upgrade.gd")]([ExtResource("3_xn67y")])
 texture = ExtResource("2_ko2gu")
+is_consumable = true

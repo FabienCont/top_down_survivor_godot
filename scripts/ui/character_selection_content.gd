@@ -1,13 +1,16 @@
 extends Control
 
-@onready var player_info: PlayerInfo
+@export var player_info: PlayerInfo
 @onready var buttonCancel: Button = $VBoxContainer/HBoxContainer3/ButtonCancel
 @onready var buttonValidate: Button = $VBoxContainer/HBoxContainer3/ButtonValidate
 @onready var characters_container: Control = $VBoxContainer/CharacterContainer
 @onready var characters_button_group = ButtonGroup.new()
 
 func _ready():
-	player_info = PlayerInfo.new()
+	if(player_info == null):
+		player_info = PlayerInfo.new()
+	else:
+		player_info= player_info.duplicate(true)
 	var characters_cards = characters_container.get_children()
 	characters_cards[0].get_child(0).grab_focus()
 	for container in characters_cards as Array[Button]:
