@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AmmoInfo" load_steps=5 format=3 uid="uid://bhjdkj8c7safb"]
+
+[ext_resource type="PackedScene" uid="uid://c483byuwk5qu6" path="res://scenes/ammos/fireball_ammo.tscn" id="1_0n3bf"]
+[ext_resource type="Script" path="res://scripts/resources/ammo/AmmoInfo.gd" id="2_k7d1c"]
+[ext_resource type="PackedScene" uid="uid://cft3h0d5df2yk" path="res://assets/ammos/fireball.ase" id="3_b6bob"]
+[ext_resource type="Resource" uid="uid://drxfhg6ke0d7x" path="res://scripts/resources/stats/custom/ammos/ammo_stat_contoller.tres" id="4_pkm05"]
+
+[resource]
+script = ExtResource("2_k7d1c")
+sprite = ExtResource("3_b6bob")
+name = "fireball"
+scene = ExtResource("1_0n3bf")
+stats_controller = ExtResource("4_pkm05")

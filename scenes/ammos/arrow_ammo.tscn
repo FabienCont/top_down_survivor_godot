@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cff0uke6eevpb"]
 
-[ext_resource type="Script" path="res://scripts/ammos/arrow.gd" id="1_8lm57"]
+[ext_resource type="Script" path="res://scripts/ammos/arrow_ammo.gd" id="1_7inbw"]
 [ext_resource type="Script" path="res://components/physics/HitboxComponent.gd" id="2_1bj7j"]
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="3_w806k"]
 
@@ -8,7 +8,7 @@
 size = Vector2(10, 3)
 
 [node name="arrow" type="Node2D"]
-script = ExtResource("1_8lm57")
+script = ExtResource("1_7inbw")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 script = ExtResource("2_1bj7j")

@@ -13,8 +13,11 @@ func set_node_to_follow(node:Node2D):
 	
 func get_current_direction():
 	return direction 
-	
+
+func update_look_at_direction(node:Node2D):
+	direction = (target.global_position-node.global_position ).normalized()
+
 func follow_target(node: Node2D,delta: float):
 	if target != null && velocity_component != null:
-		direction = (target.global_position-node.global_position ).normalized()
+		update_look_at_direction(node)
 		velocity_component.accelerate_in_direction(direction,delta)

@@ -34,7 +34,7 @@ func finish_attack_prepare(_arg):
 	if animation_player.animation_finished.is_connected(finish_attack_prepare):
 		animation_player.animation_finished.disconnect(finish_attack_prepare)
 	
-func attack(_arg):
+func attack(_ar):
 	if animation_player.animation_finished.is_connected(attack):
 		animation_player.animation_finished.disconnect(attack)
 	if not animation_player.animation_finished.is_connected(end_attack):

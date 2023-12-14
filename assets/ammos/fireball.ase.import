@@ -2,20 +2,20 @@
 
 importer="Aseprite AnimatedSprite2D"
 type="PackedScene"
-uid="uid://drw4b234pubs4"
-path="res://.godot/imported/32x32-eye-sprite-work-2.aseprite-bcdccc1aa6e38c90af711ae93f4c87fd.scn"
+uid="uid://cft3h0d5df2yk"
+path="res://.godot/imported/fireball.ase-e7f75ae1b3fda33835f9f67b9488ebd8.scn"
 
 [deps]
 
-source_file="res://assets/characters/ennemies/32x32-eye-sprite-work-2.aseprite"
-dest_files=["res://.godot/imported/32x32-eye-sprite-work-2.aseprite-bcdccc1aa6e38c90af711ae93f4c87fd.scn"]
+source_file="res://assets/ammos/fireball.ase"
+dest_files=["res://.godot/imported/fireball.ase-e7f75ae1b3fda33835f9f67b9488ebd8.scn"]
 
 [params]
 
 animation/default/name="default"
 animation/default/direction=0
 animation/default/repeat_count=0
-animation/autoplay_name=""
+animation/autoplay_name="Idle"
 atlas_textures/region_filter_clip_enabled=false
 root_node_name=""
 middle_import_script=""

@@ -2,7 +2,6 @@ extends Node
 class_name SpawnerComponent
 
 @export var scene_preparation_function :Callable
- 
 @export var ready_to_spawn: bool = false
 @export var interval_time_to_spawn: float = 2.0
 @export var nb_to_spawn: int = 1

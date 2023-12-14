@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c483byuwk5qu6"]
+
+[ext_resource type="Script" path="res://scripts/ammos/fireball_ammo.gd" id="1_2w3wv"]
+[ext_resource type="Script" path="res://components/physics/HitboxComponent.gd" id="2_xkjh3"]
+[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="3_nnexm"]
+[ext_resource type="Script" path="res://components/FollowTargetComponent.gd" id="4_ywqrx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4file"]
+size = Vector2(10, 3)
+
+[node name="fireball_ammo" type="Node2D"]
+script = ExtResource("1_2w3wv")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("2_xkjh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_4file")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("3_nnexm")]
+
+[node name="FollowTargetComponent" type="Node" parent="." node_paths=PackedStringArray("velocity_component")]
+script = ExtResource("4_ywqrx")
+velocity_component = NodePath("../VelocityComponent")
+
+[connection signal="body_shape_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_shape_entered"]
+[connection signal="hit" from="HitboxComponent" to="." method="_on_hitbox_component_hit"]
+[connection signal="hit_terrain" from="HitboxComponent" to="." method="_on_hitbox_component_hit_terrain"]

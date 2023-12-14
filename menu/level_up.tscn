@@ -1,79 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bro3t3by1jnrm"]
 
+[ext_resource type="Script" path="res://scripts/level_up.gd" id="1_4xrlr"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_vojex"]
 [ext_resource type="FontFile" uid="uid://km688hu4km4d" path="res://assets/fonts/Kenney Future.ttf" id="3_pe2jf"]
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="4_2fm32"]
 [ext_resource type="PackedScene" uid="uid://wdxa2j7nh7xa" path="res://menu/parts/item_card.tscn" id="4_si1v4"]
-
-[sub_resource type="GDScript" id="GDScript_8krql"]
-script/source = "extends Control
-
-@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
-var player_info: PlayerInfo
-
-@export var items_boxes: Array[ItemBoxDescription]
-@export var validate_button: Button 
-var possible_items: Array[Item]
-var possible_upgrades: Array[Upgrade]
-var selected_item:Item
-
-var dir_path_upgrades = \"res://scripts/resources/upgrades/permanent/\"
-var dir_path_items = \"res://scripts/resources/items/permanent/\"
-var resource_extension=\"tres\"
-
-func _ready() -> void :
-	for file_path in DirAccess.get_files_at(dir_path_upgrades): 
-		if file_path.get_extension() == resource_extension:  
-			possible_upgrades.append( load(dir_path_upgrades+file_path) )
-	for file_path in DirAccess.get_files_at(dir_path_items): 
-		if file_path.get_extension() == resource_extension:  
-			possible_items.append( load(dir_path_items+file_path) )
-	
-	for button in items_boxes:
-		button.select_item.connect(select_item)
-	validate_button.pressed.connect(finish_level_up)
-func _on_visibility_changed() -> void:
-	if animationPlayer != null:
-		if visible == true :
-			validate_button.disabled=true
-			selected_item=null
-			randomize_all_items()
-			items_boxes[0].get_child(0).grab_focus()
-			animationPlayer.play(\"show_menu\")
-			if not Engine.is_editor_hint():
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else :
-			animationPlayer.play(\"hide_menu\") 
-			if not Engine.is_editor_hint():
-				Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-
-func get_one_random_item():
-	var index = randi() % possible_items.size()
-	return possible_items[index]
-
-func get_one_random_upgrade():
-	var index = randi() % possible_upgrades.size()
-	return possible_upgrades[index]
-
-func randomize_all_items():
-	var new_item_array = []
-	for new_item_index in range(0,items_boxes.size()):
-		var new_item = get_one_random_item()
-		while new_item_array.has(new_item):
-			new_item = get_one_random_item()
-		new_item_array.append(new_item)
-		items_boxes[new_item_index].item = new_item
-	pass
-
-func select_item(item:Item):
-	validate_button.disabled=false
-	selected_item = item
-	
-func finish_level_up():
-	if selected_item != null :
-		Signals.item_selected.emit(player_info,selected_item)
-	
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q31fs"]
 shader = ExtResource("2_vojex")
@@ -232,7 +163,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_8krql")
+script = ExtResource("1_4xrlr")
 items_boxes = [NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/BoxContainer"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/BoxContainer2"), NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/BoxContainer3")]
 validate_button = NodePath("ColorRect/CenterContainer/Panel/MarginContainer/VBoxContainer/ButtonValidate")
 

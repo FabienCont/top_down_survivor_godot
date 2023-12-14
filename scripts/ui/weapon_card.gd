@@ -13,7 +13,7 @@ func _ready() -> void:
 	var weapon_sprite: Sprite2D = weapon_info.sprite.instantiate()
 	var animation_player= weapon_sprite.get_child(0)
 	sprite_container.add_child(weapon_sprite)	
-	animation_player.play("Shoot")
+	animation_player.play("Attack")
 	weapon_sprite.scale = Vector2(1,1)
 	
 func _on_button_pressed() -> void:

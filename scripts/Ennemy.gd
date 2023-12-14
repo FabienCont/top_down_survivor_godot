@@ -10,9 +10,10 @@ class_name Ennemy
 
 var attack_ability_scene = preload("res://scenes/abilities/AttackAbility.gd")
 var attack_ability:Ability
+@onready var distance_before_attack = 25.0
 
-func _ready() -> void:
-	init(stats_controller,upgrades_controller)
+func init(stats_controller:StatsControllerEntity,upgrades_controller:UpgradesController) -> void:
+	super(stats_controller,upgrades_controller)
 	if target != null :
 		followTargetComponent.set_node_to_follow(target)
 	weapon_slot_component.init(weapon_info.duplicate(true),upgrades_controller)
@@ -22,7 +23,9 @@ func _ready() -> void:
 func _process(delta: float) -> void :
 	if (has_die() == false):
 		sprite.play("Move")
-		if global_position.distance_to(followTargetComponent.target.global_position)< 25 && attack_ability.is_executing == false :
+		if global_position.distance_to(followTargetComponent.target.global_position)< distance_before_attack && attack_ability.is_executing == false :
+			followTargetComponent.update_look_at_direction(self)
+			weapon_slot_component.look_at(global_position + followTargetComponent.get_current_direction()) 
 			attack_ability.execute(delta)
 			pass
 		elif (attack_ability.is_executing == false ):

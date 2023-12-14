@@ -33,8 +33,9 @@ SoundManager="*res://scenes/autoload/SoundManager.tscn"
 
 [display]
 
-window/size/mode=3
+window/size/mode=4
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [editor_plugins]
 

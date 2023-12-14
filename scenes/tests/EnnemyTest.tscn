@@ -15,4 +15,3 @@ target = NodePath("../Player")
 [node name="Player" parent="." instance=ExtResource("3_dc8bk")]
 position = Vector2(145, 79)
 player_info = ExtResource("4_yk84b")
-die_effects = Array[Resource]([])

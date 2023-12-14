@@ -26,7 +26,7 @@ func start_attack(attack_speed_value: float):
 
 func prepare_attack(attack_speed_value: float) -> float:
 	animation_player.speed_scale = attack_speed_value
-	animation_player.play("prepareShot")
+	animation_player.play("PrepareAttack")
 	if not animation_player.animation_finished.is_connected(finish_attack_prepare):
 		animation_player.animation_finished.connect(finish_attack_prepare)
 	return animation_player.current_animation_length / animation_player.speed_scale
@@ -50,7 +50,7 @@ func attack(_arg):
 		animation_player.animation_finished.disconnect(attack)
 	if not animation_player.animation_finished.is_connected(end_attack):
 		animation_player.animation_finished.connect(end_attack)
-	animation_player.play("Shoot")
+	animation_player.play("Attack")
 	SoundManager.playFireArrowSound()
 	var new_ammo = ammo_scene.duplicate()
 	new_ammo.init(collision_layer,collision_mask,ammo_info,upgrades_controller)

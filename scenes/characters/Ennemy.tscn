@@ -41,8 +41,6 @@ SPEED_FACTOR = 35.0
 [node name="HitboxComponent" parent="." instance=ExtResource("3_fwp5m")]
 collision_layer = 8
 collision_mask = 4
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_jaqne")
@@ -56,7 +54,6 @@ health_component = NodePath("../HealthComponent")
 
 [node name="SpriteComponent" parent="." instance=ExtResource("12_uwsxo")]
 scale = Vector2(0.5, 0.5)
-animation = &"Idle"
 
 [node name="FollowTargetComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("9_h7ic3")]
 velocity_component = NodePath("../VelocityComponent")
