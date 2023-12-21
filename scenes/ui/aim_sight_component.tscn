@@ -3,9 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://f2fwah3aehfg" path="res://assets/ui/aim_sight_128x128.aseprite" id="1_n1tjo"]
 [ext_resource type="Script" path="res://scenes/ui/AimSightComponent.gd" id="2_v56qu"]
 
-[node name="AimSightComponent" type="Sprite2D" node_paths=PackedStringArray("top_down_controller_component")]
+[node name="AimSightComponent" type="Sprite2D"]
 texture_filter = 3
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_n1tjo")
 script = ExtResource("2_v56qu")
-top_down_controller_component = NodePath("")

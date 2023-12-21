@@ -7,6 +7,7 @@ class_name Ammo
 @onready var stats_controller: StatsControllerAmmo
 @onready var ammo_info: AmmoInfo
 @onready var upgrades_controller: UpgradesController
+@onready var emiter
 
 @onready var init_position: Vector2
 var pierce_stat: StatModel
@@ -28,7 +29,7 @@ func init(collision_layer_init: int,collision_mask_init: int,ammo_info_init: Amm
 	range_stat = stats_controller.get_current_stat(StatsConstAmmo.names.range)
 	collision_layer = collision_layer_init
 	collision_mask = collision_mask_init
-
+	emiter = get_parent()
 func clone() -> Node:
 	var node = self.duplicate()	
 	node.init(collision_layer,collision_mask,ammo_info,upgrades_controller)
@@ -45,6 +46,7 @@ func get_range_value() -> float:
 	if range_stat != null:
 		return range_stat.value
 	return 500.0
+	
 func get_pierce_value() -> float:
 	if pierce_stat != null:
 		return pierce_stat.value

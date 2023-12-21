@@ -1,6 +1,7 @@
 extends Node
 
 signal level_loaded()
+signal player_ready(player: Player)
 signal player_died(player_info: PlayerInfo)
 signal stats_update(player_info: PlayerInfo)
 
@@ -12,6 +13,7 @@ signal inventory_update(player_info: PlayerInfo)
 
 signal start_level_up(player_info:PlayerInfo)
 signal end_level_up()
+signal boss_died()
 
 signal start_pause_menu()
 signal end_pause_menu()

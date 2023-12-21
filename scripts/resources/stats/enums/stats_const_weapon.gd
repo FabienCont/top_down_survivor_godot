@@ -5,6 +5,7 @@ enum names{
 	default=0,
 	nb_projectile=30,
 	rotation_between_projectiles=31,
+	knockback=32
 }
 
 static func get_string(name) -> String:

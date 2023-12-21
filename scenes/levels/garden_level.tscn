@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://clgdf5xwbg4ou"]
+[gd_scene load_steps=15 format=3 uid="uid://clgdf5xwbg4ou"]
 
 [ext_resource type="Script" path="res://scripts/MainLevelScript.gd" id="1_ejer5"]
 [ext_resource type="PackedScene" uid="uid://dplxlt53j8hdv" path="res://scenes/levels/garden_level_world.tscn" id="1_hxhco"]
@@ -8,8 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://dl4wydgodskm4" path="res://menu/pause.tscn" id="3_wup1e"]
 [ext_resource type="Script" path="res://scripts/ui/PlayerLevelLabel.gd" id="4_gafl3"]
 [ext_resource type="PackedScene" uid="uid://bro3t3by1jnrm" path="res://menu/level_up.tscn" id="7_a6oid"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://plugins/joystick/virtual_joystick.tscn" id="8_5sroo"]
+[ext_resource type="PackedScene" uid="uid://csab0cx1mscsl" path="res://scenes/ui/DashProgressUi.tscn" id="8_xjgae"]
 [ext_resource type="PackedScene" uid="uid://bp551tqyeagn4" path="res://menu/loose.tscn" id="9_lpxh0"]
 [ext_resource type="PackedScene" uid="uid://tdxsk34xdqnp" path="res://components/ui/XpBar.tscn" id="11_0cyd6"]
+[ext_resource type="PackedScene" uid="uid://bq8qat4xgu8bp" path="res://menu/win_menu.tscn" id="13_ne2g5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fy7kw"]
 font = ExtResource("3_lq60j")
@@ -114,6 +117,46 @@ render_target_update_mode = 4
 
 [node name="InventoryUI" parent="SubViewportContainerUI2/SubViewport2" instance=ExtResource("3_oc8j7")]
 
+[node name="DashReadyUI" parent="." instance=ExtResource("8_xjgae")]
+layout_mode = 0
+offset_left = 1104.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Virtual Joystick" parent="BoxContainer" instance=ExtResource("8_5sroo")]
+layout_mode = 2
+size_flags_horizontal = 3
+visibility_mode = 1
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
+
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Virtual Joystick2" parent="BoxContainer" instance=ExtResource("8_5sroo")]
+layout_mode = 2
+size_flags_horizontal = 3
+visibility_mode = 1
+action_left = "look_left"
+action_right = "look_right"
+action_up = "look_up"
+action_down = "look_down"
+
 [node name="level_up" parent="." instance=ExtResource("7_a6oid")]
 visible = false
 layout_mode = 1
@@ -124,4 +167,7 @@ layout_mode = 1
 
 [node name="loose_menu" parent="." instance=ExtResource("9_lpxh0")]
 visible = false
+layout_mode = 1
+
+[node name="win_menu" parent="." instance=ExtResource("13_ne2g5")]
 layout_mode = 1

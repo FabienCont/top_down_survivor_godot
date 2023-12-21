@@ -6,7 +6,9 @@ extends Control
 @onready var timer_display =$SubViewportContainerUI/SubViewport2/VBoxContainerUI/Timer
 @onready var pause_menu = $pause
 @onready var loose_menu = $loose_menu
+@onready var win_menu = $win_menu
 @onready var level_up_menu = $level_up
+@onready var dash_ready_ui = $DashReadyUI
 
 @onready var is_paused: bool = false
 @onready var level_up_in_queue: int = 0
@@ -19,7 +21,9 @@ func _ready() -> void:
 	Signals.end_level_up.connect(end_level_up)
 	Signals.start_pause_menu.connect(show_pause_menu)
 	Signals.end_pause_menu.connect(hide_pause_menu)
+	Signals.player_ready.emit(_set_ui_ability)
 	Signals.player_died.connect(_level_failed)
+	Signals.boss_died.connect(_level_succeed)
 	game_world.init(gameClock,GlobalInfo.player_info)
 
 func _process(delta: float) -> void:
@@ -51,8 +55,14 @@ func start_level_up(player_info: PlayerInfo) -> void:
 		level_up_menu.show()
 		pause_game()
 
+func _set_ui_ability(player:Player) -> void:
+	dash_ready_ui.init_ability(player.dash_ability)
+	
 func _level_failed() -> void:
 	loose_menu.show()
+
+func _level_succeed() -> void:
+	win_menu.show()
 	
 func end_level_up() -> void:
 	level_up_menu.hide()

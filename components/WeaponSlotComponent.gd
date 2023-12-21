@@ -43,7 +43,7 @@ func has_weapon_equiped()-> bool:
 	
 func equip(weapon: Weapon)-> void:
 	weapon_equiped = weapon
-	weapon_equiped.init(collision_layer,collision_mask,weapon_info,upgrades_controller)
+	weapon_equiped.init(collision_layer,collision_mask,weapon_info,upgrades_controller,get_parent())
 	add_child(weapon)
 	_listen_weapon_hit()
 

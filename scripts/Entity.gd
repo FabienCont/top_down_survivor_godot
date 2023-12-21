@@ -51,3 +51,8 @@ func has_die() -> bool:
 func die() -> void:
 	is_dead = true
 	Signals.entity_died.emit(self)
+
+func apply_attack_modifier(attack:Attack)->void:
+	var damage_stat = stats_controller.get_current_stat(StatsConstEntity.names.damage)
+	attack.damage += damage_stat.current_value 
+	pass

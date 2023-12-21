@@ -9,8 +9,8 @@ var rotation_between_projectiles_stat: StatWeapon
 var is_attack_ready = false
 var ammo_scene
 
-func init(collision_layer_init:int,collision_mask_init:int,weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController) -> void:
-	super(collision_layer_init,collision_mask_init,weapon_info_init,upgrades_controller_init)
+func init(collision_layer_init:int,collision_mask_init:int,weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController,emiter_init) -> void:
+	super(collision_layer_init,collision_mask_init,weapon_info_init,upgrades_controller_init,emiter_init)
 	ammo_info = weapon_info_init.ammo_info
 	nb_projectiles_stat = stats_controller.get_current_stat(StatsConstWeapon.names.nb_projectile)
 	rotation_between_projectiles_stat = stats_controller.get_current_stat(StatsConstWeapon.names.rotation_between_projectiles)

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EnnemiesSpawnRules" load_steps=2 format=3 uid="uid://cu0hg3dsmvshf"]
+
+[ext_resource type="Script" path="res://scripts/resources/spawn_infos/EnnemiesSpawnRules.gd" id="1_7j6qv"]
+
+[resource]
+script = ExtResource("1_7j6qv")
+ennemies_spawn_info = Array[Resource("res://scripts/resources/spawn_infos/EnnemySpawnInfo.gd")]([])

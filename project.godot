@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 
 [aseprite_importers]
 
-aseprite_executable_path="F:\\SteamLibrary\\steamapps\\common\\Aseprite\\Aseprite.exe"
+aseprite_executable_path="F:/install/steam/steamapps/common/Aseprite/Aseprite.exe"
 
 [autoload]
 
@@ -44,7 +44,7 @@ enabled=PackedStringArray("res://addons/nklbdev.importality/plugin.cfg")
 [importality]
 
 temporary_files_directory_path="F:/temp"
-aseprite_or_libre_sprite_command="F:/SteamLibrary/steamapps/common/Aseprite/Aseprite.exe"
+aseprite_or_libre_sprite_command="F:/install/steam/steamapps/common/Aseprite/Aseprite.exe"
 
 [input]
 

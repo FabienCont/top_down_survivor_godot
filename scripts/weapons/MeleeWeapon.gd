@@ -6,10 +6,10 @@ var ammo_info :AmmoInfo
 @export var hitbox_component :HitboxComponent
 var is_attack_ready = false
 
-func init(collision_layer_init:int,collision_mask_init:int,weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController) -> void:
+func init(collision_layer_init:int,collision_mask_init:int,weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController,emiter_init) -> void:
 	weapon_sprite = $Sprite2D
 	animation_player = $Sprite2D/AnimationPlayer
-	super.init(collision_layer_init,collision_mask_init,weapon_info_init,upgrades_controller_init)
+	super.init(collision_layer_init,collision_mask_init,weapon_info_init,upgrades_controller_init,emiter_init)
 	if hitbox_component is HitboxComponent:
 		hitbox_component.collision_layer = collision_layer
 		hitbox_component.collision_mask = collision_mask

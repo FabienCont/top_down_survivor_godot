@@ -94,7 +94,7 @@ texture = ExtResource("3_4autf")
 
 [node name="AnimationLoader" type="AnimationPlayer" parent="LoadingScreen/VBoxContainer"]
 root_node = NodePath("../..")
-autoplay = "loader_animation"
 libraries = {
 "": SubResource("AnimationLibrary_osxca")
 }
+autoplay = "loader_animation"

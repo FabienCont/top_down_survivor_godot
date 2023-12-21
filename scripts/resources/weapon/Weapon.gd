@@ -5,6 +5,7 @@ class_name Weapon
 @onready var animation_player:AnimationPlayer
 @onready var upgrades_controller:UpgradesController 
 @onready var stats_controller: StatsControllerWeapon
+@onready var emiter
 
 @onready var collision_layer: int
 @onready var collision_mask: int
@@ -13,7 +14,7 @@ signal attack_ready()
 signal attack_has_end()
 signal hit(attack:Attack)
 
-func init(collision_layer_init: int,collision_mask_init: int,weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController):
+func init(collision_layer_init: int,collision_mask_init: int,weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController,emiter_init:Node):
 	collision_layer = collision_layer_init
 	collision_mask = collision_mask_init
 	stats_controller = weapon_info_init.stats_controller
@@ -21,6 +22,7 @@ func init(collision_layer_init: int,collision_mask_init: int,weapon_info_init: W
 	stats_controller.set_upgrades_controller(upgrades_controller)
 	stats_controller.init()
 	weapon_info_init.stats_controller=stats_controller
+	emiter=emiter_init
 	if weapon_info_init.sprite:
 		weapon_sprite = weapon_info_init.sprite.instantiate()
 		animation_player = weapon_sprite.get_child(0)
@@ -56,3 +58,9 @@ func idle(_arg):
 	
 func damage(_hurtboxComponent :HurtboxComponent):
 	pass	
+
+func apply_attack_modifier(attack:Attack)->void:
+	var knockback_stat = stats_controller.get_current_stat(StatsConstWeapon.names.knockback)
+	attack.knockback += knockback_stat.current_value 
+	if emiter && emiter.has_method("apply_attack_modifier"):
+		emiter.apply_attack_modifier(attack)

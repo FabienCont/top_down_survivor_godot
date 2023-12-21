@@ -27,6 +27,6 @@ func execute(delta:float)->void:
 		init_timer_ability()
 	dash_shadow_count=0
 	var direction = possessor.get_current_direction()
-	possessor.velocity_component.update_velocity(direction * 165 )
+	possessor.velocity_component.update_velocity(direction * 180 )
 	possessor.velocity_component.move(possessor)
-	timer_ability.start(0.165)
+	timer_ability.start(0.180)

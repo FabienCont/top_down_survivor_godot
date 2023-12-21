@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="StatsControllerEntity" load_steps=15 format=3 uid="uid://cnc58o31w371e"]
+[gd_resource type="Resource" script_class="StatsControllerEntity" load_steps=16 format=3 uid="uid://cnc58o31w371e"]
 
 [ext_resource type="Script" path="res://scripts/resources/stats/StatsControllerEntity.gd" id="1_a44mj"]
 [ext_resource type="Script" path="res://scripts/resources/stats/StatEntity.gd" id="2_h3k54"]
 [ext_resource type="Script" path="res://scripts/resources/upgrades/UpgradesController.gd" id="3_4slec"]
 
-[sub_resource type="Resource" id="Resource_h2hfb"]
+[sub_resource type="Resource" id="Resource_rqfaf"]
 script = ExtResource("2_h3k54")
-key_selector = 0
+key_selector = 9
 auto_compute = true
-key = 0
+key = 9
 base_value = 0.0
 value = 0.0
 
@@ -84,15 +84,23 @@ key = 12
 base_value = 10.0
 value = 0.0
 
+[sub_resource type="Resource" id="Resource_n1x2f"]
+script = ExtResource("2_h3k54")
+key_selector = 9
+auto_compute = true
+key = 9
+base_value = 0.0
+value = 0.0
+
 [sub_resource type="Resource" id="Resource_divf1"]
 script = ExtResource("3_4slec")
 upgrades = Array[Resource("res://scripts/resources/Upgrade.gd")]([])
 
 [resource]
 script = ExtResource("1_a44mj")
-stat_to_remove_from_editor = 0
+stat_to_remove_from_editor = 9
 _remove_stat = false
-stat_to_add_from_editor = SubResource("Resource_h2hfb")
+stat_to_add_from_editor = SubResource("Resource_rqfaf")
 _add_stat = false
 stats_dico = {
 0: SubResource("Resource_edend"),
@@ -101,6 +109,7 @@ stats_dico = {
 4: SubResource("Resource_1iyto"),
 7: SubResource("Resource_pni5l"),
 8: SubResource("Resource_sq51o"),
+9: SubResource("Resource_n1x2f"),
 10: SubResource("Resource_qfm4m"),
 11: SubResource("Resource_j4rnb"),
 12: SubResource("Resource_fpsot")

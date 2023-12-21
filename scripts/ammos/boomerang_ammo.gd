@@ -26,3 +26,6 @@ func _process(delta: float) -> void:
 	follow_target_component.follow_target(self, delta)
 	rotate(20*delta)
 	velocity_component.move_node(self)
+
+func _on_hitbox_component_hit_terrain() -> void:
+	pass

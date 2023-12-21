@@ -5,15 +5,21 @@ signal hit(attack:Attack)
 signal hit_terrain()
 @onready var touched_ennemies= {}
 @onready var attack_can_hurt : bool = true
+@onready var emiter 
 	
 func damage(hurtboxComponent :HurtboxComponent):
 	var attack = Attack.new()
-	attack.attack_damage = 4
-	attack.knockback_force = 2
+	attack.attack_damage = 4.0
+	attack.knockback_force = 2.0
 	attack.attack_position = global_position
+	apply_emiter_attack_modifier(attack)
 	hurtboxComponent.damage(attack)
 	hit.emit(attack)
 	
+func apply_emiter_attack_modifier(attack:Attack):
+	if emiter && emiter.has_method("apply_attack_modifier"):
+		emiter.apply_attack_modifier(attack)
+
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index:int, _local_shape_index:int):
 	if body is TileMap:
 		hit_terrain.emit()

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnnemiesSpawnRules" load_steps=3 format=3 uid="uid://cx2jbyqkp1sot"]
+
+[ext_resource type="Resource" uid="uid://s430lecb7xq0" path="res://scripts/resources/spawn_infos/ennemy_spawn_info/bat_1.tres" id="1_vw2vu"]
+[ext_resource type="Script" path="res://scripts/resources/spawn_infos/EnnemiesSpawnRules.gd" id="2_qcs3m"]
+
+[resource]
+script = ExtResource("2_qcs3m")
+ennemies_spawn_info = Array[Resource("res://scripts/resources/spawn_infos/EnnemySpawnInfo.gd")]([ExtResource("1_vw2vu")])

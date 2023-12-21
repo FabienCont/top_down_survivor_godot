@@ -35,6 +35,7 @@ func init_player(player_info_init :PlayerInfo) -> void:
 	add_child(dash_ability)
 	add_child(attack_ability)
 	add_child(move_ability)
+	Signals.player_ready.emit(self)
 
 func _physics_process(delta: float) -> void:
 	if has_die() == true:
