@@ -1,12 +1,12 @@
 extends Label
 
-var gameClock :GameClock
+var game_clock :GameClock
 
 func _process(_delta: float) -> void:
 	_update_display_time()
 
 func _update_display_time() -> void :
-	var time = gameClock.time
+	var time = game_clock.time
 	var second = str(floor(fmod(time,60)))
 	var minutes = str(floor(time/60))
 	

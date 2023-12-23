@@ -12,11 +12,11 @@ extends Control
 
 @onready var is_paused: bool = false
 @onready var level_up_in_queue: int = 0
-@onready var gameClock = GameClock.new()
+@onready var game_clock = GameClock.new()
 
 func _ready() -> void:
-	gameClock.wave = 1
-	timer_display.gameClock = gameClock
+	game_clock.wave = 1
+	timer_display.game_clock = game_clock
 	Signals.start_level_up.connect(start_level_up)
 	Signals.end_level_up.connect(end_level_up)
 	Signals.start_pause_menu.connect(show_pause_menu)
@@ -24,13 +24,13 @@ func _ready() -> void:
 	Signals.player_ready.emit(_set_ui_ability)
 	Signals.player_died.connect(_level_failed)
 	Signals.boss_died.connect(_level_succeed)
-	game_world.init(gameClock,GlobalInfo.player_info)
+	game_world.init(game_clock,GlobalInfo.player_info)
 
 func _process(delta: float) -> void:
 	if is_paused == false:
-		gameClock.time = gameClock.time+ delta
-		if gameClock.time > gameClock.wave * 60 :
-			gameClock.wave = gameClock.wave + 1
+		game_clock.time = game_clock.time+ delta
+		if game_clock.time > game_clock.wave * 60 :
+			game_clock.wave = game_clock.wave + 1
 		
 	if Input.is_action_just_pressed("escape") && level_up_in_queue == 0:
 		if is_paused==true:

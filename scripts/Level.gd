@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var spawner :EnnemiesSpawner = $EnnemiesSpawner
 @onready var playerNode: Player = $Player
-var gameClock: GameClock 
+var game_clock: GameClock 
 
 func _ready():
 	Signals.level_loaded.emit()

@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("2_p6l42")
 ennemy_info = ExtResource("1_j1wwa")
-_probability = 1.0
+_probability = 10000.0
 difficulty = 1.0
 max_occurence = 1.0

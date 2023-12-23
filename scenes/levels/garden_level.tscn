@@ -170,4 +170,5 @@ visible = false
 layout_mode = 1
 
 [node name="win_menu" parent="." instance=ExtResource("13_ne2g5")]
+visible = false
 layout_mode = 1

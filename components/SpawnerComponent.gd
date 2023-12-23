@@ -12,7 +12,7 @@ class_name SpawnerComponent
 @export var group:String
 @export var randomPositionSpawn : bool = true
 
-@export var gameClock: GameClock 
+@export var game_clock: GameClock 
 @onready var nb_spawned = 0
 @onready var rnd: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 		_spawn_scene()
 
 func _await_spawn_time():
-	var factor = 1.0 / (gameClock.wave * 1.2)
+	var factor = 1.0 / (game_clock.wave * 1.2)
 	await get_tree().create_timer(interval_time_to_spawn * factor).timeout
 	ready_to_spawn=true
 

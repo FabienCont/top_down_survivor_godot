@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="EnnemiesSpawnRules" load_steps=3 format=3 uid="uid://traq1muxdl8m"]
+[gd_resource type="Resource" script_class="EnnemiesSpawnRules" load_steps=5 format=3 uid="uid://traq1muxdl8m"]
 
+[ext_resource type="Resource" uid="uid://b8eqxh4goqvo" path="res://scripts/resources/spawn_infos/ennemy_spawn_info/ghost_1.tres" id="1_pne6d"]
 [ext_resource type="Resource" uid="uid://s430lecb7xq0" path="res://scripts/resources/spawn_infos/ennemy_spawn_info/bat_1.tres" id="1_u54pt"]
 [ext_resource type="Script" path="res://scripts/resources/spawn_infos/EnnemiesSpawnRules.gd" id="2_u8knf"]
+[ext_resource type="Resource" uid="uid://ds11bggj0gni0" path="res://scripts/resources/spawn_infos/ennemy_spawn_info/eye_1.tres" id="2_wpxkv"]
 
 [resource]
 script = ExtResource("2_u8knf")
-ennemies_spawn_info = Array[Resource("res://scripts/resources/spawn_infos/EnnemySpawnInfo.gd")]([ExtResource("1_u54pt")])
+ennemies_spawn_info = Array[Resource("res://scripts/resources/spawn_infos/EnnemySpawnInfo.gd")]([ExtResource("1_pne6d"), ExtResource("2_wpxkv"), ExtResource("1_u54pt")])

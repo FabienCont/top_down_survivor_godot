@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="EnnemySpawnInfo" load_steps=3 format=3 uid="uid://b8eqxh4goqvo"]
 
-[ext_resource type="Resource" uid="uid://b64bcmvsyvqp1" path="res://scripts/resources/ennemies/bat.tres" id="1_27uwl"]
+[ext_resource type="Resource" uid="uid://b84xe5d1ce67d" path="res://scripts/resources/ennemies/ghost.tres" id="1_78jm3"]
 [ext_resource type="Script" path="res://scripts/resources/spawn_infos/EnnemySpawnInfo.gd" id="2_ht1nt"]
 
 [resource]
 script = ExtResource("2_ht1nt")
-ennemy_info = ExtResource("1_27uwl")
+ennemy_info = ExtResource("1_78jm3")
 _probability = 1.0
 difficulty = 1.0
+max_occurence = 1000000
