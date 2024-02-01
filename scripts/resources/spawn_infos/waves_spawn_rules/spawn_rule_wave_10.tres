@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EnnemiesSpawnRules" load_steps=4 format=3 uid="uid://d3rt7r6w0iwig"]
-
-[ext_resource type="Script" path="res://scripts/resources/spawn_infos/EnnemiesSpawnRules.gd" id="2_clyq3"]
-[ext_resource type="Resource" uid="uid://dcbdhixe3cixp" path="res://scripts/resources/spawn_infos/ennemy_spawn_info/boss_1.tres" id="2_egdat"]
-[ext_resource type="Resource" uid="uid://b8eqxh4goqvo" path="res://scripts/resources/spawn_infos/ennemy_spawn_info/ghost_1.tres" id="2_lq7bp"]
-
-[resource]
-script = ExtResource("2_clyq3")
-ennemies_spawn_info = Array[Resource("res://scripts/resources/spawn_infos/EnnemySpawnInfo.gd")]([ExtResource("2_egdat"), ExtResource("2_lq7bp")])

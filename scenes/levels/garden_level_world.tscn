@@ -4202,7 +4202,7 @@ sources/4 = SubResource("TileSetAtlasSource_fpgo6")
 sources/5 = SubResource("TileSetAtlasSource_r4gvl")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jgli1"]
-vertices = PackedVector2Array(0, 1, 571, 1, 574, 384, 4, 382)
+vertices = PackedVector2Array(563, 373, 13, 372, 10, 11, 561, 11)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 1, 571, 1, 574, 384, 4, 382)])
 source_geometry_group_name = &"navigation_polygon_source_group"
@@ -4273,88 +4273,88 @@ layer_5/tile_data = PackedInt32Array(458752, 1310722, 15, 458753, 1310722, 10, 1
 [node name="obstacles" type="Node2D" parent="."]
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(90, 125)
-radius = 4.0
+position = Vector2(103, 138)
+radius = 11.0
 
 [node name="NavigationObstacle2D2" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(203, 130)
-radius = 4.0
+position = Vector2(216, 143)
+radius = 11.0
 
 [node name="NavigationObstacle2D3" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(252, 125)
-radius = 4.0
+position = Vector2(265, 138)
+radius = 11.0
 
 [node name="NavigationObstacle2D4" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(285, 92)
-radius = 4.0
+position = Vector2(298, 105)
+radius = 11.0
 
 [node name="NavigationObstacle2D5" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(156, 30)
-radius = 4.0
+position = Vector2(169, 43)
+radius = 11.0
 
 [node name="NavigationObstacle2D6" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(75, 12)
-radius = 4.0
+position = Vector2(88, 25)
+radius = 11.0
 
 [node name="NavigationObstacle2D7" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(13, 67)
-radius = 4.0
+position = Vector2(26, 80)
+radius = 11.0
 
 [node name="NavigationObstacle2D8" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(13, 270)
-radius = 4.0
+position = Vector2(26, 283)
+radius = 11.0
 
 [node name="NavigationObstacle2D10" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(45, 299)
-radius = 4.0
+position = Vector2(58, 312)
+radius = 11.0
 
 [node name="NavigationObstacle2D9" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(124, 328)
-radius = 4.0
+position = Vector2(137, 341)
+radius = 11.0
 
 [node name="NavigationObstacle2D11" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(302, 330)
-radius = 4.0
+position = Vector2(315, 343)
+radius = 11.0
 
 [node name="NavigationObstacle2D12" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(395, 345)
-radius = 4.0
+position = Vector2(408, 358)
+radius = 11.0
 
 [node name="NavigationObstacle2D13" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(428, 348)
-radius = 4.0
+position = Vector2(441, 361)
+radius = 11.0
 
 [node name="NavigationObstacle2D14" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(509, 316)
-radius = 4.0
+position = Vector2(522, 329)
+radius = 11.0
 
 [node name="NavigationObstacle2D15" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(460, 204)
-radius = 4.0
+position = Vector2(473, 217)
+radius = 11.0
 
 [node name="NavigationObstacle2D16" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(505, 180)
-radius = 4.0
+position = Vector2(518, 193)
+radius = 11.0
 
 [node name="NavigationObstacle2D17" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(360, 203)
-radius = 4.0
+position = Vector2(373, 216)
+radius = 11.0
 
 [node name="NavigationObstacle2D18" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(329, 221)
-radius = 4.0
+position = Vector2(342, 234)
+radius = 11.0
 
 [node name="NavigationObstacle2D19" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(303, 202)
-radius = 4.0
+position = Vector2(316, 215)
+radius = 11.0
 
 [node name="NavigationObstacle2D20" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(461, 43)
-radius = 4.0
+position = Vector2(474, 56)
+radius = 11.0
 
 [node name="NavigationObstacle2D21" type="NavigationObstacle2D" parent="obstacles"]
-position = Vector2(189, 174)
-radius = 4.0
+position = Vector2(202, 187)
+radius = 11.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-12, -13)
@@ -4403,9 +4403,10 @@ shadow_item_cull_mask = 0
 [node name="ennemies" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="EnnemiesSpawner" parent="." node_paths=PackedStringArray("player", "node_to_spawn") instance=ExtResource("10_77vc6")]
+[node name="EnnemiesSpawner" parent="." node_paths=PackedStringArray("player", "node_to_spawn", "arena") instance=ExtResource("10_77vc6")]
 player = NodePath("../Player")
 node_to_spawn = NodePath("../ennemies")
+arena = NodePath("../NavigationRegion2D")
 
 [node name="lights" type="Node2D" parent="."]
 

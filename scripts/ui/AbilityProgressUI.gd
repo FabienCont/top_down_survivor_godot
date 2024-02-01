@@ -7,7 +7,6 @@ func init_ability(new_ability)-> void:
 	ability.ability_is_ready.connect(set_value_to_max)
 	ability.ability_finished.connect(set_value_to_min)
 
-
 func set_value_to_min()->void:
 	value = 0.0
 	

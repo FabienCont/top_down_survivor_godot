@@ -1,0 +1,54 @@
+{
+  "hidden_columns": {
+    "res://resources/characters/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/ennemies/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/items/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/loots/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/stats/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/stats/modifiers/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/weapon/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://scripts/resources/ennemies/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    }
+  },
+  "recent_paths": [
+    "res://scripts/resources/ennemies/",
+    "res://resources/ennemies/",
+    "res://resources/characters/",
+    "res://resources/items/",
+    "res://resources/weapon/",
+    "res://resources/loots/",
+    "res://resources/stats/",
+    "res://resources/stats/modifiers/"
+  ],
+  "table_functions": {
+    "filter": [
+      "return true"
+    ],
+    "process": [
+      "return value"
+    ]
+  }
+}

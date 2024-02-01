@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AmmoInfo" load_steps=5 format=3 uid="uid://cme0axirpt860"]
+
+[ext_resource type="PackedScene" uid="uid://cw4th5e5vcc3q" path="res://scenes/ammos/projectile_boomerang.tscn" id="1_y8r20"]
+[ext_resource type="Script" path="res://resources/ammo/AmmoInfo.gd" id="2_j5pwh"]
+[ext_resource type="PackedScene" uid="uid://c4jvusjrvsrau" path="res://assets/weapons/boomerang/boomerang.ase" id="3_kg1uj"]
+[ext_resource type="Resource" uid="uid://drxfhg6ke0d7x" path="res://resources/stats/custom/ammos/ammo_stat_contoller.tres" id="4_fbnkq"]
+
+[resource]
+script = ExtResource("2_j5pwh")
+sprite = ExtResource("3_kg1uj")
+name = "boomerang"
+scene = ExtResource("1_y8r20")
+stats_controller = ExtResource("4_fbnkq")

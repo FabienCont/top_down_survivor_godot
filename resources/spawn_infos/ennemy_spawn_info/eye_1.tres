@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnnemySpawnInfo" load_steps=3 format=3 uid="uid://ds11bggj0gni0"]
+
+[ext_resource type="Resource" uid="uid://dgif5xfradk1y" path="res://resources/ennemies/eye.tres" id="1_qef12"]
+[ext_resource type="Script" path="res://resources/spawn_infos/EnnemySpawnInfo.gd" id="2_bjaou"]
+
+[resource]
+script = ExtResource("2_bjaou")
+ennemy_info = ExtResource("1_qef12")
+_probability = 1.0
+difficulty = 1.0
+max_occurence = 1000000

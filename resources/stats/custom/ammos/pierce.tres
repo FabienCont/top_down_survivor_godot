@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatAmmo" load_steps=2 format=3 uid="uid://dwqm27fwdhvr7"]
+
+[ext_resource type="Script" path="res://resources/stats/StatAmmo.gd" id="1_e7244"]
+
+[resource]
+script = ExtResource("1_e7244")
+key_selector = 0
+auto_compute = true
+key = 0
+base_value = 3.0
+value = 0.0

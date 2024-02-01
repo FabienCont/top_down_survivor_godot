@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponInfo" load_steps=6 format=3 uid="uid://byrl7njs1hn77"]
+
+[ext_resource type="Resource" uid="uid://cme0axirpt860" path="res://resources/ammo/BoomerangAmmoInfo.tres" id="1_fq2od"]
+[ext_resource type="PackedScene" uid="uid://cakah4i35acti" path="res://scenes/weapons/DistantWeapon.tscn" id="2_2nwin"]
+[ext_resource type="Script" path="res://resources/weapon/WeaponInfo.gd" id="3_lbkbb"]
+[ext_resource type="PackedScene" uid="uid://c4jvusjrvsrau" path="res://assets/weapons/boomerang/boomerang.ase" id="4_t51ml"]
+[ext_resource type="Resource" uid="uid://c010ixwdutw5n" path="res://resources/stats/custom/weapons/distant_weapon_controller_stats.tres" id="5_momlk"]
+
+[resource]
+script = ExtResource("3_lbkbb")
+sprite = ExtResource("4_t51ml")
+name = "boomerang"
+scene = ExtResource("2_2nwin")
+stats_controller = ExtResource("5_momlk")
+ammo_info = ExtResource("1_fq2od")

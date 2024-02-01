@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Stat" load_steps=2 format=3 uid="uid://bn6l3ab2ku374"]
+
+[ext_resource type="Script" path="res://resources/stats/Stat.gd" id="1_o4m3c"]
+
+[resource]
+script = ExtResource("1_o4m3c")
+auto_compute = true
+name_enum = 0
+value = 20.0

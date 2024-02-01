@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmksauufmadgk"]
 
 [ext_resource type="Script" path="res://scenes/tests/AmmoTests.gd" id="1_potrf"]
-[ext_resource type="Resource" uid="uid://cew26ys2mad3o" path="res://scripts/resources/ammo/ArrowAmmoInfo.tres" id="2_e62xy"]
+[ext_resource type="Resource" uid="uid://cew26ys2mad3o" path="res://resources/ammo/ArrowAmmoInfo.tres" id="2_e62xy"]
 
 [sub_resource type="Gradient" id="Gradient_asrdg"]
 offsets = PackedFloat32Array(1)

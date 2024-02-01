@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AmmoInfo" load_steps=5 format=3 uid="uid://cew26ys2mad3o"]
+
+[ext_resource type="PackedScene" uid="uid://cff0uke6eevpb" path="res://scenes/ammos/arrow_ammo.tscn" id="1_nr23y"]
+[ext_resource type="Script" path="res://resources/ammo/AmmoInfo.gd" id="2_bm4ya"]
+[ext_resource type="PackedScene" uid="uid://b8rqafb1msmqn" path="res://assets/ammos/arrow.ase" id="3_g8sur"]
+[ext_resource type="Resource" uid="uid://drxfhg6ke0d7x" path="res://resources/stats/custom/ammos/ammo_stat_contoller.tres" id="4_ampsd"]
+
+[resource]
+script = ExtResource("2_bm4ya")
+sprite = ExtResource("3_g8sur")
+name = "arrow"
+scene = ExtResource("1_nr23y")
+stats_controller = ExtResource("4_ampsd")

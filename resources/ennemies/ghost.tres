@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnnemyInfo" load_steps=8 format=3 uid="uid://b84xe5d1ce67d"]
+
+[ext_resource type="Script" path="res://resources/ennemies/EnnemyInfo.gd" id="1_g2nt6"]
+[ext_resource type="Script" path="res://resources/abilities/AttackAbility.gd" id="1_mw1lj"]
+[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_behow"]
+[ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/ennemies/bat/ennemy_stat_controller_entity.tres" id="2_ofd2y"]
+[ext_resource type="PackedScene" uid="uid://dmmaasriskuf5" path="res://assets/characters/ennemies/32x32-ghost.aseprite" id="2_y0aqa"]
+[ext_resource type="Resource" uid="uid://ipsf0pm2paiw" path="res://resources/weapon/FireBallWeaponInfo.tres" id="4_uq54y"]
+
+[sub_resource type="Resource" id="Resource_3v55r"]
+script = ExtResource("2_behow")
+attack_ability = ExtResource("1_mw1lj")
+
+[resource]
+script = ExtResource("1_g2nt6")
+name = "ghost"
+sprite = ExtResource("2_y0aqa")
+stats_controller = ExtResource("2_ofd2y")
+abilities_controller = SubResource("Resource_3v55r")
+weapon_info = ExtResource("4_uq54y")
+spwan_in_arena = false

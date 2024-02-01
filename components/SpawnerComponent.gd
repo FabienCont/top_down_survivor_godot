@@ -10,11 +10,9 @@ class_name SpawnerComponent
 @export var scene_to_spawn: PackedScene
 @export var player: Node2D
 @export var group:String
-@export var randomPositionSpawn : bool = true
 
 @export var game_clock: GameClock 
 @onready var nb_spawned = 0
-@onready var rnd: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func start_spawn() -> void:
 	_await_spawn_time()
@@ -27,25 +25,16 @@ func _await_spawn_time():
 	var factor = 1.0 / (game_clock.wave * 1.2)
 	await get_tree().create_timer(interval_time_to_spawn * factor).timeout
 	ready_to_spawn=true
-
-func _calc_position_spawn() -> Vector2 :
-	if randomPositionSpawn == true:
-		var camera_vision = 340
-		var pos = (Vector2.ONE * camera_vision).rotated(rnd.randf_range(0, PI))
-		if player != null:
-			pos = pos + player.global_position
-		return pos
-	return Vector2(0,0)
 	
 func _spawn_scene() -> void:
 	ready_to_spawn=false
 	nb_spawned+=1
 	var scene = scene_to_spawn.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	scene.target = player 
-	scene.global_position = _calc_position_spawn() 
 	node_to_spawn.add_child(scene)
 	if(scene_preparation_function is Callable && scene_preparation_function.is_null() != true):
 		scene_preparation_function.call(scene)
+
 	if group:
 		scene.add_to_group(group)
 	_await_spawn_time()

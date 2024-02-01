@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="StatsControllerAmmo" load_steps=6 format=3 uid="uid://drxfhg6ke0d7x"]
+
+[ext_resource type="Script" path="res://resources/stats/StatsControllerAmmo.gd" id="1_a6s73"]
+[ext_resource type="Script" path="res://resources/stats/StatAmmo.gd" id="3_uf1px"]
+
+[sub_resource type="Resource" id="Resource_vnil5"]
+script = ExtResource("3_uf1px")
+key_selector = 0
+auto_compute = true
+key = 0
+base_value = 0.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_6f3fh"]
+script = ExtResource("3_uf1px")
+key_selector = 0
+auto_compute = true
+key = 0
+base_value = 3.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_uddlo"]
+script = ExtResource("3_uf1px")
+key_selector = 1
+auto_compute = true
+key = 1
+base_value = 500.0
+value = 0.0
+
+[resource]
+script = ExtResource("1_a6s73")
+stat_to_remove_from_editor = 0
+_remove_stat = false
+stat_to_add_from_editor = SubResource("Resource_vnil5")
+_add_stat = false
+stats_dico = {
+0: SubResource("Resource_6f3fh"),
+1: SubResource("Resource_uddlo")
+}
+modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([])
+target = 2

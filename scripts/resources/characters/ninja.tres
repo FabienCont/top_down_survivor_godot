@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://ddas3s5kko2hj"]
-
-[ext_resource type="Script" path="res://scripts/resources/Character.gd" id="1_fwltc"]
-[ext_resource type="PackedScene" uid="uid://tj3s2aqp4cp5" path="res://assets/characters/heroes/character.ase" id="2_3rddm"]
-
-[resource]
-script = ExtResource("1_fwltc")
-sprite = ExtResource("2_3rddm")
-name = "Ninja"

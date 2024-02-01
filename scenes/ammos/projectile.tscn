@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ncj18a40clfe"]
 
-[ext_resource type="Script" path="res://scripts/resources/Ammo.gd" id="1_6hckv"]
+[ext_resource type="Script" path="res://resources/Ammo.gd" id="1_6hckv"]
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="3_7jota"]
 [ext_resource type="Script" path="res://components/physics/HitboxComponent.gd" id="3_k44iy"]
 

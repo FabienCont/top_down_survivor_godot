@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://ctjj4uyaw6wai"]
+
+[ext_resource type="Script" path="res://resources/stats/StatModifier.gd" id="1_kst8h"]
+
+[resource]
+script = ExtResource("1_kst8h")
+type = 1
+target = 0
+key = 10
+value = 1.1
+duration = -1.0
+apply_to_base = false
+applied = false

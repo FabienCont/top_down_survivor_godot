@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://dmq21k3n4e7dv"]
-
-[ext_resource type="Script" path="res://scripts/resources/Character.gd" id="1_m3dy1"]
-[ext_resource type="PackedScene" uid="uid://b8q2vpdkrtw7a" path="res://assets/characters/heroes/hope.ase" id="2_q4u7a"]
-
-[resource]
-script = ExtResource("1_m3dy1")
-sprite = ExtResource("2_q4u7a")
-name = "Hope"

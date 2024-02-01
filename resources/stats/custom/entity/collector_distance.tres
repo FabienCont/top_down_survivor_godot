@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatEntity" load_steps=2 format=3 uid="uid://cncclqmsf5680"]
+
+[ext_resource type="Script" path="res://resources/stats/StatEntity.gd" id="1_a0how"]
+
+[resource]
+script = ExtResource("1_a0how")
+key_selector = 2
+auto_compute = true
+key = 2
+base_value = 10.0
+value = 0.0

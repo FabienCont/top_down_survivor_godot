@@ -9,8 +9,8 @@ var possible_items: Array[Item]
 var possible_upgrades: Array[Upgrade]
 var selected_item:Item
 
-var dir_path_upgrades = "res://scripts/resources/upgrades/permanent/"
-var dir_path_items = "res://scripts/resources/items/permanent/"
+var dir_path_upgrades = "res://resources/upgrades/permanent/"
+var dir_path_items = "res://resources/items/permanent/"
 var resource_extension="tres"
 
 func _ready() -> void :

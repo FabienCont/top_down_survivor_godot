@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/ui/character_selection_content.gd" id="1_eh3oe"]
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="1_i622f"]
 [ext_resource type="PackedScene" uid="uid://clfpk1k2qm6jc" path="res://menu/parts/character_card.tscn" id="2_d5ims"]
-[ext_resource type="Resource" uid="uid://cfij4qrx1jjjs" path="res://scripts/resources/stats/custom/players/player_init.tres" id="2_y4ggi"]
-[ext_resource type="Resource" uid="uid://ddas3s5kko2hj" path="res://scripts/resources/characters/ninja.tres" id="4_sria4"]
-[ext_resource type="Resource" uid="uid://dmq21k3n4e7dv" path="res://scripts/resources/characters/hope.tres" id="5_cqwhw"]
+[ext_resource type="Resource" uid="uid://cfij4qrx1jjjs" path="res://resources/stats/custom/players/player_init.tres" id="2_y4ggi"]
+[ext_resource type="Resource" uid="uid://ddas3s5kko2hj" path="res://resources/characters/ninja.tres" id="4_sria4"]
+[ext_resource type="Resource" uid="uid://dmq21k3n4e7dv" path="res://resources/characters/hope.tres" id="5_cqwhw"]
 [ext_resource type="Script" path="res://scripts/ui/ButtonSelectCharacterValidate.gd" id="7_it51f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwd0k"]

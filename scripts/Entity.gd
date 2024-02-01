@@ -12,6 +12,7 @@ class_name Entity
 
 @export var stats_controller: StatsControllerEntity = StatsControllerEntity.new()
 @export var upgrades_controller: UpgradesController = UpgradesController.new()
+@export var abilities_controller: AbilitiesController = AbilitiesController.new()
 
 var is_dead:=false
 var life_stat: StatEntity
@@ -21,9 +22,14 @@ func init_stat_controller(stats_controller_init :StatsControllerEntity,upgrades_
 	upgrades_controller = upgrades_controller_init.duplicate(true)
 	stats_controller.set_upgrades_controller(upgrades_controller)
 	stats_controller.init()
+
+func init_abilities_controller(abilities_controller_init :AbilitiesController) -> void:
+	abilities_controller = abilities_controller_init.duplicate(true)
+	abilities_controller.init(self)
 	
-func init(stats_controller_init :StatsControllerEntity,upgrades_controller_init:UpgradesController) -> void:
+func init(stats_controller_init :StatsControllerEntity,upgrades_controller_init:UpgradesController, abilities_controller_init:AbilitiesController) -> void:
 	init_stat_controller(stats_controller_init,upgrades_controller_init)
+	init_abilities_controller(abilities_controller_init)
 	life_stat = stats_controller.get_current_stat(StatsConstEntity.names.life)
 	var movement_speed_stat = stats_controller.get_current_stat(StatsConstEntity.names.movement_speed)
 	var acceleration_stat = stats_controller.get_current_stat(StatsConstEntity.names.acceleration)

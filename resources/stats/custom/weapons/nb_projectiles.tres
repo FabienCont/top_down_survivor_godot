@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatWeapon" load_steps=2 format=3 uid="uid://cxng1vss1jugb"]
+
+[ext_resource type="Script" path="res://resources/stats/StatWeapon.gd" id="1_of6qs"]
+
+[resource]
+script = ExtResource("1_of6qs")
+key_selector = 30
+auto_compute = true
+key = 30
+base_value = 1.0
+value = 0.0

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Upgrade" load_steps=3 format=3 uid="uid://obe5l26ay5g"]
-
-[ext_resource type="Resource" uid="uid://b7xg1low265o7" path="res://scripts/resources/stats/modifiers/movement_speed.tres" id="1_18tx0"]
-[ext_resource type="Script" path="res://scripts/resources/Upgrade.gd" id="2_c6h2j"]
-
-[resource]
-script = ExtResource("2_c6h2j")
-label = "speed up"
-modifiers = Array[Resource("res://scripts/resources/stats/StatModifier.gd")]([ExtResource("1_18tx0")])

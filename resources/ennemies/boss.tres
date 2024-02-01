@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnnemyInfo" load_steps=8 format=3 uid="uid://c0dqjn4y3cvkp"]
+
+[ext_resource type="Script" path="res://resources/abilities/AttackAbility.gd" id="1_dqg77"]
+[ext_resource type="Script" path="res://resources/ennemies/EnnemyInfo.gd" id="1_t4n6v"]
+[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_cs7ny"]
+[ext_resource type="PackedScene" uid="uid://bhbuunr8cv628" path="res://assets/characters/ennemies/Boss.aseprite" id="2_iyfb8"]
+[ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/ennemies/bat/ennemy_stat_controller_entity.tres" id="3_ni7bs"]
+[ext_resource type="Resource" uid="uid://ipsf0pm2paiw" path="res://resources/weapon/FireBallWeaponInfo.tres" id="4_2stgj"]
+
+[sub_resource type="Resource" id="Resource_bpgry"]
+script = ExtResource("2_cs7ny")
+attack_ability = ExtResource("1_dqg77")
+
+[resource]
+script = ExtResource("1_t4n6v")
+name = "boss"
+sprite = ExtResource("2_iyfb8")
+stats_controller = ExtResource("3_ni7bs")
+abilities_controller = SubResource("Resource_bpgry")
+weapon_info = ExtResource("4_2stgj")
+spwan_in_arena = true

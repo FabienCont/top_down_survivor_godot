@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponInfo" load_steps=4 format=3 uid="uid://ca0uhltk6gd62"]
+
+[ext_resource type="PackedScene" uid="uid://d0yvlgt6mp5cq" path="res://scenes/weapons/BatWeapon.tscn" id="1_38e3m"]
+[ext_resource type="Script" path="res://resources/weapon/WeaponInfo.gd" id="1_yfnt1"]
+[ext_resource type="Resource" uid="uid://c010ixwdutw5n" path="res://resources/stats/custom/weapons/distant_weapon_controller_stats.tres" id="3_inbxi"]
+
+[resource]
+script = ExtResource("1_yfnt1")
+name = "bat_weapon"
+scene = ExtResource("1_38e3m")
+stats_controller = ExtResource("3_inbxi")

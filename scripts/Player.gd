@@ -11,42 +11,30 @@ class_name Player
 
 @export var player_info: PlayerInfo
 
-var dash_ability_scene = preload("res://scenes/abilities/DashAbility.gd")
-var attack_ability_scene = preload("res://scenes/abilities/AttackAbility.gd")
-var move_ability_scene = preload("res://scenes/abilities/MoveAbility.gd")
-var dash_ability:Ability
-var attack_ability:Ability
-var move_ability:Ability
-
 func init_player(player_info_init :PlayerInfo) -> void:
-	init(player_info_init.stats_controller,player_info_init.upgrades_controller)
+	init(player_info_init.stats_controller,player_info_init.upgrades_controller,player_info_init.abilities_controller)
 	player_info = player_info_init
 	player_info.stats_controller = stats_controller
 	player_info.upgrades_controller = upgrades_controller
+	player_info.abilities_controller = abilities_controller
 	var collector_distance= stats_controller.get_current_stat(StatsConstEntity.names.collector_distance)
 	collector_component.init(collector_distance)
 	var max_life_stat = player_info.stats_controller.get_current_stat(StatsConstEntity.names.max_life)
 	lifebar_component.init(life_stat,max_life_stat)
 	set_sprite(player_info.character.sprite.instantiate())
 	weapon_slot_component.init(player_info.weapon_info,player_info.upgrades_controller)
-	dash_ability = dash_ability_scene.new()
-	attack_ability = attack_ability_scene.new()
-	move_ability = move_ability_scene.new()
-	add_child(dash_ability)
-	add_child(attack_ability)
-	add_child(move_ability)
 	Signals.player_ready.emit(self)
 
 func _physics_process(delta: float) -> void:
 	if has_die() == true:
 		sprite.play("Idle")
 		return
-	if dash_ability.is_executing == true:
-		dash_ability.update(delta)
+	if abilities_controller.dash_ability.is_executing == true:
+		abilities_controller.dash_ability.update(delta)
 		return 
 	velocity_component.update_velocity(velocity)
 	controller_component.updateControl(delta)
-	move_ability.execute(delta)
+	abilities_controller.move_ability.execute(delta)
 
 	if controller_component.has_move() : 
 		SoundManager.playFootstepSound()
@@ -59,11 +47,11 @@ func _physics_process(delta: float) -> void:
 		sprite.play("Idle")
 	
 	weapon_slot_component.look_at(global_position + controller_component.get_look_direction()) 
-	if controller_component.has_dash() == true && dash_ability.can_be_used() && not attack_ability.is_executing :
-		dash_ability.execute(delta)
+	if controller_component.has_dash() == true && abilities_controller.dash_ability.can_be_used() && not abilities_controller.attack_ability.is_executing :
+		abilities_controller.dash_ability.execute(delta)
 	
-	if controller_component.has_prepare_attack() == true &&  not attack_ability.is_executing : 
-		attack_ability.execute(delta)
+	if controller_component.has_prepare_attack() == true &&  not abilities_controller.attack_ability.is_executing: 
+		abilities_controller.attack_ability.execute(delta)
 
 func get_current_direction() -> Vector2:
 	return controller_component.get_current_direction()
