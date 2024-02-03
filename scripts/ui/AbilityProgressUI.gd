@@ -15,5 +15,4 @@ func set_value_to_max()->void:
 
 func update_dash() -> void:
 	if ability && not ability.is_ready:
-		var timer = ability.timer_cooldown
 		value = (ability.timer_cooldown.time_left/ability.timer_cooldown.wait_time)*100

@@ -9,6 +9,7 @@ signal update_stats
 @export var abilities_controller :AbilitiesController = AbilitiesController.new()
 @export var inventory_controller :InventoryController = InventoryController.new()
 @export var upgrades_controller :UpgradesController = UpgradesController.new()
+@export var logic_component :EntityLogicComponent
 
 @export var stats_controller :StatsControllerEntity = StatsControllerEntity.new():
 	set(updated_value):

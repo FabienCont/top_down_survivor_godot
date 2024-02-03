@@ -44,8 +44,6 @@ func enemy_scene_preparation(enemy_to_spawn: Enemy):
 	enemy_to_spawn.global_position = _calc_position_spawn(enemy_info.spawn_in_arena,arena) 
 	enemy_to_spawn.init_enemy(enemy_info)
 
-	if enemy_info.name=="ghost" : 
-		enemy_to_spawn.distance_before_attack = 100.0
 	if enemy_info.spawn_in_arena == true:
 		var spawner_scene = spawn_animation_scene.instantiate()
 		spawner_scene.scene_to_spawn = enemy_to_spawn

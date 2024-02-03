@@ -6,6 +6,7 @@ class_name Entity
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox_component:HurtboxComponent2D  = $HurtboxComponent
 @onready var sprite_component: AnimatedSprite2D  = $SpriteComponent
+@export var logic_component: EntityLogicComponent = EntityLogicComponent.new()
 
 @export var hurt_effects: Array[Resource] =[]
 @export var die_effects: Array[Resource] =[]
@@ -27,7 +28,7 @@ func init_abilities_controller(abilities_controller_init :AbilitiesController) -
 	abilities_controller = abilities_controller_init.duplicate(true)
 	abilities_controller.init(self)
 	
-func init(stats_controller_init :StatsControllerEntity,upgrades_controller_init:UpgradesController, abilities_controller_init:AbilitiesController) -> void:
+func init_entity(stats_controller_init :StatsControllerEntity,upgrades_controller_init:UpgradesController, abilities_controller_init:AbilitiesController,logic_component_init:EntityLogicComponent) -> void:
 	init_stat_controller(stats_controller_init,upgrades_controller_init)
 	life_stat = stats_controller.get_current_stat(StatsConstEntity.names.life)
 	var movement_speed_stat = stats_controller.get_current_stat(StatsConstEntity.names.movement_speed)
@@ -35,7 +36,9 @@ func init(stats_controller_init :StatsControllerEntity,upgrades_controller_init:
 	velocity_component.init(movement_speed_stat,acceleration_stat)
 	health_component.init(life_stat)
 	init_abilities_controller(abilities_controller_init)
-
+	logic_component = logic_component_init
+	logic_component.init_logic_component(self)
+	
 func set_sprite_component(new_sprite: AnimatedSprite2D):
 	new_sprite.scale = Vector2(0.5,0.5)
 	sprite_component.replace_by(new_sprite)

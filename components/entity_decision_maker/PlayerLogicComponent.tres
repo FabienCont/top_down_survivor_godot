@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="PlayerLogicComponent" load_steps=2 format=3 uid="uid://bx8xap03c8fs"]
+
+[ext_resource type="Script" path="res://components/entity_decision_maker/PlayerLogicComponent.gd" id="1_m60t4"]
+
+[resource]
+script = ExtResource("1_m60t4")

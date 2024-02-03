@@ -6,7 +6,7 @@ class_name Ability
 @export var is_ready:bool=true
 @export var cooldown:float
 
-var possessor: Entity
+var entity: Entity
 var timer_cooldown:Timer
 var timer_ability:Timer
 
@@ -17,19 +17,19 @@ func init_timer_ability() -> void:
 	timer_ability = Timer.new()
 	timer_ability.one_shot = true
 	timer_ability.timeout.connect(end)
-	possessor.add_child(timer_ability)
+	entity.add_child(timer_ability)
 	
 func init_timer_cooldown() -> void:
 	timer_cooldown = Timer.new()
 	timer_cooldown.one_shot = true
 	timer_cooldown.timeout.connect(refresh)
-	possessor.add_child(timer_cooldown)
+	entity.add_child(timer_cooldown)
 
 func has_requirements() -> bool:
 	return true
 
-func init_ability(entity:Entity)-> void:
-	possessor = entity
+func init_ability(entity_init:Entity)-> void:
+	entity = entity_init
 	if has_requirements():
 		pass
 

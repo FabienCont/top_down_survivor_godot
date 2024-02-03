@@ -42,11 +42,11 @@ func add_descriptions_upgrade(upgrade:Upgrade) -> void:
 		upgrades_descriptions_node.add_child(info_node)
 
 func format_modifier(stat_modifier: StatModifier) -> String:
-	var sign = get_sign_label(stat_modifier.value)
+	var sign_label = get_sign_label(stat_modifier.value)
 	var label_stat = get_stat_label(stat_modifier)
 	if stat_modifier.type == StatModifier.ModifierType.ADDITIVE :
-		return str(" %s %.1f %s" % [sign, stat_modifier.value,label_stat])
-	return str(" %s %.1f percent %s" % [sign, stat_modifier.value,label_stat])
+		return str(" %s %.1f %s" % [sign_label, stat_modifier.value,label_stat])
+	return str(" %s %.1f percent %s" % [sign_label, stat_modifier.value,label_stat])
 
 func get_sign_label(fValue:float) -> String:
 	if fValue < 0: 

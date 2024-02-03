@@ -32,6 +32,7 @@ y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_w40en")
 hurt_effects = Array[Resource]([ExtResource("2_482ux"), ExtResource("3_fbq1n"), ExtResource("4_060cq")])
+die_effects = null
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_gpfp0")]
 

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EnemyLogicComponent" load_steps=2 format=3 uid="uid://pfdr8vkoy1yr"]
+
+[ext_resource type="Script" path="res://components/entity_decision_maker/EnemyLogicComponent.gd" id="1_6pfn8"]
+
+[resource]
+script = ExtResource("1_6pfn8")
+distance_before_attack = 100.0

@@ -4,16 +4,16 @@ var attack_speed_stat:StatModel
 var weapon_slot_component:WeaponSlotComponent
 
 func has_requirement() -> bool:
-	return possessor.stats_controller is StatsControllerEntity && possessor.weapon_slot_component is WeaponSlotComponent
+	return entity.stats_controller is StatsControllerEntity && entity.weapon_slot_component is WeaponSlotComponent
 	
-func init_ability(entity:Entity)-> void:
-	super(entity)
-	attack_speed_stat = possessor.stats_controller.get_current_stat(StatsConstEntity.names.attack_speed)
-	weapon_slot_component = possessor.weapon_slot_component
+func init_ability(entity_init:Entity)-> void:
+	super(entity_init)
+	attack_speed_stat = entity.stats_controller.get_current_stat(StatsConstEntity.names.attack_speed)
+	weapon_slot_component = entity.weapon_slot_component
 	weapon_slot_component.attack_has_end.connect(end)
 
 func can_be_used()-> bool:
-	return possessor.has_die() != true && is_executing == false	&& weapon_slot_component.is_attack_ready()
+	return entity.has_die() != true && is_executing == false	&& weapon_slot_component.is_attack_ready()
 	
 func execute(delta:float)->void:
 	super(delta)
