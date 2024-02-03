@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="1_t4n6v"]
 [ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_cs7ny"]
 [ext_resource type="PackedScene" uid="uid://bhbuunr8cv628" path="res://assets/characters/enemies/Boss.aseprite" id="2_iyfb8"]
-[ext_resource type="Script" path="res://components/entity_decision_maker/EnemyLogicComponent.gd" id="3_2wvht"]
 [ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/enemies/bat/enemy_stat_controller_entity.tres" id="3_ni7bs"]
+[ext_resource type="Resource" uid="uid://pgrotlrpxspv" path="res://components/entity_decision_maker/EnemyLogicComponent.tres" id="3_qqigx"]
 [ext_resource type="Resource" uid="uid://ipsf0pm2paiw" path="res://resources/weapon/FireBallWeaponInfo.tres" id="4_2stgj"]
 
 [sub_resource type="Resource" id="Resource_bpgry"]
@@ -18,6 +18,6 @@ name = "boss"
 sprite = ExtResource("2_iyfb8")
 stats_controller = ExtResource("3_ni7bs")
 abilities_controller = SubResource("Resource_bpgry")
-logic_component = ExtResource("3_2wvht")
+logic_component = ExtResource("3_qqigx")
 weapon_info = ExtResource("4_2stgj")
 spawn_in_arena = false

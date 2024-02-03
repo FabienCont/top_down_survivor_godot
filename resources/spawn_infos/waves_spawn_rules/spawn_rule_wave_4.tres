@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemiesSpawnRules" load_steps=3 format=3 uid="uid://bfg8sx1kai3uc"]
 
-[ext_resource type="Resource" uid="uid://s430lecb7xq0" path="res://resources/spawn_infos/enemy_spawn_info/bat_1.tres" id="1_8e085"]
+[ext_resource type="Resource" uid="uid://s430lecb7xq0" path="res://resources/spawn_infos/enemy_spawn_info/bat_enemy_spawn_info_1.tres" id="1_8e085"]
 [ext_resource type="Script" path="res://resources/spawn_infos/EnemiesSpawnRules.gd" id="2_bm7s6"]
 
 [resource]

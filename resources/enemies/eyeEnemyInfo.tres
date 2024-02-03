@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="1_sk217"]
 [ext_resource type="PackedScene" uid="uid://drw4b234pubs4" path="res://assets/characters/enemies/32x32-eye-sprite-work-2.aseprite" id="2_7dhin"]
 [ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_qlvmn"]
-[ext_resource type="Script" path="res://components/entity_decision_maker/EnemyLogicComponent.gd" id="3_h7dpr"]
+[ext_resource type="Resource" uid="uid://pgrotlrpxspv" path="res://components/entity_decision_maker/EnemyLogicComponent.tres" id="3_fsicn"]
 [ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/enemies/bat/enemy_stat_controller_entity.tres" id="3_i7qay"]
 [ext_resource type="Resource" uid="uid://ca0uhltk6gd62" path="res://resources/weapon/BatWeaponInfo.tres" id="4_xr3sg"]
 
@@ -18,6 +18,6 @@ name = "eye"
 sprite = ExtResource("2_7dhin")
 stats_controller = ExtResource("3_i7qay")
 abilities_controller = SubResource("Resource_bvcng")
-logic_component = ExtResource("3_h7dpr")
+logic_component = ExtResource("3_fsicn")
 weapon_info = ExtResource("4_xr3sg")
 spawn_in_arena = false
