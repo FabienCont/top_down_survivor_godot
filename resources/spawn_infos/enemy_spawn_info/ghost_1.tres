@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemySpawnInfo" load_steps=3 format=3 uid="uid://b8eqxh4goqvo"]
+
+[ext_resource type="Resource" uid="uid://b84xe5d1ce67d" path="res://resources/enemies/ghostEnemyInfo.tres" id="1_78jm3"]
+[ext_resource type="Script" path="res://resources/spawn_infos/EnemySpawnInfo.gd" id="2_ht1nt"]
+
+[resource]
+script = ExtResource("2_ht1nt")
+enemy_info = ExtResource("1_78jm3")
+_probability = 1.0
+difficulty = 1.0
+max_occurence = 1000000
+force_spwan = false

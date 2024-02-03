@@ -17,7 +17,7 @@ signal update_stats
 @export var effects :EffectsController = EffectsController.new():
 	set(updated_value):
 		effects = updated_value
-@export var weapon_info :WeaponInfo = WeaponInfo.new():
+@export var weapon_info :WeaponInfo2D = WeaponInfo2D.new():
 	set(updated_value):
 		weapon_info = updated_value
 		emit_update_weapon_info(updated_value)
@@ -29,7 +29,7 @@ signal update_stats
 func emit_update_xp_stats(value_update: StatsControllerModel):
 	update_stats.emit(value_update)
 
-func emit_update_weapon_info(value_update: WeaponInfo):
+func emit_update_weapon_info(value_update: WeaponInfo2D):
 	update_weapon_info.emit(value_update)
 
 func emit_update_character(value_update: Character):

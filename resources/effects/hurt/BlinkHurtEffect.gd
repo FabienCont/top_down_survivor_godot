@@ -1,9 +1,9 @@
 extends HurtEffectHandler
 
 static func trigger_effect(node :Node2D,_attack :Attack)->void:
-	if node.sprite ==null :
+	if node.sprite_component ==null :
 		return
-	var sprite = node.sprite
+	var sprite = node.sprite_component
 	var tween = node.create_tween()
 	tween.set_parallel(false)
 	tween.tween_property(sprite,"modulate:v",3,0.1)

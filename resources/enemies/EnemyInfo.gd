@@ -1,6 +1,6 @@
 extends Resource
 
-class_name EnnemyInfo
+class_name EnemyInfo
 
 @export var name :String = "undefined"
 @export var sprite: PackedScene
@@ -8,5 +8,5 @@ class_name EnnemyInfo
 @export var stats_controller :StatsControllerEntity = StatsControllerEntity.new()
 @export var abilities_controller :AbilitiesController = AbilitiesController .new()
 @export var effects :EffectsController = EffectsController.new()
-@export var weapon_info :WeaponInfo = WeaponInfo.new()
-@export var spwan_in_arena: bool=false
+@export var weapon_info :WeaponInfo2D = WeaponInfo2D.new()
+@export var spawn_in_arena: bool=false

@@ -28,8 +28,8 @@ func init_timer_cooldown() -> void:
 func has_requirements() -> bool:
 	return true
 
-func init_ability(owner:Entity)-> void:
-	possessor = owner
+func init_ability(entity:Entity)-> void:
+	possessor = entity
 	if has_requirements():
 		pass
 

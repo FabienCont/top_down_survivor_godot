@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="EnnemiesSpawnRules" load_steps=4 format=3 uid="uid://bfg8sx1kai3uc"]
+[gd_resource type="Resource" script_class="EnemiesSpawnRules" load_steps=3 format=3 uid="uid://bfg8sx1kai3uc"]
 
-[ext_resource type="Resource" uid="uid://s430lecb7xq0" path="res://resources/spawn_infos/ennemy_spawn_info/bat_1.tres" id="1_8e085"]
-[ext_resource type="Script" path="res://resources/spawn_infos/EnnemiesSpawnRules.gd" id="2_bm7s6"]
-[ext_resource type="Resource" uid="uid://ds11bggj0gni0" path="res://resources/spawn_infos/ennemy_spawn_info/eye_1.tres" id="2_feegu"]
+[ext_resource type="Resource" uid="uid://s430lecb7xq0" path="res://resources/spawn_infos/enemy_spawn_info/bat_1.tres" id="1_8e085"]
+[ext_resource type="Script" path="res://resources/spawn_infos/EnemiesSpawnRules.gd" id="2_bm7s6"]
 
 [resource]
 script = ExtResource("2_bm7s6")
-ennemies_spawn_info = Array[Resource("res://resources/spawn_infos/EnnemySpawnInfo.gd")]([ExtResource("1_8e085"), ExtResource("2_feegu")])
+enemies_spawn_info = Array[Resource("res://resources/spawn_infos/EnemySpawnInfo.gd")]([ExtResource("1_8e085")])

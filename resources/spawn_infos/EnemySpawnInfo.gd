@@ -1,8 +1,8 @@
 extends Resource
 
-class_name EnnemySpawnInfo
+class_name EnemySpawnInfo
 
-@export var ennemy_info: EnnemyInfo
+@export var enemy_info: EnemyInfo
 @export var _probability: float=1.0
 @export var difficulty: float=1.0
 @export var max_occurence: int=1000000

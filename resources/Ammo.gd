@@ -1,11 +1,11 @@
 extends Node2D
 class_name Ammo
 
-@onready var velocity_component :VelocityComponent = $VelocityComponent 
+@onready var velocity_component :VelocityComponent2D = $VelocityComponent 
 @onready var sprite :Node2D
-@onready var hitbox_component :HitboxComponent = $HitboxComponent 
+@onready var hitbox_component :HitboxComponent2D = $HitboxComponent 
 @onready var stats_controller: StatsControllerAmmo
-@onready var ammo_info: AmmoInfo
+@onready var ammo_info: AmmoInfo2D
 @onready var upgrades_controller: UpgradesController
 @onready var emiter
 
@@ -17,7 +17,7 @@ var ennemy_pierced := 0
 @onready var collision_layer: int
 @onready var collision_mask: int
 
-func init(collision_layer_init: int,collision_mask_init: int,ammo_info_init: AmmoInfo,upgrades_controller_init: UpgradesController) -> void:
+func init(collision_layer_init: int,collision_mask_init: int,ammo_info_init: AmmoInfo2D,upgrades_controller_init: UpgradesController) -> void:
 	ammo_info = ammo_info_init
 	stats_controller = ammo_info.stats_controller
 	upgrades_controller = upgrades_controller_init

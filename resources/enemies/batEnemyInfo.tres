@@ -1,0 +1,121 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=14 format=3 uid="uid://b64bcmvsyvqp1"]
+
+[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_n1bv1"]
+[ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="3_lu48g"]
+[ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/enemies/bat/enemy_stat_controller_entity.tres" id="5_pwyed"]
+[ext_resource type="Resource" uid="uid://ca0uhltk6gd62" path="res://resources/weapon/BatWeaponInfo.tres" id="6_vctca"]
+
+[sub_resource type="GDScript" id="GDScript_qfyat"]
+script/source = "extends Ability
+
+var attack_speed_stat:StatModel
+var weapon_slot_component:WeaponSlotComponent
+
+func has_requirement() -> bool:
+	return possessor.stats_controller is StatsControllerEntity && possessor.weapon_slot_component is WeaponSlotComponent
+	
+func init_ability(entity:Entity)-> void:
+	super(entity)
+	attack_speed_stat = possessor.stats_controller.get_current_stat(StatsConstEntity.names.attack_speed)
+	weapon_slot_component = possessor.weapon_slot_component
+	weapon_slot_component.attack_ready.connect(launch_attack)
+	weapon_slot_component.attack_has_end.connect(end)
+
+func launch_attack() -> void:
+	weapon_slot_component.start_attack(attack_speed_stat.value)
+
+func can_be_used()-> bool:
+	return possessor.has_die() != true && is_executing == false	&& weapon_slot_component.is_attack_ready()
+	
+func execute(delta:float)->void:
+	super(delta)
+	weapon_slot_component.prepare_attack(attack_speed_stat.value)
+"
+
+[sub_resource type="Resource" id="Resource_ladn7"]
+script = ExtResource("2_n1bv1")
+attack_ability = SubResource("GDScript_qfyat")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgw55"]
+load_path = "res://.godot/imported/32x32-bat-sprite.ase.png-534d5aedd008026e8ca44ea24750b799.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2f8e"]
+atlas = SubResource("CompressedTexture2D_bgw55")
+region = Rect2(19, 23, 19, 17)
+margin = Rect2(7, 8, 13, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60fcn"]
+atlas = SubResource("CompressedTexture2D_bgw55")
+region = Rect2(0, 0, 19, 23)
+margin = Rect2(7, 5, 13, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tfmo"]
+atlas = SubResource("CompressedTexture2D_bgw55")
+region = Rect2(19, 0, 19, 23)
+margin = Rect2(7, 4, 13, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2py2x"]
+atlas = SubResource("CompressedTexture2D_bgw55")
+region = Rect2(0, 23, 19, 22)
+margin = Rect2(7, 5, 13, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndi5q"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_p2f8e")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_60fcn")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_6tfmo")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_2py2x")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_60fcn")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_6tfmo")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_2py2x")
+}],
+"loop": false,
+"name": &"Move",
+"speed": 1.0
+}]
+
+[sub_resource type="PackedScene" id="PackedScene_kxs8u"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("32x32-bat-sprite", "sprite_frames", "animation", "AnimatedSprite2D"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0),
+"variants": [SubResource("SpriteFrames_ndi5q"), &"Idle"],
+"version": 3
+}
+
+[resource]
+script = ExtResource("3_lu48g")
+name = "bat"
+sprite = SubResource("PackedScene_kxs8u")
+stats_controller = ExtResource("5_pwyed")
+abilities_controller = SubResource("Resource_ladn7")
+weapon_info = ExtResource("6_vctca")
+spawn_in_arena = false

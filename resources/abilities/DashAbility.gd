@@ -3,10 +3,10 @@ extends Ability
 var dash_shadow_count:=0
 
 func has_requirements() -> bool:
-	return possessor.velocity_component is VelocityComponent
+	return possessor.velocity_component is VelocityComponent2D
 
-func init_ability(owner:Entity)-> void:
-	super(owner)
+func init_ability(entity:Entity)-> void:
+	super(entity)
 	cooldown = 2.0
 
 func end()->void:
@@ -14,7 +14,7 @@ func end()->void:
 	possessor.velocity_component.update_velocity(Vector2.ZERO )
 	
 func create_ghost(_delta:float) -> void:
-	DashGhostHelper.create_ghost(possessor,possessor.sprite)
+	DashGhostHelper.create_ghost(possessor,possessor.sprite_component)
 
 func update(delta: float) -> void:
 	if(dash_shadow_count%2==0):

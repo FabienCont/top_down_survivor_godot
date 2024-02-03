@@ -1,13 +1,13 @@
 extends Ability
 
 var attack_speed_stat:StatModel
-var velocity_component:VelocityComponent
+var velocity_component:VelocityComponent2D
 
 func has_requirement() -> bool:
-	return possessor.velocity_component is VelocityComponent
+	return possessor.velocity_component is VelocityComponent2D
 	
-func init_ability(owner:Entity)-> void:
-	super(owner)
+func init_ability(entity:Entity)-> void:
+	super(entity)
 	velocity_component = possessor.velocity_component
 
 func can_be_used()-> bool:
