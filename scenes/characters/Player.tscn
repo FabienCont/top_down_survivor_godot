@@ -4,16 +4,16 @@
 [ext_resource type="Script" path="res://resources/effects/hurt/DisplayDamagedHurtEffect.gd" id="2_482ux"]
 [ext_resource type="Script" path="res://resources/effects/hurt/ShakeHurtEffect.gd" id="3_fbq1n"]
 [ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://components/HealthComponent.tscn" id="3_gpfp0"]
-[ext_resource type="PackedScene" uid="uid://v7vtestyxfk5" path="res://components/controllers/TopDownControllerComponent.tscn" id="4_0sh1l"]
 [ext_resource type="Script" path="res://resources/effects/hurt/BlinkHurtEffect.gd" id="4_060cq"]
-[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/physics/VelocityComponent.tscn" id="5_8s84f"]
-[ext_resource type="PackedScene" uid="uid://bjbu22y0n4s4r" path="res://components/ui/LifebarComponent.tscn" id="6_eg5dl"]
+[ext_resource type="PackedScene" uid="uid://v7vtestyxfk5" path="res://components/2d/controllers/TopDownControllerComponent2D.tscn" id="6_xbdte"]
 [ext_resource type="PackedScene" uid="uid://tj3s2aqp4cp5" path="res://assets/characters/heroes/character.ase" id="7_5ua4u"]
-[ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://components/physics/HurtboxComponent.tscn" id="10_popjm"]
-[ext_resource type="PackedScene" uid="uid://cu0uhllltwptd" path="res://components/CollectorComponent.tscn" id="11_pbgdl"]
-[ext_resource type="PackedScene" uid="uid://55jfcor21akc" path="res://components/physics/InteractionComponent.tscn" id="12_4w2xi"]
+[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/2d/physics/VelocityComponent2D.tscn" id="7_5606p"]
+[ext_resource type="PackedScene" uid="uid://bjbu22y0n4s4r" path="res://components/2d/ui/LifebarComponent2D.tscn" id="8_fr3e8"]
+[ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://components/2d/physics/HurtboxComponent2D.tscn" id="10_ypk0j"]
+[ext_resource type="PackedScene" uid="uid://cu0uhllltwptd" path="res://components/2d/physics/CollectorComponent2D.tscn" id="11_5jnf5"]
+[ext_resource type="PackedScene" uid="uid://55jfcor21akc" path="res://components/2d/physics/InteractionComponent2D.tscn" id="12_yb0du"]
+[ext_resource type="PackedScene" uid="uid://duv6rauvtfokg" path="res://components/2d/ui/PrepareAttackUiComponent2D.tscn" id="13_h2x3s"]
 [ext_resource type="PackedScene" uid="uid://c43c8vrwakpf7" path="res://components/WeaponSlotComponent.tscn" id="13_iykla"]
-[ext_resource type="PackedScene" uid="uid://duv6rauvtfokg" path="res://scenes/ui/prepare_attack_ui_component.tscn" id="14_iyi61"]
 [ext_resource type="PackedScene" uid="uid://rach46pt74xv" path="res://scenes/ui/aim_sight_component.tscn" id="15_poqst"]
 [ext_resource type="Texture2D" uid="uid://ciifsskxsx2ht" path="res://assets/ui/aim_sight.aseprite" id="16_i5dkl"]
 
@@ -35,11 +35,11 @@ hurt_effects = Array[Resource]([ExtResource("2_482ux"), ExtResource("3_fbq1n"), 
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_gpfp0")]
 
-[node name="TopDownControllerComponent" parent="." instance=ExtResource("4_0sh1l")]
+[node name="TopDownControllerComponent" parent="." instance=ExtResource("6_xbdte")]
 
-[node name="VelocityComponent" parent="." instance=ExtResource("5_8s84f")]
+[node name="VelocityComponent" parent="." instance=ExtResource("7_5606p")]
 
-[node name="LifebarComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("6_eg5dl")]
+[node name="LifebarComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("8_fr3e8")]
 position = Vector2(0, 14)
 healthComponent = NodePath("../HealthComponent")
 
@@ -49,25 +49,25 @@ autoplay = "default"
 frame = 1
 frame_progress = 1.0
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_popjm")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_ypk0j")]
 shape = SubResource("CapsuleShape2D_yog7p")
 health_component = NodePath("../HealthComponent")
 
-[node name="CollectorComponent" parent="." instance=ExtResource("11_pbgdl")]
+[node name="CollectorComponent" parent="." instance=ExtResource("11_5jnf5")]
 collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectorComponent"]
 shape = SubResource("CircleShape2D_wb7o2")
 
-[node name="InteractionComponent" parent="." instance=ExtResource("12_4w2xi")]
+[node name="InteractionComponent" parent="." instance=ExtResource("12_yb0du")]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent"]
 shape = SubResource("CircleShape2D_h3p46")
 
-[node name="PrepareAttackUIComponent" parent="." instance=ExtResource("14_iyi61")]
+[node name="PrepareAttackUIComponent" parent="." instance=ExtResource("13_h2x3s")]
 tint_progress = Color(0.921569, 0.0627451, 0, 0.764706)
 
 [node name="WeaponSlotComponent" parent="." instance=ExtResource("13_iykla")]

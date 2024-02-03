@@ -104,43 +104,43 @@ script = ExtResource("1_j1odo")
 stream = ExtResource("12_iw6rp")
 bus = &"character"
 
-[node name="EnnemiesImpactSoundPool" type="Node" parent="."]
+[node name="EnemiesImpactSoundPool" type="Node" parent="."]
 script = ExtResource("1_63dqo")
 one_sound = true
 
-[node name="SoundQueue" type="Node" parent="EnnemiesImpactSoundPool"]
+[node name="SoundQueue" type="Node" parent="EnemiesImpactSoundPool"]
 script = ExtResource("1_j1odo")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="EnemiesImpactSoundPool/SoundQueue"]
 stream = ExtResource("13_opxbp")
 pitch_scale = 1.24
 bus = &"ennemies"
 
-[node name="SoundQueue2" type="Node" parent="EnnemiesImpactSoundPool"]
+[node name="SoundQueue2" type="Node" parent="EnemiesImpactSoundPool"]
 script = ExtResource("1_j1odo")
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue2"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="EnemiesImpactSoundPool/SoundQueue2"]
 stream = ExtResource("14_25ur7")
 pitch_scale = 1.5
 bus = &"ennemies"
 
-[node name="SoundQueue3" type="Node" parent="EnnemiesImpactSoundPool"]
+[node name="SoundQueue3" type="Node" parent="EnemiesImpactSoundPool"]
 script = ExtResource("1_j1odo")
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue3"]
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="EnemiesImpactSoundPool/SoundQueue3"]
 stream = ExtResource("15_sc54i")
 bus = &"ennemies"
 
-[node name="SoundQueue4" type="Node" parent="EnnemiesImpactSoundPool"]
+[node name="SoundQueue4" type="Node" parent="EnemiesImpactSoundPool"]
 script = ExtResource("1_j1odo")
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue4"]
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="EnemiesImpactSoundPool/SoundQueue4"]
 stream = ExtResource("16_dtwv3")
 bus = &"ennemies"
 
-[node name="SoundQueue5" type="Node" parent="EnnemiesImpactSoundPool"]
+[node name="SoundQueue5" type="Node" parent="EnemiesImpactSoundPool"]
 script = ExtResource("1_j1odo")
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="EnnemiesImpactSoundPool/SoundQueue5"]
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="EnemiesImpactSoundPool/SoundQueue5"]
 stream = ExtResource("6_yxlll")
 bus = &"ennemies"

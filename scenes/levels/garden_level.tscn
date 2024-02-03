@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/MainLevelScript.gd" id="1_ejer5"]
 [ext_resource type="PackedScene" uid="uid://dplxlt53j8hdv" path="res://scenes/levels/garden_level_world.tscn" id="1_hxhco"]
+[ext_resource type="PackedScene" uid="uid://tdxsk34xdqnp" path="res://scenes/ui/XpBar2D.tscn" id="3_c3ohb"]
 [ext_resource type="FontFile" uid="uid://b2loyxgplpufc" path="res://assets/fonts/Kenney Pixel.ttf" id="3_lq60j"]
 [ext_resource type="PackedScene" uid="uid://dtiln4yicio08" path="res://scenes/ui/InventoryUI.tscn" id="3_oc8j7"]
 [ext_resource type="PackedScene" uid="uid://dm6lldv3stkxc" path="res://scenes/ui/Clock_UI.tscn" id="3_rovd1"]
@@ -11,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://plugins/joystick/virtual_joystick.tscn" id="8_5sroo"]
 [ext_resource type="PackedScene" uid="uid://csab0cx1mscsl" path="res://scenes/ui/DashProgressUi.tscn" id="8_xjgae"]
 [ext_resource type="PackedScene" uid="uid://bp551tqyeagn4" path="res://menu/loose.tscn" id="9_lpxh0"]
-[ext_resource type="PackedScene" uid="uid://tdxsk34xdqnp" path="res://components/ui/XpBar.tscn" id="11_0cyd6"]
 [ext_resource type="PackedScene" uid="uid://bq8qat4xgu8bp" path="res://menu/win_menu.tscn" id="13_ne2g5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fy7kw"]
@@ -74,7 +74,7 @@ offset_right = 125.0
 offset_bottom = 42.0
 grow_horizontal = 2
 
-[node name="XpBar" parent="SubViewportContainerUI/SubViewport2/VBoxContainerUI" instance=ExtResource("11_0cyd6")]
+[node name="XpBar" parent="SubViewportContainerUI/SubViewport2/VBoxContainerUI" instance=ExtResource("3_c3ohb")]
 custom_minimum_size = Vector2(250, 7)
 layout_mode = 2
 

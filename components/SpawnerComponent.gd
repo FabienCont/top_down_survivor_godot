@@ -8,7 +8,7 @@ class_name SpawnerComponent
 @export var infinite_spawn: bool = true
 @export var node_to_spawn: Node
 @export var scene_to_spawn: PackedScene
-@export var player: Node2D
+@export var player: Node
 @export var group:String
 
 @export var game_clock: GameClock 
@@ -31,11 +31,10 @@ func _spawn_scene() -> void:
 	nb_spawned+=1
 	var scene = scene_to_spawn.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	scene.target = player 
-	node_to_spawn.add_child(scene)
 	if(scene_preparation_function is Callable && scene_preparation_function.is_null() != true):
 		scene_preparation_function.call(scene)
-
 	if group:
 		scene.add_to_group(group)
+	node_to_spawn.add_child(scene)
 	_await_spawn_time()
 	

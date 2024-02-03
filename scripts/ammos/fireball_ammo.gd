@@ -1,7 +1,7 @@
 extends Ammo
 
 @onready var trailEffectScene :PackedScene = preload("res://scenes/particles/TrailFireballEffect.tscn") 
-@onready var follow_target_component: FollowTargetComponent = $FollowTargetComponent
+@onready var follow_target_component: FollowTargetComponent2D = $FollowTargetComponent
 func _ready():
 	super()
 	follow_target_component.target = get_tree().get_nodes_in_group("players")[0]

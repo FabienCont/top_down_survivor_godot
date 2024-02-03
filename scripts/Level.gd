@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var spawner :EnnemiesSpawner = $EnnemiesSpawner
+@onready var spawner :EnemiesSpawner = $EnemiesSpawner
 @onready var playerNode: Player = $Player
 var game_clock: GameClock 
 

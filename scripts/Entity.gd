@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 class_name Entity
 
-@onready var velocity_component: VelocityComponent = $VelocityComponent
+@onready var velocity_component: VelocityComponent2D = $VelocityComponent
 @onready var health_component: HealthComponent = $HealthComponent
-@onready var hurtbox_component:HurtboxComponent  = $HurtboxComponent
-@onready var sprite: AnimatedSprite2D  = $SpriteComponent
+@onready var hurtbox_component:HurtboxComponent2D  = $HurtboxComponent
+@onready var sprite_component: AnimatedSprite2D  = $SpriteComponent
 
 @export var hurt_effects: Array[Resource] =[]
 @export var die_effects: Array[Resource] =[]
@@ -29,17 +29,17 @@ func init_abilities_controller(abilities_controller_init :AbilitiesController) -
 	
 func init(stats_controller_init :StatsControllerEntity,upgrades_controller_init:UpgradesController, abilities_controller_init:AbilitiesController) -> void:
 	init_stat_controller(stats_controller_init,upgrades_controller_init)
-	init_abilities_controller(abilities_controller_init)
 	life_stat = stats_controller.get_current_stat(StatsConstEntity.names.life)
 	var movement_speed_stat = stats_controller.get_current_stat(StatsConstEntity.names.movement_speed)
 	var acceleration_stat = stats_controller.get_current_stat(StatsConstEntity.names.acceleration)
 	velocity_component.init(movement_speed_stat,acceleration_stat)
 	health_component.init(life_stat)
+	init_abilities_controller(abilities_controller_init)
 
-func set_sprite(new_sprite: AnimatedSprite2D):
+func set_sprite_component(new_sprite: AnimatedSprite2D):
 	new_sprite.scale = Vector2(0.5,0.5)
-	sprite.replace_by(new_sprite)
-	sprite = new_sprite
+	sprite_component.replace_by(new_sprite)
+	sprite_component = new_sprite
 	
 func get_current_direction() -> Vector2:
 	return Vector2(0,0)
@@ -62,3 +62,6 @@ func apply_attack_modifier(attack:Attack)->void:
 	var damage_stat = stats_controller.get_current_stat(StatsConstEntity.names.damage)
 	attack.damage += damage_stat.current_value 
 	pass
+
+func collect(_loot : Loot) -> void:
+	return

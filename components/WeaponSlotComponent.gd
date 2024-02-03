@@ -3,10 +3,10 @@ class_name WeaponSlotComponent
 
 @export_flags_2d_physics var collision_layer: int
 @export_flags_2d_physics var collision_mask: int
-@export var weapon_equiped: Weapon;
+@export var weapon_equiped: WeaponComponent2D;
 var stats_controller:StatsControllerWeapon
 var upgrades_controller:UpgradesController
-var weapon_info:WeaponInfo
+var weapon_info:WeaponInfo2D
 
 signal attack_has_end()
 signal attack_in_preparation(time :float)
@@ -14,7 +14,7 @@ signal attack_ready()
 signal attack_started()
 signal hit(attack :Attack)
 
-func init(weapon_info_init: WeaponInfo,upgrades_controller_init:UpgradesController) -> void:
+func init(weapon_info_init: WeaponInfo2D,upgrades_controller_init:UpgradesController) -> void:
 	set_stats(weapon_info_init.stats_controller)
 	set_upgrades_controller(upgrades_controller_init)
 	set_weapon_info(weapon_info_init)
@@ -27,7 +27,7 @@ func set_upgrades_controller(upgrades_controller_init: UpgradesController)-> voi
 func set_stats(stats_controller_init: StatsControllerWeapon)-> void:
 	stats_controller = stats_controller_init
 	
-func set_weapon_info(weapon_info_init: WeaponInfo)-> void:
+func set_weapon_info(weapon_info_init: WeaponInfo2D)-> void:
 	weapon_info = weapon_info_init
 	
 func _listen_weapon_hit()-> void:
@@ -41,7 +41,7 @@ func _listen_weapon_hit()-> void:
 func has_weapon_equiped()-> bool:
 	return weapon_equiped != null
 	
-func equip(weapon: Weapon)-> void:
+func equip(weapon: WeaponComponent2D)-> void:
 	weapon_equiped = weapon
 	weapon_equiped.init(collision_layer,collision_mask,weapon_info,upgrades_controller,get_parent())
 	add_child(weapon)

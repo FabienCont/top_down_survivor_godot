@@ -2,12 +2,12 @@ extends Entity
 
 class_name Player
 
-@onready var controller_component: TopDownControllerComponent = $TopDownControllerComponent
-@onready var interaction_component: InteractionComponent = $InteractionComponent
+@onready var controller_component: TopDownControllerComponent2D = $TopDownControllerComponent
+@onready var interaction_component: InteractionComponent2D = $InteractionComponent
 @onready var weapon_slot_component: WeaponSlotComponent = $WeaponSlotComponent
-@onready var lifebar_component: LifebarComponent = $LifebarComponent
-@onready var collector_component: CollectorComponent = $CollectorComponent
-@onready var prepare_attack_ui_component:TextureProgressBar = $PrepareAttackUIComponent
+@onready var lifebar_component: LifebarComponent2D = $LifebarComponent
+@onready var collector_component: CollectorComponent2D = $CollectorComponent
+@onready var prepare_attack_ui_component: PrepareAttackUIComponent2D = $PrepareAttackUIComponent
 
 @export var player_info: PlayerInfo
 
@@ -21,13 +21,13 @@ func init_player(player_info_init :PlayerInfo) -> void:
 	collector_component.init(collector_distance)
 	var max_life_stat = player_info.stats_controller.get_current_stat(StatsConstEntity.names.max_life)
 	lifebar_component.init(life_stat,max_life_stat)
-	set_sprite(player_info.character.sprite.instantiate())
+	set_sprite_component(player_info.character.sprite.instantiate())
 	weapon_slot_component.init(player_info.weapon_info,player_info.upgrades_controller)
 	Signals.player_ready.emit(self)
 
 func _physics_process(delta: float) -> void:
 	if has_die() == true:
-		sprite.play("Idle")
+		sprite_component.play("Idle")
 		return
 	if abilities_controller.dash_ability.is_executing == true:
 		abilities_controller.dash_ability.update(delta)
@@ -38,13 +38,13 @@ func _physics_process(delta: float) -> void:
 
 	if controller_component.has_move() : 
 		SoundManager.playFootstepSound()
-		sprite.play("Walk")
+		sprite_component.play("Walk")
 		if velocity_component.current_velocity.x < 0 :
-			sprite.flip_h = true
+			sprite_component.flip_h = true
 		else: 
-			sprite.flip_h = false 
+			sprite_component.flip_h = false 
 	else:
-		sprite.play("Idle")
+		sprite_component.play("Idle")
 	
 	weapon_slot_component.look_at(global_position + controller_component.get_look_direction()) 
 	if controller_component.has_dash() == true && abilities_controller.dash_ability.can_be_used() && not abilities_controller.attack_ability.is_executing :
@@ -72,7 +72,7 @@ func die():
 		Signals.player_died.emit()
 		weapon_slot_component.unequip()
 
-func collect(loot : Loot):
+func collect(loot : Loot) -> void:
 	if has_die():
 		return
 	SoundManager.playLootSound()

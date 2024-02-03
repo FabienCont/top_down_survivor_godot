@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://55jfcor21akc"]
-
-[ext_resource type="Script" path="res://components/physics/InteractionComponent.gd" id="1_aes10"]
-
-[node name="InteractionComponent" type="Area2D"]
-script = ExtResource("1_aes10")

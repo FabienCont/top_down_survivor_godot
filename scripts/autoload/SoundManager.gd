@@ -12,7 +12,7 @@ func _ready():
 	_soundQueuesByName["SoundImpactQueue"] = get_node("SoundImpactQueue")
 	
 	_soundPoolsByName["FootstepSoundPool"] = get_node("FootstepSoundPool")
-	_soundPoolsByName["EnnemiesImpactSoundPool"] = get_node("EnnemiesImpactSoundPool")
+	_soundPoolsByName["EnemiesImpactSoundPool"] = get_node("EnemiesImpactSoundPool")
 	SoundManager.playBackgroundMenuSound()
 
 func playBackgroundMenuSound():
@@ -39,8 +39,8 @@ func playImpactSound():
 func playFootstepSound():
 	get_sound_pool_by_name("FootstepSoundPool").play_random_sound()
 	
-func playEnnemiesImpactSound():
-	get_sound_pool_by_name("EnnemiesImpactSoundPool").play_random_sound()
+func playEnemiesImpactSound():
+	get_sound_pool_by_name("EnemiesImpactSoundPool").play_random_sound()
 
 func get_sound_queue_by_name(sound_name: String) -> SoundQueue :
 	return _soundQueuesByName[sound_name]

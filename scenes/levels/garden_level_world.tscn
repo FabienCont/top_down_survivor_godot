@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="7_6kc33"]
 [ext_resource type="PackedScene" uid="uid://cd2p3p4u7n0pc" path="res://scenes/particles/Smoke2.tscn" id="7_oc0w4"]
 [ext_resource type="PackedScene" uid="uid://d3vdr5j6nw03q" path="res://scenes/cameras/shakeable_camera.tscn" id="8_bwqk4"]
-[ext_resource type="PackedScene" uid="uid://ckmcqlh372i8b" path="res://scenes/ennemies/EnnemiesSpawner.tscn" id="10_77vc6"]
-[ext_resource type="Texture2D" uid="uid://2sj5e3yjj4dk" path="res://assets/characters/ennemies/32x32-eye-sprite-work.aseprite" id="13_3g6ux"]
+[ext_resource type="PackedScene" uid="uid://ckmcqlh372i8b" path="res://scenes/enemies/EnemiesSpawner.tscn" id="10_77vc6"]
+[ext_resource type="Texture2D" uid="uid://2sj5e3yjj4dk" path="res://assets/characters/enemies/32x32-eye-sprite-work.aseprite" id="13_3g6ux"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xshun"]
 resource_name = "ForestCliff"
@@ -4403,7 +4403,7 @@ shadow_item_cull_mask = 0
 [node name="ennemies" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="EnnemiesSpawner" parent="." node_paths=PackedStringArray("player", "node_to_spawn", "arena") instance=ExtResource("10_77vc6")]
+[node name="EnemiesSpawner" parent="." node_paths=PackedStringArray("player", "node_to_spawn", "arena") instance=ExtResource("10_77vc6")]
 player = NodePath("../Player")
 node_to_spawn = NodePath("../ennemies")
 arena = NodePath("../NavigationRegion2D")

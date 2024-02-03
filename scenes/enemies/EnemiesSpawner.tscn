@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckmcqlh372i8b"]
+
+[ext_resource type="Script" path="res://scenes/enemies/EnemiesSpawner.gd" id="1_yul3u"]
+[ext_resource type="PackedScene" uid="uid://dmms2cbu3dral" path="res://components/SpawnerComponent.tscn" id="2_bsiw8"]
+[ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/characters/Enemy.tscn" id="3_v4fko"]
+
+[node name="EnnemiesSpawner" type="Node2D"]
+script = ExtResource("1_yul3u")
+
+[node name="SpawnerComponent" parent="." instance=ExtResource("2_bsiw8")]
+ready_to_spawn = true
+interval_time_to_spawn = 2.5
+nb_to_spawn = 5
+scene_to_spawn = ExtResource("3_v4fko")
+group = "ennemies"

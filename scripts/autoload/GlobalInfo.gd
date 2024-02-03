@@ -7,8 +7,6 @@ extends Node
 
 @onready var player_info:= PlayerInfo.new()
 
-var weapon: WeaponInfo
-
 var stats: Dictionary = {
 	"level":0,
 } 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://4q2c6ep63hs2"]
 
-[ext_resource type="Script" path="res://scripts/weapons/MeleeWeapon.gd" id="1_b7ypb"]
+[ext_resource type="Script" path="res://components/2d/weapon/MeleeWeapon2D.gd" id="1_b7ypb"]
 [ext_resource type="Texture2D" uid="uid://cxft5yi2x0hjf" path="res://assets/kenney_particle_pack/scratch_01.png" id="2_7d44c"]
-[ext_resource type="Script" path="res://components/physics/HitboxComponent.gd" id="3_epqod"]
+[ext_resource type="Script" path="res://components/2d/physics/HitboxComponent2D.gd" id="3_epqod"]
 
 [sub_resource type="Animation" id="Animation_laoah"]
 length = 0.8

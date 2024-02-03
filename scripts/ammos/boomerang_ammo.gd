@@ -1,7 +1,7 @@
 extends Ammo
 
 @onready var emitter = get_parent()
-@onready var follow_target_component:= FollowTargetComponent.new()
+@onready var follow_target_component:= FollowTargetComponent2D.new()
 @onready var catchableTimer:Timer
 @onready var is_catchable:=false
 

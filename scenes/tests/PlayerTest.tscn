@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/tests/initPlayer.gd" id="1_fe56f"]
 [ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="1_kctfk"]
-[ext_resource type="Resource" uid="uid://v876g6v6jvxf" path="res://scripts/resources/stats/custom/players/player_test.tres" id="2_al83r"]
+[ext_resource type="Resource" uid="uid://v876g6v6jvxf" path="res://resources/stats/custom/players/player_test.tres" id="2_al83r"]
 
 [node name="PlayerTest" type="Node2D" node_paths=PackedStringArray("player_char")]
 script = ExtResource("1_fe56f")

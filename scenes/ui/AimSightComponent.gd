@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var top_down_controller_component: TopDownControllerComponent
+@export var top_down_controller_component: TopDownControllerComponent2D
 
 @export var max_range: float= 80.0
 @export var normalized_range_factor: float= 40.0

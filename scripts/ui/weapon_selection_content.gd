@@ -14,7 +14,7 @@ func _ready():
 		container.button.button_group = weapons_button_group
 		container.connect("select_weapon",_select_weapon)
 
-func _select_weapon(weapon_selected:WeaponInfo) -> void:
+func _select_weapon(weapon_selected:WeaponInfo2D) -> void:
 	player_info.weapon_info = weapon_selected
 	GlobalInfo.player_info = player_info
 	_update_validate_button_status()

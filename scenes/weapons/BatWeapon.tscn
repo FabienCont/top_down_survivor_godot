@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0yvlgt6mp5cq"]
 
-[ext_resource type="Script" path="res://scripts/weapons/MeleeWeapon.gd" id="1_xmqf8"]
-[ext_resource type="Script" path="res://components/physics/HitboxComponent.gd" id="2_rkk2n"]
+[ext_resource type="Script" path="res://components/2d/weapon/MeleeWeapon2D.gd" id="1_8p04d"]
+[ext_resource type="Script" path="res://components/2d/physics/HitboxComponent2D.gd" id="2_rkk2n"]
 [ext_resource type="PackedScene" uid="uid://btevx5rewkqxb" path="res://assets/attack/bat_attack.tscn" id="2_ufbh1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0u3g"]
 size = Vector2(12, 12)
 
 [node name="BatWeapon" type="Node2D" node_paths=PackedStringArray("hitbox_component")]
-script = ExtResource("1_xmqf8")
+script = ExtResource("1_8p04d")
 hitbox_component = NodePath("HitboxComponent")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_ufbh1")]
