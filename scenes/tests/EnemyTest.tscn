@@ -1,16 +1,350 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4uxfpyb68wl8"]
+[gd_scene load_steps=52 format=3 uid="uid://b4uxfpyb68wl8"]
 
 [ext_resource type="Script" path="res://scenes/tests/EnemyTest.gd" id="1_fcf8t"]
+[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_1unpo"]
 [ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/characters/Enemy.tscn" id="2_f2svw"]
+[ext_resource type="Script" path="res://resources/effects/EffectsController.gd" id="3_6b2k3"]
 [ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="3_dc8bk"]
+[ext_resource type="Script" path="res://components/entity_decision_maker/EnemyLogicComponent.gd" id="4_sxqil"]
 [ext_resource type="Resource" uid="uid://v876g6v6jvxf" path="res://resources/stats/custom/players/player_test.tres" id="4_yk84b"]
+[ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="5_wui01"]
+[ext_resource type="Script" path="res://resources/stats/StatsControllerEntity.gd" id="6_cqxu5"]
+[ext_resource type="Script" path="res://resources/stats/StatEntity.gd" id="7_6vo45"]
+[ext_resource type="Script" path="res://resources/upgrades/UpgradesController.gd" id="8_dmevd"]
+[ext_resource type="Script" path="res://components/2d/weapon/MeleeWeapon2D.gd" id="9_t2gp4"]
+[ext_resource type="PackedScene" uid="uid://btevx5rewkqxb" path="res://assets/attack/bat_attack.tscn" id="10_apxpy"]
+[ext_resource type="Script" path="res://components/2d/physics/HitboxComponent2D.gd" id="11_ekbcr"]
+[ext_resource type="Script" path="res://resources/weapon/WeaponInfo2D.gd" id="12_akrn2"]
+[ext_resource type="Script" path="res://resources/stats/StatsControllerWeapon.gd" id="13_fsrje"]
+[ext_resource type="Script" path="res://resources/stats/StatWeapon.gd" id="14_bhula"]
 
-[node name="EnnemyTest" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_8llw0"]
+script/source = "extends Ability
+
+var attack_speed_stat:StatModel
+var weapon_slot_component:WeaponSlotComponent
+
+func has_requirement() -> bool:
+	return entity.stats_controller is StatsControllerEntity && entity.weapon_slot_component is WeaponSlotComponent
+	
+func init_ability(entity_init:Entity)-> void:
+	super(entity_init)
+	attack_speed_stat = entity.stats_controller.get_current_stat(StatsConstEntity.names.attack_speed)
+	weapon_slot_component = entity.weapon_slot_component
+	weapon_slot_component.attack_ready.connect(launch_attack)
+	weapon_slot_component.attack_has_end.connect(end)
+
+func launch_attack() -> void:
+	weapon_slot_component.start_attack(attack_speed_stat.value)
+
+func can_be_used()-> bool:
+	return entity.has_die() != true && is_executing == false	&& weapon_slot_component.is_attack_ready()
+	
+func execute(delta:float)->void:
+	super(delta)
+	weapon_slot_component.prepare_attack(attack_speed_stat.value)
+"
+
+[sub_resource type="Resource" id="Resource_vubp0"]
+script = ExtResource("2_1unpo")
+attack_ability = SubResource("GDScript_8llw0")
+
+[sub_resource type="Resource" id="Resource_sqkep"]
+script = ExtResource("3_6b2k3")
+effects = Array[Resource("res://resources/effects/EffectResource.gd")]([])
+
+[sub_resource type="Resource" id="Resource_he1fy"]
+script = ExtResource("4_sxqil")
+distance_before_attack = 25.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w2qqv"]
+load_path = "res://.godot/imported/32x32-bat-sprite.ase.png-534d5aedd008026e8ca44ea24750b799.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2w1e"]
+atlas = SubResource("CompressedTexture2D_w2qqv")
+region = Rect2(27, 21, 19, 15)
+margin = Rect2(7, 17, 13, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymtl6"]
+atlas = SubResource("CompressedTexture2D_w2qqv")
+region = Rect2(29, 43, 25, 11)
+margin = Rect2(3, 20, 7, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0wmn"]
+atlas = SubResource("CompressedTexture2D_w2qqv")
+region = Rect2(0, 21, 27, 22)
+margin = Rect2(3, 5, 5, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwtva"]
+atlas = SubResource("CompressedTexture2D_w2qqv")
+region = Rect2(0, 43, 29, 15)
+margin = Rect2(2, 6, 3, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk34c"]
+atlas = SubResource("CompressedTexture2D_w2qqv")
+region = Rect2(0, 0, 31, 21)
+margin = Rect2(1, 1, 1, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lw3bj"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_x2w1e")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_ymtl6")
+}],
+"loop": false,
+"name": &"Die2",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_g0wmn")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_vwtva")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_yk34c")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_g0wmn")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_vwtva")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_yk34c")
+}],
+"loop": false,
+"name": &"Move",
+"speed": 1.0
+}]
+
+[sub_resource type="PackedScene" id="PackedScene_erlvn"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("32x32-bat-sprite", "sprite_frames", "animation", "AnimatedSprite2D"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0),
+"variants": [SubResource("SpriteFrames_lw3bj"), &"Die2"],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_l04al"]
+script = ExtResource("7_6vo45")
+key_selector = 0
+auto_compute = true
+key = 0
+base_value = 0.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_edend"]
+script = ExtResource("7_6vo45")
+key_selector = 0
+auto_compute = false
+key = 0
+base_value = 6.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_n5jha"]
+script = ExtResource("7_6vo45")
+key_selector = 1
+auto_compute = true
+key = 1
+base_value = 6.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_0j78d"]
+script = ExtResource("7_6vo45")
+key_selector = 2
+auto_compute = true
+key = 2
+base_value = 10.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_1iyto"]
+script = ExtResource("7_6vo45")
+key_selector = 4
+auto_compute = false
+key = 4
+base_value = 10.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_pni5l"]
+script = ExtResource("7_6vo45")
+key_selector = 7
+auto_compute = false
+key = 7
+base_value = 25.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_sq51o"]
+script = ExtResource("7_6vo45")
+key_selector = 8
+auto_compute = false
+key = 8
+base_value = 300.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_n1x2f"]
+script = ExtResource("7_6vo45")
+key_selector = 9
+auto_compute = true
+key = 9
+base_value = 0.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_qfm4m"]
+script = ExtResource("7_6vo45")
+key_selector = 10
+auto_compute = false
+key = 10
+base_value = 1.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_j4rnb"]
+script = ExtResource("7_6vo45")
+key_selector = 11
+auto_compute = true
+key = 11
+base_value = 1.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_fpsot"]
+script = ExtResource("7_6vo45")
+key_selector = 12
+auto_compute = false
+key = 12
+base_value = 10.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_t7o66"]
+script = ExtResource("8_dmevd")
+upgrades = Array[Resource("res://resources/Upgrade.gd")]([])
+
+[sub_resource type="Resource" id="Resource_r8jjr"]
+script = ExtResource("6_cqxu5")
+stat_to_remove_from_editor = 9
+_remove_stat = false
+stat_to_add_from_editor = SubResource("Resource_l04al")
+_add_stat = false
+stats_dico = {
+0: SubResource("Resource_edend"),
+1: SubResource("Resource_n5jha"),
+2: SubResource("Resource_0j78d"),
+4: SubResource("Resource_1iyto"),
+7: SubResource("Resource_pni5l"),
+8: SubResource("Resource_sq51o"),
+9: SubResource("Resource_n1x2f"),
+10: SubResource("Resource_qfm4m"),
+11: SubResource("Resource_j4rnb"),
+12: SubResource("Resource_fpsot")
+}
+modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([])
+target = 0
+upgrades_controller = SubResource("Resource_t7o66")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0u3g"]
+size = Vector2(12, 12)
+
+[sub_resource type="PackedScene" id="PackedScene_6iwgt"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741828, 1073741827, 14, 13, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("BatWeapon", "Node2D", "script", "hitbox_component", "Sprite2D", "HitboxComponent", "Area2D", "monitoring", "monitorable", "script", "CollisionShape2D", "CollisionShape2D", "shape", "_on_body_shape_entered", "body_shape_entered"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath("./HitboxComponent"), NodePath("HitboxComponent"), NodePath("HitboxComponent")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 1073741827, 1, 0, 1073741824, 0, 2147483647, 4, 2, 0, 0, 1073741825, 0, 6, 5, -1, 3, 7, 3, 8, 4, 9, 5, 0, 1073741826, 0, 11, 10, -1, 1, 12, 6, 0),
+"variants": [ExtResource("9_t2gp4"), NodePath("HitboxComponent"), ExtResource("10_apxpy"), false, false, ExtResource("11_ekbcr"), SubResource("RectangleShape2D_e0u3g")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_d04wb"]
+script = ExtResource("14_bhula")
+key_selector = 0
+auto_compute = true
+key = 0
+base_value = 0.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_541sh"]
+script = ExtResource("14_bhula")
+key_selector = 30
+auto_compute = true
+key = 30
+base_value = 1.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_o8wjy"]
+script = ExtResource("14_bhula")
+key_selector = 31
+auto_compute = true
+key = 31
+base_value = 4.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_wkxv3"]
+script = ExtResource("14_bhula")
+key_selector = 32
+auto_compute = true
+key = 32
+base_value = 1.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_mjs81"]
+script = ExtResource("13_fsrje")
+stat_to_remove_from_editor = 0
+_remove_stat = false
+stat_to_add_from_editor = SubResource("Resource_d04wb")
+_add_stat = false
+stats_dico = {
+30: SubResource("Resource_541sh"),
+31: SubResource("Resource_o8wjy"),
+32: SubResource("Resource_wkxv3")
+}
+modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([])
+target = 1
+
+[sub_resource type="Resource" id="Resource_d2nft"]
+script = ExtResource("12_akrn2")
+name = "bat_weapon"
+scene = SubResource("PackedScene_6iwgt")
+stats_controller = SubResource("Resource_mjs81")
+
+[sub_resource type="Resource" id="Resource_ers00"]
+script = ExtResource("5_wui01")
+name = "batTest"
+sprite = SubResource("PackedScene_erlvn")
+stats_controller = SubResource("Resource_r8jjr")
+abilities_controller = SubResource("Resource_vubp0")
+logic_component = SubResource("Resource_he1fy")
+effects = SubResource("Resource_sqkep")
+weapon_info = SubResource("Resource_d2nft")
+spawn_in_arena = false
+
+[node name="EnemyTest" type="Node2D"]
 script = ExtResource("1_fcf8t")
+enemy_info = SubResource("Resource_ers00")
 
-[node name="Ennemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_f2svw")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_f2svw")]
 position = Vector2(39, 28)
-target = NodePath("../Player")
+target = NodePath("")
 
 [node name="Player" parent="." instance=ExtResource("3_dc8bk")]
 position = Vector2(145, 79)

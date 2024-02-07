@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://components/HealthComponent.tscn" id="11_ishdw"]
 [ext_resource type="PackedScene" uid="uid://bq8wq02iaxh0b" path="res://assets/characters/enemies/32x32-bat-sprite.ase" id="12_c0d1x"]
 [ext_resource type="PackedScene" uid="uid://b1navm80qbjks" path="res://components/2d/ia/FollowTargetComponent2D.tscn" id="13_3cu1a"]
-[ext_resource type="Script" path="res://components/WeaponSlotComponent.gd" id="14_yhrw1"]
+[ext_resource type="Script" path="res://components/2d/weapon/WeaponSlotComponent2D.gd" id="14_yhrw1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jaqne"]
 radius = 8.0

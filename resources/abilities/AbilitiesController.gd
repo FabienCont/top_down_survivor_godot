@@ -13,7 +13,6 @@ var entity:Entity
 
 func init(entity_init):
 	entity = entity_init
-	attack_ability = attack_ability.duplicate()
 	if dash_ability!=null:
 		add_dash_ability(dash_ability.new())
 	if move_ability!=null:

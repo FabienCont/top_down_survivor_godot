@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="EnemiesSpawnRules" load_steps=6 format=3 uid="uid://cu0hg3dsmvshf"]
+[gd_resource type="Resource" script_class="EnemiesSpawnRules" load_steps=5 format=3 uid="uid://cu0hg3dsmvshf"]
 
 [ext_resource type="Script" path="res://resources/spawn_infos/EnemiesSpawnRules.gd" id="1_7j6qv"]
 [ext_resource type="Resource" uid="uid://s430lecb7xq0" path="res://resources/spawn_infos/enemy_spawn_info/bat_enemy_spawn_info_1.tres" id="1_56rfl"]
 [ext_resource type="Resource" uid="uid://b8eqxh4goqvo" path="res://resources/spawn_infos/enemy_spawn_info/ghost_enemy_spawn_info_1.tres" id="2_6fiti"]
 [ext_resource type="Resource" uid="uid://ds11bggj0gni0" path="res://resources/spawn_infos/enemy_spawn_info/eye_enemy_spawn_info_1.tres" id="3_qtuof"]
-[ext_resource type="Resource" uid="uid://dcbdhixe3cixp" path="res://resources/spawn_infos/enemy_spawn_info/boss_enemy_spawn_info_1.tres" id="4_74cwk"]
 
 [resource]
 script = ExtResource("1_7j6qv")
-enemies_spawn_info = Array[Resource("res://resources/spawn_infos/EnemySpawnInfo.gd")]([ExtResource("1_56rfl"), ExtResource("2_6fiti"), ExtResource("3_qtuof"), ExtResource("4_74cwk")])
+enemies_spawn_info = Array[Resource("res://resources/spawn_infos/EnemySpawnInfo.gd")]([ExtResource("1_56rfl"), ExtResource("2_6fiti"), ExtResource("3_qtuof")])

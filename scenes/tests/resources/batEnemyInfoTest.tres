@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=9 format=3 uid="uid://bcvkl3shnjk7s"]
+
+[ext_resource type="Script" path="res://resources/abilities/AttackAbility.gd" id="1_5jolv"]
+[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_7qqgi"]
+[ext_resource type="Resource" uid="uid://pgrotlrpxspv" path="res://components/entity_decision_maker/EnemyLogicComponent.tres" id="3_bylpm"]
+[ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="4_uacbu"]
+[ext_resource type="PackedScene" uid="uid://bq8wq02iaxh0b" path="res://assets/characters/enemies/32x32-bat-sprite.ase" id="5_fvpjv"]
+[ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/enemies/bat/enemy_stat_controller_entity.tres" id="6_yb5ob"]
+[ext_resource type="Resource" uid="uid://ca0uhltk6gd62" path="res://resources/weapon/BatWeaponInfo.tres" id="7_m1vrm"]
+
+[sub_resource type="Resource" id="Resource_ladn7"]
+script = ExtResource("2_7qqgi")
+attack_ability = ExtResource("1_5jolv")
+
+[resource]
+script = ExtResource("4_uacbu")
+name = "bat"
+sprite = ExtResource("5_fvpjv")
+stats_controller = ExtResource("6_yb5ob")
+abilities_controller = SubResource("Resource_ladn7")
+logic_component = ExtResource("3_bylpm")
+weapon_info = ExtResource("7_m1vrm")
+spawn_in_arena = false

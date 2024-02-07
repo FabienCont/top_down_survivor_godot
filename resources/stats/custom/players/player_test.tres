@@ -1,12 +1,28 @@
-[gd_resource type="Resource" script_class="PlayerInfo" load_steps=5 format=3 uid="uid://v876g6v6jvxf"]
+[gd_resource type="Resource" script_class="PlayerInfo" load_steps=12 format=3 uid="uid://v876g6v6jvxf"]
 
 [ext_resource type="Resource" uid="uid://ddas3s5kko2hj" path="res://resources/characters/ninja.tres" id="1_6f3pt"]
 [ext_resource type="Script" path="res://resources/PlayerInfo.gd" id="1_d0ltf"]
+[ext_resource type="Script" path="res://resources/abilities/AttackAbility.gd" id="1_ipa4w"]
+[ext_resource type="Script" path="res://components/entity_decision_maker/PlayerLogicComponent.gd" id="2_bmkdr"]
+[ext_resource type="Script" path="res://resources/abilities/DashAbility.gd" id="2_cnciw"]
 [ext_resource type="Resource" uid="uid://4cb16cge1kmv" path="res://resources/stats/custom/players/player_stats_controller.tres" id="3_0ga32"]
+[ext_resource type="Script" path="res://resources/abilities/MoveAbility.gd" id="3_dky8g"]
 [ext_resource type="Resource" uid="uid://b03trjmryqoqd" path="res://resources/weapon/BowWeaponInfo.tres" id="4_d0yh0"]
+[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="4_t8nvi"]
+
+[sub_resource type="Resource" id="Resource_imlsf"]
+script = ExtResource("4_t8nvi")
+dash_ability = ExtResource("2_cnciw")
+move_ability = ExtResource("3_dky8g")
+attack_ability = ExtResource("1_ipa4w")
+
+[sub_resource type="Resource" id="Resource_imwts"]
+script = ExtResource("2_bmkdr")
 
 [resource]
 script = ExtResource("1_d0ltf")
+abilities_controller = SubResource("Resource_imlsf")
+logic_component = SubResource("Resource_imwts")
 stats_controller = ExtResource("3_0ga32")
 weapon_info = ExtResource("4_d0yh0")
 character = ExtResource("1_6f3pt")

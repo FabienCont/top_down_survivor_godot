@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cu0uhllltwptd" path="res://components/2d/physics/CollectorComponent2D.tscn" id="11_5jnf5"]
 [ext_resource type="PackedScene" uid="uid://55jfcor21akc" path="res://components/2d/physics/InteractionComponent2D.tscn" id="12_yb0du"]
 [ext_resource type="PackedScene" uid="uid://duv6rauvtfokg" path="res://components/2d/ui/PrepareAttackUiComponent2D.tscn" id="13_h2x3s"]
-[ext_resource type="PackedScene" uid="uid://c43c8vrwakpf7" path="res://components/WeaponSlotComponent.tscn" id="13_iykla"]
+[ext_resource type="PackedScene" uid="uid://c43c8vrwakpf7" path="res://components/2d/weapon/WeaponSlotComponent2D.tscn" id="13_iykla"]
 [ext_resource type="PackedScene" uid="uid://rach46pt74xv" path="res://scenes/ui/aim_sight_component.tscn" id="15_poqst"]
 [ext_resource type="Texture2D" uid="uid://ciifsskxsx2ht" path="res://assets/ui/aim_sight.aseprite" id="16_i5dkl"]
 
