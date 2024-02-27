@@ -13,7 +13,26 @@ env:
 jobs:
 
 
+  container:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - run: docker build -t ghcr.io/fabiencont/godot/export container
+
+      - name: Push to ghcr.io
+        uses: pyTooling/Actions/with-post-step@r0
+        with:
+          main: |
+            echo '${{ github.token }}' | docker login ghcr.io -u gha --password-stdin
+            docker push ghcr.io/fabiencont/godot/export
+          post: docker logout ghcr.io
+
+
   build:
+    needs: container
     runs-on: ubuntu-latest
     name: ${{ matrix.name }}
     strategy:
@@ -21,17 +40,13 @@ jobs:
       matrix:
         include:
 
-          - preset: HTML5
+          - name: HTML5
             path: ./dist/html5/index.html
-            name: HTML5
             upload: godot/dist/html5/*
 
-
-          - preset: Windows Desktop
-            path: ./dist/win/survival_game.windows.x86_64.exe
-            name: Windows
+          - name: Windows
+            path: ./dist/win/top_down_survivor_godot.windows.x86_64.exe
             upload: godot/dist/win/*
-
 
     steps:
 
@@ -39,13 +54,11 @@ jobs:
 
       - run: mkdir -p godot/"$(dirname '${{ matrix.path }}')"
 
-      - run: docker build -t ghcr.io/FabienCont/godot/export container
-
-      - run: >-
-          docker run --rm
-          -v $(pwd):/wrk -w /wrk/godot
-          ghcr.io/itsas-taldea/godot/export
-          gexport --export-release '${{ matrix.preset }}' '${{ matrix.path }}'
+      - uses: docker://ghcr.io/fabiencont/godot/export
+        env:
+          GODOT_EXPORT_SUBDIR: godot
+        with:
+          args: gexport --export-release ${{ matrix.name }} ${{ matrix.path }}
 
       - name: '📤 Upload artifact'
         uses: 'actions/upload-artifact@v3'
@@ -138,7 +151,7 @@ jobs:
           mkdir tip
           cd artifacts
           tree
-          cp Linux/survival_game.linux.x86_64 ./Windows/survival_game.windows.x86_64.exe MacOS/survival_game.macos.zip ../tip/
+          cp ./Windows/top_down_survivor_godot.windows.x86_64.exe ../tip/
 
       - name: Upload artifacts as assets of pre-release 'tip'
         run: GITHUB_TOKEN='${{ github.token }}' gh release upload --clobber tip tip/*
