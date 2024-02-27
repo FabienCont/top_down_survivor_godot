@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://resources/stats/StatsControllerWeapon.gd" id="1_e0v60"]
 [ext_resource type="Script" path="res://resources/stats/StatWeapon.gd" id="3_fwcx1"]
 
-[sub_resource type="Resource" id="Resource_t8pmv"]
+[sub_resource type="Resource" id="Resource_ofl5r"]
 script = ExtResource("3_fwcx1")
 key_selector = 0
 auto_compute = true
@@ -39,7 +39,7 @@ value = 0.0
 script = ExtResource("1_e0v60")
 stat_to_remove_from_editor = 0
 _remove_stat = false
-stat_to_add_from_editor = SubResource("Resource_t8pmv")
+stat_to_add_from_editor = SubResource("Resource_ofl5r")
 _add_stat = false
 stats_dico = {
 30: SubResource("Resource_541sh"),

@@ -6,7 +6,7 @@ class_name Enemy
 @onready var followTargetComponent: FollowTargetComponent2D = $FollowTargetComponent
 @onready var hitbox_component: HitboxComponent2D = $HitboxComponent
 @onready var weapon_slot_component: WeaponSlotComponent =$WeaponSlotComponent
-@onready var weapon_info = preload("res://resources/weapon/BatWeaponInfo.tres")
+@onready var weapon_info # = preload("res://resources/weapon/BatWeaponInfo.tres")
 
 @export var enemy_info: EnemyInfo
 
