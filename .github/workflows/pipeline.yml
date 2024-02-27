@@ -3,8 +3,8 @@ on: push
 
 env:
   GODOT_VERSION: 4.2.1
-  EXPORT_NAME: survival_game
-  PROJECT_PATH: survival_game
+  EXPORT_NAME: top_down_survivor_godot
+  PROJECT_PATH: top_down_survivor_godot
 
 jobs:
   export-windows:
