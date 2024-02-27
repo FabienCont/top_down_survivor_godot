@@ -1,137 +1,66 @@
-name: Pipeline
-
-on:
-  push:
-  pull_request:
-  schedule:
-    - cron: '0 0 * * 5'
-  workflow_dispatch:
+name: "godot-ci export"
+on: push
 
 env:
-  DOCKER_BUILDKIT: 1
+  GODOT_VERSION: 4.2.1
+  EXPORT_NAME: survival_game
+  PROJECT_PATH: survival_game
 
 jobs:
-
-
-  container:
-    runs-on: ubuntu-latest
-
+  export-windows:
+    name: Windows Export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
     steps:
-
-      - uses: actions/checkout@v3
-
-      - run: docker build -t ghcr.io/fabiencont/godot/export container
-
-      - name: Push to ghcr.io
-        uses: pyTooling/Actions/with-post-step@r0
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          main: |
-            echo '${{ github.token }}' | docker login ghcr.io -u gha --password-stdin
-            docker push ghcr.io/fabiencont/godot/export
-          post: docker logout ghcr.io
-
-
-  build:
-    needs: container
-    runs-on: ubuntu-latest
-    name: ${{ matrix.name }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-
-          - name: HTML5
-            path: ./dist/html5/index.html
-            upload: godot/dist/html5/*
-
-          - name: Windows
-            path: ./dist/win/top_down_survivor_godot.windows.x86_64.exe
-            upload: godot/dist/win/*
-
-    steps:
-
-      - uses: actions/checkout@v3
-
-      - run: mkdir -p godot/"$(dirname '${{ matrix.path }}')"
-
-      - uses: docker://ghcr.io/fabiencont/godot/export
-        env:
-          GODOT_EXPORT_SUBDIR: godot
-        with:
-          args: gexport --export-release ${{ matrix.name }} ${{ matrix.path }}
-
-      - name: '📤 Upload artifact'
-        uses: 'actions/upload-artifact@v3'
-        with:
-          name: ${{ matrix.name }}
-          path: ${{ matrix.upload }}
-          if-no-files-found: error
-
-  pages:
-    needs:
-      - build
-    runs-on: ubuntu-latest
-    steps:
-
-      - uses: actions/checkout@v3
-
-
-      - name: '📥 Download artifacts: HTML5'
-        uses: actions/download-artifact@v3
-        with:
-          name: HTML5
-          path: public/play
-
-      - run: tree public
-
-      # Workaround for SharedArrayBuffer support on GitHub Pages
-      # See: https://github.com/godotengine/godot-docs/issues/7084
-      - run: |
-          cd public/play
-          curl -fsSL https://github.com/gzuidhof/coi-serviceworker/raw/master/coi-serviceworker.js > coi-serviceworker.js
-          sed -i 's#\(		<script src="index.js"></script>\)#		<script src="coi-serviceworker.js"></script>\n\1#g' index.html
-
-      - name: 🚀 Publish to GitHub Pages
-        if: (github.event_name != 'pull_request')
+          lfs: true
+      - name: Setup
         run: |
-          cd public
-          touch .nojekyll
-          git init
-          cp ../.git/config ./.git/config
-          git add .
-          git config --local user.email "godot@GitHubActions"
-          git config --local user.name "GitHub Actions"
-          git commit -a -m "update ${{ github.sha }}"
-          git push -u origin +HEAD:gh-pages
-
-
-  tip:
-    name: '🚀 Update tip'
-    if: (github.event_name != 'pull_request') && (github.ref == 'refs/heads/main')
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-
-      - uses: actions/checkout@v3
-
-      - name: '📥 Download artifacts'
-        uses: actions/download-artifact@v3
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Windows Build
+        run: |
+          mkdir -v -p build/windows
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
         with:
-          path: artifacts
+          name: windows
+          path: build/windows
 
-      - name: Prepare assets
+  export-web:
+    name: Web Export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
         run: |
-          sudo apt update -qq
-          sudo apt install -y coreutils
-          mkdir tip
-          cd artifacts
-          tree
-          cp ./Windows/top_down_survivor_godot.windows.x86_64.exe ../tip/
-
-      - name: Upload artifacts as assets of pre-release 'tip'
-        run: GITHUB_TOKEN='${{ github.token }}' gh release upload --clobber tip tip/*
-
-      - name: Push tag 'tip' forward
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Web Build
         run: |
-          git tag tip
-          git push origin +tip
+          mkdir -v -p build/web
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "HTML5" ../build/web/index.html
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: web
+          path: build/web
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build/web # The folder the action should deploy.
