@@ -26,20 +26,12 @@ jobs:
             name: HTML5
             upload: godot/dist/html5/*
 
-          - preset: Linux/X11
-            path: ./dist/lin/survival_game.linux.x86_64
-            name: Linux
-            upload: godot/dist/lin/*
 
           - preset: Windows Desktop
             path: ./dist/win/survival_game.windows.x86_64.exe
             name: Windows
             upload: godot/dist/win/*
 
-          - preset: macOS
-            path: ./dist/mac/survival_game.macos.zip
-            name: MacOS
-            upload: godot/dist/mac/*
 
     steps:
 
@@ -47,7 +39,7 @@ jobs:
 
       - run: mkdir -p godot/"$(dirname '${{ matrix.path }}')"
 
-      - run: docker build -t ghcr.io/itsas-taldea/godot/export container
+      - run: docker build -t ghcr.io/FabienCont/godot/export container
 
       - run: >-
           docker run --rm
