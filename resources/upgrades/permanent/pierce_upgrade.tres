@@ -18,4 +18,4 @@ applied = false
 script = ExtResource("1_nj5jp")
 label = "pierce upgrade"
 modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([SubResource("Resource_utkmg")])
-effect = Array[Resource("res://resources/effects/EffectResource.gd")]([])
+effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])

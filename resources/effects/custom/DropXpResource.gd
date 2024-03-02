@@ -1,8 +1,8 @@
 extends EffectHandler
 
-const item: Item = preload("res://resources/items/xp.tres") 
+const item: Item = preload("res://resources/items/consumable/xp.tres") 
 
-static func trigger_effect(node :Node2D)->void:
+static func trigger_effect(node :Node2D,_data = null):
 	var droppedXpScene: Collectable = ItemHelper.create_collectable(item)
 	droppedXpScene.global_transform.origin = node.global_transform.origin
 	droppedXpScene.top_level=true
@@ -18,3 +18,4 @@ static func trigger_effect(node :Node2D)->void:
 	tween.tween_property(droppedXpScene,"position",jump_position,0.2).from_current()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(droppedXpScene,"position",end_position,0.6).from(jump_position)
+	return

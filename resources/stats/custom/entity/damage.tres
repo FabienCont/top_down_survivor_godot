@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_f5fp4")
-key_selector = 8
+key_selector = 9
 auto_compute = false
-key = 8
+key = 9
 base_value = 55.0
 value = 0.0

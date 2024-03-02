@@ -6,15 +6,15 @@ class_name WeaponSlotComponent
 @export var weapon_equiped: WeaponComponent2D;
 var stats_controller:StatsControllerWeapon
 var upgrades_controller:UpgradesController
-var weapon_info:WeaponInfo2D
+var weapon_info:WeaponInfo
 
 signal attack_has_end()
 signal attack_in_preparation(time :float)
 signal attack_ready()
 signal attack_started()
-signal hit(attack :Attack)
+signal hit(attack :AttackInterface)
 
-func init(weapon_info_init: WeaponInfo2D,upgrades_controller_init:UpgradesController) -> void:
+func init(weapon_info_init: WeaponInfo,upgrades_controller_init:UpgradesController) -> void:
 	set_stats(weapon_info_init.stats_controller)
 	set_upgrades_controller(upgrades_controller_init)
 	set_weapon_info(weapon_info_init)
@@ -27,7 +27,7 @@ func set_upgrades_controller(upgrades_controller_init: UpgradesController)-> voi
 func set_stats(stats_controller_init: StatsControllerWeapon)-> void:
 	stats_controller = stats_controller_init
 	
-func set_weapon_info(weapon_info_init: WeaponInfo2D)-> void:
+func set_weapon_info(weapon_info_init: WeaponInfo)-> void:
 	weapon_info = weapon_info_init
 	
 func _listen_weapon_hit()-> void:
@@ -79,7 +79,7 @@ func start_recovery_attack()-> void:
 	if has_weapon_equiped() :
 		weapon_equiped.start_recovery_attack()
 		
-func _hit_someone(attack :Attack)-> void:
+func _hit_someone(attack :AttackInterface)-> void:
 	hit.emit(attack)
 	
 func emit_attack_has_end()-> void:

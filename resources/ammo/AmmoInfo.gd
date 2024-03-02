@@ -1,6 +1,6 @@
 extends Resource
 
-class_name AmmoInfo2D
+class_name AmmoInfo
 
 @export var sprite: PackedScene
 @export var name: String

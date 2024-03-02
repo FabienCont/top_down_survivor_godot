@@ -1,14 +1,14 @@
 extends Area2D
 class_name HitboxComponent2D
 
-signal hit(attack:Attack)
+signal hit(attack:AttackInterface)
 signal hit_terrain()
 @onready var touched_enemies= {}
 @onready var attack_can_hurt : bool = true
 @onready var emiter 
 	
 func damage(hurtboxComponent :HurtboxComponent2D):
-	var attack = Attack.new()
+	var attack = Attack2D.new()
 	attack.attack_damage = 4.0
 	attack.knockback_force = 2.0
 	attack.attack_position = global_position
@@ -16,7 +16,7 @@ func damage(hurtboxComponent :HurtboxComponent2D):
 	hurtboxComponent.damage(attack)
 	hit.emit(attack)
 	
-func apply_emiter_attack_modifier(attack:Attack):
+func apply_emiter_attack_modifier(attack:AttackInterface):
 	if emiter && emiter.has_method("apply_attack_modifier"):
 		emiter.apply_attack_modifier(attack)
 

@@ -1,6 +1,6 @@
 extends EffectHandler
 class_name test_moi
-static func trigger_effect(_node:Node2D):
+static func trigger_effect(_node:Node2D,_data=null) -> Variant:
 	var ammo_left = _node.duplicate()
 	var ammo_right = _node.duplicate()
 	ammo_left.global_rotation += deg_to_rad(-15.0)

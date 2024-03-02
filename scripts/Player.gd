@@ -18,12 +18,14 @@ func init_player(player_info_init :PlayerInfo) -> void:
 	player_info.upgrades_controller = upgrades_controller
 	player_info.abilities_controller = abilities_controller
 	var collector_distance= stats_controller.get_current_stat(StatsConstEntity.names.collector_distance)
-	collector_component.init(collector_distance)
+	collector_component.init(collector_distance.value)
+	collector_distance.update_value.connect(func(value):collector_component.collector_distance = value)
 	var max_life_stat = player_info.stats_controller.get_current_stat(StatsConstEntity.names.max_life)
 	lifebar_component.init(life_stat,max_life_stat)
 	set_sprite_component(player_info.character.sprite.instantiate())
 	weapon_slot_component.init(player_info.weapon_info,player_info.upgrades_controller)
 	Signals.player_ready.emit(self)
+	
 
 func _process(delta: float) -> void:
 	logic_component.process_logic(delta)
@@ -31,7 +33,7 @@ func _process(delta: float) -> void:
 func get_current_direction() -> Vector2:
 	return controller_component.get_current_direction()
 	
-func hurt(attack :Attack):
+func hurt(attack :AttackInterface):
 	logic_component.hurt_logic(attack)
 
 func die():

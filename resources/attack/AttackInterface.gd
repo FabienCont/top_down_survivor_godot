@@ -1,8 +1,8 @@
 extends Resource
 
-class_name Attack
+class_name AttackInterface
 
 @export var attack_damage: float
 @export var knockback_force: float
-@export var attack_position: Vector2
 @export var stun_time:float
+@export var effects:Array[EffectInfo]

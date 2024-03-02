@@ -18,7 +18,8 @@ attack_ability = ExtResource("1_b5o5k")
 
 [sub_resource type="Resource" id="Resource_44usd"]
 script = ExtResource("1_2kopb")
-effects = Array[Resource("res://resources/effects/EffectResource.gd")]([])
+effects = Array[Resource("res://resources/effects/EffectInfo.gd")]([])
+dico = {}
 
 [sub_resource type="Resource" id="Resource_8b3xq"]
 script = ExtResource("4_3gc6e")

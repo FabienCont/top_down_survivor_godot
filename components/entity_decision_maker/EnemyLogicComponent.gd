@@ -1,4 +1,4 @@
-extends EntityLogicComponent
+extends EntityLogicInterface
 
 class_name EnemyLogicComponent
 
@@ -33,11 +33,13 @@ func die_logic () -> void:
 	await entity.get_tree().create_timer(2.0).timeout 
 	entity.call_deferred("queue_free")
 
-func hurt_logic(attack: Attack) -> void:
+func hurt_logic(attack: AttackInterface) -> void:
 	if entity.has_die():
 		return
 	SoundManager.playEnemiesImpactSound()
 	var direction = (entity.global_position - attack.attack_position).normalized()
 	entity.velocity_component.accelerate_in_direction(direction * attack.knockback_force,0.2)
+	for attack_effect in attack.effects:
+		attack_effect.trigger_effect(entity,attack)
 	for hurt_effect in entity.hurt_effects:
 		hurt_effect.trigger_effect(entity,attack)

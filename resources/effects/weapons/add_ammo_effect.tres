@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="EffectResource" load_steps=3 format=3 uid="uid://b60ixl06uh4qe"]
+[gd_resource type="Resource" script_class="EffectInfo" load_steps=3 format=3 uid="uid://b60ixl06uh4qe"]
 
 [ext_resource type="Resource" uid="uid://b6wlhw1874wg1" path="res://resources/effects/weapons/new_resource.tres" id="1_78bad"]
-[ext_resource type="Script" path="res://resources/effects/EffectResource.gd" id="1_xlehv"]
+[ext_resource type="Script" path="res://resources/effects/EffectInfo.gd" id="1_xlehv"]
 
 [resource]
 script = ExtResource("1_xlehv")

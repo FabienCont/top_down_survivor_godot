@@ -1,4 +1,4 @@
-extends EntityLogicComponent
+extends EntityLogicInterface
 
 class_name PlayerLogicComponent
 
@@ -41,7 +41,7 @@ func die_logic () -> void:
 	Signals.player_died.emit()
 	entity.weapon_slot_component.unequip()
 
-func hurt_logic(attack: Attack) -> void:
+func hurt_logic(attack: AttackInterface) -> void:
 	SoundManager.playImpactSound()
 	var direction = (entity.global_position - attack.attack_position).normalized()
 	entity.velocity_component.accelerate_in_direction(direction * attack.knockback_force,0.1)

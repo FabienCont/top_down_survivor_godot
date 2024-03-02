@@ -1,11 +1,10 @@
-extends Node
+extends EffectHandler
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+static func trigger_effect(node :Node2D,_data=null):
+	if node.sprite_component ==null :
+		return
+	var sprite = node.sprite_component
+	var tween = node.create_tween()
+	tween.set_parallel(false)
+	tween.tween_property(sprite,"modulate:v",3,0.1)
+	tween.tween_property(sprite,"modulate:v",1,0.1)

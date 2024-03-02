@@ -1,6 +1,6 @@
 extends Resource
 
-class_name EntityLogicComponent
+class_name EntityLogicInterface
 
 var entity: Entity
 
@@ -13,7 +13,7 @@ func process_logic(_delta:float) -> void:
 func die_logic () -> void:
 	return
 
-func hurt_logic(_attack: Attack) -> void:
+func hurt_logic(_attack: AttackInterface) -> void:
 	return
 
 func collect(_loot : Loot) -> void:

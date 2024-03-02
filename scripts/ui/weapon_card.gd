@@ -4,9 +4,9 @@ extends BoxContainer
 @onready var label: Label = $Button/VBoxContainer/Label
 @onready var button: Button = $Button
 
-@export var weapon_info: WeaponInfo2D
+@export var weapon_info: WeaponInfo
 
-signal select_weapon(weapon_info :WeaponInfo2D)
+signal select_weapon(weapon_info :WeaponInfo)
 
 func _ready() -> void:
 	label.text = weapon_info.name

@@ -1,5 +1,5 @@
 extends Resource
-class_name EffectResource
+class_name EffectInfo
 
 
 enum EffectTarget {

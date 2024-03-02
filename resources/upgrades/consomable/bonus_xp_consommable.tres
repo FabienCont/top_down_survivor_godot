@@ -7,4 +7,4 @@
 script = ExtResource("1_6iy64")
 label = "bonus xp"
 modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([ExtResource("1_ex7si")])
-effect = Array[Resource("res://resources/effects/EffectResource.gd")]([])
+effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])

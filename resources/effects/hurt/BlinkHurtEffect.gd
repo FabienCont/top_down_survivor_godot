@@ -1,6 +1,6 @@
-extends HurtEffectHandler
+extends EffectHandler
 
-static func trigger_effect(node :Node2D,_attack :Attack)->void:
+static func trigger_effect(node :Node2D,_attack :AttackInterface = null)->Variant:
 	if node.sprite_component ==null :
 		return
 	var sprite = node.sprite_component
@@ -8,4 +8,5 @@ static func trigger_effect(node :Node2D,_attack :Attack)->void:
 	tween.set_parallel(false)
 	tween.tween_property(sprite,"modulate:v",3,0.1)
 	tween.tween_property(sprite,"modulate:v",1,0.1)
+	return
 	

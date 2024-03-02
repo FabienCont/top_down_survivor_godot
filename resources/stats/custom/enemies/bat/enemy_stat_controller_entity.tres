@@ -1,20 +1,11 @@
-[gd_resource type="Resource" script_class="StatsControllerEntity" load_steps=16 format=3 uid="uid://cnc58o31w371e"]
+[gd_resource type="Resource" script_class="StatsControllerEntity" load_steps=15 format=3 uid="uid://cnc58o31w371e"]
 
 [ext_resource type="Script" path="res://resources/stats/StatsControllerEntity.gd" id="1_a44mj"]
 [ext_resource type="Script" path="res://resources/stats/StatEntity.gd" id="2_h3k54"]
 [ext_resource type="Script" path="res://resources/upgrades/UpgradesController.gd" id="3_4slec"]
 
-[sub_resource type="Resource" id="Resource_sl5sw"]
-script = ExtResource("2_h3k54")
-key_selector = 0
-auto_compute = true
-key = 0
-base_value = 0.0
-value = 0.0
-
 [sub_resource type="Resource" id="Resource_edend"]
 script = ExtResource("2_h3k54")
-key_selector = 0
 auto_compute = false
 key = 0
 base_value = 6.0
@@ -22,7 +13,6 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_n5jha"]
 script = ExtResource("2_h3k54")
-key_selector = 1
 auto_compute = true
 key = 1
 base_value = 6.0
@@ -30,7 +20,6 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_0j78d"]
 script = ExtResource("2_h3k54")
-key_selector = 2
 auto_compute = true
 key = 2
 base_value = 10.0
@@ -38,7 +27,6 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_1iyto"]
 script = ExtResource("2_h3k54")
-key_selector = 4
 auto_compute = false
 key = 4
 base_value = 10.0
@@ -46,7 +34,6 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_pni5l"]
 script = ExtResource("2_h3k54")
-key_selector = 7
 auto_compute = false
 key = 7
 base_value = 25.0
@@ -54,7 +41,6 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_sq51o"]
 script = ExtResource("2_h3k54")
-key_selector = 8
 auto_compute = false
 key = 8
 base_value = 300.0
@@ -62,7 +48,6 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_n1x2f"]
 script = ExtResource("2_h3k54")
-key_selector = 9
 auto_compute = true
 key = 9
 base_value = 0.0
@@ -70,7 +55,6 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_qfm4m"]
 script = ExtResource("2_h3k54")
-key_selector = 10
 auto_compute = false
 key = 10
 base_value = 1.0
@@ -78,7 +62,6 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_j4rnb"]
 script = ExtResource("2_h3k54")
-key_selector = 11
 auto_compute = true
 key = 11
 base_value = 1.0
@@ -86,7 +69,6 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_fpsot"]
 script = ExtResource("2_h3k54")
-key_selector = 12
 auto_compute = false
 key = 12
 base_value = 10.0
@@ -98,10 +80,7 @@ upgrades = Array[Resource("res://resources/Upgrade.gd")]([])
 
 [resource]
 script = ExtResource("1_a44mj")
-stat_to_remove_from_editor = 9
-_remove_stat = false
-stat_to_add_from_editor = SubResource("Resource_sl5sw")
-_add_stat = false
+target = "default"
 stats_dico = {
 0: SubResource("Resource_edend"),
 1: SubResource("Resource_n5jha"),
@@ -115,5 +94,4 @@ stats_dico = {
 12: SubResource("Resource_fpsot")
 }
 modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([])
-target = 0
 upgrades_controller = SubResource("Resource_divf1")

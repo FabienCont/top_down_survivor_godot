@@ -2,14 +2,14 @@ extends WeaponComponent2D
 
 class_name DistantWeapon2D
 
-var ammo_info :AmmoInfo2D
+var ammo_info :AmmoInfo
 var nb_projectiles_stat: StatWeapon
 var rotation_between_projectiles_stat: StatWeapon
 
 var is_attack_ready = false
 var ammo_scene
 
-func init(collision_layer_init:int,collision_mask_init:int,weapon_info_init: WeaponInfo2D,upgrades_controller_init: UpgradesController,emiter_init) -> void:
+func init(collision_layer_init:int,collision_mask_init:int,weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController,emiter_init) -> void:
 	super(collision_layer_init,collision_mask_init,weapon_info_init,upgrades_controller_init,emiter_init)
 	ammo_info = weapon_info_init.ammo_info
 	nb_projectiles_stat = stats_controller.get_current_stat(StatsConstWeapon.names.nb_projectile)

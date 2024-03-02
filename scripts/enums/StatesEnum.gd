@@ -3,6 +3,13 @@ class_name StateEnum
 enum MOVEMENT_STATUS{
 	IDLE,
 	MOVING,
+	DASH
+}
+
+enum ENTITY_STATUS{
+	DIE,
+	HURT,
+	PASSIVE
 }
 
 enum ATTACK_STATUS{

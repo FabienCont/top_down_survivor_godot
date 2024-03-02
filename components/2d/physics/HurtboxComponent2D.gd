@@ -13,7 +13,7 @@ func _get_configuration_warnings():
 		return ["HealthComponent is missing"]
 	return []
 	
-func damage(attack: Attack):
+func damage(attack: AttackInterface):
 	var parent = get_parent()
 	if parent.has_method("hurt") : 
 		parent.hurt(attack)

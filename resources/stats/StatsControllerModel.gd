@@ -1,61 +1,17 @@
-@tool
 extends Resource
 
 class_name StatsControllerModel
 
-@export_category("add_stat")
-@export var stat_to_add_from_editor: StatModel
-@export var _add_stat:=false : 
-	set(value):
-		if(value == true):
-			_add_stat_from_editor()
-			
-@export_category("stats")
+@export var target :String = "default"
+
 @export var stats_dico: Dictionary =  {}
 
 @export var modifiers: Array[StatModifier] = []
-	
-@export var target: StatTarget.names:  
-	set(value):
-		target=value
-		if Engine.is_editor_hint():
-			stat_to_add_from_editor= _get_stat_class().new()
 
 @export var upgrades_controller:UpgradesController
 
-signal stat_updated
+signal stat_updated(stat:StatModel)
 
-func _get_stat_class() :
-	if target == StatTarget.names.ENTITY:
-		return StatEntity
-	elif target == StatTarget.names.WEAPON:
-		return StatWeapon
-	else:
-		return StatAmmo
-
-func _get_stat_enum() :
-	if target == StatTarget.names.ENTITY:
-		return StatsConstEntity
-	elif target == StatTarget.names.WEAPON:
-		return StatsConstWeapon
-	else:
-		return StatsConstAmmo
-			
-func _add_stat_from_editor() -> void:
-	if Engine.is_editor_hint():
-		stats_dico[stat_to_add_from_editor.key]=stat_to_add_from_editor.duplicate(true)
-		notify_property_list_changed()
-
-func _remove_stat_from_editor(value) -> void:
-	if Engine.is_editor_hint():
-		stats_dico.erase(value)
-		notify_property_list_changed()
-			
-func _enter_tree() -> void:	
-	if Engine.is_editor_hint():
-		stat_to_add_from_editor = _get_stat_class().new()
-		return
-		
 func duplicate_dico(dict)-> Dictionary:
 	dict = dict.duplicate(true)
 	for key in dict:
@@ -63,9 +19,6 @@ func duplicate_dico(dict)-> Dictionary:
 	return dict
 	
 func init()-> void:
-	if Engine.is_editor_hint():
-		stat_to_add_from_editor= _get_stat_class().new()
-		return
 	var old_dico = duplicate_dico(stats_dico)
 	stats_dico = duplicate_dico(stats_dico)
 	var first_key = old_dico.keys()[0]
@@ -89,7 +42,6 @@ func _comparisonStatModifier(a: StatModifier, _b: StatModifier)-> bool:
 		return true
 	else:
 		return false
-
 
 func remove_modifiers(modifiers_to_remove: Array[StatModifier]) -> void :
 	var keys_to_recompute = {}
@@ -159,7 +111,6 @@ func _compute_all_stats() -> void :
 		compute_stat(key)
 
 func compute_stat(key) -> void:
-	
 	if not stats_dico.has(key):
 		return
 	var stat = stats_dico[key]

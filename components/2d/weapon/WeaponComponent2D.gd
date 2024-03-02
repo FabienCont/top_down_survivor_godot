@@ -12,9 +12,9 @@ class_name WeaponComponent2D
 
 signal attack_ready()
 signal attack_has_end()
-signal hit(attack:Attack)
+signal hit(attack:AttackInterface)
 
-func init(collision_layer_init: int,collision_mask_init: int,weapon_info_init: WeaponInfo2D,upgrades_controller_init: UpgradesController,emiter_init:Node):
+func init(collision_layer_init: int,collision_mask_init: int,weapon_info_init: WeaponInfo,upgrades_controller_init: UpgradesController,emiter_init:Node):
 	collision_layer = collision_layer_init
 	collision_mask = collision_mask_init
 	stats_controller = weapon_info_init.stats_controller
@@ -59,7 +59,7 @@ func idle(_arg):
 func damage(_hurtboxComponent :HurtboxComponent2D):
 	pass	
 
-func apply_attack_modifier(attack:Attack)->void:
+func apply_attack_modifier(attack:AttackInterface)->void:
 	var knockback_stat = stats_controller.get_current_stat(StatsConstWeapon.names.knockback)
 	attack.knockback += knockback_stat.current_value 
 	if emiter && emiter.has_method("apply_attack_modifier"):

@@ -3,7 +3,6 @@ extends BoxContainer
 class_name ItemBoxDescription
 @onready var button: Button = $Button
 @onready var description_upgrade_scene = preload("res://menu/parts/upgrade_description.tscn")
-#@onready var description_label_scene= preload("res://menu/parts/upgrade_label.tscn")
 
 @export var texture_rect: TextureRect 
 @export var label: Label
@@ -54,11 +53,11 @@ func get_sign_label(fValue:float) -> String:
 	return  "+"
 		
 func get_stat_label(stat: StatModifier):
-	if StatTarget.names.ENTITY == stat.target:
+	if StatTarget.names.find_key(StatTarget.names.ENTITY) == stat.target:
 		return StatsConstEntity.get_string(stat.key)
-	elif StatTarget.names.WEAPON == stat.target:
+	elif StatTarget.names.find_key(StatTarget.names.WEAPON) == stat.target:
 		return StatsConstWeapon.get_string(stat.key)
-	elif StatTarget.names.AMMO == stat.target:
+	elif StatTarget.names.find_key(StatTarget.names.AMMO) == stat.target:
 		return StatsConstAmmo.get_string(stat.key) 
 	else:
 		return "unknow"

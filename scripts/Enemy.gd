@@ -35,22 +35,12 @@ func _process(delta: float) -> void :
 	logic_component.process_logic(delta)
 	return
 	
-func hurt(attack :Attack):
+func hurt(attack :AttackInterface) -> void:
 	logic_component.hurt_logic(attack)
-	return
 
-func die():
+func die() -> void:
 	logic_component.die_logic()
-	return
-
-func _draw() -> void:
-	#_draw_debug()
-	pass
 
 func get_current_direction() -> Vector2:
 	return followTargetComponent.get_current_direction() 
 
-func _draw_debug()->void:
-	#var pos = global_position
-	draw_line(Vector2.ZERO,velocity_component.last_velocity,Color.RED,2.0)
-	draw_line(Vector2.ZERO,(velocity_component.current_velocity),Color.BLUE,2.0)
