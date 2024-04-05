@@ -1,6 +1,6 @@
 extends Resource
 
-class_name StatsControllerModel
+class_name StatsController
 
 @export var target :String = "default"
 

@@ -8,14 +8,14 @@
 [ext_resource type="Script" path="res://components/entity_decision_maker/EnemyLogicComponent.gd" id="4_sxqil"]
 [ext_resource type="Resource" uid="uid://v876g6v6jvxf" path="res://resources/stats/custom/players/player_test.tres" id="4_yk84b"]
 [ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="5_wui01"]
-[ext_resource type="Script" path="res://resources/stats/StatsControllerEntity.gd" id="6_cqxu5"]
+[ext_resource type="Script" path="res://resources/stats/StatsController.gd" id="6_cqxu5"]
 [ext_resource type="Script" path="res://resources/stats/StatEntity.gd" id="7_6vo45"]
 [ext_resource type="Script" path="res://resources/upgrades/UpgradesController.gd" id="8_dmevd"]
 [ext_resource type="Script" path="res://components/2d/weapon/MeleeWeapon2D.gd" id="9_t2gp4"]
 [ext_resource type="PackedScene" uid="uid://btevx5rewkqxb" path="res://assets/attack/bat_attack.tscn" id="10_apxpy"]
 [ext_resource type="Script" path="res://components/2d/physics/HitboxComponent2D.gd" id="11_ekbcr"]
 [ext_resource type="Script" path="res://resources/weapon/WeaponInfo.gd" id="12_akrn2"]
-[ext_resource type="Script" path="res://resources/stats/StatsControllerWeapon.gd" id="13_fsrje"]
+[ext_resource type="Script" path="res://resources/stats/StatsController.gd" id="13_fsrje"]
 [ext_resource type="Script" path="res://resources/stats/StatWeapon.gd" id="14_bhula"]
 
 [sub_resource type="GDScript" id="GDScript_8llw0"]
@@ -25,7 +25,7 @@ var attack_speed_stat:StatModel
 var weapon_slot_component:WeaponSlotComponent
 
 func has_requirement() -> bool:
-	return entity.stats_controller is StatsControllerEntity && entity.weapon_slot_component is WeaponSlotComponent
+	return entity.stats_controller is StatsController && entity.weapon_slot_component is WeaponSlotComponent
 	
 func init_ability(entity_init:Entity)-> void:
 	super(entity_init)

@@ -3,7 +3,7 @@ extends Ability
 var attack_speed_stat:StatModel
 var weapon_slot_component: WeaponSlotComponent
 func has_requirement() -> bool:
-	return entity.stats_controller is StatsControllerEntity && entity.weapon_slot_component is WeaponSlotComponent
+	return entity.stats_controller is StatsController && entity.weapon_slot_component is WeaponSlotComponent
 	
 func init_ability(entity_init:Entity)-> void:
 	super(entity_init)

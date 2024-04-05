@@ -4,7 +4,7 @@ class_name WeaponComponent2D
 @onready var weapon_sprite:Sprite2D
 @onready var animation_player:AnimationPlayer
 @onready var upgrades_controller:UpgradesController 
-@onready var stats_controller: StatsControllerWeapon
+@onready var stats_controller: StatsController
 @onready var emiter
 
 @onready var collision_layer: int

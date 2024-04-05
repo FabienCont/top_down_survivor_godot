@@ -12,7 +12,7 @@ class_name Entity
 @export var hurt_effects: Array[Resource] =[]
 @export var die_effects: Array[Resource] =[]
 
-@export var stats_controller: StatsControllerEntity = StatsControllerEntity.new()
+@export var stats_controller: StatsController = StatsController.new()
 @export var upgrades_controller: UpgradesController = UpgradesController.new()
 @export var abilities_controller: AbilitiesController = AbilitiesController.new()
 @export var effects_controller: EffectsController = EffectsController.new()
@@ -20,7 +20,7 @@ class_name Entity
 var is_dead:=false
 var life_stat: StatModel
 	
-func init_stat_controller(stats_controller_init :StatsControllerEntity,upgrades_controller_init: UpgradesController) -> void:
+func init_stat_controller(stats_controller_init :StatsController,upgrades_controller_init: UpgradesController) -> void:
 	stats_controller = stats_controller_init.duplicate(true)
 	upgrades_controller = upgrades_controller_init.duplicate(true)
 	stats_controller.set_upgrades_controller(upgrades_controller)
@@ -34,7 +34,7 @@ func init_abilities_controller(abilities_controller_init :AbilitiesController) -
 	abilities_controller = abilities_controller_init.duplicate(true)
 	abilities_controller.init(self)
 	
-func init_entity(stats_controller_init :StatsControllerEntity,upgrades_controller_init:UpgradesController, abilities_controller_init:AbilitiesController,logic_component_init:EntityLogicInterface) -> void:
+func init_entity(stats_controller_init :StatsController,upgrades_controller_init:UpgradesController, abilities_controller_init:AbilitiesController,logic_component_init:EntityLogicInterface) -> void:
 	init_stat_controller(stats_controller_init,upgrades_controller_init)
 	life_stat = stats_controller.get_current_stat(StatsConstEntity.names.life)
 	var max_life_stat = stats_controller.get_current_stat(StatsConstEntity.names.max_life)
@@ -42,14 +42,13 @@ func init_entity(stats_controller_init :StatsControllerEntity,upgrades_controlle
 	var acceleration_stat = stats_controller.get_current_stat(StatsConstEntity.names.acceleration)
 	velocity_component.init(movement_speed_stat.value,acceleration_stat.value)
 	health_component.init(life_stat)
-	life_stat.update_value.connect(func(value):health_component.life_value = value)
-	max_life_stat.update_value.connect(func(value):health_component.max_life_value = value)
-	init_abilities_controller(abilities_controller_init)
-	logic_component = logic_component_init
-	logic_component.init_logic_component(self)
 	movement_speed_stat.update_value.connect(func(value):velocity_component.movement_speed = value )
 	acceleration_stat.update_value.connect(func(value):velocity_component.acceleration = value )
 
+	init_abilities_controller(abilities_controller_init)
+	logic_component = logic_component_init
+	logic_component.init_logic_component(self)
+	
 func set_sprite_component(new_sprite: AnimatedSprite2D):
 	new_sprite.scale = Vector2(0.5,0.5)
 	sprite_component.replace_by(new_sprite)

@@ -25,7 +25,6 @@ func init_player(player_info_init :PlayerInfo) -> void:
 	set_sprite_component(player_info.character.sprite.instantiate())
 	weapon_slot_component.init(player_info.weapon_info,player_info.upgrades_controller)
 	Signals.player_ready.emit(self)
-	
 
 func _process(delta: float) -> void:
 	logic_component.process_logic(delta)

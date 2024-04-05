@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmx1ur1ldwu0r"]
+[gd_scene load_steps=18 format=3 uid="uid://cmx1ur1ldwu0r"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_en2m3"]
 [ext_resource type="Script" path="res://resources/effects/hurt/DisplayDamagedHurtEffect.gd" id="2_5cab0"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://resources/effects/hurt/ThrowParticulesHurtEffect.gd" id="4_jnsok"]
 [ext_resource type="Script" path="res://resources/effects/custom/FallDownEffect.gd" id="5_4t8vb"]
 [ext_resource type="Script" path="res://resources/effects/custom/DropXpResource.gd" id="6_xynta"]
-[ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/enemies/bat/enemy_stat_controller_entity.tres" id="7_5bo6x"]
+[ext_resource type="Script" path="res://resources/effects/custom/FadeOutEffect.gd" id="7_v4eyo"]
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/2d/physics/VelocityComponent2D.tscn" id="8_8kd0n"]
+[ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/enemies/bat/enemy_stats_controller_entity.tres" id="8_xnedu"]
 [ext_resource type="PackedScene" uid="uid://b5iiqlwia7sr7" path="res://components/2d/physics/HitboxComponent2D.tscn" id="9_oxsqc"]
 [ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://components/2d/physics/HurtboxComponent2D.tscn" id="10_7l7tu"]
 [ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://components/HealthComponent.tscn" id="11_ishdw"]
@@ -31,12 +32,11 @@ slide_on_ceiling = false
 floor_constant_speed = true
 script = ExtResource("1_en2m3")
 hurt_effects = Array[Resource]([ExtResource("2_5cab0"), ExtResource("3_fc1qb"), ExtResource("4_jnsok")])
-die_effects = Array[Resource]([ExtResource("5_4t8vb"), ExtResource("6_xynta")])
-stats_controller = ExtResource("7_5bo6x")
+die_effects = Array[Resource]([ExtResource("5_4t8vb"), ExtResource("6_xynta"), ExtResource("7_v4eyo")])
+stats_controller = ExtResource("8_xnedu")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("8_8kd0n")]
 MAX_SPEED = 80.0
-SPEED_FACTOR = 35.0
 
 [node name="HitboxComponent" parent="." instance=ExtResource("9_oxsqc")]
 collision_layer = 8

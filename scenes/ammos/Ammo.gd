@@ -4,7 +4,7 @@ class_name Ammo
 @onready var velocity_component :VelocityComponent2D = $VelocityComponent 
 @onready var sprite :Node2D
 @onready var hitbox_component :HitboxComponent2D = $HitboxComponent 
-@onready var stats_controller: StatsControllerAmmo
+@onready var stats_controller: StatsController
 @onready var ammo_info: AmmoInfo
 @onready var upgrades_controller: UpgradesController
 @onready var emiter

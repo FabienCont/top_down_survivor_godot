@@ -21,7 +21,7 @@ func _ready() -> void:
 	Signals.end_level_up.connect(end_level_up)
 	Signals.start_pause_menu.connect(show_pause_menu)
 	Signals.end_pause_menu.connect(hide_pause_menu)
-	Signals.player_ready.emit(_set_ui_ability)
+	Signals.player_ready.connect(_set_ui_ability)
 	Signals.player_died.connect(_level_failed)
 	Signals.boss_died.connect(_level_succeed)
 	game_world.init(game_clock,GlobalInfo.player_info)
@@ -56,7 +56,7 @@ func start_level_up(player_info: PlayerInfo) -> void:
 		pause_game()
 
 func _set_ui_ability(player:Player) -> void:
-	dash_ready_ui.init_ability(player.dash_ability)
+	dash_ready_ui.init_ability(player.abilities_controller.get_ability("dash"))
 	
 func _level_failed() -> void:
 	loose_menu.show()

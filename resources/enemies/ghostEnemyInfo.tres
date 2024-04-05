@@ -1,16 +1,18 @@
 [gd_resource type="Resource" script_class="EnemyInfo" load_steps=9 format=3 uid="uid://b84xe5d1ce67d"]
 
 [ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="1_g2nt6"]
-[ext_resource type="Script" path="res://resources/abilities/AttackAbility.gd" id="1_mw1lj"]
+[ext_resource type="Script" path="res://resources/abilities/implementations/AttackAbility.gd" id="1_mw1lj"]
 [ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_behow"]
-[ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/enemies/bat/enemy_stat_controller_entity.tres" id="2_ofd2y"]
+[ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/enemies/bat/enemy_stats_controller_entity.tres" id="2_ofd2y"]
 [ext_resource type="PackedScene" uid="uid://dmmaasriskuf5" path="res://assets/characters/enemies/32x32-ghost.aseprite" id="2_y0aqa"]
 [ext_resource type="Resource" uid="uid://pfdr8vkoy1yr" path="res://components/entity_decision_maker/GhostEnemyLogicComponent.tres" id="3_xwui0"]
 [ext_resource type="Resource" uid="uid://ipsf0pm2paiw" path="res://resources/weapon/FireBallWeaponInfo.tres" id="4_uq54y"]
 
 [sub_resource type="Resource" id="Resource_3v55r"]
 script = ExtResource("2_behow")
-attack_ability = ExtResource("1_mw1lj")
+abilities = {
+"attack": ExtResource("1_mw1lj")
+}
 
 [resource]
 script = ExtResource("1_g2nt6")

@@ -11,6 +11,7 @@ var timer_cooldown:Timer
 var timer_ability:Timer
 
 signal ability_finished
+signal ability_execute
 signal ability_is_ready
 
 func init_timer_ability() -> void:
@@ -49,10 +50,8 @@ func end()->void:
 	
 func can_be_used() -> bool:
 	return is_executing == false && is_ready == true
-
-func update(_delta: float) -> void:
-	pass
 	
 func execute(_delta:float)->void:
+	ability_execute.emit()
 	is_executing = true
 	is_ready=false

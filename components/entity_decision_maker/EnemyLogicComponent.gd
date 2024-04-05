@@ -5,14 +5,16 @@ class_name EnemyLogicComponent
 @export var distance_before_attack :float = 25
 
 func process_logic(delta:float) -> void:
+	
+	var attack_ability =  entity.abilities_controller.get_ability("attack")
 	if (entity.has_die() == false):
 		entity.sprite_component.play("Move")
-		if entity.global_position.distance_to(entity.followTargetComponent.target.global_position)< distance_before_attack && entity.abilities_controller.attack_ability.is_executing == false :
+		if attack_ability && entity.global_position.distance_to(entity.followTargetComponent.target.global_position)< distance_before_attack && attack_ability.is_executing == false :
 			entity.followTargetComponent.update_look_at_direction(entity)
-			entity.weapon_slot_component.look_at(entity.global_position + entity.get_current_direction()) 
-			entity.abilities_controller.attack_ability.execute(delta)
+			entity.weapon_slot_component.look_at(entity.global_position + entity.get_current_direction()) 	
+			attack_ability.execute(delta)
 			pass
-		elif (entity.abilities_controller.attack_ability.is_executing == false ):
+		elif not attack_ability || attack_ability.is_executing == false :
 			entity.followTargetComponent.follow_target(entity, delta)
 			entity.velocity_component.move(entity)
 			entity.weapon_slot_component.look_at(entity.global_position + entity.get_current_direction()) 

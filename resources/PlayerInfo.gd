@@ -11,7 +11,7 @@ signal update_stats
 @export var upgrades_controller :UpgradesController = UpgradesController.new()
 @export var logic_component :EntityLogicInterface
 
-@export var stats_controller :StatsControllerEntity = StatsControllerEntity.new():
+@export var stats_controller :StatsController = StatsController.new():
 	set(updated_value):
 		stats_controller = updated_value
 		emit_update_xp_stats(updated_value)
@@ -27,7 +27,7 @@ signal update_stats
 		character = updated_value
 		emit_update_character(updated_value)
 
-func emit_update_xp_stats(value_update: StatsControllerModel):
+func emit_update_xp_stats(value_update: StatsController):
 	update_stats.emit(value_update)
 
 func emit_update_weapon_info(value_update: WeaponInfo):

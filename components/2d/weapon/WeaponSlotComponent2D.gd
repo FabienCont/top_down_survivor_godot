@@ -4,7 +4,7 @@ class_name WeaponSlotComponent
 @export_flags_2d_physics var collision_layer: int
 @export_flags_2d_physics var collision_mask: int
 @export var weapon_equiped: WeaponComponent2D;
-var stats_controller:StatsControllerWeapon
+var stats_controller:StatsController
 var upgrades_controller:UpgradesController
 var weapon_info:WeaponInfo
 
@@ -24,7 +24,7 @@ func init(weapon_info_init: WeaponInfo,upgrades_controller_init:UpgradesControll
 func set_upgrades_controller(upgrades_controller_init: UpgradesController)-> void:
 	upgrades_controller = upgrades_controller_init
 	
-func set_stats(stats_controller_init: StatsControllerWeapon)-> void:
+func set_stats(stats_controller_init: StatsController)-> void:
 	stats_controller = stats_controller_init
 	
 func set_weapon_info(weapon_info_init: WeaponInfo)-> void:

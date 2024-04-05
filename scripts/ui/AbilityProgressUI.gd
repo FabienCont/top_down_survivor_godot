@@ -2,10 +2,12 @@ extends TextureProgressBar
 
 var ability :Ability
 
-func init_ability(new_ability)-> void:
+func init_ability(new_ability: Ability)-> void:
 	ability = new_ability
-	ability.ability_is_ready.connect(set_value_to_max)
-	ability.ability_finished.connect(set_value_to_min)
+	if ability:
+		ability.ability_is_ready.connect(set_value_to_max)
+		ability.ability_execute.connect(set_value_to_min)
+		set_value_to_max()
 
 func set_value_to_min()->void:
 	value = 0.0
@@ -13,6 +15,7 @@ func set_value_to_min()->void:
 func set_value_to_max()->void:
 	value = 100.0
 
-func update_dash() -> void:
-	if ability && not ability.is_ready:
-		value = (ability.timer_cooldown.time_left/ability.timer_cooldown.wait_time)*100
+func _process(delta)-> void:
+	if ability && not ability.is_executing && not ability.is_ready:
+		print((ability.timer_cooldown.time_left/ability.timer_cooldown.wait_time)*100)
+		value =  100.0 - (ability.timer_cooldown.time_left/ability.timer_cooldown.wait_time)*100

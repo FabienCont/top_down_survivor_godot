@@ -16,6 +16,7 @@ enum names{
 	xp_before_next_level=12,
 	xp_last_level=13
 }
+
 static func get_string(name) -> String:
 	return names.keys()[names.values().find(name)]
 

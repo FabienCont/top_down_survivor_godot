@@ -3,15 +3,20 @@ extends EntityLogicInterface
 class_name PlayerLogicComponent
 
 func process_logic(delta:float) -> void:
+	var dash_ability =  entity.abilities_controller.get_ability("dash")
+	var attack_ability =  entity.abilities_controller.get_ability("attack")
+	var move_ability =  entity.abilities_controller.get_ability("move")
+	
 	if entity.has_die() == true:
 		entity.sprite_component.play("Idle")
 		return
-	if entity.abilities_controller.dash_ability.is_executing == true:
-		entity.abilities_controller.dash_ability.update(delta)
+	if dash_ability && dash_ability.is_executing == true:
+		dash_ability.update(delta)
 		return 
 	entity.velocity_component.update_velocity(entity.velocity)
 	entity.controller_component.updateControl(delta)
-	entity.abilities_controller.move_ability.execute(delta)
+	if move_ability:
+		move_ability.execute(delta)
 
 	if entity.controller_component.has_move() : 
 		SoundManager.playFootstepSound()
@@ -24,11 +29,11 @@ func process_logic(delta:float) -> void:
 		entity.sprite_component.play("Idle")
 	
 	entity.weapon_slot_component.look_at(entity.global_position + entity.controller_component.get_look_direction()) 
-	if entity.controller_component.has_dash() == true && entity.abilities_controller.dash_ability.can_be_used() && not entity.abilities_controller.attack_ability.is_executing :
+	if entity.controller_component.has_dash() == true && dash_ability && dash_ability.can_be_used() && (not attack_ability || not attack_ability.is_executing) :
 		entity.abilities_controller.dash_ability.execute(delta)
 	
-	if entity.controller_component.has_prepare_attack() == true &&  not entity.abilities_controller.attack_ability.is_executing: 
-		entity.abilities_controller.attack_ability.execute(delta)
+	if entity.controller_component.has_prepare_attack() == true && attack_ability && not attack_ability.is_executing: 
+		attack_ability.execute(delta)
 
 func die_logic () -> void:
 	if entity.has_die():

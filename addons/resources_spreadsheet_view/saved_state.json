@@ -24,7 +24,23 @@
       "resource_local_to_scene": true,
       "resource_name": true
     },
+    "res://resources/stats/custom/players/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/stats/custom/players/stats_controller/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
     "res://resources/stats/modifiers/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/stats/players/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/stats/temp/": {
       "resource_local_to_scene": true,
       "resource_name": true
     },
@@ -46,7 +62,14 @@
     "res://resources/loots/",
     "res://resources/stats/",
     "res://resources/stats/modifiers/",
-    "res://resources/spawn_infos/waves_spawn_rules/"
+    "res://resources/spawn_infos/waves_spawn_rules/",
+    "res://resources/stats/players/",
+    "res://resources/stats/custom/players/",
+    "res://resources/stats/custom/players/stats_controller/",
+    "res://resources/stats/temp/",
+    "res://resources/abilities/",
+    "res://resources/abilities/Ability.gd",
+    "res://resources/abilities/DashAbility.gd"
   ],
   "table_functions": {
     "filter": [
