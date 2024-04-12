@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b3f4t3t1miysy"]
 
-[ext_resource type="Script" path="res://scripts/ui/weapon_card.gd" id="1_vvuob"]
+[ext_resource type="Script" path="res://scripts/ui/weapon_selection/weapon_card.gd" id="1_vvuob"]
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_4u3he"]
 [ext_resource type="FontFile" uid="uid://bqyox55cfwpw4" path="res://assets/fonts/Kenney Mini Square.ttf" id="3_k4hfv"]
 

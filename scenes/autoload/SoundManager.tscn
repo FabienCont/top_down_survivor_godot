@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://gc8fm16yg4rp"]
 
-[ext_resource type="Script" path="res://scripts/sounds/SoundPool.gd" id="1_63dqo"]
-[ext_resource type="Script" path="res://scripts/sounds/SoundQueue.gd" id="1_j1odo"]
+[ext_resource type="Script" path="res://sounds/SoundPool.gd" id="1_63dqo"]
+[ext_resource type="Script" path="res://sounds/SoundQueue.gd" id="1_j1odo"]
 [ext_resource type="Script" path="res://scripts/autoload/SoundManager.gd" id="1_w2x7l"]
 [ext_resource type="AudioStream" uid="uid://dt43twwwe4md5" path="res://assets/music/background/aerial_calm.wav" id="3_rjj7m"]
 [ext_resource type="AudioStream" uid="uid://bq7od4vra0e6n" path="res://assets/music/background/main_music.ogg" id="4_1p7cp"]

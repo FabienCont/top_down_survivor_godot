@@ -2,7 +2,6 @@ extends WeaponComponent2D
 
 class_name MeleeWeapon2D
 
-var ammo_info :AmmoInfo
 @export var hitbox_component :HitboxComponent2D
 var is_attack_ready = false
 

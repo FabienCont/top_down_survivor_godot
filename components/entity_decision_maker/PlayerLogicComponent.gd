@@ -30,7 +30,7 @@ func process_logic(delta:float) -> void:
 	
 	entity.weapon_slot_component.look_at(entity.global_position + entity.controller_component.get_look_direction()) 
 	if entity.controller_component.has_dash() == true && dash_ability && dash_ability.can_be_used() && (not attack_ability || not attack_ability.is_executing) :
-		entity.abilities_controller.dash_ability.execute(delta)
+		dash_ability.execute(delta)
 	
 	if entity.controller_component.has_prepare_attack() == true && attack_ability && not attack_ability.is_executing: 
 		attack_ability.execute(delta)

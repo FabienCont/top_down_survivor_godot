@@ -3,8 +3,8 @@ extends WeaponComponent2D
 class_name DistantWeapon2D
 
 var ammo_info :AmmoInfo
-var nb_projectiles_stat: StatWeapon
-var rotation_between_projectiles_stat: StatWeapon
+var nb_projectiles_stat: StatModel
+var rotation_between_projectiles_stat: StatModel
 
 var is_attack_ready = false
 var ammo_scene

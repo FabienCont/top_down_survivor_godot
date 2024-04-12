@@ -9,6 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_imlsf"]
 script = ExtResource("4_t8nvi")
+abilities = {}
 
 [sub_resource type="Resource" id="Resource_imwts"]
 script = ExtResource("2_bmkdr")

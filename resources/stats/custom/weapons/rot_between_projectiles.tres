@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="StatWeapon" load_steps=2 format=3 uid="uid://dcxe5swrv0udj"]
+[gd_resource type="Resource" script_class="StatModel" load_steps=2 format=3 uid="uid://dcxe5swrv0udj"]
 
-[ext_resource type="Script" path="res://resources/stats/StatWeapon.gd" id="1_nx6d8"]
+[ext_resource type="Script" path="res://resources/stats/StatModel.gd" id="1_nx6d8"]
 
 [resource]
 script = ExtResource("1_nx6d8")

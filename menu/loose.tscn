@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bp551tqyeagn4"]
 
-[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_bxa00"]
+[ext_resource type="Script" path="res://scripts/ui/menus/pause_menu.gd" id="1_bxa00"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_5t263"]
 [ext_resource type="FontFile" uid="uid://c4bepklkqxgig" path="res://assets/fonts/Kenney Pixel Square.ttf" id="3_11nmw"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://de4kdomvwfbj7"]
 
-[ext_resource type="Script" path="res://scripts/particles/AttackDamageParticles/AttackDamageParticule.gd" id="1_1idyx"]
+[ext_resource type="Script" path="res://scripts/particles/AttackParticles/AttackDamageParticule.gd" id="1_1idyx"]
 
 [sub_resource type="Animation" id="Animation_mfgm8"]
 resource_name = "fly"

@@ -1,5 +1,17 @@
 {
   "hidden_columns": {
+    "res://data/modifiers/entity/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://data/stats/players/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://data/stats/upgrades/permanent/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
     "res://resources/characters/": {
       "resource_local_to_scene": true,
       "resource_name": true
@@ -69,7 +81,10 @@
     "res://resources/stats/temp/",
     "res://resources/abilities/",
     "res://resources/abilities/Ability.gd",
-    "res://resources/abilities/DashAbility.gd"
+    "res://resources/abilities/DashAbility.gd",
+    "res://data/stats/upgrades/permanent/",
+    "res://data/stats/players/",
+    "res://data/modifiers/entity/"
   ],
   "table_functions": {
     "filter": [

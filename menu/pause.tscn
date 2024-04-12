@@ -2,10 +2,10 @@
 
 [ext_resource type="FontFile" uid="uid://c4bepklkqxgig" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_2jkt2"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_eajmd"]
-[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_y8n50"]
+[ext_resource type="Script" path="res://scripts/ui/menus/pause_menu.gd" id="1_y8n50"]
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_xcw3w"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonResume.gd" id="3_h80df"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonGoToMenu.gd" id="4_euiod"]
+[ext_resource type="Script" path="res://scripts/ui/buttons/ButtonResume.gd" id="3_h80df"]
+[ext_resource type="Script" path="res://scripts/ui/buttons/ButtonGoToMenu.gd" id="4_euiod"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q31fs"]
 shader = ExtResource("1_eajmd")

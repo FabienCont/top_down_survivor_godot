@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://csab0cx1mscsl"]
 
 [ext_resource type="Texture2D" uid="uid://csgj4mfsr5yl7" path="res://assets/ui/dash_icon.aseprite" id="1_uffpj"]
-[ext_resource type="Script" path="res://scripts/ui/AbilityProgressUI.gd" id="2_s322u"]
+[ext_resource type="Script" path="res://scripts/ui/hud/AbilityProgressUI.gd" id="2_s322u"]
 
 [node name="DashReadyUI" type="TextureProgressBar"]
 offset_right = 40.0

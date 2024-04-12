@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=4 format=3 uid="uid://cj744lcdgecvm"]
+
+[ext_resource type="Script" path="res://resources/stats/StatModifier.gd" id="1_dg5tu"]
+[ext_resource type="Script" path="res://resources/upgrades/Upgrade.gd" id="2_6ie67"]
+
+[sub_resource type="Resource" id="Resource_hlofw"]
+script = ExtResource("1_dg5tu")
+type = 1
+target = "ENTITY"
+key = 10
+value = 1.1
+duration = -1.0
+apply_to_base = false
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_6ie67")
+label = "attack speed upgrade"
+modifiers = Array[ExtResource("1_dg5tu")]([SubResource("Resource_hlofw")])
+effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])

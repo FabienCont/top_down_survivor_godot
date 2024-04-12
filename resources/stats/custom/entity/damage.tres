@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="StatEntity" load_steps=2 format=3 uid="uid://bf6qwhg13ri8m"]
+[gd_resource type="Resource" script_class="StatModel" load_steps=2 format=3 uid="uid://bf6qwhg13ri8m"]
 
-[ext_resource type="Script" path="res://resources/stats/StatEntity.gd" id="1_f5fp4"]
+[ext_resource type="Script" path="res://resources/stats/StatModel.gd" id="1_f5fp4"]
 
 [resource]
 script = ExtResource("1_f5fp4")
-key_selector = 9
 auto_compute = false
 key = 9
 base_value = 55.0

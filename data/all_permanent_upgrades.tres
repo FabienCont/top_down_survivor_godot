@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceGroup" load_steps=2 format=3 uid="uid://bgminv6v2sow0"]
+
+[ext_resource type="Script" path="res://addons/godot_resource_groups/resource_group.gd" id="1_com6f"]
+
+[resource]
+script = ExtResource("1_com6f")
+base_folder = "res://data/upgrades/permanent"
+includes = Array[String](["*.tres"])
+excludes = Array[String]([])
+paths = Array[String](["res://data/upgrades/permanent/attack_speed_upgrade.tres", "res://data/upgrades/permanent/damage_upgrade.tres", "res://data/upgrades/permanent/double_shot_upgrade.tres", "res://data/upgrades/permanent/max_life_upgrade.tres", "res://data/upgrades/permanent/movement_speed_upgrade.tres", "res://data/upgrades/permanent/pierce_upgrade.tres", "res://data/upgrades/permanent/xp_mutiplicator_upgrade.tres"])

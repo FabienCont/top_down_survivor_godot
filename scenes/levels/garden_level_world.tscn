@@ -1,15 +1,15 @@
 [gd_scene load_steps=59 format=3 uid="uid://dplxlt53j8hdv"]
 
-[ext_resource type="Script" path="res://scripts/Level.gd" id="1_n2noc"]
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="1_n2noc"]
 [ext_resource type="Texture2D" uid="uid://bvyyig7etabsi" path="res://assets/tilesets/forestPack/Forest Cliff.png" id="2_u6ouw"]
 [ext_resource type="Texture2D" uid="uid://q4svkoixm3vg" path="res://assets/tilesets/forestPack/Forest Props.png" id="3_c465x"]
 [ext_resource type="Texture2D" uid="uid://doshpnavrgacx" path="res://assets/tilesets/forestPack/Forest Tilesett.png" id="4_e8ayb"]
 [ext_resource type="Texture2D" uid="uid://d1jhi4ub2v33k" path="res://assets/tilesets/forestPack/Trees.png" id="5_aqxsy"]
 [ext_resource type="Texture2D" uid="uid://qhtiy7higs8x" path="res://assets/tilesets/forestPack/Water Tileset.png" id="6_ighmq"]
-[ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/characters/Player.tscn" id="7_6kc33"]
 [ext_resource type="PackedScene" uid="uid://cd2p3p4u7n0pc" path="res://scenes/particles/Smoke2.tscn" id="7_oc0w4"]
 [ext_resource type="PackedScene" uid="uid://d3vdr5j6nw03q" path="res://scenes/cameras/shakeable_camera.tscn" id="8_bwqk4"]
-[ext_resource type="PackedScene" uid="uid://ckmcqlh372i8b" path="res://scenes/enemies/EnemiesSpawner.tscn" id="10_77vc6"]
+[ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/entities/Player.tscn" id="8_d5g8a"]
+[ext_resource type="PackedScene" uid="uid://ckmcqlh372i8b" path="res://scenes/spawner/EnemiesSpawner.tscn" id="10_77vc6"]
 [ext_resource type="Texture2D" uid="uid://2sj5e3yjj4dk" path="res://assets/characters/enemies/32x32-eye-sprite-work.aseprite" id="13_3g6ux"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xshun"]
@@ -4365,7 +4365,7 @@ constrain_avoidance = true
 visible = false
 position = Vector2(316, 167)
 
-[node name="Player" parent="." instance=ExtResource("7_6kc33")]
+[node name="Player" parent="." instance=ExtResource("8_d5g8a")]
 position = Vector2(319, 65)
 
 [node name="PointLight2DSprite" type="PointLight2D" parent="Player"]

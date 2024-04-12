@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://clgdf5xwbg4ou"]
 
-[ext_resource type="Script" path="res://scripts/MainLevelScript.gd" id="1_ejer5"]
+[ext_resource type="Script" path="res://scripts/levels/MainLevelScript.gd" id="1_e2rai"]
 [ext_resource type="PackedScene" uid="uid://dplxlt53j8hdv" path="res://scenes/levels/garden_level_world.tscn" id="1_hxhco"]
 [ext_resource type="PackedScene" uid="uid://tdxsk34xdqnp" path="res://scenes/ui/XpBar2D.tscn" id="3_c3ohb"]
 [ext_resource type="FontFile" uid="uid://b2loyxgplpufc" path="res://assets/fonts/Kenney Pixel.ttf" id="3_lq60j"]
 [ext_resource type="PackedScene" uid="uid://dtiln4yicio08" path="res://scenes/ui/InventoryUI.tscn" id="3_oc8j7"]
 [ext_resource type="PackedScene" uid="uid://dm6lldv3stkxc" path="res://scenes/ui/Clock_UI.tscn" id="3_rovd1"]
 [ext_resource type="PackedScene" uid="uid://dl4wydgodskm4" path="res://menu/pause.tscn" id="3_wup1e"]
-[ext_resource type="Script" path="res://scripts/ui/PlayerLevelLabel.gd" id="4_gafl3"]
+[ext_resource type="Script" path="res://scripts/ui/hud/PlayerLevelLabel.gd" id="4_gafl3"]
 [ext_resource type="PackedScene" uid="uid://bro3t3by1jnrm" path="res://menu/level_up.tscn" id="7_a6oid"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://plugins/joystick/virtual_joystick.tscn" id="8_5sroo"]
 [ext_resource type="PackedScene" uid="uid://csab0cx1mscsl" path="res://scenes/ui/DashProgressUi.tscn" id="8_xjgae"]
@@ -24,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ejer5")
+script = ExtResource("1_e2rai")
 
 [node name="SubViewportContainerGame" type="SubViewportContainer" parent="."]
 layout_mode = 1

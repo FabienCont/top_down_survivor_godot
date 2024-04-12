@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddr8rsnjp5sls"]
 
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="1_w32am"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonStart.gd" id="2_cxe54"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonQuit.gd" id="3_kkg44"]
+[ext_resource type="Script" path="res://scripts/ui/buttons/ButtonStart.gd" id="2_cxe54"]
+[ext_resource type="Script" path="res://scripts/ui/buttons/ButtonQuit.gd" id="3_kkg44"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3hqa6"]
 line_spacing = 5.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://clfpk1k2qm6jc"]
 
-[ext_resource type="Script" path="res://scripts/ui/character_card.gd" id="1_fs75v"]
+[ext_resource type="Script" path="res://scripts/ui/character_selection/character_card.gd" id="1_fs75v"]
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_redr1"]
 [ext_resource type="FontFile" uid="uid://cfeacx607idqf" path="res://assets/fonts/Kenney Mini Square Mono.ttf" id="3_aoawo"]
 

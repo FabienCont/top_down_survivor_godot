@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceGroup" load_steps=2 format=3 uid="uid://dsr2q1ud2wevd"]
+
+[ext_resource type="Script" path="res://addons/godot_resource_groups/resource_group.gd" id="1_oloan"]
+
+[resource]
+script = ExtResource("1_oloan")
+base_folder = "res://data/items/permanent"
+includes = Array[String](["*.tres"])
+excludes = Array[String]([])
+paths = Array[String](["res://data/items/permanent/arrows.tres", "res://data/items/permanent/boot.tres", "res://data/items/permanent/feather.tres", "res://data/items/permanent/heart.tres", "res://data/items/permanent/lightning.tres", "res://data/items/permanent/weights.tres", "res://data/items/permanent/xp_multiplier.tres"])

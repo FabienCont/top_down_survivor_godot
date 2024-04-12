@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://sklpdnfwp8oj"]
-
-[ext_resource type="PackedScene" uid="uid://b8q2vpdkrtw7a" path="res://assets/characters/heroes/hope.ase" id="1_42iuv"]
-
-[node name="hope" type="Node2D"]
-
-[node name="hope" parent="." instance=ExtResource("1_42iuv")]
-animation = &"Idle"
-frame_progress = 0.298471

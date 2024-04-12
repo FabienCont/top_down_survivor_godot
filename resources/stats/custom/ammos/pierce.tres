@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="StatAmmo" load_steps=2 format=3 uid="uid://dwqm27fwdhvr7"]
+[gd_resource type="Resource" script_class="StatModel" load_steps=2 format=3 uid="uid://dwqm27fwdhvr7"]
 
-[ext_resource type="Script" path="res://resources/stats/StatAmmo.gd" id="1_e7244"]
+[ext_resource type="Script" path="res://resources/stats/StatModel.gd" id="1_e7244"]
 
 [resource]
 script = ExtResource("1_e7244")

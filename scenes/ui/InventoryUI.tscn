@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dtiln4yicio08"]
 
-[ext_resource type="Script" path="res://scripts/ui/InventoryUI.gd" id="1_8ehew"]
+[ext_resource type="Script" path="res://scripts/ui/hud/InventoryUI.gd" id="1_8ehew"]
 
 [node name="InventoryUI" type="HBoxContainer"]
 anchors_preset = 15

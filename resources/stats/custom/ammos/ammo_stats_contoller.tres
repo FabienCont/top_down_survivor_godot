@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="StatsController" load_steps=5 format=3 uid="uid://drxfhg6ke0d7x"]
+
+[ext_resource type="Script" path="res://resources/stats/StatsController.gd" id="1_nxjy1"]
+[ext_resource type="Script" path="res://resources/stats/StatModel.gd" id="2_n6voa"]
+
+[sub_resource type="Resource" id="Resource_6f3fh"]
+script = ExtResource("2_n6voa")
+key = 0
+base_value = 3.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_uddlo"]
+script = ExtResource("2_n6voa")
+key = 1
+base_value = 500.0
+value = 0.0
+
+[resource]
+script = ExtResource("1_nxjy1")
+target = "AMMO"
+stats_dico = {
+0: SubResource("Resource_6f3fh"),
+1: SubResource("Resource_uddlo")
+}
+modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([])

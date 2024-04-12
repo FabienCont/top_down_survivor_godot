@@ -6,7 +6,6 @@ class_name StatModel
 signal update_value(new_value: float)
 signal update_base_value(new_value: float)
 
-@export var auto_compute: bool = true
 @export var key: int:
 	set(updated_value):
 		key = updated_value
@@ -22,6 +21,13 @@ signal update_base_value(new_value: float)
 		value = updated_value
 		_emit_update_value(value)
 
+func init_stat(key_init,value_init):
+	if key_init:
+		key = key_init
+	if value_init:
+		value=value_init
+		base_value=value_init
+		
 var _name: String = ""
 
 func get_stat_name()-> String:

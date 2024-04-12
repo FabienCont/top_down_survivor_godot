@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://resources/items/Item.gd" id="1_dlypq"]
 [ext_resource type="Texture2D" uid="uid://dgejsaj4j11nj" path="res://assets/collectables/xp.png" id="2_ko2gu"]
-[ext_resource type="Resource" uid="uid://hhhl64c6b7lm" path="res://resources/upgrades/consomable/bonus_xp_consommable.tres" id="3_xn67y"]
+[ext_resource type="Resource" uid="uid://hhhl64c6b7lm" path="res://data/upgrades/consumable/bonus_xp_consommable.tres" id="3_gon3a"]
 
 [resource]
 script = ExtResource("1_dlypq")
 name = "xp"
-upgrades = Array[Resource("res://resources/Upgrade.gd")]([ExtResource("3_xn67y")])
+upgrades = Array[Resource("res://resources/upgrades/Upgrade.gd")]([ExtResource("3_gon3a")])
 texture = ExtResource("2_ko2gu")
 is_consumable = true

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceGroup" load_steps=2 format=3 uid="uid://dddjxmcb3ngjq"]
+
+[ext_resource type="Script" path="res://addons/godot_resource_groups/resource_group.gd" id="1_elead"]
+
+[resource]
+script = ExtResource("1_elead")
+base_folder = "res://data/modifiers/entity"
+includes = Array[String](["*.tres"])
+excludes = Array[String]([])
+paths = Array[String](["res://data/modifiers/entity/add_two_ammo_modifier.tres", "res://data/modifiers/entity/attack_speed.tres", "res://data/modifiers/entity/damage.tres", "res://data/modifiers/entity/max_life_upgrade.tres", "res://data/modifiers/entity/movement_speed.tres", "res://data/modifiers/entity/xp_loot.tres", "res://data/modifiers/entity/xp_multiplicator.tres"])

@@ -6,7 +6,7 @@ extends TextureProgressBar
 		get: return _display_xp_value
 		set(param): _update_display_xp(param)
 @onready var max_xp_value:float
-@onready var tween: Tween = create_tween()
+@onready var tween: Tween
 
 func _ready():
 	await RenderingServer.frame_post_draw

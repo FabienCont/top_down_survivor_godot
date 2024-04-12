@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://wdxa2j7nh7xa"]
 
-[ext_resource type="Script" path="res://scripts/ui/upgrade_card.gd" id="1_5s5dl"]
+[ext_resource type="Script" path="res://scripts/ui/menus/level_up/upgrade_card.gd" id="1_5s5dl"]
 [ext_resource type="Texture2D" uid="uid://cowal7i8qbg6f" path="res://assets/items/hearth.aseprite" id="3_q16qm"]
 [ext_resource type="FontFile" uid="uid://bqyox55cfwpw4" path="res://assets/fonts/Kenney Mini Square.ttf" id="4_qrg7j"]
 

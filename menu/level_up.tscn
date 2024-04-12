@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bro3t3by1jnrm"]
 
-[ext_resource type="Script" path="res://scripts/level_up.gd" id="1_4xrlr"]
+[ext_resource type="Script" path="res://scripts/ui/menus/level_up/level_up.gd" id="1_4xrlr"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_vojex"]
 [ext_resource type="FontFile" uid="uid://km688hu4km4d" path="res://assets/fonts/Kenney Future.ttf" id="3_pe2jf"]
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="4_2fm32"]
