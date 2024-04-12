@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0yvlgt6mp5cq"]
 
-[ext_resource type="Script" path="res://components/2d/weapon/MeleeWeapon2D.gd" id="1_8p04d"]
-[ext_resource type="Script" path="res://components/2d/physics/HitboxComponent2D.gd" id="2_rkk2n"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/weapon/MeleeWeapon2D.gd" id="1_8p04d"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/physics/HitboxComponent2D.gd" id="2_rkk2n"]
 [ext_resource type="PackedScene" uid="uid://btevx5rewkqxb" path="res://assets/attack/bat_attack.tscn" id="2_ufbh1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0u3g"]

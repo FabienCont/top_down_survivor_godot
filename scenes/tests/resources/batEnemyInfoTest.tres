@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="EnemyInfo" load_steps=9 format=3 uid="uid://bcvkl3shnjk7s"]
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=8 format=3 uid="uid://bcvkl3shnjk7s"]
 
-[ext_resource type="Script" path="res://resources/abilities/implementations/AttackAbility.gd" id="1_5jolv"]
-[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_7qqgi"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/AbilitiesController.gd" id="2_7qqgi"]
 [ext_resource type="Resource" uid="uid://pgrotlrpxspv" path="res://components/entity_decision_maker/EnemyLogicComponent.tres" id="3_bylpm"]
 [ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="4_uacbu"]
 [ext_resource type="PackedScene" uid="uid://bq8wq02iaxh0b" path="res://assets/characters/enemies/32x32-bat-sprite.ase" id="5_fvpjv"]
@@ -10,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_ladn7"]
 script = ExtResource("2_7qqgi")
-attack_ability = ExtResource("1_5jolv")
+abilities = {}
 
 [resource]
 script = ExtResource("4_uacbu")

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Upgrade" load_steps=3 format=3 uid="uid://obe5l26ay5g"]
 
 [ext_resource type="Resource" uid="uid://b7xg1low265o7" path="res://data/modifiers/entity/movement_speed.tres" id="1_wfqgk"]
-[ext_resource type="Script" path="res://resources/upgrades/Upgrade.gd" id="2_c6h2j"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/Upgrade.gd" id="2_c6h2j"]
 
 [resource]
 script = ExtResource("2_c6h2j")
 label = "speed up"
-modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([ExtResource("1_wfqgk")])
+modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([ExtResource("1_wfqgk")])
 effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])

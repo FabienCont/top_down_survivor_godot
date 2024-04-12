@@ -1,20 +1,20 @@
 [gd_scene load_steps=20 format=3 uid="uid://ccxqh4klu5i7k"]
 
 [ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_w40en"]
-[ext_resource type="Script" path="res://resources/effects/hurt/DisplayDamagedHurtEffect.gd" id="2_482ux"]
-[ext_resource type="Script" path="res://resources/effects/hurt/ShakeHurtEffect.gd" id="3_fbq1n"]
-[ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://components/HealthComponent.tscn" id="3_gpfp0"]
-[ext_resource type="Script" path="res://resources/effects/hurt/BlinkHurtEffect.gd" id="4_060cq"]
-[ext_resource type="PackedScene" uid="uid://v7vtestyxfk5" path="res://components/2d/controllers/TopDownControllerComponent2D.tscn" id="6_xbdte"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/handlers/DisplayDamagedHurtEffect.gd" id="2_v1nwq"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/handlers/ShakeHurtEffect.gd" id="3_fbq1n"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/handlers/BlinkHurtEffect.gd" id="4_060cq"]
+[ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://addons/JamStarterPack/components/HealthComponent.tscn" id="5_frt47"]
+[ext_resource type="PackedScene" uid="uid://v7vtestyxfk5" path="res://addons/JamStarterPack/components/2d/controllers/TopDownControllerComponent2D.tscn" id="6_rnls1"]
 [ext_resource type="PackedScene" uid="uid://tj3s2aqp4cp5" path="res://assets/characters/heroes/character.ase" id="7_5ua4u"]
-[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/2d/physics/VelocityComponent2D.tscn" id="7_5606p"]
-[ext_resource type="PackedScene" uid="uid://bjbu22y0n4s4r" path="res://components/2d/ui/LifebarComponent2D.tscn" id="8_fr3e8"]
-[ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://components/2d/physics/HurtboxComponent2D.tscn" id="10_ypk0j"]
-[ext_resource type="PackedScene" uid="uid://cu0uhllltwptd" path="res://components/2d/physics/CollectorComponent2D.tscn" id="11_5jnf5"]
-[ext_resource type="PackedScene" uid="uid://55jfcor21akc" path="res://components/2d/physics/InteractionComponent2D.tscn" id="12_yb0du"]
-[ext_resource type="PackedScene" uid="uid://duv6rauvtfokg" path="res://components/2d/ui/PrepareAttackUiComponent2D.tscn" id="13_h2x3s"]
-[ext_resource type="PackedScene" uid="uid://c43c8vrwakpf7" path="res://components/2d/weapon/WeaponSlotComponent2D.tscn" id="13_iykla"]
-[ext_resource type="PackedScene" uid="uid://rach46pt74xv" path="res://scenes/ui/aim_sight_component.tscn" id="15_poqst"]
+[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://addons/JamStarterPack/components/2d/physics/VelocityComponent2D.tscn" id="7_eg2aj"]
+[ext_resource type="PackedScene" uid="uid://bjbu22y0n4s4r" path="res://addons/JamStarterPack/components/2d/ui/LifebarComponent2D.tscn" id="8_qxnwk"]
+[ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://addons/JamStarterPack/components/2d/physics/HurtboxComponent2D.tscn" id="10_vcute"]
+[ext_resource type="PackedScene" uid="uid://cu0uhllltwptd" path="res://addons/JamStarterPack/components/2d/physics/CollectorComponent2D.tscn" id="11_2d06e"]
+[ext_resource type="PackedScene" uid="uid://55jfcor21akc" path="res://addons/JamStarterPack/components/2d/physics/InteractionComponent2D.tscn" id="12_slec2"]
+[ext_resource type="PackedScene" uid="uid://duv6rauvtfokg" path="res://components/PrepareAttackUiComponent2D.tscn" id="13_cdqb5"]
+[ext_resource type="PackedScene" uid="uid://c43c8vrwakpf7" path="res://addons/JamStarterPack/components/2d/weapon/WeaponSlotComponent2D.tscn" id="14_1hk26"]
+[ext_resource type="PackedScene" uid="uid://rach46pt74xv" path="res://components/aim_sight_component.tscn" id="15_fd4yt"]
 [ext_resource type="Texture2D" uid="uid://ciifsskxsx2ht" path="res://assets/ui/aim_sight.aseprite" id="16_i5dkl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yog7p"]
@@ -31,15 +31,15 @@ radius = 130.04
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_w40en")
-hurt_effects = Array[Resource]([ExtResource("2_482ux"), ExtResource("3_fbq1n"), ExtResource("4_060cq")])
+hurt_effects = Array[Resource]([ExtResource("2_v1nwq"), ExtResource("3_fbq1n"), ExtResource("4_060cq")])
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_gpfp0")]
+[node name="HealthComponent" parent="." instance=ExtResource("5_frt47")]
 
-[node name="TopDownControllerComponent" parent="." instance=ExtResource("6_xbdte")]
+[node name="TopDownControllerComponent" parent="." instance=ExtResource("6_rnls1")]
 
-[node name="VelocityComponent" parent="." instance=ExtResource("7_5606p")]
+[node name="VelocityComponent" parent="." instance=ExtResource("7_eg2aj")]
 
-[node name="LifebarComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("8_fr3e8")]
+[node name="LifebarComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("8_qxnwk")]
 position = Vector2(0, 14)
 healthComponent = NodePath("../HealthComponent")
 
@@ -49,35 +49,34 @@ autoplay = "default"
 frame = 1
 frame_progress = 1.0
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_ypk0j")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_vcute")]
 shape = SubResource("CapsuleShape2D_yog7p")
 health_component = NodePath("../HealthComponent")
 
-[node name="CollectorComponent" parent="." instance=ExtResource("11_5jnf5")]
+[node name="CollectorComponent" parent="." instance=ExtResource("11_2d06e")]
 collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectorComponent"]
 shape = SubResource("CircleShape2D_wb7o2")
 
-[node name="InteractionComponent" parent="." instance=ExtResource("12_yb0du")]
+[node name="InteractionComponent" parent="." instance=ExtResource("12_slec2")]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent"]
 shape = SubResource("CircleShape2D_h3p46")
 
-[node name="PrepareAttackUIComponent" parent="." instance=ExtResource("13_h2x3s")]
+[node name="PrepareAttackUIComponent" parent="." instance=ExtResource("13_cdqb5")]
 tint_progress = Color(0.921569, 0.0627451, 0, 0.764706)
 
-[node name="WeaponSlotComponent" parent="." instance=ExtResource("13_iykla")]
+[node name="WeaponSlotComponent" parent="." instance=ExtResource("14_1hk26")]
 collision_layer = 16
 collision_mask = 3
 
-[node name="AimSightComponent" parent="." node_paths=PackedStringArray("top_down_controller_component") instance=ExtResource("15_poqst")]
+[node name="AimSightComponent" parent="." node_paths=PackedStringArray("top_down_controller_component") instance=ExtResource("15_fd4yt")]
 z_index = 1000
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("16_i5dkl")
 top_down_controller_component = NodePath("../TopDownControllerComponent")
 max_range = 160.0

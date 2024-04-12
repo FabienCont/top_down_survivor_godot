@@ -1,19 +1,19 @@
 [gd_scene load_steps=48 format=3 uid="uid://b4uxfpyb68wl8"]
 
 [ext_resource type="Script" path="res://scenes/tests/EnemyTest.gd" id="1_fcf8t"]
-[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_1unpo"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/AbilitiesController.gd" id="2_1unpo"]
 [ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/entities/Enemy.tscn" id="2_f2svw"]
 [ext_resource type="Script" path="res://resources/effects/EffectsController.gd" id="3_6b2k3"]
 [ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/entities/Player.tscn" id="3_dc8bk"]
 [ext_resource type="Script" path="res://components/entity_decision_maker/EnemyLogicComponent.gd" id="4_sxqil"]
 [ext_resource type="Resource" uid="uid://v876g6v6jvxf" path="res://resources/stats/custom/players/player_test.tres" id="4_yk84b"]
 [ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="5_wui01"]
-[ext_resource type="Script" path="res://resources/upgrades/UpgradesController.gd" id="8_dmevd"]
-[ext_resource type="Script" path="res://components/2d/weapon/MeleeWeapon2D.gd" id="9_t2gp4"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/UpgradesController.gd" id="8_dmevd"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/weapon/MeleeWeapon2D.gd" id="9_t2gp4"]
 [ext_resource type="PackedScene" uid="uid://btevx5rewkqxb" path="res://assets/attack/bat_attack.tscn" id="10_apxpy"]
-[ext_resource type="Script" path="res://components/2d/physics/HitboxComponent2D.gd" id="11_ekbcr"]
-[ext_resource type="Script" path="res://resources/weapon/WeaponInfo.gd" id="12_akrn2"]
-[ext_resource type="Script" path="res://resources/stats/StatsController.gd" id="13_fsrje"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/physics/HitboxComponent2D.gd" id="11_ekbcr"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/weapons/WeaponInfo.gd" id="12_akrn2"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatsController.gd" id="13_fsrje"]
 
 [sub_resource type="Resource" id="Resource_vubp0"]
 script = ExtResource("2_1unpo")
@@ -193,7 +193,7 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_t7o66"]
 script = ExtResource("8_dmevd")
-upgrades = Array[Resource("res://resources/upgrades/Upgrade.gd")]([])
+upgrades = Array[Resource("res://addons/JamStarterPack/resources/upgrades/Upgrade.gd")]([])
 
 [sub_resource type="Resource" id="Resource_r8jjr"]
 script = ExtResource("13_fsrje")
@@ -210,7 +210,7 @@ stats_dico = {
 11: SubResource("Resource_j4rnb"),
 12: SubResource("Resource_fpsot")
 }
-modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([])
+modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([])
 upgrades_controller = SubResource("Resource_t7o66")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0u3g"]
@@ -263,7 +263,7 @@ stats_dico = {
 31: SubResource("Resource_o8wjy"),
 32: SubResource("Resource_wkxv3")
 }
-modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([])
+modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([])
 
 [sub_resource type="Resource" id="Resource_d2nft"]
 script = ExtResource("12_akrn2")

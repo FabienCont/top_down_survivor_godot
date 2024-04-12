@@ -1,0 +1,15 @@
+FollowTargetComponent
+MarginContainer
+Sprite2D
+VBoxContainer
+BoxContainer
+TextureRect
+HBoxContainer
+Label
+Control
+WeaponSlotComponent
+Node2D
+CollisionShape2D
+HitboxComponent
+AnimationPlayer
+WorldEnvironment

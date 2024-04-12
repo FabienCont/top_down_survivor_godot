@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/ui/hud/PlayerLevelLabel.gd" id="4_gafl3"]
 [ext_resource type="PackedScene" uid="uid://bro3t3by1jnrm" path="res://menu/level_up.tscn" id="7_a6oid"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://plugins/joystick/virtual_joystick.tscn" id="8_5sroo"]
-[ext_resource type="PackedScene" uid="uid://csab0cx1mscsl" path="res://scenes/ui/DashProgressUi.tscn" id="8_xjgae"]
+[ext_resource type="PackedScene" uid="uid://csab0cx1mscsl" path="res://scenes/ui/DashAbilityProgressUi.tscn" id="8_xjgae"]
 [ext_resource type="PackedScene" uid="uid://bp551tqyeagn4" path="res://menu/loose.tscn" id="9_lpxh0"]
 [ext_resource type="PackedScene" uid="uid://bq8qat4xgu8bp" path="res://menu/win_menu.tscn" id="13_ne2g5"]
 

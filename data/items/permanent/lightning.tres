@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://ddh26b5hvixcj"]
 
-[ext_resource type="Script" path="res://resources/items/Item.gd" id="1_ko4ok"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/items/Item.gd" id="1_ko4ok"]
 [ext_resource type="Texture2D" uid="uid://wep7prmdgjgg" path="res://assets/items/lightning.aseprite" id="2_sfed7"]
 [ext_resource type="Resource" uid="uid://cj744lcdgecvm" path="res://data/upgrades/permanent/attack_speed_upgrade.tres" id="3_74qxr"]
 [ext_resource type="Resource" uid="uid://obe5l26ay5g" path="res://data/upgrades/permanent/movement_speed_upgrade.tres" id="4_am1um"]
@@ -8,6 +8,6 @@
 [resource]
 script = ExtResource("1_ko4ok")
 name = "lightning"
-upgrades = Array[Resource("res://resources/upgrades/Upgrade.gd")]([ExtResource("3_74qxr"), ExtResource("4_am1um")])
+upgrades = Array[Resource("res://addons/JamStarterPack/resources/upgrades/Upgrade.gd")]([ExtResource("3_74qxr"), ExtResource("4_am1um")])
 texture = ExtResource("2_sfed7")
 is_consumable = false

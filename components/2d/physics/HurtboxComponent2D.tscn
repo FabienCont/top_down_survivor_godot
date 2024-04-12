@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba7h2fb8j5vre"]
-
-[ext_resource type="Script" path="res://components/2d/physics/HurtboxComponent2D.gd" id="1_nd04j"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4dya"]
-
-[node name="HurtboxComponent" type="CollisionShape2D"]
-shape = SubResource("CapsuleShape2D_x4dya")
-script = ExtResource("1_nd04j")

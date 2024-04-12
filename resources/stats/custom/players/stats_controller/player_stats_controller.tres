@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="StatsController" load_steps=17 format=3 uid="uid://4cb16cge1kmv"]
 
-[ext_resource type="Script" path="res://resources/stats/StatsController.gd" id="1_a6s74"]
-[ext_resource type="Script" path="res://resources/stats/StatModel.gd" id="2_eluf5"]
-[ext_resource type="Script" path="res://resources/upgrades/UpgradesController.gd" id="3_fdcj0"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatsController.gd" id="1_a6s74"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatModel.gd" id="2_eluf5"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/UpgradesController.gd" id="3_fdcj0"]
 
 [sub_resource type="Resource" id="Resource_0rwwo"]
 script = ExtResource("2_eluf5")
@@ -78,7 +78,7 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_uvuha"]
 script = ExtResource("3_fdcj0")
-upgrades = Array[Resource("res://resources/upgrades/Upgrade.gd")]([])
+upgrades = Array[Resource("res://addons/JamStarterPack/resources/upgrades/Upgrade.gd")]([])
 
 [resource]
 script = ExtResource("1_a6s74")
@@ -97,5 +97,5 @@ stats_dico = {
 12: SubResource("Resource_h2x63"),
 13: SubResource("Resource_g2hmh")
 }
-modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([])
+modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([])
 upgrades_controller = SubResource("Resource_uvuha")

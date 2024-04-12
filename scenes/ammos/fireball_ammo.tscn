@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c483byuwk5qu6"]
 
 [ext_resource type="Script" path="res://scripts/ammos/fireball_ammo.gd" id="1_2w3wv"]
-[ext_resource type="Script" path="res://components/2d/physics/HitboxComponent2D.gd" id="2_xkjh3"]
-[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/2d/physics/VelocityComponent2D.tscn" id="3_nnexm"]
-[ext_resource type="Script" path="res://components/2d/ia/FollowTargetComponent2D.gd" id="4_ywqrx"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/physics/HitboxComponent2D.gd" id="2_xkjh3"]
+[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://addons/JamStarterPack/components/2d/physics/VelocityComponent2D.tscn" id="3_nnexm"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/ia/FollowTargetComponent2D.gd" id="4_ywqrx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4file"]
 size = Vector2(10, 3)

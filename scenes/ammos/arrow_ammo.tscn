@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cff0uke6eevpb"]
 
 [ext_resource type="Script" path="res://scripts/ammos/arrow_ammo.gd" id="1_7inbw"]
-[ext_resource type="Script" path="res://components/2d/physics/HitboxComponent2D.gd" id="2_1bj7j"]
-[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://components/2d/physics/VelocityComponent2D.tscn" id="3_w806k"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/physics/HitboxComponent2D.gd" id="2_jhuwg"]
+[ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://addons/JamStarterPack/components/2d/physics/VelocityComponent2D.tscn" id="3_ij68r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4file"]
 size = Vector2(10, 3)
@@ -11,12 +11,12 @@ size = Vector2(10, 3)
 script = ExtResource("1_7inbw")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
-script = ExtResource("2_1bj7j")
+script = ExtResource("2_jhuwg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_4file")
 
-[node name="VelocityComponent" parent="." instance=ExtResource("3_w806k")]
+[node name="VelocityComponent" parent="." instance=ExtResource("3_ij68r")]
 
 [connection signal="body_shape_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_shape_entered"]
 [connection signal="hit" from="HitboxComponent" to="." method="_on_hitbox_component_hit"]

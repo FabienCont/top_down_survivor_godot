@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cufdg1akjan15"]
+
+[ext_resource type="Script" path="res://addons/JamStarterPack/scenes/interractions/Collectable.gd" id="1_jhlek"]
+[ext_resource type="Shader" uid="uid://drnvhicgg687" path="res://addons/JamStarterPack/shaders/glow.tres" id="2_u0wbu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_55pgr"]
+radius = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sarq0"]
+shader = ExtResource("2_u0wbu")
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_jhlek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_55pgr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_sarq0")
+scale = Vector2(0.8, 0.8)

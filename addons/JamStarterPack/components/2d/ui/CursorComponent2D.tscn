@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwiu0fy80c6q2"]
+
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/ui/CursorComponent2D.gd" id="1_xam6r"]
+
+[node name="CursorComponent2d" type="Sprite2D"]
+texture_filter = 3
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_xam6r")

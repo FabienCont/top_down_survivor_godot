@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Upgrade" load_steps=3 format=3 uid="uid://hhhl64c6b7lm"]
 
-[ext_resource type="Resource" uid="uid://3mtcea6vkqef" path="res://data/modifiers/entity/xp_loot.tres" id="1_0oihv"]
-[ext_resource type="Script" path="res://resources/upgrades/Upgrade.gd" id="2_m37h6"]
+[ext_resource type="Resource" uid="uid://3mtcea6vkqef" path="res://data/modifiers/entity/xp_loot.tres" id="1_xvjnd"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/Upgrade.gd" id="2_hrwy5"]
 
 [resource]
-script = ExtResource("2_m37h6")
+script = ExtResource("2_hrwy5")
 label = "bonus xp"
-modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([ExtResource("1_0oihv")])
+modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([ExtResource("1_xvjnd")])
 effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])

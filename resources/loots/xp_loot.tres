@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Loot" load_steps=3 format=3 uid="uid://ckvd0wl28joa3"]
 
 [ext_resource type="Resource" uid="uid://dfylc5aq0hio7" path="res://resources/items/consumable/xp.tres" id="1_38k13"]
-[ext_resource type="Script" path="res://resources/loots/Loot.gd" id="2_4iye3"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/items/Loot.gd" id="2_4iye3"]
 
 [resource]
 script = ExtResource("2_4iye3")

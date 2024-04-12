@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://cew26ys2mad3o" path="res://resources/ammo/ArrowAmmoInfo.tres" id="1_erh65"]
 [ext_resource type="PackedScene" uid="uid://cakah4i35acti" path="res://scenes/weapons/DistantWeapon.tscn" id="2_xy1sg"]
-[ext_resource type="Script" path="res://resources/weapon/WeaponInfo.gd" id="3_2btrx"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/weapons/WeaponInfo.gd" id="3_2btrx"]
 [ext_resource type="PackedScene" uid="uid://cgxhvomq3ma5" path="res://assets/weapons/bow/bow.ase" id="4_4jgdd"]
 [ext_resource type="Resource" uid="uid://c010ixwdutw5n" path="res://resources/stats/custom/weapons/distant_weapon_controller_stats.tres" id="5_6k73x"]
 

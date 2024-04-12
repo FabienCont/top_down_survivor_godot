@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="EnemyInfo" load_steps=9 format=3 uid="uid://dgif5xfradk1y"]
 
-[ext_resource type="Script" path="res://resources/abilities/implementations/AttackAbility.gd" id="1_3s0bj"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/implementations/AttackAbility.gd" id="1_3s0bj"]
 [ext_resource type="Script" path="res://resources/enemies/EnemyInfo.gd" id="1_sk217"]
 [ext_resource type="PackedScene" uid="uid://drw4b234pubs4" path="res://assets/characters/enemies/32x32-eye-sprite-work-2.aseprite" id="2_7dhin"]
-[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="2_qlvmn"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/AbilitiesController.gd" id="2_qlvmn"]
 [ext_resource type="Resource" uid="uid://pgrotlrpxspv" path="res://components/entity_decision_maker/EnemyLogicComponent.tres" id="3_fsicn"]
 [ext_resource type="Resource" uid="uid://cnc58o31w371e" path="res://resources/stats/custom/enemies/bat/enemy_stats_controller_entity.tres" id="3_i7qay"]
 [ext_resource type="Resource" uid="uid://ca0uhltk6gd62" path="res://resources/weapon/BatWeaponInfo.tres" id="4_xr3sg"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://rach46pt74xv"]
+
+[ext_resource type="Texture2D" uid="uid://f2fwah3aehfg" path="res://assets/ui/aim_sight_128x128.aseprite" id="1_w8nl8"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/ui/CursorComponent2D.gd" id="2_anwqk"]
+
+[node name="CursorComponent2D" type="Sprite2D"]
+texture = ExtResource("1_w8nl8")
+script = ExtResource("2_anwqk")

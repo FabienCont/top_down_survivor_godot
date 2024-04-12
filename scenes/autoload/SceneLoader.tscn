@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c6bl2e0mbyd02"]
 
-[ext_resource type="Script" path="res://scripts/autoload/SceneLoader.gd" id="1_nsthu"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/scenes/autoload/SceneLoader.gd" id="1_nsthu"]
 [ext_resource type="FontFile" uid="uid://km688hu4km4d" path="res://assets/fonts/Kenney Future.ttf" id="2_xc1sc"]
 [ext_resource type="Texture2D" uid="uid://dj5uqipts1vvs" path="res://assets/lights/light_03.png" id="3_4autf"]
 

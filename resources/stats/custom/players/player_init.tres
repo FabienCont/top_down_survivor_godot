@@ -1,13 +1,12 @@
-[gd_resource type="Resource" script_class="PlayerInfo" load_steps=11 format=3 uid="uid://cfij4qrx1jjjs"]
+[gd_resource type="Resource" script_class="PlayerInfo" load_steps=10 format=3 uid="uid://cfij4qrx1jjjs"]
 
 [ext_resource type="Script" path="res://resources/effects/EffectsController.gd" id="1_2kopb"]
-[ext_resource type="Script" path="res://resources/abilities/implementations/DashAbility.gd" id="1_7m1sw"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/implementations/DashAbility.gd" id="1_7m1sw"]
 [ext_resource type="Script" path="res://resources/PlayerInfo.gd" id="1_38l00"]
-[ext_resource type="Script" path="res://resources/abilities/AbilitiesController.gd" id="1_hyhd7"]
-[ext_resource type="Script" path="res://resources/abilities/implementations/AttackAbility.gd" id="2_6ylej"]
-[ext_resource type="Script" path="res://resources/abilities/implementations/MoveAbility.gd" id="3_yb6fs"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/AbilitiesController.gd" id="1_hyhd7"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/implementations/AttackAbility.gd" id="2_6ylej"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/implementations/MoveAbility.gd" id="3_yb6fs"]
 [ext_resource type="Resource" uid="uid://bx8xap03c8fs" path="res://components/entity_decision_maker/PlayerLogicComponent.tres" id="6_s7x46"]
-[ext_resource type="Resource" uid="uid://4cb16cge1kmv" path="res://resources/stats/custom/players/stats_controller/player_stats_controller.tres" id="8_dtqjn"]
 
 [sub_resource type="Resource" id="Resource_5ynbm"]
 script = ExtResource("1_hyhd7")
@@ -26,5 +25,4 @@ dico = {}
 script = ExtResource("1_38l00")
 abilities_controller = SubResource("Resource_5ynbm")
 logic_component = ExtResource("6_s7x46")
-stats_controller = ExtResource("8_dtqjn")
 effects = SubResource("Resource_44usd")

@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://bq8qat4xgu8bp"]
 
 [ext_resource type="Script" path="res://scripts/ui/menus/pause_menu.gd" id="1_msfct"]
-[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_d1x7d"]
+[ext_resource type="Shader" path="res://addons/JamStarterPack/shaders/blur.gdshader" id="2_jyv48"]
 [ext_resource type="FontFile" uid="uid://c4bepklkqxgig" path="res://assets/fonts/Kenney Pixel Square.ttf" id="3_k56qw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q31fs"]
-shader = ExtResource("2_d1x7d")
+shader = ExtResource("2_jyv48")
 shader_parameter/blur = 0.0
 shader_parameter/brightness = 0.0
 

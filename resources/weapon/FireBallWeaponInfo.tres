@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bhjdkj8c7safb" path="res://resources/ammo/FireBallAmmoInfo.tres" id="1_oqpt4"]
 [ext_resource type="PackedScene" uid="uid://cakah4i35acti" path="res://scenes/weapons/DistantWeapon.tscn" id="2_deiio"]
-[ext_resource type="Script" path="res://resources/weapon/WeaponInfo.gd" id="2_mtuw2"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/weapons/WeaponInfo.gd" id="2_mtuw2"]
 [ext_resource type="Resource" uid="uid://c010ixwdutw5n" path="res://resources/stats/custom/weapons/distant_weapon_controller_stats.tres" id="3_ou1cf"]
 [ext_resource type="PackedScene" uid="uid://1fmaw1mqdmfj" path="res://assets/attack/invisible_distant_attack.tscn" id="4_0ptie"]
 

@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://bro3t3by1jnrm"]
 
 [ext_resource type="Script" path="res://scripts/ui/menus/level_up/level_up.gd" id="1_4xrlr"]
-[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_vojex"]
+[ext_resource type="Shader" path="res://addons/JamStarterPack/shaders/blur.gdshader" id="2_46sne"]
 [ext_resource type="FontFile" uid="uid://km688hu4km4d" path="res://assets/fonts/Kenney Future.ttf" id="3_pe2jf"]
 [ext_resource type="FontFile" uid="uid://dhhgdl3bory6i" path="res://assets/fonts/Kenney Future Narrow.ttf" id="4_2fm32"]
 [ext_resource type="PackedScene" uid="uid://wdxa2j7nh7xa" path="res://menu/parts/item_card.tscn" id="4_si1v4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q31fs"]
-shader = ExtResource("2_vojex")
+shader = ExtResource("2_46sne")
 shader_parameter/blur = 0.0
 shader_parameter/brightness = 0.0
 

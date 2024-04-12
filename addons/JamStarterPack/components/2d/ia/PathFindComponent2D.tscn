@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv0a6e63o8iti"]
+
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/ia/PathFindComponent2D.gd" id="1_681xg"]
+
+[node name="PathFindComponent" type="NavigationAgent2D"]
+script = ExtResource("1_681xg")

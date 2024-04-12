@@ -1,82 +1,72 @@
 [gd_resource type="Resource" script_class="StatsController" load_steps=15 format=3 uid="uid://cnc58o31w371e"]
 
-[ext_resource type="Script" path="res://resources/stats/StatModel.gd" id="1_4uw26"]
-[ext_resource type="Script" path="res://resources/stats/StatsController.gd" id="1_a6s74"]
-[ext_resource type="Script" path="res://resources/upgrades/UpgradesController.gd" id="2_exgwg"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatModel.gd" id="1_4uw26"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatsController.gd" id="1_a6s74"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/UpgradesController.gd" id="2_exgwg"]
 
 [sub_resource type="Resource" id="Resource_edend"]
 script = ExtResource("1_4uw26")
-auto_compute = false
 key = 0
 base_value = 6.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_n5jha"]
 script = ExtResource("1_4uw26")
-auto_compute = true
 key = 1
 base_value = 6.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_0j78d"]
 script = ExtResource("1_4uw26")
-auto_compute = true
 key = 2
 base_value = 10.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_1iyto"]
 script = ExtResource("1_4uw26")
-auto_compute = false
 key = 4
 base_value = 10.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_pni5l"]
 script = ExtResource("1_4uw26")
-auto_compute = false
 key = 7
 base_value = 25.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_sq51o"]
 script = ExtResource("1_4uw26")
-auto_compute = false
 key = 8
 base_value = 300.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_n1x2f"]
 script = ExtResource("1_4uw26")
-auto_compute = true
 key = 9
 base_value = 0.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_qfm4m"]
 script = ExtResource("1_4uw26")
-auto_compute = false
 key = 10
 base_value = 1.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_j4rnb"]
 script = ExtResource("1_4uw26")
-auto_compute = true
 key = 11
 base_value = 1.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_fpsot"]
 script = ExtResource("1_4uw26")
-auto_compute = false
 key = 12
 base_value = 10.0
 value = 0.0
 
 [sub_resource type="Resource" id="Resource_divf1"]
 script = ExtResource("2_exgwg")
-upgrades = Array[Resource("res://resources/upgrades/Upgrade.gd")]([])
+upgrades = []
 
 [resource]
 script = ExtResource("1_a6s74")
@@ -93,5 +83,5 @@ stats_dico = {
 11: SubResource("Resource_j4rnb"),
 12: SubResource("Resource_fpsot")
 }
-modifiers = Array[Resource("res://resources/stats/StatModifier.gd")]([])
+modifiers = []
 upgrades_controller = SubResource("Resource_divf1")

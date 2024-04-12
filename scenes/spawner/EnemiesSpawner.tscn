@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckmcqlh372i8b"]
 
 [ext_resource type="Script" path="res://scenes/spawner/EnemiesSpawner.gd" id="1_yul3u"]
-[ext_resource type="PackedScene" uid="uid://dmms2cbu3dral" path="res://components/SpawnerComponent.tscn" id="2_bsiw8"]
+[ext_resource type="PackedScene" uid="uid://dmms2cbu3dral" path="res://addons/JamStarterPack/components/SpawnerComponent.tscn" id="2_bsiw8"]
 [ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/entities/Enemy.tscn" id="3_tcyil"]
 
 [node name="EnnemiesSpawner" type="Node2D"]

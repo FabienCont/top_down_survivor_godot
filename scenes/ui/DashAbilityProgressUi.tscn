@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://csab0cx1mscsl"]
+
+[ext_resource type="Texture2D" uid="uid://csgj4mfsr5yl7" path="res://assets/ui/dash_icon.aseprite" id="1_82mtd"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/ui/AbilityProgressUI.gd" id="2_h2vh4"]
+
+[node name="DashReadyUI" type="TextureProgressBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 3
+texture_under = ExtResource("1_82mtd")
+texture_progress = ExtResource("1_82mtd")
+tint_under = Color(1, 1, 1, 0.290196)
+script = ExtResource("2_h2vh4")

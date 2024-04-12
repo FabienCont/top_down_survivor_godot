@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlurtitj0p5ob"]
 
-[ext_resource type="Script" path="res://scripts/spawner/spawn_animation.gd" id="1_4ljc5"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/scripts/spawner/spawn_animation.gd" id="1_o8svu"]
 [ext_resource type="PackedScene" uid="uid://bx5ccq018l8o" path="res://assets/invocation_spawns/spawn_devil_door-32x32.aseprite" id="2_rbbal"]
 
 [node name="DevilDoorSpawn" type="Node2D"]
-script = ExtResource("1_4ljc5")
+script = ExtResource("1_o8svu")
 spawn_animation = ExtResource("2_rbbal")

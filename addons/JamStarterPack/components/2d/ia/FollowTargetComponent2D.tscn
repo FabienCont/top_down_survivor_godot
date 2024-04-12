@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1navm80qbjks"]
+
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/2d/ia/FollowTargetComponent2D.gd" id="1_yo8f6"]
+
+[node name="FollowTargetComponent" type="Node"]
+script = ExtResource("1_yo8f6")
