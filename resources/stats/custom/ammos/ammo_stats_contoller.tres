@@ -22,4 +22,4 @@ stats_dico = {
 0: SubResource("Resource_6f3fh"),
 1: SubResource("Resource_uddlo")
 }
-modifiers = []
+modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([])

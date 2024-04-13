@@ -7,4 +7,4 @@
 script = ExtResource("2_k2aha")
 label = "max life upgrade"
 modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([ExtResource("1_idqa1")])
-effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])
+effect = Array[Resource("res://addons/JamStarterPack/resources/effects/EffectInfo.gd")]([])

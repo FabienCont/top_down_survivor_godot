@@ -7,4 +7,4 @@
 script = ExtResource("2_hrwy5")
 label = "bonus xp"
 modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([ExtResource("1_xvjnd")])
-effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])
+effect = Array[Resource("res://addons/JamStarterPack/resources/effects/EffectInfo.gd")]([])

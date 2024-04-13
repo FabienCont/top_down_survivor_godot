@@ -16,4 +16,4 @@ apply_to_base = false
 script = ExtResource("1_nj5jp")
 label = "pierce upgrade"
 modifiers = Array[ExtResource("1_t4b54")]([SubResource("Resource_utkmg")])
-effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])
+effect = Array[Resource("res://addons/JamStarterPack/resources/effects/EffectInfo.gd")]([])

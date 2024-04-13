@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/tests/EnemyTest.gd" id="1_fcf8t"]
 [ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/AbilitiesController.gd" id="2_1unpo"]
 [ext_resource type="PackedScene" uid="uid://cmx1ur1ldwu0r" path="res://scenes/entities/Enemy.tscn" id="2_f2svw"]
-[ext_resource type="Script" path="res://resources/effects/EffectsController.gd" id="3_6b2k3"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/EffectsController.gd" id="3_6b2k3"]
 [ext_resource type="PackedScene" uid="uid://ccxqh4klu5i7k" path="res://scenes/entities/Player.tscn" id="3_dc8bk"]
 [ext_resource type="Script" path="res://components/entity_decision_maker/EnemyLogicComponent.gd" id="4_sxqil"]
 [ext_resource type="Resource" uid="uid://v876g6v6jvxf" path="res://resources/stats/custom/players/player_test.tres" id="4_yk84b"]
@@ -21,7 +21,7 @@ abilities = {}
 
 [sub_resource type="Resource" id="Resource_sqkep"]
 script = ExtResource("3_6b2k3")
-effects = Array[Resource("res://resources/effects/EffectInfo.gd")]([])
+effects = Array[Resource("res://addons/JamStarterPack/resources/effects/EffectInfo.gd")]([])
 dico = {}
 
 [sub_resource type="Resource" id="Resource_he1fy"]

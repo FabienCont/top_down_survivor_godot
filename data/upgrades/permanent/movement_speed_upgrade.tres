@@ -7,4 +7,4 @@
 script = ExtResource("2_c6h2j")
 label = "speed up"
 modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([ExtResource("1_wfqgk")])
-effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])
+effect = Array[Resource("res://addons/JamStarterPack/resources/effects/EffectInfo.gd")]([])

@@ -17,4 +17,4 @@ resource_local_to_scene = true
 script = ExtResource("2_6ie67")
 label = "attack speed upgrade"
 modifiers = Array[ExtResource("1_dg5tu")]([SubResource("Resource_hlofw")])
-effect = Array[Resource("res://resources/effects/EffectInfo.gd")]([])
+effect = Array[Resource("res://addons/JamStarterPack/resources/effects/EffectInfo.gd")]([])
