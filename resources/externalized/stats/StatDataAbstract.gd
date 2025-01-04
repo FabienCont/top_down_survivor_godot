@@ -2,7 +2,7 @@ extends Resource
 
 class_name StatDataAbstract
 
-func _get_stat_key(property_name:String) -> int:
+func _get_stat_key(_property_name:String) -> int:
 	return 0
 	
 func _get_target() -> String:

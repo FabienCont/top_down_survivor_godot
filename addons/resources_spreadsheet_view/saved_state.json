@@ -1,5 +1,9 @@
 {
   "hidden_columns": {
+    "res://data/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
     "res://data/modifiers/entity/": {
       "resource_local_to_scene": true,
       "resource_name": true
@@ -84,7 +88,8 @@
     "res://resources/abilities/DashAbility.gd",
     "res://data/stats/upgrades/permanent/",
     "res://data/stats/players/",
-    "res://data/modifiers/entity/"
+    "res://data/modifiers/entity/",
+    "res://data/"
   ],
   "table_functions": {
     "filter": [

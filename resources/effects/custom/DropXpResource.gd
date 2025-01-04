@@ -11,7 +11,7 @@ static func trigger_effect(node :Node2D,_data = null):
 	
 	var random_x=randi_range(-12,12)
 	var random_y=randi_range(0,5)
-	var jump_position = droppedXpScene.position + Vector2(0+random_x/2,-15+random_y)
+	var jump_position = droppedXpScene.position + Vector2(0+random_x/2.0,-15+random_y)
 	var end_position = droppedXpScene.position + Vector2(0+random_x,5)
 	var tween = parent.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	tween.set_parallel(false)

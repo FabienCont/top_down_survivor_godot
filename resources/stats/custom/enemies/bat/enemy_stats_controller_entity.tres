@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="StatsController" load_steps=15 format=3 uid="uid://cnc58o31w371e"]
+[gd_resource type="Resource" script_class="StatsController" load_steps=17 format=3 uid="uid://cnc58o31w371e"]
 
 [ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatModel.gd" id="1_4uw26"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatModifier.gd" id="1_8bsma"]
 [ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatsController.gd" id="1_a6s74"]
 [ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/UpgradesController.gd" id="2_exgwg"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/Upgrade.gd" id="5_necwb"]
 
 [sub_resource type="Resource" id="Resource_edend"]
 script = ExtResource("1_4uw26")
@@ -66,7 +68,7 @@ value = 0.0
 
 [sub_resource type="Resource" id="Resource_divf1"]
 script = ExtResource("2_exgwg")
-upgrades = []
+upgrades = Array[ExtResource("5_necwb")]([])
 
 [resource]
 script = ExtResource("1_a6s74")
@@ -83,5 +85,5 @@ stats_dico = {
 11: SubResource("Resource_j4rnb"),
 12: SubResource("Resource_fpsot")
 }
-modifiers = []
+modifiers = Array[ExtResource("1_8bsma")]([])
 upgrades_controller = SubResource("Resource_divf1")

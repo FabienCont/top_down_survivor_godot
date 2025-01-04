@@ -7,4 +7,3 @@ func _ready():
 	velocity_component.update_velocity(direction * 5)
 	var trail: GPUParticles2D = trailEffectScene.instantiate()
 	add_child(trail)
-

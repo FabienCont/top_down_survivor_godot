@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Upgrade" load_steps=4 format=3 uid="uid://5srmkisol4cl"]
+[gd_resource type="Resource" script_class="Upgrade" load_steps=5 format=3 uid="uid://5srmkisol4cl"]
 
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/EffectInfo.gd" id="1_4bnri"]
 [ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/Upgrade.gd" id="1_nj5jp"]
 [ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatModifier.gd" id="1_t4b54"]
 
@@ -16,4 +17,4 @@ apply_to_base = false
 script = ExtResource("1_nj5jp")
 label = "pierce upgrade"
 modifiers = Array[ExtResource("1_t4b54")]([SubResource("Resource_utkmg")])
-effect = Array[Resource("res://addons/JamStarterPack/resources/effects/EffectInfo.gd")]([])
+effect = Array[ExtResource("1_4bnri")]([])

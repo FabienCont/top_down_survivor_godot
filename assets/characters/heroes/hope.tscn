@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmd8cog7fc5po"]
-
-[ext_resource type="PackedScene" uid="uid://b8q2vpdkrtw7a" path="res://assets/characters/heroes/hope.ase" id="1_m54em"]
-
-[node name="hope" instance=ExtResource("1_m54em")]

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="StatsController" load_steps=6 format=3 uid="uid://c010ixwdutw5n"]
+[gd_resource type="Resource" script_class="StatsController" load_steps=7 format=3 uid="uid://c010ixwdutw5n"]
 
 [ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatsController.gd" id="1_e0v60"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatModifier.gd" id="1_sd6of"]
 [ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatModel.gd" id="3_fwcx1"]
 
 [sub_resource type="Resource" id="Resource_541sh"]
@@ -29,4 +30,4 @@ stats_dico = {
 31: SubResource("Resource_o8wjy"),
 32: SubResource("Resource_wkxv3")
 }
-modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([])
+modifiers = Array[ExtResource("1_sd6of")]([])

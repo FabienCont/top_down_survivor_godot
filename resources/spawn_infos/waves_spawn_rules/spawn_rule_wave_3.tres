@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="EnemiesSpawnRules" load_steps=3 format=3 uid="uid://dknfu6qak5j3h"]
+[gd_resource type="Resource" script_class="EnemiesSpawnRules" load_steps=4 format=3 uid="uid://dknfu6qak5j3h"]
 
+[ext_resource type="Script" path="res://resources/spawn_infos/EnemySpawnInfo.gd" id="1_3h6so"]
 [ext_resource type="Resource" uid="uid://s430lecb7xq0" path="res://resources/spawn_infos/enemy_spawn_info/bat_enemy_spawn_info_1.tres" id="1_rdnm0"]
 [ext_resource type="Script" path="res://resources/spawn_infos/EnemiesSpawnRules.gd" id="2_kibki"]
 
 [resource]
 script = ExtResource("2_kibki")
-enemies_spawn_info = Array[Resource("res://resources/spawn_infos/EnemySpawnInfo.gd")]([ExtResource("1_rdnm0")])
+enemies_spawn_info = Array[ExtResource("1_3h6so")]([ExtResource("1_rdnm0")])

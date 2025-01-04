@@ -31,4 +31,3 @@ func decelerate(delta:float):
 	
 func accelerate_to_velocity(velocity: Vector2,delta:float):
 	current_velocity = current_velocity.move_toward(velocity,delta * acceleration)
-
