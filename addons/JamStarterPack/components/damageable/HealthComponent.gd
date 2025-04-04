@@ -1,4 +1,4 @@
-extends Node
+extends DamageableComponentInterface
 class_name HealthComponent
 
 var life : StatModel

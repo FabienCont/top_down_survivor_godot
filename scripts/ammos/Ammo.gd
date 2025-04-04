@@ -50,7 +50,7 @@ func get_range_value() -> float:
 func get_pierce_value() -> float:
 	if pierce_stat != null:
 		return pierce_stat.value
-	return 3
+	return 1
 	
 func _process(_delta: float) -> void:
 	if init_position.distance_to(global_position) > get_range_value():

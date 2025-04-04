@@ -7,4 +7,4 @@ script = ExtResource("1_com6f")
 base_folder = "res://data/upgrades/permanent"
 includes = Array[String](["*.tres"])
 excludes = Array[String]([])
-paths = Array[String](["res://data/upgrades/permanent/attack_speed_upgrade.tres", "res://data/upgrades/permanent/damage_upgrade.tres", "res://data/upgrades/permanent/double_shot_upgrade.tres", "res://data/upgrades/permanent/max_life_upgrade.tres", "res://data/upgrades/permanent/movement_speed_upgrade.tres", "res://data/upgrades/permanent/pierce_upgrade.tres", "res://data/upgrades/permanent/xp_mutiplicator_upgrade.tres"])
+paths = Array[String](["res://data/upgrades/permanent/attack_speed_upgrade.tres", "res://data/upgrades/permanent/burn_effect_upgrade.tres", "res://data/upgrades/permanent/damage_upgrade.tres", "res://data/upgrades/permanent/double_shot_upgrade.tres", "res://data/upgrades/permanent/max_life_upgrade.tres", "res://data/upgrades/permanent/movement_speed_upgrade.tres", "res://data/upgrades/permanent/pierce_upgrade.tres", "res://data/upgrades/permanent/xp_mutiplicator_upgrade.tres"])

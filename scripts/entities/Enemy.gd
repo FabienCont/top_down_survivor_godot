@@ -43,4 +43,3 @@ func die() -> void:
 
 func get_current_direction() -> Vector2:
 	return followTargetComponent.get_current_direction() 
-

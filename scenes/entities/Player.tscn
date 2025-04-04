@@ -1,10 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://ccxqh4klu5i7k"]
+[gd_scene load_steps=17 format=3 uid="uid://ccxqh4klu5i7k"]
 
 [ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_w40en"]
-[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/handlers/DisplayDamagedHurtEffect.gd" id="2_v1nwq"]
-[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/handlers/ShakeHurtEffect.gd" id="3_fbq1n"]
-[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/handlers/BlinkHurtEffect.gd" id="4_060cq"]
-[ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://addons/JamStarterPack/components/HealthComponent.tscn" id="5_frt47"]
+[ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://addons/JamStarterPack/components/damageable/HealthComponent.tscn" id="5_frt47"]
 [ext_resource type="PackedScene" uid="uid://v7vtestyxfk5" path="res://addons/JamStarterPack/components/2d/controllers/TopDownControllerComponent2D.tscn" id="6_rnls1"]
 [ext_resource type="PackedScene" uid="uid://tj3s2aqp4cp5" path="res://assets/characters/heroes/character.ase" id="7_5ua4u"]
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://addons/JamStarterPack/components/2d/physics/VelocityComponent2D.tscn" id="7_eg2aj"]
@@ -31,7 +28,6 @@ radius = 130.04
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_w40en")
-hurt_effects = Array[Resource]([ExtResource("2_v1nwq"), ExtResource("3_fbq1n"), ExtResource("4_060cq")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_frt47")]
 

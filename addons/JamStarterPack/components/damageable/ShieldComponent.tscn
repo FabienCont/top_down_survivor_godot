@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://donfn861yhx1a"]
+
+[ext_resource type="Script" path="res://addons/JamStarterPack/components/damageable/ShieldComponent.gd" id="1_btpeo"]
+
+[node name="ShieldComponent" type="Node"]
+script = ExtResource("1_btpeo")

@@ -22,4 +22,3 @@ func instantiate_projectile():
 	projectile_test.position = mouse_position
 	projectile_test.init(0,0,ammo_info,UpgradesController.new())
 	var sprite = projectile_test.sprite
-

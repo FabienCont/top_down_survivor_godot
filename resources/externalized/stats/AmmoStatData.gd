@@ -10,4 +10,3 @@ func _get_stat_key(property_name:String) -> int:
 	
 func _get_target() -> String:
 	return "AMMO"
-

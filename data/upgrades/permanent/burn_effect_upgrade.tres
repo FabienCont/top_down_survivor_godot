@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=5 format=3 uid="uid://6t1s87stum7t"]
+
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/EffectInfo.gd" id="1_55d77"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatModifier.gd" id="2_vc72t"]
+[ext_resource type="Resource" uid="uid://citjrl0fv7qml" path="res://data/modifiers/entity/damage.tres" id="3_lccaq"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/Upgrade.gd" id="4_pfnch"]
+
+[resource]
+script = ExtResource("4_pfnch")
+label = "burn effect upgrade"
+modifiers = Array[ExtResource("2_vc72t")]([ExtResource("3_lccaq")])
+effect = Array[ExtResource("1_55d77")]([])

@@ -7,6 +7,10 @@ class_name HurtboxComponent2D
 	set(value):
 		health_component = value
 		update_configuration_warnings()
+		
+@export var shield_component: ShieldComponent:
+	set(value):
+		shield_component = value
 
 func _get_configuration_warnings():
 	if health_component == null:
@@ -17,5 +21,7 @@ func damage(attack: AttackInterface):
 	var parent = get_parent()
 	if parent.has_method("hurt") : 
 		parent.hurt(attack)
+	if shield_component:
+		shield_component.damage(attack)
 	if health_component:
 		health_component.damage(attack)

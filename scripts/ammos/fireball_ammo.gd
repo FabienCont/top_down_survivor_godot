@@ -7,6 +7,7 @@ func _ready():
 	var trail: GPUParticles2D = trailEffectScene.instantiate()
 	add_child(trail)
 
-func _process(delta):
+func _process(_delta):
 	velocity_component.move_node(self)
 	sprite.play("Idle")
+ 

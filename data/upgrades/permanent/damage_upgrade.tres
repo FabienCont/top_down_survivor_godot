@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Upgrade" load_steps=3 format=3 uid="uid://dfj5dr70dxvlg"]
+[gd_resource type="Resource" script_class="Upgrade" load_steps=4 format=3 uid="uid://dfj5dr70dxvlg"]
 
-[ext_resource type="Resource" uid="uid://citjrl0fv7qml" path="res://data/modifiers/entity/damage.tres" id="1_wf24f"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/effects/EffectInfo.gd" id="1_1k1p5"]
 [ext_resource type="Script" path="res://addons/JamStarterPack/resources/upgrades/Upgrade.gd" id="2_f3xd7"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/stats/StatModifier.gd" id="2_lnl5j"]
 
 [resource]
 script = ExtResource("2_f3xd7")
-label = "xp multiplier upgrade"
-modifiers = Array[Resource("res://addons/JamStarterPack/resources/stats/StatModifier.gd")]([ExtResource("1_wf24f")])
-effect = Array[Resource("res://addons/JamStarterPack/resources/effects/EffectInfo.gd")]([])
+label = "damage upgrade"
+modifiers = Array[ExtResource("2_lnl5j")]([])
+effect = Array[ExtResource("1_1k1p5")]([])

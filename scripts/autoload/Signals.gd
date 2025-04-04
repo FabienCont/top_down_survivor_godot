@@ -1,21 +1,32 @@
 extends Node
-
+@warning_ignore("unused_signal")
 signal level_loaded()
+@warning_ignore("unused_signal")
 signal player_ready(player: Player)
+@warning_ignore("unused_signal")
 signal player_died(player_info: PlayerInfo)
+@warning_ignore("unused_signal")
 signal stats_update(player_info: PlayerInfo)
-
+@warning_ignore("unused_signal")
 signal entity_died(entity: Entity)
-
+@warning_ignore("unused_signal")
 signal stats_update_ui(player_info: PlayerInfo)
+@warning_ignore("unused_signal")
 signal stats_update_node(player_info: PlayerInfo)
+@warning_ignore("unused_signal")
 signal inventory_update(player_info: PlayerInfo)
 
+@warning_ignore("unused_signal")
 signal start_level_up(player_info:PlayerInfo)
+@warning_ignore("unused_signal")
 signal end_level_up()
+@warning_ignore("unused_signal")
 signal boss_died()
 
+@warning_ignore("unused_signal")
 signal start_pause_menu()
+@warning_ignore("unused_signal")
 signal end_pause_menu()
 
+@warning_ignore("unused_signal")
 signal item_selected(player_info:PlayerInfo ,upgrade:Upgrade)
